@@ -10,7 +10,6 @@ class ProfileRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:Text("profile"), backgroundColor: Colors.red,),
       body: Text("test"),
       backgroundColor: Color(0xfff5f6fa),
       bottomNavigationBar: BottomNavbar(),
