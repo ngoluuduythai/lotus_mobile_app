@@ -1,6 +1,9 @@
-# main
+# Lotus Mobile App
 
-Lotus Mobile App
+To redefine the way people rent long term and short term apartments. To improve the process in every imaginable way. No rent contracts. It is all month to month.
+Make it super easy to rent a whole apartment, or just a room. Rent a room with friends you already know or find others that you don’t know to rent an apartment with. 
+Use bank account and cashflow to determine max monthly pre approval, in replace of pay stubs, proof of employment etc. So they can login with their bank account using plaid: https://plaid.com
+This app will look a lot like Airbnb. 
 
 ## Getting Started
 
