@@ -3,7 +3,10 @@ import 'package:main/locator.dart';
 import 'package:main/routes.dart';
 import 'package:main/routes/home/home.route.dart';
 import 'package:main/routes/login/login.route.dart';
+
 void main() async {
+  const bool isProduction = bool.fromEnvironment('dart.vm.product');
+  print(isProduction);
   Routes.createRoutes();
 
   await setupLocator();
