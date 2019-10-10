@@ -41,43 +41,47 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<!--
+		<dict>
+		... Some other CFBundleURLTypes definition.
+		</dict>
+		-->
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<!-- TODO Replace this value: -->
+				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+				<string>com.googleusercontent.apps.884097229205-r5t7k8vhjvkrvip1gvq7qh7umuojhodf</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<!--
+				Replace "000000000000" with your Facebook App ID here.
+				**NOTE**: The scheme needs to start with `fb` and then your ID.
+				-->
+				<string>fb447391539209161</string>
+			</array>
+		</dict>
+	</array>
 
-		<key>CFBundleURLTypes</key>
-<array>
-    <!--
-    <dict>
-    ... Some other CFBundleURLTypes definition.
-    </dict>
-    -->
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <!--
-              Replace "000000000000" with your Facebook App ID here.
-              **NOTE**: The scheme needs to start with `fb` and then your ID.
-            -->
-            <string>fb447391539209161</string>
-        </array>
-    </dict>
-</array>
-
-<key>FacebookAppID</key>
-
-<!-- Replace "000000000000" with your Facebook App ID here. -->
-<string>447391539209161</string>
-<key>FacebookDisplayName</key>
-
-<!-- Replace "YOUR_APP_NAME" with your Facebook App name. -->
-<string>YOUR_APP_NAME</string>
-
-<key>LSApplicationQueriesSchemes</key>
-<array>
-    <string>fbapi</string>
-    <string>fb-messenger-share-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-</array>
-
-
+	<key>FacebookAppID</key>
+	<!-- Replace "000000000000" with your Facebook App ID here. -->
+	<string>447391539209161</string>
+	<key>Lotus</key>
+	<!-- Replace "YOUR_APP_NAME" with your Facebook App name. -->
+	<string>Lotus</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>
