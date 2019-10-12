@@ -32,12 +32,15 @@ PODS:
   - GTMSessionFetcher/Core (1.2.2)
   - path_provider (0.0.1):
     - Flutter
+  - webview_flutter (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
   - flutter_facebook_login (from `.symlinks/plugins/flutter_facebook_login/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -56,6 +59,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  webview_flutter:
+    :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
   FBSDKCoreKit: 0d2d450fe9447e204fa6e912e0df76dd36693699
@@ -67,6 +72,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
+  webview_flutter: 1aa7604e6cdb451a9b7ed2c37d5454c0b440246b
 
 PODFILE CHECKSUM: c9a3f2b0361195d87b3dbee04d0d77979f215c87
 

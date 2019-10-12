@@ -202,6 +202,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.3+1"
+  flutter_plaid:
+    dependency: "direct main"
+    description:
+      name: flutter_plaid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   flutter_platform_widgets:
     dependency: "direct main"
     description:
@@ -590,6 +597,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.5"
+  webview_flutter:
+    dependency: transitive
+    description:
+      name: webview_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.14+1"
   yaml:
     dependency: transitive
     description:
