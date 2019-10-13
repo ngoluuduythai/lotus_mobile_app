@@ -50,6 +50,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  final _$addBankAccountAsyncAction = AsyncAction('addBankAccount');
+
+  @override
+  Future addBankAccount(BuildContext context) {
+    return _$addBankAccountAsyncAction.run(() => super.addBankAccount(context));
+  }
+
   final _$_AuthUserStoreActionController =
       ActionController(name: '_AuthUserStore');
 
