@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:main/locator.dart';
 import 'package:main/store/auth_user/auth_user.store.dart';
 import 'package:main/widgets/facebook_button/facebook_button.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import 'package:main/constants/images.dart';
-import 'package:main/widgets/positioned_picture/positioned_picture.dart';
-
+import 'package:main/widgets/base_widget/base_widget.dart';
+import 'package:main/widgets/base_widget/base_widget.dart';
 part 'login.route.g.dart';
 
 class LoginRoute extends StatelessWidget {
@@ -15,37 +13,17 @@ class LoginRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: 
-        Stack(children: <Widget>[
-          _TopRectable(),
-          _BottomRectable(),
-          // Container(
-          //   width: 500,
-          //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 100),
-          //   height: 500,
-          //   color: Colors.red,
-          //   child: Column(children: <Widget>[
-          //     Text('Login'),
-          //     FacebookButton(afterLogin: (){
-          //       print("test");
-          //     },),
-          //     Observer(
-          //       builder: (_) => Text('Number of re-routes: ${authUserStore.count}'),
-          //     ),
-          //     RaisedButton(
-          //       child: Text("Route to home"),
-          //       onPressed: () {
-          //         print("Routing to home");
-          //         Routes.sailor('/home');
-          //         authUserStore.increment();
-          //       },
-          //     )
-          //   ],)
-          // ),
-        ],
-      ),
-    );
+    return BaseWidget(builder: (context, sizingInformation) {
+      print(sizingInformation);
+      return Material(
+        child: 
+          Stack(children: <Widget>[
+            _TopRectable(),
+            _BottomRectable(),
+          ],
+        ),
+      );
+    });
   }
 }
 
