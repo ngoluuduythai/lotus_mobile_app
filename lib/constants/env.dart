@@ -1,17 +1,15 @@
 import 'dart:io';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+final env = DotEnv().env;
 class ENV {
-  static String graphqlApiUrl = 'http://localhost:3000/graphql';
-  // static String graphqlApiUrl = 'https://api.dev.lotus-pad.com/graphql';
+  static String graphqlApiUrl       = env['GRAPHQL_API_URL'];
 
-
-  static String plaidPublicKey = '1f70dbfd258432e131c76f7068b279';
-  static String plaidBaseUrl = 'https://cdn.plaid.com/link/v2/stable/link.html';
-  static String plaidEnvironment = 'sandbox';
-  static String environmentPlaidPathAccessToken = 
-      'https://sandbox.plaid.com/item/public_token/exchange';
-  static String environmentPlaidPathStripeToken = 
-      'https://sandbox.plaid.com/processor/stripe/bank_account_token/create';
-  static String plaidClientId = '5d32818ed3b983001272c8e8';
-  static String plaidSecret = '2fc352efe7a0ecdfadf822365349ef';
+  static String plaidPublicKey      = env['PLAID_PUBLIC_KEY'];
+  static String plaidBaseUrl        = env['PLAID_BASE_URL'];
+  static String plaidEnvironment    = env['PLAID_ENVIRONMENT'];
+  static String plaidUrlAccessToken = env['PLAID_URL_ACCESS_TOKEN'];
+  static String plaidUrlStripeToken = env['PLAID_URL_STRIPE_TOKEN'];
+  static String plaidClientId       = env['PLAID_CLIENT_ID'];
+  static String plaidSecret         = env['PLAID_SECRET'];
 }

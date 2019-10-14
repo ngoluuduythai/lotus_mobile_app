@@ -8,8 +8,8 @@ class PlaidService {
     plaidPublicKey: ENV.plaidPublicKey,
     plaidBaseUrl: ENV.plaidBaseUrl,
     plaidEnvironment: ENV.plaidEnvironment,
-    environmentPlaidPathAccessToken: ENV.environmentPlaidPathAccessToken,
-    environmentPlaidPathStripeToken: ENV.environmentPlaidPathStripeToken,
+    environmentPlaidPathAccessToken: ENV.plaidUrlAccessToken,
+    environmentPlaidPathStripeToken: ENV.plaidUrlStripeToken,
     plaidClientId: ENV.plaidClientId,
     secret: ENV.plaidSecret
   );

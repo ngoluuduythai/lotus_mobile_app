@@ -5,9 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter",
+            "name": "Flutter LOCAL",
+            "type": "dart",
             "request": "launch",
-            "type": "dart"
-        }
+            "program": "lib/builds/local.dart"
+        },
+        {
+            "name": "Flutter DEV",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/builds/dev.dart"
+        },
+        {
+            "name": "Flutter QA",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/builds/qa.dart"
+        },
+        {
+            "name": "Flutter STAGE",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/builds/stage.dart"
+        },
+        {
+            "name": "Flutter PROD",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/builds/prod.dart"
+        },
     ]
 }
