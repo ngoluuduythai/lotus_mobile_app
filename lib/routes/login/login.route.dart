@@ -5,9 +5,7 @@ import 'package:main/store/auth_user/auth_user.store.dart';
 import 'package:main/widgets/facebook_button/facebook_button.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:main/widgets/base_widget/base_widget.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter/services.dart' show rootBundle;
-
+import 'package:main/constants/images.dart';
 
 part 'login.route.g.dart';
 
@@ -34,12 +32,52 @@ Widget _topRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double h = size.height * 3/5;
   return Container(
+      padding: EdgeInsets.only(left: 44, right: 44, top: 67),
       width: size.width,
       height: h,
       color: Colors.white,
-      child: Stack(children: <Widget>[
-        _Welcome(),
-      ],),
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(bottom: 17),
+              child: Image.asset(Images.logo, width: 73, height: 45,),
+            ),
+            Container(
+              padding: EdgeInsets.only(bottom: 5),
+              child: Text(
+                'Welcome to Lotus',
+                style: TextStyle(
+                  color:  Color(0xff0b0b0b),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "AirbnbCerealApp",
+                  fontStyle:  FontStyle.normal,
+                  fontSize: 30.0
+                ),
+              ),
+            ),
+            Container(
+              child: Text(
+                'Find the perfect space.\nSame price. No Commitment.',
+                style: TextStyle(
+                  color:  Color(0xff0b0b0b).withOpacity(.64),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "AirbnbCerealApp",
+                  fontStyle:  FontStyle.normal,
+                  fontSize: 18.0,
+                )
+              )
+            ),
+          ],
+        ),
+        Container(
+              alignment: Alignment(0,0),
+              child: Image.asset(Images.loginRoomBackground),
+            )
+      ],)
   );
 }
 
@@ -75,7 +113,7 @@ Widget _welcome(BuildContext context) {
     top: 129,
     start: 42,
     child: Text(
-      'Welcome to Lotusssss',
+      'Welcome to Lotus',
       style: TextStyle(
         color:  const Color(0xff0b0b0b),
         fontWeight: FontWeight.w700,
