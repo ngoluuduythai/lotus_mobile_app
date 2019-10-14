@@ -14,13 +14,12 @@ class PlaidService {
     secret: ENV.plaidSecret
   );
 
-  Future<Result> addBankAccount(BuildContext context) async {
+  Future addBankAccount(BuildContext context) async {
     Completer c = new Completer();
     FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(this.configuration);
     flutterPlaidApi.launch(context, (Result result) {
-      print("fetched plaid");
       c.complete(result);
-    }, stripeToken: true);
+    }, stripeToken: false);
     return c.future;
   }
 }

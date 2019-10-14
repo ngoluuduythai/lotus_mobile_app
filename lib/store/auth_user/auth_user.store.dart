@@ -35,13 +35,16 @@ abstract class _AuthUserStore with Store {
   Future<AuthUser> login() async {
     var data = await facebookService.login();
     this.authUser = AuthUser.fromJson(data);
+    print('token ${this.authUser.token}');
     return this.authUser;
   }
 
   @action
   Future addBankAccount(BuildContext context) async {
     Result data = await plaidService.addBankAccount(context);
-    print(data);
+    print("token");
+    print(data.token);
+    print(data.toString());
     return true;
   }
 }

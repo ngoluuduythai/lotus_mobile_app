@@ -1,7 +1,8 @@
 import 'dart:io';
 
 class ENV {
-  static String graphqlApiUrl = 'https://api.dev.lotus-pad.com/graphql';
+  static String graphqlApiUrl = 'http://localhost:3000/graphql';
+  // static String graphqlApiUrl = 'https://api.dev.lotus-pad.com/graphql';
 
 
   static String plaidPublicKey = '1f70dbfd258432e131c76f7068b279';

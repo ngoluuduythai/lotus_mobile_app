@@ -3,14 +3,12 @@ import 'package:main/locator.dart';
 import 'package:main/routes.dart';
 import 'package:main/routes/home/home.route.dart';
 import 'package:main/routes/login/login.route.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 void main() async {
-  const bool isProduction = bool.fromEnvironment('dart.vm.product');
-  print(isProduction);
+  await DotEnv().load('local.env');
   Routes.createRoutes();
 
   await setupLocator();
-  
   runApp(MyApp());
 }
 

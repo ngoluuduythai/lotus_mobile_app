@@ -5,7 +5,10 @@ import 'package:main/store/auth_user/auth_user.store.dart';
 import 'package:main/widgets/facebook_button/facebook_button.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:main/widgets/base_widget/base_widget.dart';
-import 'package:main/widgets/base_widget/base_widget.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
+
 part 'login.route.g.dart';
 
 class LoginRoute extends StatelessWidget {
@@ -14,7 +17,6 @@ class LoginRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
-      print(sizingInformation);
       return Material(
         child: 
           Stack(children: <Widget>[
@@ -59,7 +61,6 @@ Widget _bottomRectable(BuildContext context) {
         children: <Widget>[
           FacebookButton(
             afterLogin: (){
-              print("facebook after login");
               Routes.sailor(RouteNames.profile);
             },
           ),
@@ -74,7 +75,7 @@ Widget _welcome(BuildContext context) {
     top: 129,
     start: 42,
     child: Text(
-      'Welcome to Lotus',
+      'Welcome to Lotusssss',
       style: TextStyle(
         color:  const Color(0xff0b0b0b),
         fontWeight: FontWeight.w700,

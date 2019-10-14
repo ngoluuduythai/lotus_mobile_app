@@ -30,6 +30,9 @@ class ProfileRoute extends StatelessWidget {
                     children: <Widget>[
                       Center(child:Text( "Connect your bank account to pay rent and to substitute proof of income and employment documents.")),
                       AddBankButtonButton(),
+                      RaisedButton(child: Text("login"),onPressed: () {
+                        Routes.sailor(RouteNames.login);
+                      },)
                     ],
                   ),
                 )
