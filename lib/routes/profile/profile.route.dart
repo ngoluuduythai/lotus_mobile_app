@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:main/store/auth_user/auth_user.store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:main/widgets/bottom_navbar/bottom_navbar.dart';
 import 'package:main/widgets/base_widget/base_widget.dart';
 import 'package:main/widgets/add_bank_button/add_bank_button.dart';
+import 'package:main/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 
 class ProfileRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -13,8 +13,8 @@ class ProfileRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
-      return Scaffold(
-        body: Container(
+      return BottomNavigationBase(
+        child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 200),
           child: Column(
             children: <Widget>[
@@ -41,8 +41,6 @@ class ProfileRoute extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: Color(0xfff5f6fa),
-        bottomNavigationBar: BottomNavbar(),
       );
     });
   }

@@ -32,10 +32,10 @@ Widget _topRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double h = size.height * 3/5;
   return Container(
+      color: Colors.white,
       padding: EdgeInsets.only(left: 44, right: 44, top: 67),
       width: size.width,
       height: h,
-      color: Colors.white,
       child:  Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

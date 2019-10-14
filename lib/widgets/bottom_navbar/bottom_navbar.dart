@@ -3,6 +3,7 @@ import 'package:main/services/facebook.service.dart';
 import 'package:main/locator.dart';
 import 'package:main/store/auth_user/auth_user.store.dart';
 import 'package:main/routes.dart';
+import 'package:sailor/sailor.dart';
 
 class BottomNavbar extends StatelessWidget {
   final navMap = {
@@ -58,13 +59,15 @@ class BottomNavbar extends StatelessWidget {
       currentIndex: currentRouteIndex,
       selectedItemColor: Color(0xffdf8f3d),
       onTap: (_){
-        
-        print("on tap");
         final newRoute = navMap[_];
         if(newRoute == currentRoute){
 
         } else {
-          Routes.sailor(newRoute);
+          Routes.sailor.navigate(
+            newRoute, 
+            transitions: [SailorTransition.fade_in],
+            transitionDuration: Duration(milliseconds: 200),
+          );
         }
       });
   }
