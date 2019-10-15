@@ -12,7 +12,7 @@ class FacebookService {
         """
         query{
           socialLogin(
-            accessToken: "$accessToken",
+            token: "$accessToken",
             platform: FACEBOOK
           ){
             email
