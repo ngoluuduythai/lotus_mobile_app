@@ -18,21 +18,21 @@ class _$AuthUserSerializer implements StructuredSerializer<AuthUser> {
   Iterable<Object> serialize(Serializers serializers, AuthUser object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.id != null) {
+    if (object.userKey != null) {
       result
-        ..add('id')
-        ..add(serializers.serialize(object.id,
+        ..add('userKey')
+        ..add(serializers.serialize(object.userKey,
             specifiedType: const FullType(int)));
     }
     if (object.firstName != null) {
       result
-        ..add('first_name')
+        ..add('firstName')
         ..add(serializers.serialize(object.firstName,
             specifiedType: const FullType(String)));
     }
     if (object.lastName != null) {
       result
-        ..add('last_name')
+        ..add('lastName')
         ..add(serializers.serialize(object.lastName,
             specifiedType: const FullType(String)));
     }
@@ -87,15 +87,15 @@ class _$AuthUserSerializer implements StructuredSerializer<AuthUser> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
+        case 'userKey':
+          result.userKey = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'first_name':
+        case 'firstName':
           result.firstName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'last_name':
+        case 'lastName':
           result.lastName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
@@ -134,7 +134,7 @@ class _$AuthUserSerializer implements StructuredSerializer<AuthUser> {
 
 class _$AuthUser extends AuthUser {
   @override
-  final int id;
+  final int userKey;
   @override
   final String firstName;
   @override
@@ -156,7 +156,7 @@ class _$AuthUser extends AuthUser {
       (new AuthUserBuilder()..update(updates)).build();
 
   _$AuthUser._(
-      {this.id,
+      {this.userKey,
       this.firstName,
       this.lastName,
       this.phone,
@@ -178,7 +178,7 @@ class _$AuthUser extends AuthUser {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AuthUser &&
-        id == other.id &&
+        userKey == other.userKey &&
         firstName == other.firstName &&
         lastName == other.lastName &&
         phone == other.phone &&
@@ -197,7 +197,9 @@ class _$AuthUser extends AuthUser {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, id.hashCode), firstName.hashCode),
+                            $jc(
+                                $jc($jc(0, userKey.hashCode),
+                                    firstName.hashCode),
                                 lastName.hashCode),
                             phone.hashCode),
                         email.hashCode),
@@ -210,7 +212,7 @@ class _$AuthUser extends AuthUser {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AuthUser')
-          ..add('id', id)
+          ..add('userKey', userKey)
           ..add('firstName', firstName)
           ..add('lastName', lastName)
           ..add('phone', phone)
@@ -226,9 +228,9 @@ class _$AuthUser extends AuthUser {
 class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
   _$AuthUser _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int _userKey;
+  int get userKey => _$this._userKey;
+  set userKey(int userKey) => _$this._userKey = userKey;
 
   String _firstName;
   String get firstName => _$this._firstName;
@@ -266,7 +268,7 @@ class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
 
   AuthUserBuilder get _$this {
     if (_$v != null) {
-      _id = _$v.id;
+      _userKey = _$v.userKey;
       _firstName = _$v.firstName;
       _lastName = _$v.lastName;
       _phone = _$v.phone;
@@ -299,7 +301,7 @@ class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
     try {
       _$result = _$v ??
           new _$AuthUser._(
-              id: id,
+              userKey: userKey,
               firstName: firstName,
               lastName: lastName,
               phone: phone,

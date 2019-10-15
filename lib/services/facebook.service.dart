@@ -16,6 +16,8 @@ class FacebookService {
             platform: FACEBOOK
           ){
             email
+            firstName
+            lastName
             token
           }
         }
@@ -25,7 +27,6 @@ class FacebookService {
   }
 
   getFacebookAccessToken() async {
-    print("logging in with fb mobile");
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
     switch (result.status) {
@@ -43,13 +44,12 @@ class FacebookService {
   }
 
     login() async {
-      print('login from fb service');
       var token = await getFacebookAccessToken();
       if(token == '') {
         return false;
       }
 
-      print("Fetching data from api");
+      print("Fetching data from api token:  ${token}");
       var data;
       try {
          data = await sendAccessToken(token);
@@ -57,6 +57,7 @@ class FacebookService {
         print(e);
       }
 
+      print(data);
       return data;
   }
 }

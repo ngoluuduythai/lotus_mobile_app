@@ -14,15 +14,28 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
   static Serializer<AuthUser> get serializer => _$authUserSerializer;
 
   @nullable
-  int get id;
+  int get userKey;
 
   @nullable
-  @BuiltValueField(wireName: 'first_name')
+  @BuiltValueField(wireName: 'firstName')
   String get firstName;
 
   @nullable
-  @BuiltValueField(wireName: 'last_name')
+  @BuiltValueField(wireName: 'lastName')
   String get lastName;
+
+  String get fullName {
+    String fullName = '';
+
+    if(this.firstName != null){
+      fullName += '${this.firstName} ';
+    }
+
+    if(this.lastName != null) {
+      fullName += '${this.lastName}';
+    }
+    return fullName;
+  }
 
   @nullable
   String get phone;
