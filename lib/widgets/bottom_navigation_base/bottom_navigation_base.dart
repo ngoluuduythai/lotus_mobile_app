@@ -10,6 +10,7 @@ class BottomNavigationBase extends StatelessWidget {
         body: child,
         backgroundColor: Color(0xfff5f6fa),
         bottomNavigationBar: BottomNavbar(),
+        
     );
   }
 }
