@@ -6,6 +6,7 @@ import 'package:main/widgets/facebook_button/facebook_button.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:main/widgets/base_widget/base_widget.dart';
 import 'package:main/constants/images.dart';
+import 'package:main/widgets/google_button/google_button.dart';
 
 part 'login.route.g.dart';
 
@@ -98,6 +99,11 @@ Widget _bottomRectable(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           FacebookButton(
+            afterLogin: (){
+              Routes.sailor(RouteNames.profile);
+            },
+          ),
+          GoogleButton(
             afterLogin: (){
               Routes.sailor(RouteNames.profile);
             },

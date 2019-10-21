@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_plaid/flutter_plaid.dart';
+import 'package:main/services/google.service.dart';
 import 'package:mobx/mobx.dart';
 import 'package:main/models/auth_user.model.dart';
 import 'package:main/locator.dart';
@@ -13,6 +14,7 @@ class AuthUserStore = _AuthUserStore with _$AuthUserStore;
 
 abstract class _AuthUserStore with Store {
   final facebookService = locator<FacebookService>();
+  final googleService = locator<GoogleService>();
   final plaidService = locator<PlaidService>();
 
   @observable
