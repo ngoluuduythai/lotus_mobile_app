@@ -6,8 +6,8 @@ import 'package:flutter_plaid/flutter_plaid.dart';
 
 class GoogleButton extends StatelessWidget {
   final bool plaidSandbox = false;
-  final authUserStore = locator<AuthUserStore>();
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
+  // final authUserStore = locator<AuthUserStore>();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>['profile', 'email']);
 
   final Function afterLogin;
   GoogleButton({@required this.afterLogin});

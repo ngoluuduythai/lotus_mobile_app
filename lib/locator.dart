@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:main/services/google.service.dart';
 import 'package:main/services/graphql.service.dart';
 import 'package:main/services/facebook.service.dart';
 import 'package:main/services/plaid.service.dart';
@@ -10,6 +11,7 @@ Future<void> setupLocator() async {
   //services
   locator.registerLazySingleton(() => GraphqlService());
   locator.registerLazySingleton(() => FacebookService());
+  locator.registerLazySingleton(() => GoogleService());
   locator.registerLazySingleton(() => PlaidService());
   //stores
   locator.registerLazySingleton(() => AuthUserStore());
