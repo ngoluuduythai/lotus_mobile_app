@@ -1,22 +1,56 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:main/constants/env.dart';
 import 'package:flutter/material.dart';
 
 class GraphqlService {
 
-  static HttpLink httpLink = HttpLink(
-    uri: ENV.graphqlApiUrl,
-  );
+  String graphqlUrl;
+  HttpLink httpLink;
+  AuthLink authLink;
+  Link link;
+  GraphQLClient client;
+  ValueNotifier<GraphQLClient> notifierClient;
 
-  static GraphQLClient client = GraphQLClient(
-    link: httpLink,
-    cache: InMemoryCache(),
-  );
+  String _authToken = '';// be sure to set and remove at login and logout.
 
-  ValueNotifier<GraphQLClient> notifierClient = ValueNotifier(client);
+  set authToken (String token) {
+    print("setting auth token");
+    this._authToken = token;
+  }
+  get authToken {
+    return _authToken;
+  }
+  GraphqlService({@required this.graphqlUrl}){
+    httpLink = HttpLink(
+      uri: graphqlUrl,
+    );
 
+    authLink = AuthLink(
+      getToken: () {
+        print('auth toekn being used: ${this.authToken}');
+        return this.authToken;
+      },
+    );
+
+    link = authLink.concat(httpLink);
+    client = GraphQLClient(
+      link: link,
+      cache: InMemoryCache(),
+    );
+
+    notifierClient = ValueNotifier(client);
+  }
+  
   Future query(String document) {
+    print(document);
     return client.query(QueryOptions(
+      document: document,
+    )).catchError((e) {
+      print(e);
+    });
+  }
+
+  Future mutate(String document) {
+    return client.mutate(MutationOptions(
       document: document,
     )).catchError((e) {
       print(e);
