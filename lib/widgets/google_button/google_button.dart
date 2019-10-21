@@ -10,7 +10,7 @@ class GoogleButton extends StatelessWidget {
   GoogleButton({@required this.afterLogin});
 
   Future<void> _handleSignIn() async {
-    this.authUserStore.loginGoogle();
+    await this.authUserStore.loginGoogle();
     this.afterLogin();
   }
 

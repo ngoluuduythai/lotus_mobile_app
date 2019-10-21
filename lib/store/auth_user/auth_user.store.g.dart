@@ -50,6 +50,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  final _$loginGoogleAsyncAction = AsyncAction('loginGoogle');
+
+  @override
+  Future<AuthUser> loginGoogle() {
+    return _$loginGoogleAsyncAction.run(() => super.loginGoogle());
+  }
+
   final _$logoutAsyncAction = AsyncAction('logout');
 
   @override

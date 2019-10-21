@@ -17,6 +17,7 @@ abstract class _AuthUserStore with Store {
   final googleService = locator<GoogleService>();
   final plaidService = locator<PlaidService>();
   final graphqlService = locator<GraphqlService>();
+
   @observable
   AuthUser authUser;
 
@@ -53,6 +54,7 @@ abstract class _AuthUserStore with Store {
   Future<AuthUser> logout() async {
     this.authUser = null;
     graphqlService.authToken = null;
+    await googleService.googleSignIn.signOut();
     return null;
   }
 
