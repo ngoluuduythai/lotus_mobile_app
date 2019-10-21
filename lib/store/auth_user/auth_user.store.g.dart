@@ -9,6 +9,12 @@ part of 'auth_user.store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AuthUserStore on _AuthUserStore, Store {
+  Computed<bool> _$loggedInComputed;
+
+  @override
+  bool get loggedIn =>
+      (_$loggedInComputed ??= Computed<bool>(() => super.loggedIn)).value;
+
   final _$authUserAtom = Atom(name: '_AuthUserStore.authUser');
 
   @override
@@ -24,23 +30,6 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
       super.authUser = value;
       _$authUserAtom.reportChanged();
     }, _$authUserAtom, name: '${_$authUserAtom.name}_set');
-  }
-
-  final _$countAtom = Atom(name: '_AuthUserStore.count');
-
-  @override
-  int get count {
-    _$countAtom.context.enforceReadPolicy(_$countAtom);
-    _$countAtom.reportObserved();
-    return super.count;
-  }
-
-  @override
-  set count(int value) {
-    _$countAtom.context.conditionallyRunInAction(() {
-      super.count = value;
-      _$countAtom.reportChanged();
-    }, _$countAtom, name: '${_$countAtom.name}_set');
   }
 
   final _$loginAsyncAction = AsyncAction('login');
@@ -69,28 +58,5 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   @override
   Future addBankAccount(BuildContext context) {
     return _$addBankAccountAsyncAction.run(() => super.addBankAccount(context));
-  }
-
-  final _$_AuthUserStoreActionController =
-      ActionController(name: '_AuthUserStore');
-
-  @override
-  void increment() {
-    final _$actionInfo = _$_AuthUserStoreActionController.startAction();
-    try {
-      return super.increment();
-    } finally {
-      _$_AuthUserStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decrement() {
-    final _$actionInfo = _$_AuthUserStoreActionController.startAction();
-    try {
-      return super.decrement();
-    } finally {
-      _$_AuthUserStoreActionController.endAction(_$actionInfo);
-    }
   }
 }

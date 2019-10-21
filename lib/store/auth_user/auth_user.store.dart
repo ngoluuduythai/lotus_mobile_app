@@ -21,17 +21,9 @@ abstract class _AuthUserStore with Store {
   @observable
   AuthUser authUser;
 
-  @observable
-  int count = 0;
-
-  @action 
-  void increment() {
-    count++;
-  }
-
-  @action 
-  void decrement() {
-    count--;
+  @computed
+  bool get loggedIn {
+    return (this.authUser != null) ? true : false;
   }
 
   @action

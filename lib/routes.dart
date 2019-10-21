@@ -1,6 +1,5 @@
 import 'package:sailor/sailor.dart';
 import 'package:main/routes/login/login.route.dart';
-import 'package:main/routes/home/home.route.dart';
 import 'package:main/routes/profile/profile.route.dart';
 import 'package:main/routes/explore/explore.route.dart';
 import 'package:main/routes/saved/saved.route.dart';
@@ -9,7 +8,6 @@ import 'package:main/routes/inbox/inbox.route.dart';
 
 class RouteNames {
   static final login = '/login';
-  static final home = '/home';
   static final explore = '/explore';
   static final saved = '/saved';
   static final stays = '/statys';
@@ -24,13 +22,6 @@ class Routes {
       name: RouteNames.login,
       builder: (context, args, params) {
         return LoginRoute();
-      },
-    ));
-
-    sailor.addRoute(SailorRoute(
-      name: RouteNames.home,
-      builder: (context, args, params) {
-        return HomeRoute();
       },
     ));
 
