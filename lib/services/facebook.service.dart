@@ -1,14 +1,12 @@
 import 'package:main/locator.dart';
 import 'package:main/services/graphql.service.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:main/models/auth_user.model.dart';
-import 'package:flutter/services.dart';
 
 class FacebookService {
-  final _graphqlService = locator<GraphqlService>();
+  final graphqlService = locator<GraphqlService>();
 
   sendAccessToken(String accessToken) async {
-    var result = await _graphqlService.query(
+    var result = await graphqlService.query(
         """
         query{
           socialLogin(

@@ -50,6 +50,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  final _$logoutAsyncAction = AsyncAction('logout');
+
+  @override
+  Future<AuthUser> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   final _$addBankAccountAsyncAction = AsyncAction('addBankAccount');
 
   @override
