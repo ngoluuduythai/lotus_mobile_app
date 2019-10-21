@@ -42,6 +42,14 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
+  Future<AuthUser> loginGoogle() async {
+    var data = await googleService.login();
+    this.authUser = AuthUser.fromJson(data);
+    print('token ${this.authUser.token}');
+    return this.authUser;
+  }
+
+  @action
   Future addBankAccount(BuildContext context) async {
     Result data = await plaidService.addBankAccount(context);
     print("token");
