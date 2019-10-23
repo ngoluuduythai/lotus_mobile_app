@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/responsive/orientatio_layout.dart';
+import 'package:main/responsive/orientation_layout.dart';
 import 'package:main/responsive/screen_type_layouts.dart';
 import 'package:main/views/home_view_tablet.dart';
 

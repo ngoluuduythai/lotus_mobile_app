@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/responsive/orientatio_layout.dart';
+import 'package:main/responsive/orientation_layout.dart';
 import 'package:main/responsive/screen_type_layouts.dart';
 import 'package:main/widgets/app_drawer/app_drawer.dart';
 
