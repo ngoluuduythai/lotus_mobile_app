@@ -38,14 +38,25 @@ class PlaidService {
         }
         """
     );
+    
+    if(result.errors != null) {
+      print('***** errors *******');
+      print(result.errors);
+      return null;
+    }
+
     return result.data['connectBankAccount'];
   }
 
   Future addBank(BuildContext context) async {
     Result data = await getBankToken(context);
     final token = data.token;
-    var res = await sendToken(token);
-    print(res);
-
+    try {
+      var res = await sendToken(token);
+      print(res);
+    } catch(err) {
+      print("************");
+      print(err);
+    }
   }
 }

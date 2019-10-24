@@ -27,7 +27,7 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future<AuthUser> login() async {
+  Future<AuthUser> loginFacebook() async {
     var data = await facebookService.login();
     this.authUser = AuthUser.fromJson(data);
     graphqlService.authToken = 'Bearer ${authUser.token}';
@@ -38,7 +38,7 @@ abstract class _AuthUserStore with Store {
   Future<AuthUser> loginGoogle() async {
     var data = await googleService.login();
     this.authUser = AuthUser.fromJson(data);
-    print('token ${this.authUser.token}');
+    graphqlService.authToken = 'Bearer ${authUser.token}';
     return this.authUser;
   }
   

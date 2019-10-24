@@ -32,11 +32,11 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     }, _$authUserAtom, name: '${_$authUserAtom.name}_set');
   }
 
-  final _$loginAsyncAction = AsyncAction('login');
+  final _$loginFacebookAsyncAction = AsyncAction('loginFacebook');
 
   @override
-  Future<AuthUser> login() {
-    return _$loginAsyncAction.run(() => super.login());
+  Future<AuthUser> loginFacebook() {
+    return _$loginFacebookAsyncAction.run(() => super.loginFacebook());
   }
 
   final _$loginGoogleAsyncAction = AsyncAction('loginGoogle');

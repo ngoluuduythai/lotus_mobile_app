@@ -35,15 +35,7 @@ class FacebookButton extends StatelessWidget {
   }
 
   onPressed() async {
-    await authUserStore.login();
-
-
-    // print("signin with google");
-    // var res = await _googleSignIn.signIn();
-    // print("ress");
-    // // print(res);
-    // var other = await _googleSignIn.currentUser.authentication;
-    // print(other.idToken);
+    await authUserStore.loginFacebook();
 
     this.afterLogin();
   }

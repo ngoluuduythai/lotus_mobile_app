@@ -13,7 +13,6 @@ class GraphqlService {
   String _authToken = '';// be sure to set and remove at login and logout.
 
   set authToken (String token) {
-    print("setting auth token");
     this._authToken = token;
   }
   get authToken {
@@ -49,7 +48,7 @@ class GraphqlService {
     });
   }
 
-  Future mutate(String document) {
+  Future<QueryResult> mutate(String document) {
     return client.mutate(MutationOptions(
       document: document,
     )).catchError((e) {
