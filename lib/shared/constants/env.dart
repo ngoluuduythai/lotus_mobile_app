@@ -12,4 +12,5 @@ class ENV {
   static String plaidUrlStripeToken = env['PLAID_URL_STRIPE_TOKEN'];
   static String plaidClientId = env['PLAID_CLIENT_ID'];
   static String plaidSecret = env['PLAID_SECRET'];
+  static String plaidWebhookUrl = env['PLAID_WEBHOOK_URL'];
 }
