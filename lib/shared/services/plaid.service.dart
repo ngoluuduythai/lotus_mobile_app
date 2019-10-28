@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:plaid/plaid.dart';
 import 'package:flutter/material.dart';
-import 'package:main/constants/env.dart';
+import '../constants/env.dart';
 import 'package:main/locator.dart';
-import 'package:main/services/graphql.service.dart';
+import './graphql.service.dart';
 
 class PlaidService {
   final graphqlService = locator<GraphqlService>();

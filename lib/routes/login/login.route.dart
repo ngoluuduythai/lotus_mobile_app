@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:main/routes.dart';
-import 'package:main/locator.dart';
-import 'package:main/store/auth_user/auth_user.store.dart';
-import 'package:main/widgets/facebook_button/facebook_button.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import 'package:main/widgets/base_widget/base_widget.dart';
-import 'package:main/constants/images.dart';
-import 'package:main/widgets/google_button/google_button.dart';
+import '../../routes.dart';
+import '../../locator.dart';
+import '../../shared/widgets/facebook_button/facebook_button.dart';
+import '../../shared/widgets/base_widget/base_widget.dart';
+import '../../shared/widgets/google_button/google_button.dart';
+import '../../shared/store/auth_user/auth_user.store.dart';
+import '../../shared/constants/images.dart';
 
 part 'login.route.g.dart';
 

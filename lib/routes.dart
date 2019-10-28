@@ -1,10 +1,11 @@
 import 'package:sailor/sailor.dart';
-import 'package:main/routes/login/login.route.dart';
-import 'package:main/routes/profile/profile.route.dart';
-import 'package:main/routes/explore/explore.route.dart';
-import 'package:main/routes/saved/saved.route.dart';
-import 'package:main/routes/stay/stay.route.dart';
-import 'package:main/routes/inbox/inbox.route.dart';
+import 'routes/explore/explore.route.dart';
+import 'routes/inbox/inbox.route.dart';
+import 'routes/login/login.route.dart';
+import 'routes/profile/profile.route.dart';
+import 'routes/saved/saved.route.dart';
+import 'routes/stay/stay.route.dart';
+import './routes/profile/sub_routes/account_settings/account_settings.route.dart';
 
 class RouteNames {
   static const login = '/login';
@@ -13,6 +14,7 @@ class RouteNames {
   static const stays = '/statys';
   static const inbox = '/inbox';
   static const profile = '/profile';
+  static const accountSettings = '/profile/account-settings';
 }
 
 class Routes {
@@ -30,6 +32,13 @@ class Routes {
       name: RouteNames.profile,
       builder: (context, args, params) {
         return ProfileRoute();
+      },
+    ));
+
+    sailor.addRoute(SailorRoute(
+      name: RouteNames.accountSettings,
+      builder: (context, args, params) {
+        return AccountSettingsRoute();
       },
     ));
 

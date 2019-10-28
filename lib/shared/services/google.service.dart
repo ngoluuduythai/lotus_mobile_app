@@ -1,6 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:main/locator.dart';
-import 'package:main/services/graphql.service.dart';
+import './graphql.service.dart';
 
 class GoogleService {
   final graphqlService = locator<GraphqlService>();

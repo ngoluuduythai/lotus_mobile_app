@@ -1,5 +1,5 @@
 import 'package:main/locator.dart';
-import 'package:main/services/graphql.service.dart';
+import './graphql.service.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class FacebookService {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/widgets/app_drawer/app_drawer.dart';
+import './app_drawer.dart';
 
 class AppDrawerTabletPortrait extends StatelessWidget {
   AppDrawerTabletPortrait({Key key}) : super(key: key);

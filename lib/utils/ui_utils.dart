@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/enums/device_screen_type.dart';
+import '../shared/enums/device_screen_type.dart';
 
 class SizingInformation {
   SizingInformation({

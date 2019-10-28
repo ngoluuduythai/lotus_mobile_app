@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:main/services/google.service.dart';
 import 'package:mobx/mobx.dart';
-import 'package:main/models/auth_user.model.dart';
-import 'package:main/locator.dart';
-import 'package:main/services/facebook.service.dart';
-import 'package:main/services/plaid.service.dart';
-import 'package:main/services/graphql.service.dart';
+import '../../../locator.dart';
+import '../../services/facebook.service.dart';
+import '../../services/google.service.dart';
+import '../../services/graphql.service.dart';
+import '../../services/plaid.service.dart';
+import '../../models/auth_user.model.dart';
 
 part 'auth_user.store.g.dart';
 
