@@ -12,7 +12,7 @@ class InboxRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
-        child: Text("asdf"),
+        child: Text('asdf'),
       );
     });
   }

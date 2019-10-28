@@ -1,10 +1,9 @@
+import 'dart:async';
 import 'package:plaid/plaid.dart';
 import 'package:flutter/material.dart';
 import 'package:main/constants/env.dart';
 import 'package:main/locator.dart';
 import 'package:main/services/graphql.service.dart';
-
-import "dart:async";
 
 class PlaidService {
   final graphqlService = locator<GraphqlService>();
@@ -18,8 +17,8 @@ class PlaidService {
       secret: ENV.plaidSecret);
 
   Future getBankToken(BuildContext context) async {
-    Completer c = new Completer();
-    FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(this.configuration);
+    Completer c = Completer();
+    final FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(configuration);
     flutterPlaidApi.launch(context, (Result result) {
       c.complete(result);
     }, stripeToken: false);

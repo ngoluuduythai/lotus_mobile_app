@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-//import 'package:main/responsive/sizing_information.dart';
 import 'package:main/utils/ui_utils.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
+  const ResponsiveBuilder({Key key, this.builder}) : super(key: key);
   final Widget Function(
     BuildContext context,
     SizingInformation sizingInformation,
   ) builder;
-  const ResponsiveBuilder({Key key, this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, boxConstraints) {
-      var mediaQuery = MediaQuery.of(context);
-      var sizingInformation = SizingInformation(
+      final mediaQuery = MediaQuery.of(context);
+      final sizingInformation = SizingInformation(
         deviceScreenType: getDeviceType(mediaQuery),
         screenSize: mediaQuery.size,
         localWidgetSize:

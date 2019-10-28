@@ -3,8 +3,8 @@ import 'package:main/locator.dart';
 import 'package:main/store/auth_user/auth_user.store.dart';
 
 class FacebookButton extends StatelessWidget {
-  final Function afterLogin;
   FacebookButton({@required this.afterLogin});
+  final Function afterLogin;
 
   final AuthUserStore authUserStore = locator<AuthUserStore>();
 

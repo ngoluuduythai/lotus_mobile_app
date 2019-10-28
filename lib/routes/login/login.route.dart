@@ -58,7 +58,7 @@ Widget _topRectable(BuildContext context) {
                   style: TextStyle(
                       color: Color(0xff0b0b0b),
                       fontWeight: FontWeight.w700,
-                      fontFamily: "AirbnbCerealApp",
+                      fontFamily: 'AirbnbCerealApp',
                       fontStyle: FontStyle.normal,
                       fontSize: 30.0),
                 ),
@@ -69,7 +69,7 @@ Widget _topRectable(BuildContext context) {
                       style: TextStyle(
                         color: Color(0xff0b0b0b).withOpacity(.64),
                         fontWeight: FontWeight.w500,
-                        fontFamily: "AirbnbCerealApp",
+                        fontFamily: 'AirbnbCerealApp',
                         fontStyle: FontStyle.normal,
                         fontSize: 18.0,
                       ))),
@@ -86,8 +86,8 @@ Widget _topRectable(BuildContext context) {
 @widget
 Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
-  double topH = size.height * 3 / 5;
-  double h = size.height - topH;
+  final double topH = size.height * 3 / 5;
+  final double h = size.height - topH;
 
   return PositionedDirectional(
     top: topH,
@@ -125,7 +125,7 @@ Widget _welcome(BuildContext context) {
         style: TextStyle(
             color: const Color(0xff0b0b0b),
             fontWeight: FontWeight.w700,
-            fontFamily: "AirbnbCerealApp",
+            fontFamily: 'AirbnbCerealApp',
             fontStyle: FontStyle.normal,
             fontSize: 30.0),
       ));

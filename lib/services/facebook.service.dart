@@ -6,7 +6,7 @@ class FacebookService {
   final graphqlService = locator<GraphqlService>();
 
   sendAccessToken(String accessToken) async {
-    var result = await graphqlService.query("""
+    final result = await graphqlService.query('''
         query{
           socialLogin(
             token: "$accessToken",
@@ -18,7 +18,7 @@ class FacebookService {
             token
           }
         }
-        """);
+        ''');
     return result.data['socialLogin'];
   }
 
@@ -40,12 +40,10 @@ class FacebookService {
   }
 
   login() async {
-    var token = await getFacebookAccessToken();
+    final token = await getFacebookAccessToken();
     if (token == '') {
       return false;
     }
-
-    print("Fetching data from api token:  ${token}");
     var data;
     try {
       data = await sendAccessToken(token);

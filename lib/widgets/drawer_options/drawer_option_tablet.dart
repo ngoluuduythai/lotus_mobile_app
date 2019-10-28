@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DrawerOptionTabletPortrait extends StatelessWidget {
+  DrawerOptionTabletPortrait({Key key, this.title, this.iconData})
+      : super(key: key);
   final String title;
   final IconData iconData;
-  const DrawerOptionTabletPortrait({Key key, this.title, this.iconData})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -35,11 +35,11 @@ class ProfileRoute extends StatelessWidget {
                 margin: EdgeInsets.only(top: 17),
                 child: Observer(
                     builder: (_) =>
-                        Text('${this.authUserStore.authUser.fullName}',
+                        Text('${authUserStore.authUser.fullName}',
                             style: TextStyle(
                               color: Color(0xff0b0b0b),
                               fontWeight: FontWeight.w700,
-                              fontFamily: "AirbnbCerealApp",
+                              fontFamily: 'AirbnbCerealApp',
                               fontStyle: FontStyle.normal,
                               fontSize: 21.0,
                             ))),
@@ -54,10 +54,10 @@ class ProfileRoute extends StatelessWidget {
                   children: <Widget>[
                     Center(
                         child: Text(
-                            "Connect your bank account to pay rent and to substitute proof of income and employment documents.")),
+                            'Connect your bank account to pay rent and to substitute proof of income and employment documents.')),
                     AddBankButtonButton(),
                     RaisedButton(
-                      child: Text("logout"),
+                      child: Text('logout'),
                       onPressed: () async {
                         Routes.sailor(RouteNames.login);
                         await authUserStore.logout();

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../bottom_navbar/bottom_navbar.dart';
 
 class BottomNavigationBase extends StatelessWidget {
-  final Widget child;
   BottomNavigationBase({this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {

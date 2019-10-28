@@ -9,7 +9,7 @@ class AddBankButtonButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       color: Colors.white,
-      child: Text("Add New Bank Account"),
+      child: Text('Add New Bank Account'),
       onPressed: () async {
         await authUserStore.addBankAccount(context);
       },

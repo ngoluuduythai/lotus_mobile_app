@@ -6,11 +6,10 @@ import 'package:main/models/serializers.dart';
 
 part 'auth_user.model.g.dart';
 
-/// An example user model that should be serialized.
-///   - @nullable: means that its ok if the value is null
-///   - @BuiltValueField: is the key that is in the JSON you
-///     recieve from an API
 abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
+  factory AuthUser([void Function(AuthUserBuilder) updates]) = _$AuthUser;
+  AuthUser._();
+
   static Serializer<AuthUser> get serializer => _$authUserSerializer;
 
   @nullable
@@ -27,12 +26,12 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
   String get fullName {
     String fullName = '';
 
-    if (this.firstName != null) {
-      fullName += '${this.firstName} ';
+    if (firstName != null) {
+      fullName += '$firstName ';
     }
 
-    if (this.lastName != null) {
-      fullName += '${this.lastName}';
+    if (lastName != null) {
+      fullName += '$lastName';
     }
     return fullName;
   }
@@ -65,7 +64,4 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
       json,
     );
   }
-
-  AuthUser._();
-  factory AuthUser([void Function(AuthUserBuilder) updates]) = _$AuthUser;
 }

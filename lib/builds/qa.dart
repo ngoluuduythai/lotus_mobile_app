@@ -4,7 +4,7 @@ import 'package:main/routes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:main/start.dart';
 
-void main() async {
+Future<void> main() async {
   print('*********** QA ************');
   await DotEnv().load('env/qa.env');
   Routes.createRoutes();

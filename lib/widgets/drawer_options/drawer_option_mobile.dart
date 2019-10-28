@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DrawerOptionMobilePortrait extends StatelessWidget {
+  DrawerOptionMobilePortrait({Key key, this.title, this.iconData})
+      : super(key: key);
   final String title;
   final IconData iconData;
-  const DrawerOptionMobilePortrait({Key key, this.title, this.iconData})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,8 @@ class DrawerOptionMobilePortrait extends StatelessWidget {
 }
 
 class DrawerOptionMobileLandscape extends StatelessWidget {
+  DrawerOptionMobileLandscape({Key key, this.iconData}) : super(key: key);
   final IconData iconData;
-  const DrawerOptionMobileLandscape({Key key, this.iconData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

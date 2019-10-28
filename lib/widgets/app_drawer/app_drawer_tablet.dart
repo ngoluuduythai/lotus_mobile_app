@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:main/responsive/orientation_layout.dart';
-import 'package:main/responsive/screen_type_layouts.dart';
 import 'package:main/widgets/app_drawer/app_drawer.dart';
 
 class AppDrawerTabletPortrait extends StatelessWidget {
-  const AppDrawerTabletPortrait({Key key}) : super(key: key);
+  AppDrawerTabletPortrait({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

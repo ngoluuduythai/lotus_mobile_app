@@ -2,23 +2,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter/material.dart';
 
 class GraphqlService {
-  String graphqlUrl;
-  HttpLink httpLink;
-  AuthLink authLink;
-  Link link;
-  GraphQLClient client;
-  ValueNotifier<GraphQLClient> notifierClient;
-
-  String _authToken = ''; // be sure to set and remove at login and logout.
-
-  set authToken(String token) {
-    this._authToken = token;
-  }
-
-  get authToken {
-    return _authToken;
-  }
-
   GraphqlService({@required this.graphqlUrl}) {
     httpLink = HttpLink(
       uri: graphqlUrl,
@@ -26,8 +9,8 @@ class GraphqlService {
 
     authLink = AuthLink(
       getToken: () {
-        print('auth toekn being used: ${this.authToken}');
-        return this.authToken;
+        print('auth toekn being used: $authToken');
+        return authToken;
       },
     );
 
@@ -38,6 +21,24 @@ class GraphqlService {
     );
 
     notifierClient = ValueNotifier(client);
+  }
+
+  String graphqlUrl;
+  HttpLink httpLink;
+  AuthLink authLink;
+  Link link;
+  GraphQLClient client;
+  ValueNotifier<GraphQLClient> notifierClient;
+
+  String _authToken = ''; // be sure to set and remove at login and logout.
+
+  set authToken(String token) {
+    print('asdf');
+    _authToken = token;
+  }
+
+  get authToken {
+    return _authToken;
   }
 
   Future query(String document) {

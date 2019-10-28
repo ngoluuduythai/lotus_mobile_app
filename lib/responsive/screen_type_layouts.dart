@@ -3,16 +3,16 @@ import 'package:main/enums/device_screen_type.dart';
 import 'package:main/widgets/responsive_widget/responsive_builder.dart';
 
 class ScreenTypeLayout extends StatelessWidget {
-  final Widget mobile;
-  final Widget tablet;
-  final Widget desktop;
-
   const ScreenTypeLayout({
     Key key,
     this.mobile,
     this.tablet,
     this.desktop,
   }) : super(key: key);
+  
+  final Widget mobile;
+  final Widget tablet;
+  final Widget desktop;
 
   @override
   Widget build(BuildContext context) {

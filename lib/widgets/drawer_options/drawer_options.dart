@@ -5,9 +5,9 @@ import 'package:main/widgets/drawer_options/drawer_option_mobile.dart';
 import 'package:main/widgets/drawer_options/drawer_option_tablet.dart';
 
 class DrawerOption extends StatelessWidget {
+  DrawerOption({Key key, this.iconData, this.title}) : super(key: key);
   final String title;
   final IconData iconData;
-  const DrawerOption({Key key, this.iconData, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

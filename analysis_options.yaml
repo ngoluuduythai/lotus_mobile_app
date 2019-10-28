@@ -55,7 +55,6 @@ linter:
     - avoid_bool_literals_in_conditional_expressions
     # - avoid_catches_without_on_clauses # we do this commonly
     # - avoid_catching_errors # we do this commonly
-    - avoid_classes_with_only_static_members
     # - avoid_double_and_int_checks # only useful when targeting JS runtime
     - avoid_empty_else
     - avoid_field_initializers_in_const_classes
@@ -124,10 +123,10 @@ linter:
     # - prefer_asserts_with_message # not yet tested
     - prefer_collection_literals
     - prefer_conditional_assignment
-    - prefer_const_constructors
-    - prefer_const_constructors_in_immutables
+    # - prefer_const_constructors
+    # - prefer_const_constructors_in_immutables
     - prefer_const_declarations
-    - prefer_const_literals_to_create_immutables
+    # - prefer_const_literals_to_create_immutables
     # - prefer_constructors_over_static_methods # not yet tested
     - prefer_contains
     # - prefer_double_quotes # opposite of prefer_single_quotes

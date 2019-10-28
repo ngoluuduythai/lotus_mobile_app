@@ -9,7 +9,7 @@ import 'package:main/models/auth_user.model.dart';
 part 'serializers.g.dart';
 
 /// List of Serializable models that will built using `build_value` package
-@SerializersFor(const [
+@SerializersFor([
   AuthUser,
 ])
 

@@ -1,4 +1,3 @@
-/// File Paths and constants for images
 class Images {
   Images._();
 

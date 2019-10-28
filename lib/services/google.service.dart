@@ -8,7 +8,7 @@ class GoogleService {
       GoogleSignIn(scopes: <String>['profile', 'email']);
 
   sendIdToken(String token) async {
-    var result = await graphqlService.query("""
+    final result = await graphqlService.query('''
         query{
           socialLogin(
             token: "$token",
@@ -20,7 +20,7 @@ class GoogleService {
             token
           }
         }
-        """);
+        ''');
     return result.data['socialLogin'];
   }
 
@@ -34,12 +34,11 @@ class GoogleService {
   }
 
   login() async {
-    var token = await getGoogleIdToken();
+    final token = await getGoogleIdToken();
     if (token == null) {
       return false;
     }
 
-    print("Fetching data from api token:  ${token}");
     var data;
     try {
       data = await sendIdToken(token);
