@@ -39,17 +39,11 @@ class FacebookService {
     return val;
   }
 
-  Future<bool> login() async {
+  Future<dynamic> login() async {
     final token = await getFacebookAccessToken();
     if (token == '') {
-      return false;
+      throw 'Error #1: Did not receive fb token';
     }
-    try {
-      await sendAccessToken(token);
-    } catch (e) {
-      print(e);
-    }
-
-    return true;
+    return sendAccessToken(token);
   }
 }

@@ -33,18 +33,12 @@ class GoogleService {
     return googleSignInAuthentication.idToken;
   }
 
-  Future login() async {
+  Future<dynamic> login() async {
     final String token = await getGoogleIdToken();
     if (token == null) {
-      return false;
+      throw 'Error #2: did not receive google token';
     }
 
-    try {
-      await sendIdToken(token);
-    } catch (e) {
-      print(e);
-    }
-
-    return true;
+    return sendIdToken(token);
   }
 }
