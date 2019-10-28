@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:plaid/plaid.dart';
+// import '../../libraries_test/plaid.dart';
 import 'package:flutter/material.dart';
 import '../constants/env.dart';
 import 'package:main/locator.dart';
@@ -14,10 +15,14 @@ class PlaidService {
       environmentPlaidPathAccessToken: ENV.plaidUrlAccessToken,
       environmentPlaidPathStripeToken: ENV.plaidUrlStripeToken,
       plaidClientId: ENV.plaidClientId,
-      secret: ENV.plaidSecret);
+      secret: ENV.plaidSecret,
+      webhook: ENV.plaidWebhookUrl,
+      products: 'auth,income',
+      selectAccount: 'false'
+    );
 
   Future getBankToken(BuildContext context) async {
-    final Completer c = Completer();
+    Completer c = Completer();
     final FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(configuration);
     flutterPlaidApi.launch(context, (Result result) {
       c.complete(result);
@@ -26,33 +31,23 @@ class PlaidService {
   }
 
   Future sendToken(String token) async {
-    final result = await graphqlService.mutate(''')
+    final result = await graphqlService.mutate('''
         mutation{
-          connectBankAccount(
+          connectFinancialInstitution(
             token: "$token",
           ){
             message
           }
         }
        ''');
-
-    if (result.errors != null) {
-      print('***** errors *******');
-      print(result.errors);
-      return null;
-    }
-
-    return result.data['connectBankAccount'];
+       print(result.data);
+    return result.data;
   }
 
   Future addBank(BuildContext context) async {
     final Result data = await getBankToken(context);
     final token = data.token;
-    try {
-      final res = await sendToken(token);
-      print(res);
-    } catch (err) {
-      print(err);
-    }
+    print('token $token');
+    return sendToken(token);
   }
 }

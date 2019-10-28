@@ -9,7 +9,7 @@ class GraphqlService {
 
     authLink = AuthLink(
       getToken: () {
-        print('auth toekn being used: $authToken');
+        print('auth token being used: $authToken');
         return authToken;
       },
     );
@@ -33,7 +33,7 @@ class GraphqlService {
   String _authToken = ''; // be sure to set and remove at login and logout.
 
   set authToken(String token) {
-    print('asdf');
+    print('setting auth token');
     _authToken = token;
   }
 
@@ -42,23 +42,17 @@ class GraphqlService {
   }
 
   Future query(String document) {
-    print(document);
     return client
         .query(QueryOptions(
       document: document,
-    ))
-        .catchError((e) {
-      print(e);
-    });
+    ));
   }
 
   Future<QueryResult> mutate(String document) {
+    print(document);
     return client
         .mutate(MutationOptions(
-      document: document,
-    ))
-        .catchError((String e) {
-      print(e);
-    });
+        document: document,
+    ));
   }
 }
