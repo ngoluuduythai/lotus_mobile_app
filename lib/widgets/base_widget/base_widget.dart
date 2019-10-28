@@ -16,7 +16,8 @@ class BaseWidget extends StatelessWidget {
         orientation: mediaQuery.orientation,
         deviceScreenType: getDeviceType(mediaQuery),
         screenSize: mediaQuery.size,
-        localWidgetSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
+        localWidgetSize:
+            Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
       );
       return builder(context, sizingInformation);
     });

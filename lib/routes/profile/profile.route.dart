@@ -23,48 +23,46 @@ class ProfileRoute extends StatelessWidget {
                 width: 115,
                 height: 115,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Color.fromRGBO(255, 186, 115, 1),
-                    width: 5
-                  ),
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage('https://picsum.photos/250?image=9')//eventually going to use facebook url
-                  )
-                ),
-
+                    border: Border.all(
+                        color: Color.fromRGBO(255, 186, 115, 1), width: 5),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://picsum.photos/250?image=9') //eventually going to use facebook url
+                        )),
               ),
-
               Container(
                 margin: EdgeInsets.only(top: 17),
                 child: Observer(
-                  builder: (_) => Text(
-                    '${this.authUserStore.authUser.fullName}',
-                    style: TextStyle(
-                      color:  Color(0xff0b0b0b),
-                      fontWeight: FontWeight.w700,
-                      fontFamily: "AirbnbCerealApp",
-                      fontStyle:  FontStyle.normal,
-                      fontSize: 21.0,
-                    )
-                  )
-                ),
+                    builder: (_) =>
+                        Text('${this.authUserStore.authUser.fullName}',
+                            style: TextStyle(
+                              color: Color(0xff0b0b0b),
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "AirbnbCerealApp",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 21.0,
+                            ))),
               ),
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
                 // color: Colors.white,
                 child: Column(
                   children: <Widget>[
-                    Center(child:Text( "Connect your bank account to pay rent and to substitute proof of income and employment documents.")),
+                    Center(
+                        child: Text(
+                            "Connect your bank account to pay rent and to substitute proof of income and employment documents.")),
                     AddBankButtonButton(),
-                    RaisedButton(child: Text("logout"),onPressed: () async {
-                      Routes.sailor(RouteNames.login);
-                      await authUserStore.logout();
-                    },)
+                    RaisedButton(
+                      child: Text("logout"),
+                      onPressed: () async {
+                        Routes.sailor(RouteNames.login);
+                        await authUserStore.logout();
+                      },
+                    )
                   ],
                 ),
               )

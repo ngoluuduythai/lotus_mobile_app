@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_plaid/flutter_plaid.dart';
 import 'package:main/services/google.service.dart';
 import 'package:mobx/mobx.dart';
 import 'package:main/models/auth_user.model.dart';
@@ -41,7 +40,7 @@ abstract class _AuthUserStore with Store {
     graphqlService.authToken = 'Bearer ${authUser.token}';
     return this.authUser;
   }
-  
+
   @action
   Future<AuthUser> logout() async {
     this.authUser = null;
@@ -53,7 +52,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future addBankAccount(BuildContext context) async {
     var data = await plaidService.addBank(context);
-  
+
     return true;
   }
 }

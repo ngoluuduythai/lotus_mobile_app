@@ -10,7 +10,8 @@ GetIt locator = GetIt.instance;
 
 Future<void> setupLocator() async {
   //services
-  locator.registerLazySingleton(() => GraphqlService(graphqlUrl: ENV.graphqlApiUrl));
+  locator.registerLazySingleton(
+      () => GraphqlService(graphqlUrl: ENV.graphqlApiUrl));
   locator.registerLazySingleton(() => FacebookService());
   locator.registerLazySingleton(() => GoogleService());
   locator.registerLazySingleton(() => PlaidService());

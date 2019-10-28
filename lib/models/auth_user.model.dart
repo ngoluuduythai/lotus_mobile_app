@@ -27,11 +27,11 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
   String get fullName {
     String fullName = '';
 
-    if(this.firstName != null){
+    if (this.firstName != null) {
       fullName += '${this.firstName} ';
     }
 
-    if(this.lastName != null) {
+    if (this.lastName != null) {
       fullName += '${this.lastName}';
     }
     return fullName;

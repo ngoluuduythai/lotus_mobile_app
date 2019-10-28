@@ -14,6 +14,7 @@ class RouteNames {
   static final inbox = '/inbox';
   static final profile = '/profile';
 }
+
 class Routes {
   static final sailor = Sailor();
 

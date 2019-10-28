@@ -3,38 +3,37 @@ import 'package:main/responsive/orientation_layout.dart';
 import 'package:main/responsive/screen_type_layouts.dart';
 import 'package:main/widgets/app_drawer/app_drawer.dart';
 
-
 class AppDrawerTabletPortrait extends StatelessWidget {
-  const AppDrawerTabletPortrait({Key key}) : super (key : key);
+  const AppDrawerTabletPortrait({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 130,
-      decoration: BoxDecoration(color: Colors.white,boxShadow: [
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
         BoxShadow(
           blurRadius: 16,
           color: Colors.black12,
         )
       ]),
-      child: Row(children: AppDrawer.getDrawerOptions(),),
+      child: Row(
+        children: AppDrawer.getDrawerOptions(),
+      ),
     );
   }
 }
 
 class AppDrawerTabletLandscape extends StatelessWidget {
-
-  const AppDrawerTabletLandscape({Key key}) : super (key : key);
+  const AppDrawerTabletLandscape({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      decoration: BoxDecoration(color: Colors.white,boxShadow: [
-        BoxShadow(blurRadius: 16,
-        color: Colors.black12),
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(blurRadius: 16, color: Colors.black12),
       ]),
       child: Column(
-        children:AppDrawer.getDrawerOptions() ,
+        children: AppDrawer.getDrawerOptions(),
       ),
     );
   }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:main/enums/device_screen_type.dart';
 
@@ -7,7 +6,7 @@ class SizingInformation {
   final DeviceScreenType deviceScreenType;
   final Size screenSize;
   final Size localWidgetSize;
-  
+
   SizingInformation({
     this.orientation,
     this.deviceScreenType,

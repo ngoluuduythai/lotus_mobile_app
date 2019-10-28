@@ -4,7 +4,8 @@ import 'package:main/services/graphql.service.dart';
 
 class GoogleService {
   final graphqlService = locator<GraphqlService>();
-  final GoogleSignIn googleSignIn = GoogleSignIn(scopes: <String>['profile', 'email']);
+  final GoogleSignIn googleSignIn =
+      GoogleSignIn(scopes: <String>['profile', 'email']);
 
   sendIdToken(String token) async {
     var result = await graphqlService.query("""
@@ -24,14 +25,12 @@ class GoogleService {
   }
 
   getGoogleIdToken() async {
-    final GoogleSignInAccount googleSignInAccount =
-          await googleSignIn.signIn();
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
 
     final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication; 
-         
+        await googleSignInAccount.authentication;
+
     return googleSignInAuthentication.idToken;
-    
   }
 
   login() async {

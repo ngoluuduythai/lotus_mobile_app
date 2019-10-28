@@ -17,8 +17,8 @@ class LoginRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
       return Material(
-        child: 
-          Stack(children: <Widget>[
+        child: Stack(
+          children: <Widget>[
             _TopRectable(),
             _BottomRectable(),
           ],
@@ -31,62 +31,63 @@ class LoginRoute extends StatelessWidget {
 @widget
 Widget _topRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
-  double h = size.height * 3/5;
+  double h = size.height * 3 / 5;
   return Container(
       color: Colors.white,
       padding: EdgeInsets.only(left: 44, right: 44, top: 67),
       width: size.width,
       height: h,
-      child:  Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(bottom: 17),
-              child: Image.asset(Images.logo, width: 73, height: 45,),
-            ),
-            Container(
-              padding: EdgeInsets.only(bottom: 5),
-              child: Text(
-                'Welcome to Lotus',
-                style: TextStyle(
-                  color:  Color(0xff0b0b0b),
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "AirbnbCerealApp",
-                  fontStyle:  FontStyle.normal,
-                  fontSize: 30.0
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(bottom: 17),
+                child: Image.asset(
+                  Images.logo,
+                  width: 73,
+                  height: 45,
                 ),
               ),
-            ),
-            Container(
-              child: Text(
-                'Find the perfect space.\nSame price. No Commitment.',
-                style: TextStyle(
-                  color:  Color(0xff0b0b0b).withOpacity(.64),
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "AirbnbCerealApp",
-                  fontStyle:  FontStyle.normal,
-                  fontSize: 18.0,
-                )
-              )
-            ),
-          ],
-        ),
-        Container(
-              alignment: Alignment(0,0),
-              child: Image.asset(Images.loginRoomBackground),
-            )
-      ],)
-  );
+              Container(
+                padding: EdgeInsets.only(bottom: 5),
+                child: Text(
+                  'Welcome to Lotus',
+                  style: TextStyle(
+                      color: Color(0xff0b0b0b),
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "AirbnbCerealApp",
+                      fontStyle: FontStyle.normal,
+                      fontSize: 30.0),
+                ),
+              ),
+              Container(
+                  child: Text(
+                      'Find the perfect space.\nSame price. No Commitment.',
+                      style: TextStyle(
+                        color: Color(0xff0b0b0b).withOpacity(.64),
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "AirbnbCerealApp",
+                        fontStyle: FontStyle.normal,
+                        fontSize: 18.0,
+                      ))),
+            ],
+          ),
+          Container(
+            alignment: Alignment(0, 0),
+            child: Image.asset(Images.loginRoomBackground),
+          )
+        ],
+      ));
 }
 
 @widget
 Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
-  double topH = size.height * 3/5;
-  double h = size.height-topH;
+  double topH = size.height * 3 / 5;
+  double h = size.height - topH;
 
   return PositionedDirectional(
     top: topH,
@@ -99,16 +100,17 @@ Widget _bottomRectable(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           FacebookButton(
-            afterLogin: (){
+            afterLogin: () {
               Routes.sailor(RouteNames.profile);
             },
           ),
           GoogleButton(
-            afterLogin: (){
+            afterLogin: () {
               Routes.sailor(RouteNames.profile);
             },
           ),
-      ],),
+        ],
+      ),
     ),
   );
 }
@@ -116,17 +118,15 @@ Widget _bottomRectable(BuildContext context) {
 @widget
 Widget _welcome(BuildContext context) {
   return PositionedDirectional(
-    top: 129,
-    start: 42,
-    child: Text(
-      'Welcome to Lotus',
-      style: TextStyle(
-        color:  const Color(0xff0b0b0b),
-        fontWeight: FontWeight.w700,
-        fontFamily: "AirbnbCerealApp",
-        fontStyle:  FontStyle.normal,
-        fontSize: 30.0
-      ),
-    )
-  );
+      top: 129,
+      start: 42,
+      child: Text(
+        'Welcome to Lotus',
+        style: TextStyle(
+            color: const Color(0xff0b0b0b),
+            fontWeight: FontWeight.w700,
+            fontFamily: "AirbnbCerealApp",
+            fontStyle: FontStyle.normal,
+            fontSize: 30.0),
+      ));
 }

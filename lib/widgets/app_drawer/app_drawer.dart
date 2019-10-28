@@ -6,9 +6,8 @@ import 'package:main/widgets/drawer_options/drawer_options.dart';
 
 import 'app_drawer_mobile.dart';
 
-
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key key}) : super (key : key);
+  const AppDrawer({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +18,22 @@ class AppDrawer extends StatelessWidget {
         landscape: AppDrawerTabletLandscape(),
       ),
     );
-    
   }
-  
-  
-  static List <Widget> getDrawerOptions(){
 
-      return [
-        DrawerOption(
-           title:'Images',
-           iconData: Icons.image,
-        ),
-         DrawerOption(
-           title:'Images',
-           iconData: Icons.image,
-        ),
-         DrawerOption(
-           title:'Images',
-           iconData: Icons.image,
-        ),
-      ];
-    } 
+  static List<Widget> getDrawerOptions() {
+    return [
+      DrawerOption(
+        title: 'Images',
+        iconData: Icons.image,
+      ),
+      DrawerOption(
+        title: 'Images',
+        iconData: Icons.image,
+      ),
+      DrawerOption(
+        title: 'Images',
+        iconData: Icons.image,
+      ),
+    ];
+  }
 }

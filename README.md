@@ -13,6 +13,9 @@ For development you must run this command.
 flutter packages pub run build_runner watch --delete-conflicting-outputs
 ```
 
+### Formatting code
+
+`flutter format .`
 
 We use three packages that generate automated dart files in our application to speed up development. They are
 

@@ -1,21 +1,21 @@
-import 'package:flutter_plaid/flutter_plaid.dart';
+import 'package:plaid/plaid.dart';
 import 'package:flutter/material.dart';
 import 'package:main/constants/env.dart';
 import 'package:main/locator.dart';
 import 'package:main/services/graphql.service.dart';
 
 import "dart:async";
+
 class PlaidService {
   final graphqlService = locator<GraphqlService>();
   Configuration configuration = Configuration(
-    plaidPublicKey: ENV.plaidPublicKey,
-    plaidBaseUrl: ENV.plaidBaseUrl,
-    plaidEnvironment: ENV.plaidEnvironment,
-    environmentPlaidPathAccessToken: ENV.plaidUrlAccessToken,
-    environmentPlaidPathStripeToken: ENV.plaidUrlStripeToken,
-    plaidClientId: ENV.plaidClientId,
-    secret: ENV.plaidSecret
-  );
+      plaidPublicKey: ENV.plaidPublicKey,
+      plaidBaseUrl: ENV.plaidBaseUrl,
+      plaidEnvironment: ENV.plaidEnvironment,
+      environmentPlaidPathAccessToken: ENV.plaidUrlAccessToken,
+      environmentPlaidPathStripeToken: ENV.plaidUrlStripeToken,
+      plaidClientId: ENV.plaidClientId,
+      secret: ENV.plaidSecret);
 
   Future getBankToken(BuildContext context) async {
     Completer c = new Completer();
@@ -27,8 +27,7 @@ class PlaidService {
   }
 
   Future sendToken(String token) async {
-    var result = await graphqlService.mutate(
-        """
+    var result = await graphqlService.mutate("""
         mutation{
           connectBankAccount(
             token: "$token",
@@ -36,10 +35,9 @@ class PlaidService {
             message
           }
         }
-        """
-    );
-    
-    if(result.errors != null) {
+        """);
+
+    if (result.errors != null) {
       print('***** errors *******');
       print(result.errors);
       return null;
@@ -54,7 +52,7 @@ class PlaidService {
     try {
       var res = await sendToken(token);
       print(res);
-    } catch(err) {
+    } catch (err) {
       print("************");
       print(err);
     }
