@@ -37,7 +37,7 @@ class GraphqlService {
     _authToken = token;
   }
 
-  get authToken {
+  String get authToken {
     return _authToken;
   }
 
@@ -57,7 +57,7 @@ class GraphqlService {
         .mutate(MutationOptions(
       document: document,
     ))
-        .catchError((e) {
+        .catchError((String e) {
       print(e);
     });
   }

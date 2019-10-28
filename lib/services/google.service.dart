@@ -7,8 +7,8 @@ class GoogleService {
   final GoogleSignIn googleSignIn =
       GoogleSignIn(scopes: <String>['profile', 'email']);
 
-  sendIdToken(String token) async {
-    final result = await graphqlService.query('''
+  Future<dynamic> sendIdToken(String token) async {
+    final dynamic result = await graphqlService.query('''
         query{
           socialLogin(
             token: "$token",
@@ -24,7 +24,7 @@ class GoogleService {
     return result.data['socialLogin'];
   }
 
-  getGoogleIdToken() async {
+  Future<String> getGoogleIdToken() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
 
     final GoogleSignInAuthentication googleSignInAuthentication =
@@ -33,20 +33,18 @@ class GoogleService {
     return googleSignInAuthentication.idToken;
   }
 
-  login() async {
-    final token = await getGoogleIdToken();
+  Future login() async {
+    final String token = await getGoogleIdToken();
     if (token == null) {
       return false;
     }
 
-    var data;
     try {
-      data = await sendIdToken(token);
+      await sendIdToken(token);
     } catch (e) {
       print(e);
     }
 
-    print(data);
-    return data;
+    return true;
   }
 }

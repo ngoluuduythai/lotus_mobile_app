@@ -35,7 +35,7 @@ abstract class _AuthUserStore with Store {
 
   @action
   Future<AuthUser> loginGoogle() async {
-    final data = await googleService.login();
+    final dynamic data = await googleService.login();
     authUser = AuthUser.fromJson(data);
     graphqlService.authToken = 'Bearer ${authUser.token}';
     return authUser;

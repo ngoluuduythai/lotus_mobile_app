@@ -5,8 +5,8 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class FacebookService {
   final graphqlService = locator<GraphqlService>();
 
-  sendAccessToken(String accessToken) async {
-    final result = await graphqlService.query('''
+  dynamic sendAccessToken(String accessToken) async {
+    final dynamic result = await graphqlService.query('''
         query{
           socialLogin(
             token: "$accessToken",
@@ -22,35 +22,34 @@ class FacebookService {
     return result.data['socialLogin'];
   }
 
-  getFacebookAccessToken() async {
+  Future<String> getFacebookAccessToken() async {
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
+    String val = '';
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        return result.accessToken.token;
+        val = result.accessToken.token;
         break;
       case FacebookLoginStatus.cancelledByUser:
-        return '';
         break;
       case FacebookLoginStatus.error:
-        print(result);
-        return '';
         break;
     }
+
+    return val;
   }
 
-  login() async {
+  Future<bool> login() async {
     final token = await getFacebookAccessToken();
     if (token == '') {
       return false;
     }
-    var data;
     try {
-      data = await sendAccessToken(token);
+      await sendAccessToken(token);
     } catch (e) {
       print(e);
     }
 
-    return data;
+    return true;
   }
 }

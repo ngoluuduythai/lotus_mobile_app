@@ -58,7 +58,7 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
     return json.encode(serializers.serializeWith(AuthUser.serializer, this));
   }
 
-  static AuthUser fromJson(json) {
+  static AuthUser fromJson(dynamic json) {
     return serializers.deserializeWith(
       AuthUser.serializer,
       json,
