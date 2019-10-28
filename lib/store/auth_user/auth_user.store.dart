@@ -22,28 +22,28 @@ abstract class _AuthUserStore with Store {
 
   @computed
   bool get loggedIn {
-    return (this.authUser != null) ? true : false;
+    return (authUser != null) ? true : false;
   }
 
   @action
   Future<AuthUser> loginFacebook() async {
-    var data = await facebookService.login();
-    this.authUser = AuthUser.fromJson(data);
+    final data = await facebookService.login();
+    authUser = AuthUser.fromJson(data);
     graphqlService.authToken = 'Bearer ${authUser.token}';
-    return this.authUser;
+    return authUser;
   }
 
   @action
   Future<AuthUser> loginGoogle() async {
-    var data = await googleService.login();
-    this.authUser = AuthUser.fromJson(data);
+    final data = await googleService.login();
+    authUser = AuthUser.fromJson(data);
     graphqlService.authToken = 'Bearer ${authUser.token}';
-    return this.authUser;
+    return authUser;
   }
 
   @action
   Future<AuthUser> logout() async {
-    this.authUser = null;
+    authUser = null;
     graphqlService.authToken = null;
     await googleService.googleSignIn.signOut();
     return null;
@@ -51,8 +51,7 @@ abstract class _AuthUserStore with Store {
 
   @action
   Future addBankAccount(BuildContext context) async {
-    var data = await plaidService.addBank(context);
-
+    await plaidService.addBank(context);
     return true;
   }
 }

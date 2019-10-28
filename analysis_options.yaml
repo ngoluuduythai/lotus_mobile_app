@@ -20,7 +20,7 @@
 
 analyzer:
   strong-mode:
-    # implicit-dynamic: false
+    implicit-dynamic: false
   errors:
     # treat missing required parameters as a warning (not a hint)
     missing_required_param: warning
@@ -52,7 +52,6 @@ linter:
     # - annotate_overrides
     # - avoid_annotating_with_dynamic # conflicts with always_specify_types
     - avoid_as
-    - avoid_bool_literals_in_conditional_expressions
     # - avoid_catches_without_on_clauses # we do this commonly
     # - avoid_catching_errors # we do this commonly
     # - avoid_double_and_int_checks # only useful when targeting JS runtime
@@ -152,7 +151,7 @@ linter:
     # - prefer_null_aware_operators # disable until NNBD, see https://github.com/flutter/flutter/pull/32711#issuecomment-492930932
     - prefer_single_quotes
     - prefer_spread_collections
-    - prefer_typing_uninitialized_variables
+    # - prefer_typing_uninitialized_variables
     - prefer_void_to_null
     # - provide_deprecation_message # not yet tested
     # - public_member_api_docs # enabled on a case-by-case basis; see e.g. packages/analysis_options.yaml

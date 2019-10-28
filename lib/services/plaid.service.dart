@@ -17,7 +17,7 @@ class PlaidService {
       secret: ENV.plaidSecret);
 
   Future getBankToken(BuildContext context) async {
-    Completer c = Completer();
+    final Completer c = Completer();
     final FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(configuration);
     flutterPlaidApi.launch(context, (Result result) {
       c.complete(result);
@@ -26,7 +26,7 @@ class PlaidService {
   }
 
   Future sendToken(String token) async {
-    var result = await graphqlService.mutate("""
+    final result = await graphqlService.mutate(''')
         mutation{
           connectBankAccount(
             token: "$token",
@@ -34,7 +34,7 @@ class PlaidService {
             message
           }
         }
-        """);
+       ''');
 
     if (result.errors != null) {
       print('***** errors *******');
@@ -46,13 +46,12 @@ class PlaidService {
   }
 
   Future addBank(BuildContext context) async {
-    Result data = await getBankToken(context);
+    final Result data = await getBankToken(context);
     final token = data.token;
     try {
-      var res = await sendToken(token);
+      final res = await sendToken(token);
       print(res);
     } catch (err) {
-      print("************");
       print(err);
     }
   }

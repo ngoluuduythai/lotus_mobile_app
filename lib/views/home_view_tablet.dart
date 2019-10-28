@@ -5,13 +5,13 @@ class HomeViewTablet extends StatelessWidget {
   const HomeViewTablet({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var children = [
+    final children = [
       Expanded(
         child: Container(),
       ),
       AppDrawer()
     ];
-    var orientation = MediaQuery.of(context).orientation;
+    final orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(
       body: orientation == Orientation.portrait

@@ -7,12 +7,12 @@ import 'package:main/routes/stay/stay.route.dart';
 import 'package:main/routes/inbox/inbox.route.dart';
 
 class RouteNames {
-  static final login = '/login';
-  static final explore = '/explore';
-  static final saved = '/saved';
-  static final stays = '/statys';
-  static final inbox = '/inbox';
-  static final profile = '/profile';
+  static const login = '/login';
+  static const explore = '/explore';
+  static const saved = '/saved';
+  static const stays = '/statys';
+  static const inbox = '/inbox';
+  static const profile = '/profile';
 }
 
 class Routes {

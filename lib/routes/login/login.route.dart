@@ -30,8 +30,8 @@ class LoginRoute extends StatelessWidget {
 
 @widget
 Widget _topRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  double h = size.height * 3 / 5;
+  final Size size = MediaQuery.of(context).size;
+  final double h = size.height * 3 / 5;
   return Container(
       color: Colors.white,
       padding: EdgeInsets.only(left: 44, right: 44, top: 67),
@@ -85,7 +85,7 @@ Widget _topRectable(BuildContext context) {
 
 @widget
 Widget _bottomRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
+  final Size size = MediaQuery.of(context).size;
   final double topH = size.height * 3 / 5;
   final double h = size.height - topH;
 

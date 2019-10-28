@@ -51,7 +51,6 @@ class FacebookService {
       print(e);
     }
 
-    print(data);
     return data;
   }
 }
