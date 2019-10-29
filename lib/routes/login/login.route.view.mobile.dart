@@ -117,16 +117,16 @@ Widget _imageWoman(BuildContext context) {
   return Container(
     alignment: Alignment.topCenter,
     margin: const EdgeInsets.only(left: 20, right: 65),
-    padding: new EdgeInsets.only(
+    padding: EdgeInsets.only(
       top: 210,
       right: 20.0,
       left: 20.0,
       bottom: 20,
     ),
-    child: new Container(
+    child: Container(
       height: 230.0,
       width: MediaQuery.of(context).size.width,
-      child: new Image.asset(Images.loginGirl),
+      child: Image.asset(Images.loginGirl),
     ),
   );
 }
