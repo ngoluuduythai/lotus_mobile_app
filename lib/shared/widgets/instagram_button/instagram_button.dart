@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:main/locator.dart';
 import '../../../shared/store/auth_user/auth_user.store.dart';
 
-class GoogleButton extends StatelessWidget {
-  GoogleButton({@required this.afterLogin});
-
+class InstagramButton extends StatelessWidget {
   final bool plaidSandbox = false;
   final authUserStore = locator<AuthUserStore>();
 
   final Function afterLogin;
+  InstagramButton({@required this.afterLogin});
 
   Future<void> _handleSignIn() async {
-    await authUserStore.loginGoogle();
+    //await this.authUserStore.loginInstagram();
     this.afterLogin();
   }
 
@@ -29,15 +28,15 @@ class GoogleButton extends StatelessWidget {
           return _handleSignIn();
         },
         child: Container(
-          margin: const EdgeInsets.only(left: 50.0, right: 86.0),
+          margin: const EdgeInsets.only(left: 50.0, right: 67.0),
           alignment: Alignment.center,
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Tab(
-                    icon: new Image.asset("assets/images/googleIcon.png",
+                    icon: new Image.asset("assets/images/instagramIcon.png",
                         width: 21, alignment: Alignment.topLeft)),
-                Text('Login with Google',
+                Text('Login with Instagram',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: const Color(0xff3b5998),

@@ -40,12 +40,18 @@ class _WebViewPage {
     _url = config.plaidBaseUrl +
         '?key=' +
         config.plaidPublicKey +
-        '&isWebview=' + config.isWebview +
-        '&product=' + config.products +
-        '&isMobile=' + config.isMobile +
-        '&apiVersion=' + config.apiVersion +
-        '&selectAccount=' + config.selectAccount +
-        '&webhook=' + config.webhook +
+        '&isWebview=' +
+        config.isWebview +
+        '&product=' +
+        config.products +
+        '&isMobile=' +
+        config.isMobile +
+        '&apiVersion=' +
+        config.apiVersion +
+        '&selectAccount=' +
+        config.selectAccount +
+        '&webhook=' +
+        config.webhook +
         '&env=' +
         config.plaidEnvironment;
     debugPrint('init plaid: ' + _url);
@@ -139,8 +145,7 @@ class _WebViewPage {
 }
 
 class Configuration {
-  Configuration(
-    {
+  Configuration({
     @required this.plaidPublicKey,
     @required this.plaidBaseUrl,
     @required this.plaidEnvironment,
@@ -148,12 +153,12 @@ class Configuration {
     @required this.environmentPlaidPathStripeToken,
     @required this.plaidClientId,
     @required this.secret,
-    this.webhook        = 'https://requestb.in',
-    this.products       = 'auth,income',//e.g. auth or auth,income
-    this.selectAccount  = 'true',//e.g. auth or auth,income
-    this.isMobile       = 'true',
-    this.apiVersion     = 'v2',
-    this.isWebview      = 'true',
+    this.webhook = 'https://requestb.in',
+    this.products = 'auth,income', //e.g. auth or auth,income
+    this.selectAccount = 'true', //e.g. auth or auth,income
+    this.isMobile = 'true',
+    this.apiVersion = 'v2',
+    this.isWebview = 'true',
   });
   String plaidPublicKey;
   String plaidBaseUrl;

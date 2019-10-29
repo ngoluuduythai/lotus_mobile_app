@@ -34,15 +34,14 @@ class ProfileRoute extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 17),
                 child: Observer(
-                    builder: (_) =>
-                        Text('${authUserStore.authUser.fullName}',
-                            style: TextStyle(
-                              color: Color(0xff0b0b0b),
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 21.0,
-                            ))),
+                    builder: (_) => Text('${authUserStore.authUser.fullName}',
+                        style: TextStyle(
+                          color: Color(0xff0b0b0b),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'AirbnbCerealApp',
+                          fontStyle: FontStyle.normal,
+                          fontSize: 21.0,
+                        ))),
               ),
               Container(
                 height: 200,

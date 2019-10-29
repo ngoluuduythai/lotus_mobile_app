@@ -1,132 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import '../../routes.dart';
+import 'package:flutter/services.dart';
+import 'package:main/responsive/orientation_layout.dart';
+import 'package:main/responsive/screen_type_layouts.dart';
 import '../../locator.dart';
-import '../../shared/widgets/facebook_button/facebook_button.dart';
-import '../../shared/widgets/base_widget/base_widget.dart';
-import '../../shared/widgets/google_button/google_button.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
-import '../../shared/constants/images.dart';
-
-part 'login.route.g.dart';
+import 'login.route.view.mobile.dart';
+import 'login.route.view.tablet.dart';
 
 class LoginRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+  LoginRoute({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget(builder: (context, sizingInformation) {
-      return Material(
-        child: Stack(
-          children: <Widget>[
-            _TopRectable(),
-            _BottomRectable(),
-          ],
-        ),
-      );
-    });
-  }
-}
+    SystemChrome.setPreferredOrientations([
+      //Only showing in Portrait mode
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]);
 
-@widget
-Widget _topRectable(BuildContext context) {
-  final Size size = MediaQuery.of(context).size;
-  final double h = size.height * 3 / 5;
-  return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(left: 44, right: 44, top: 67),
-      width: size.width,
-      height: h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(bottom: 17),
-                child: Image.asset(
-                  Images.logo,
-                  width: 73,
-                  height: 45,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 5),
-                child: Text(
-                  'Welcome to Lotus',
-                  style: TextStyle(
-                      color: Color(0xff0b0b0b),
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'AirbnbCerealApp',
-                      fontStyle: FontStyle.normal,
-                      fontSize: 30.0),
-                ),
-              ),
-              Container(
-                  child: Text(
-                      'Find the perfect space.\nSame price. No Commitment.',
-                      style: TextStyle(
-                        color: Color(0xff0b0b0b).withOpacity(.64),
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'AirbnbCerealApp',
-                        fontStyle: FontStyle.normal,
-                        fontSize: 18.0,
-                      ))),
-            ],
-          ),
-          Container(
-            alignment: Alignment(0, 0),
-            child: Image.asset(Images.loginRoomBackground),
-          )
-        ],
-      ));
-}
-
-@widget
-Widget _bottomRectable(BuildContext context) {
-  final Size size = MediaQuery.of(context).size;
-  final double topH = size.height * 3 / 5;
-  final double h = size.height - topH;
-
-  return PositionedDirectional(
-    top: topH,
-    start: 0,
-    child: Container(
-      width: size.width,
-      height: h,
-      color: Color(0xffffba73),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          FacebookButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
-            },
-          ),
-          GoogleButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
-            },
-          ),
-        ],
+    return ScreenTypeLayout(
+      mobile: OrientationLayout(
+        portrait: LoginRouteMobilePortrait(),
+        landscape: LoginRouteMobileLandscape(),
       ),
-    ),
-  );
-}
-
-@widget
-Widget _welcome(BuildContext context) {
-  return PositionedDirectional(
-      top: 129,
-      start: 42,
-      child: Text(
-        'Welcome to Lotus',
-        style: TextStyle(
-            color: const Color(0xff0b0b0b),
-            fontWeight: FontWeight.w700,
-            fontFamily: 'AirbnbCerealApp',
-            fontStyle: FontStyle.normal,
-            fontSize: 30.0),
-      ));
+      tablet: OrientationLayout(
+        portrait: LoginRouteTablet(),
+        landscape: LoginRouteTablet(),
+      ),
+    );
+  }
 }

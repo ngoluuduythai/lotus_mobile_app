@@ -18,8 +18,7 @@ class PlaidService {
       secret: ENV.plaidSecret,
       webhook: ENV.plaidWebhookUrl,
       products: 'auth,income',
-      selectAccount: 'false'
-    );
+      selectAccount: 'false');
 
   Future getBankToken(BuildContext context) async {
     Completer c = Completer();
@@ -40,7 +39,7 @@ class PlaidService {
           }
         }
        ''');
-       print(result.data);
+    print(result.data);
     return result.data;
   }
 

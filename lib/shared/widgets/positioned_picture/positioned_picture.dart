@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class PositionedPicture extends StatelessWidget {
   PositionedPicture(
-    {this.assetLocation, this.top, this.start, this.height, this.width});
+      {this.assetLocation, this.top, this.start, this.height, this.width});
 
   final String assetLocation;
   final double top;

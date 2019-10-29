@@ -9,7 +9,7 @@ class ScreenTypeLayout extends StatelessWidget {
     this.tablet,
     this.desktop,
   }) : super(key: key);
-  
+
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;

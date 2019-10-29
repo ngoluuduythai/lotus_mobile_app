@@ -42,17 +42,15 @@ class GraphqlService {
   }
 
   Future query(String document) {
-    return client
-        .query(QueryOptions(
+    return client.query(QueryOptions(
       document: document,
     ));
   }
 
   Future<QueryResult> mutate(String document) {
     print(document);
-    return client
-        .mutate(MutationOptions(
-        document: document,
+    return client.mutate(MutationOptions(
+      document: document,
     ));
   }
 }

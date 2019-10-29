@@ -2,49 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:main/locator.dart';
 import '../../../shared/store/auth_user/auth_user.store.dart';
 
-class GoogleButton extends StatelessWidget {
-  GoogleButton({@required this.afterLogin});
-
-  final bool plaidSandbox = false;
-  final authUserStore = locator<AuthUserStore>();
-
+class FacebookButtonTablet extends StatelessWidget {
+  FacebookButtonTablet({@required this.afterLogin});
   final Function afterLogin;
 
-  Future<void> _handleSignIn() async {
-    await authUserStore.loginGoogle();
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
+
+  Future<void> onPressed() async {
+    await authUserStore.loginFacebook();
     this.afterLogin();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 344,
-      height: 45,
+      width: 450,
+      height: 55,
       alignment: Alignment.center,
       child: RaisedButton(
         color: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(33.0)),
         onPressed: () async {
-          return _handleSignIn();
+          // await showPlaidView(context);
+          return onPressed();
         },
         child: Container(
-          margin: const EdgeInsets.only(left: 50.0, right: 86.0),
           alignment: Alignment.center,
+          margin: const EdgeInsets.only(left: 90, right: 70),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Tab(
-                    icon: new Image.asset("assets/images/googleIcon.png",
+                    icon: new Image.asset("assets/images/facebookIcon.png",
                         width: 21, alignment: Alignment.topLeft)),
-                Text('Login with Google',
+                Text('Login with Facebook',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: const Color(0xff3b5998),
                         fontWeight: FontWeight.w500,
                         fontFamily: "AirbnbCerealApp",
                         fontStyle: FontStyle.normal,
-                        fontSize: 16.0))
+                        fontSize: 20.0))
               ]),
         ),
       ),
