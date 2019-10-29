@@ -35,14 +35,14 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   final _$loginFacebookAsyncAction = AsyncAction('loginFacebook');
 
   @override
-  Future<AuthUser> loginFacebook() {
+  Future<bool> loginFacebook() {
     return _$loginFacebookAsyncAction.run(() => super.loginFacebook());
   }
 
   final _$loginGoogleAsyncAction = AsyncAction('loginGoogle');
 
   @override
-  Future<AuthUser> loginGoogle() {
+  Future<bool> loginGoogle() {
     return _$loginGoogleAsyncAction.run(() => super.loginGoogle());
   }
 

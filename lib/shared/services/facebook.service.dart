@@ -25,7 +25,7 @@ class FacebookService {
   Future<String> getFacebookAccessToken() async {
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
-    String val = '';
+    String val;
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
         val = result.accessToken.token;
@@ -40,9 +40,14 @@ class FacebookService {
   }
 
   Future<dynamic> login() async {
-    final token = await getFacebookAccessToken();
-    if (token == '') {
-      throw 'Error #1: Did not receive fb token';
+    var token;
+    try {
+      token = await getFacebookAccessToken();
+    } catch (err) {
+      return null;
+    }
+    if(token == null ) {
+      return null;
     }
     return sendAccessToken(token);
   }

@@ -39,7 +39,7 @@ class LinkedinButton extends StatelessWidget {
                 Text('Login with Linkedin',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        color: const Color(0xff3b5998),
+                        color: Color(0xff323332), //const Color(0xff323332),
                         fontWeight: FontWeight.w500,
                         fontFamily: "AirbnbCerealApp",
                         fontStyle: FontStyle.normal,

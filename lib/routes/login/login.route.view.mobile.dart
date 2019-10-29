@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
+import 'package:main/shared/models/auth_user.model.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -12,6 +13,8 @@ import '../../shared/widgets/instagram_button/instagram_button.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
+import '../../shared/constants/colors.dart';
+import '../../shared/widgets/login_button/login_button.dart';
 
 part 'login.route.view.mobile.g.dart';
 
@@ -136,6 +139,7 @@ Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double topH = size.height * 3 / 5;
   double h = size.height - topH;
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
 
   return PositionedDirectional(
     top: topH,
@@ -143,43 +147,64 @@ Widget _bottomRectable(BuildContext context) {
     child: Container(
       width: size.width,
       height: h,
-      color: Color(0xffffba73),
+      color: AppColor.primary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(
             height: 20,
           ),
-          FacebookButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(// Facebook Login Button
+            iconImageLocation: 'assets/images/facebookIcon.png',
+            buttonText: 'Login with Facebook',
+            buttonTextColor: const Color(0xff3b5998),
+            onPressed: () async {
+              final loggedIn = await authUserStore.loginFacebook();
+              if(loggedIn){
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
           SizedBox(
             height: 10,
           ),
-          InstagramButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(// Instagram Login Button
+            iconImageLocation: 'assets/images/instagramIcon.png',
+            buttonText: 'Login with Instagram',
+            onPressed: () async {
+              // final loggedIn = await authUserStore.loginInstagram();
+              // if(loggedIn){
+              //   Routes.sailor(RouteNames.profile);
+              // }
             },
           ),
           SizedBox(
             height: 10,
           ),
           //Login with linkedin
-          LinkedinButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(// Linkedin Login Button
+            iconImageLocation: 'assets/images/linkedinIcon.png',
+            buttonText: 'Login with LinkedIn',
+            buttonTextColor: const Color(0xff0077b5),
+            onPressed: () async {
+              // final loggedIn = await authUserStore.loginInstagram();
+              // if(loggedIn){
+              //   Routes.sailor(RouteNames.profile);
+              // }
             },
           ),
-
           SizedBox(
             height: 10,
           ),
           //Continue without registration
-          GoogleButton(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(// Linkedin Login Button
+            iconImageLocation: 'assets/images/googleIcon.png',
+            buttonText: 'Login with Google',
+            onPressed: () async {
+              final loggedIn = await authUserStore.loginGoogle();
+              if(loggedIn){
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
         ],
