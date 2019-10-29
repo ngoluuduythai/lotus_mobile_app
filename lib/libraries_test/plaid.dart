@@ -167,6 +167,7 @@ class Configuration {
   String environmentPlaidPathStripeToken;
   String plaidClientId;
   String secret;
+  String clientName;
   String webhook;
   String products;
   String selectAccount;

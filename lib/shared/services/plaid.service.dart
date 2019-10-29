@@ -15,6 +15,7 @@ class PlaidService {
       environmentPlaidPathAccessToken: ENV.plaidUrlAccessToken,
       environmentPlaidPathStripeToken: ENV.plaidUrlStripeToken,
       plaidClientId: ENV.plaidClientId,
+      clientName: 'Lotus',
       secret: ENV.plaidSecret,
       webhook: ENV.plaidWebhookUrl,
       products: 'auth,income',
