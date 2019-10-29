@@ -43,9 +43,12 @@ class LoginRouteMobileLandscape extends StatelessWidget {
       return Material(
         child: Stack(
           children: <Widget>[
+             _TopRectable(),
             _BottomRectable(),
-            _TopRectable(),
-            _ImageWoman(),
+              _ImageWoman(),
+            
+            
+            
           ],
         ),
       );

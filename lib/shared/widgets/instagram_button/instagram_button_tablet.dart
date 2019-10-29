@@ -20,7 +20,7 @@ class InstagramButtonTablet extends StatelessWidget {
       width: 450,
       height: 55,
       alignment: Alignment.center,
-      child: RaisedButton(
+      child: FlatButton(
         color: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(33.0)),

@@ -19,7 +19,7 @@ class FacebookButton extends StatelessWidget {
       width: 344,
       height: 45,
       alignment: Alignment.center,
-      child: RaisedButton(
+      child: FlatButton(
         color: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(33.0)),
