@@ -46,12 +46,9 @@ class LoginRouteMobileLandscape extends StatelessWidget {
       return Material(
         child: Stack(
           children: <Widget>[
-             _TopRectable(),
+            _TopRectable(),
             _BottomRectable(),
-              _ImageWoman(),
-            
-            
-            
+            _ImageWoman(),
           ],
         ),
       );
@@ -154,13 +151,14 @@ Widget _bottomRectable(BuildContext context) {
           SizedBox(
             height: 20,
           ),
-          LoginButton(// Facebook Login Button
+          LoginButton(
+            // Facebook Login Button
             iconImageLocation: 'assets/images/facebookIcon.png',
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xff3b5998),
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
-              if(loggedIn){
+              if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
             },
@@ -168,7 +166,8 @@ Widget _bottomRectable(BuildContext context) {
           SizedBox(
             height: 10,
           ),
-          LoginButton(// Instagram Login Button
+          LoginButton(
+            // Instagram Login Button
             iconImageLocation: 'assets/images/instagramIcon.png',
             buttonText: 'Login with Instagram',
             onPressed: () async {
@@ -182,7 +181,8 @@ Widget _bottomRectable(BuildContext context) {
             height: 10,
           ),
           //Login with linkedin
-          LoginButton(// Linkedin Login Button
+          LoginButton(
+            // Linkedin Login Button
             iconImageLocation: 'assets/images/linkedinIcon.png',
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xff0077b5),
@@ -197,12 +197,13 @@ Widget _bottomRectable(BuildContext context) {
             height: 10,
           ),
           //Continue without registration
-          LoginButton(// Linkedin Login Button
+          LoginButton(
+            // Linkedin Login Button
             iconImageLocation: 'assets/images/googleIcon.png',
             buttonText: 'Login with Google',
             onPressed: () async {
               final loggedIn = await authUserStore.loginGoogle();
-              if(loggedIn){
+              if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
             },

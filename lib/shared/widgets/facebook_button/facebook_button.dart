@@ -21,8 +21,8 @@ class FacebookButton extends StatelessWidget {
       alignment: Alignment.center,
       child: FlatButton(
         color: Colors.white,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(33.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(33.0)),
         onPressed: () async {
           return onPressed();
         },
@@ -34,8 +34,7 @@ class FacebookButton extends StatelessWidget {
               children: <Widget>[
                 Tab(
                     icon: Image.asset('assets/images/facebookIcon.png',
-                        height: 12,
-                        width: 12, alignment: Alignment.topLeft)),
+                        height: 12, width: 12, alignment: Alignment.topLeft)),
                 Text('Login with Facebook',
                     textAlign: TextAlign.center,
                     style: TextStyle(

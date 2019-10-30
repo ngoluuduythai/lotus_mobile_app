@@ -46,7 +46,7 @@ class FacebookService {
     } catch (err) {
       return null;
     }
-    if(token == null ) {
+    if (token == null) {
       return null;
     }
     return sendAccessToken(token);

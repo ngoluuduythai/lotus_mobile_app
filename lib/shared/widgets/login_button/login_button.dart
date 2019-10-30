@@ -20,8 +20,8 @@ class LoginButton extends StatelessWidget {
       alignment: Alignment.center,
       child: FlatButton(
         color: Colors.white,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(33.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(33.0)),
         onPressed: () async {
           return onPressed();
         },
@@ -33,8 +33,7 @@ class LoginButton extends StatelessWidget {
               children: <Widget>[
                 Tab(
                     icon: Image.asset(iconImageLocation,
-                        height: 21,
-                        width: 21, alignment: Alignment.center)),
+                        height: 21, width: 21, alignment: Alignment.center)),
                 Text(buttonText,
                     textAlign: TextAlign.center,
                     style: TextStyle(

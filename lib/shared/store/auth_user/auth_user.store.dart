@@ -28,7 +28,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginFacebook() async {
     final data = await facebookService.login();
-    if(data == null){
+    if (data == null) {
       return false;
     }
     authUser = AuthUser.fromJson(data);
@@ -39,7 +39,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginGoogle() async {
     final dynamic data = await googleService.login();
-    if(!data) {
+    if (!data) {
       return false;
     }
     authUser = AuthUser.fromJson(data);
