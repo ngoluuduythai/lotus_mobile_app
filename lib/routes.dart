@@ -1,3 +1,4 @@
+import 'package:main/routes/profile/sub_routes/documentsids/documentsids.route.dart';
 import 'package:main/routes/profile/sub_routes/feedback/feedback.route.dart';
 import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
 import 'package:main/routes/profile/sub_routes/gethelp/gethelp.route.dart';
@@ -10,7 +11,6 @@ import 'routes/explore/explore.route.dart';
 import 'routes/inbox/inbox.route.dart';
 import 'routes/login/login.route.dart';
 import 'routes/profile/profile.route.dart';
-import 'routes/profile/sub_routes/documentsids/documentsids.route.dart';
 import 'routes/saved/saved.route.dart';
 import 'routes/stay/stay.route.dart';
 import './routes/profile/sub_routes/account_settings/account_settings.route.dart';
@@ -23,21 +23,14 @@ class RouteNames {
   static const inbox = '/inbox';
   static const profile = '/profile';
   static const accountSettings = '/profile/account-settings';
-  static const documentsids = '/profile/sub_routes/documentsids/documentsids.route.dart';
-
-  static const feedback = '/profile/sub_routes/feedback/feedback.route.dart';
-
-  static const friends = '/profile/sub_routes/friends/friends.route.dart'; 
-
-  static const gethelp = '/profile/sub_routes/gethelp/gethelp.route.dart'; 
-
-  static const notifications = '/profile/sub_routes/notifications/notifications.route.dart'; 
-  
-  static const payments = '/profile/sub_routes/payments/payments.route.dart'; 
-
-  static const personal_information ='/profile/sub_routes/personal_information/personal_information.route.dart';
-
-  static const termofservice ='/profile/sub_routes/termofservice/termofservice.route.dart' ;
+  static const documentsids = '/profile/documentsids';
+  static const feedback = '/profile/feedback';
+  static const friends = '/profile/friends';
+  static const gethelp = '/profile/gethelp';
+  static const notifications = '/profile/notifications';
+  static const payments = '/profile/payments';
+  static const personal_information = '/profile/personal_information';
+  static const termofservice = '/profile/termofservice';
 }
 
 class Routes {
@@ -106,52 +99,46 @@ class Routes {
       },
     ));
 
-     sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.friends,
       builder: (context, args, params) {
         return FriendsRoute();
       },
     ));
 
-      sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.gethelp,
       builder: (context, args, params) {
         return GethelpRoute();
       },
     ));
 
-       sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.notifications,
       builder: (context, args, params) {
         return NotificationsRoute();
       },
     ));
 
-      
-      
-       sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.payments,
       builder: (context, args, params) {
         return PaymentsRoute();
       },
     ));
 
-      
-       sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.personal_information,
       builder: (context, args, params) {
         return PersonalInformationRoute();
       },
     ));
-    
-    
-       sailor.addRoute(SailorRoute(
+
+    sailor.addRoute(SailorRoute(
       name: RouteNames.termofservice,
       builder: (context, args, params) {
         return TermofserviceRoute();
       },
     ));
-
-
   }
 }

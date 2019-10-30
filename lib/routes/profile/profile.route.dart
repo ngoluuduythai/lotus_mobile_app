@@ -170,7 +170,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.personal_information),
+                            onTap: () => Routes.sailor
+                                .navigate(RouteNames.personal_information),
                           ),
                         ),
                         SizedBox(
@@ -205,7 +206,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.payments),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.payments),
                           ),
                         ),
                         SizedBox(
@@ -240,7 +242,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.notifications),
+                            onTap: () => Routes.sailor
+                                .navigate(RouteNames.notifications),
                           ),
                         ),
                         SizedBox(
@@ -275,7 +278,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () =>Routes.sailor.navigate(RouteNames.friends),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.friends),
                           ),
                         ),
                         SizedBox(
@@ -310,7 +314,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.documentsids),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.documentsids),
                           ),
                         ),
                         SizedBox(
@@ -345,7 +350,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.gethelp),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.gethelp),
                           ),
                         ),
                         SizedBox(
@@ -380,7 +386,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.termofservice),
+                            onTap: () => Routes.sailor
+                                .navigate(RouteNames.termofservice),
                           ),
                         ),
                         SizedBox(
@@ -415,7 +422,8 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Routes.sailor.navigate(RouteNames.feedback),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.feedback),
                           ),
                         ),
                         SizedBox(
