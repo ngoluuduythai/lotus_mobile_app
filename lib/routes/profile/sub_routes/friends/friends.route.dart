@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Documentsids extends StatelessWidget {
+class FriendsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

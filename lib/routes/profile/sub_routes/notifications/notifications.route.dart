@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Termofservice extends StatelessWidget {
+class NotificationsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

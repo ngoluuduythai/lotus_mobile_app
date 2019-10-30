@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Payments extends StatelessWidget {
+class TermofserviceRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

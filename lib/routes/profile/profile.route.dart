@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
-import 'package:main/routes/profile/sub_routes/documentsids/documentsids_route.dart';
-import 'package:main/routes/profile/sub_routes/feedback/feedback_route.dart'
+import 'package:main/routes/profile/sub_routes/documentsids/documentsids.route.dart';
+import 'package:main/routes/profile/sub_routes/feedback/feedback.route.dart'
     as prefix0;
-import 'package:main/routes/profile/sub_routes/friends/friends_route.dart';
-import 'package:main/routes/profile/sub_routes/gethelp/gethelp_route.dart';
-import 'package:main/routes/profile/sub_routes/notifications/notifications_route.dart';
-import 'package:main/routes/profile/sub_routes/payments/payments_route.dart';
+import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
+import 'package:main/routes/profile/sub_routes/gethelp/gethelp.route.dart';
+import 'package:main/routes/profile/sub_routes/notifications/notifications.route.dart';
+import 'package:main/routes/profile/sub_routes/payments/payments.route.dart';
 import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
-import 'package:main/routes/profile/sub_routes/termofservice/termofservice_route.dart';
+import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
+import 'package:sailor/sailor.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/add_bank_button/add_bank_button.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -18,7 +19,7 @@ import '../../shared/store/auth_user/auth_user.store.dart';
 
 class ProfileRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-
+  static final sailor = Sailor();
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
@@ -169,11 +170,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PersonalInformation()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.personal_information),
                           ),
                         ),
                         SizedBox(
@@ -208,11 +205,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Payments()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.payments),
                           ),
                         ),
                         SizedBox(
@@ -247,11 +240,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Notifications()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.notifications),
                           ),
                         ),
                         SizedBox(
@@ -286,11 +275,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Friends()),
-                            ),
+                            onTap: () =>Routes.sailor.navigate(RouteNames.friends),
                           ),
                         ),
                         SizedBox(
@@ -325,11 +310,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Documentsids()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.documentsids),
                           ),
                         ),
                         SizedBox(
@@ -364,11 +345,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Gethelp()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.gethelp),
                           ),
                         ),
                         SizedBox(
@@ -403,11 +380,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Termofservice()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.termofservice),
                           ),
                         ),
                         SizedBox(
@@ -442,11 +415,7 @@ class ProfileRoute extends StatelessWidget {
                                 //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
                               ],
                             ),
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => prefix0.Feedback()),
-                            ),
+                            onTap: () => Routes.sailor.navigate(RouteNames.feedback),
                           ),
                         ),
                         SizedBox(

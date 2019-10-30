@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PersonalInformation extends StatelessWidget {
+class PersonalInformationRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

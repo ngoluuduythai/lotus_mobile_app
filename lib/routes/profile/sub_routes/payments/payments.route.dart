@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Feedback extends StatelessWidget {
+class PaymentsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

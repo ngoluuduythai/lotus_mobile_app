@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Gethelp extends StatelessWidget {
+class FeedbackRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
