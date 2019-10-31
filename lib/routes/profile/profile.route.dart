@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:main/routes.dart';
+import '../../routes.dart';
 import 'package:main/locator.dart';
-import 'package:main/shared/widgets/itemlist_profile/itemlist_profile.dart';
+import '../../shared/widgets/itemlist_profile/itemlist_profile.dart';
 import 'package:sailor/sailor.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -14,11 +14,13 @@ class ProfileRoute extends StatelessWidget {
   static final sailor = Sailor();
 
   greyDivider() {
-    return Divider(
+    return Container(
+      child: Divider(
       color: Colors.grey,
       height: 1,
       indent: 25,
       endIndent: 25,
+    ),
     );
   }
 
@@ -118,57 +120,49 @@ class ProfileRoute extends StatelessWidget {
                         ItemListProfile(
                           text: 'Personal Information',
                           iconImageLocation: IconPath.document,
-                          onTap: () => Routes.sailor
-                              .navigate(RouteNames.personal_information),
+                          route: RouteNames.personal_information
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Payments',
                           iconImageLocation: IconPath.money,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.payments),
+                          route: RouteNames.payments,
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Notifications',
                           iconImageLocation: IconPath.bell,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.notifications),
+                          route: RouteNames.notifications
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Friends',
                           iconImageLocation: IconPath.people,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.friends),
+                          route: RouteNames.friends
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Documents / Ids',
                           iconImageLocation: IconPath.folder,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.documentsids),
+                          route: RouteNames.documentsids
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Get Help',
                           iconImageLocation: IconPath.question,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.gethelp),
+                          route: RouteNames.gethelp
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Terms of Service',
                           iconImageLocation: IconPath.info,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.termofservice),
+                          route: RouteNames.termofservice
                         ),
                         greyDivider(),
                         ItemListProfile(
                           text: 'Give us feedback',
                           iconImageLocation: IconPath.message,
-                          onTap: () =>
-                              Routes.sailor.navigate(RouteNames.feedback),
+                          route: RouteNames.feedback
                         ),
                         greyDivider(),
                         ItemListProfile(

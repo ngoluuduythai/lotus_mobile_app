@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/routes.dart';
+import '../../../routes.dart';
 import 'package:sailor/sailor.dart';
 
 class BottomNavbar extends StatelessWidget {

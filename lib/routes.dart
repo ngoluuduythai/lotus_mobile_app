@@ -13,7 +13,6 @@ import 'routes/login/login.route.dart';
 import 'routes/profile/profile.route.dart';
 import 'routes/saved/saved.route.dart';
 import 'routes/stay/stay.route.dart';
-import './routes/profile/sub_routes/account_settings/account_settings.route.dart';
 
 class RouteNames {
   static const login = '/login';
@@ -22,7 +21,6 @@ class RouteNames {
   static const stays = '/statys';
   static const inbox = '/inbox';
   static const profile = '/profile';
-  static const accountSettings = '/profile/account-settings';
   static const documentsids = '/profile/documentsids';
   static const feedback = '/profile/feedback';
   static const friends = '/profile/friends';
@@ -48,13 +46,6 @@ class Routes {
       name: RouteNames.profile,
       builder: (context, args, params) {
         return ProfileRoute();
-      },
-    ));
-
-    sailor.addRoute(SailorRoute(
-      name: RouteNames.accountSettings,
-      builder: (context, args, params) {
-        return AccountSettingsRoute();
       },
     ));
 

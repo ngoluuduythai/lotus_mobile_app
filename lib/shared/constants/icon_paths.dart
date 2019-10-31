@@ -17,4 +17,6 @@ class IconPath {
   static const messages = 'assets/icons/messages.png';
   static const profile = 'assets/icons/profile.png';
   static const stay = 'assets/icons/stay.png';
+
+  static const backArrow = 'assets/icons/path@2x.png';
 }
