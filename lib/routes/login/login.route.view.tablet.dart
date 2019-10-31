@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import 'package:main/shared/widgets/login_button/login_button.dart';
+import './login_button/login_button.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';

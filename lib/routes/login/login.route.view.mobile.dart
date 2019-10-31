@@ -10,7 +10,7 @@ import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
-import '../../shared/widgets/login_button/login_button.dart';
+import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
 
 part 'login.route.view.mobile.g.dart';

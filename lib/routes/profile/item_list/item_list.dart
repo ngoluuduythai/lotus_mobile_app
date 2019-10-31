@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sailor/sailor.dart';
 import '../../../routes.dart';
-class ItemListProfile extends StatelessWidget {
-  ItemListProfile({
+class ItemList extends StatelessWidget {
+  ItemList({
     @required this.text,
     @required this.iconImageLocation,
     this.color = const Color(0xff0b0b0b),

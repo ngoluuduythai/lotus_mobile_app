@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../routes.dart';
 import 'package:main/locator.dart';
-import '../../shared/widgets/itemlist_profile/itemlist_profile.dart';
+import './item_list/item_list.dart';
 import 'package:sailor/sailor.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -117,55 +117,55 @@ class ProfileRoute extends StatelessWidget {
                           ),
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Personal Information',
                           iconImageLocation: IconPath.document,
                           route: RouteNames.personal_information
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Payments',
                           iconImageLocation: IconPath.money,
                           route: RouteNames.payments,
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Notifications',
                           iconImageLocation: IconPath.bell,
                           route: RouteNames.notifications
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Friends',
                           iconImageLocation: IconPath.people,
                           route: RouteNames.friends
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Documents / Ids',
                           iconImageLocation: IconPath.folder,
                           route: RouteNames.documentsids
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Get Help',
                           iconImageLocation: IconPath.question,
                           route: RouteNames.gethelp
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Terms of Service',
                           iconImageLocation: IconPath.info,
                           route: RouteNames.termofservice
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Give us feedback',
                           iconImageLocation: IconPath.message,
                           route: RouteNames.feedback
                         ),
                         greyDivider(),
-                        ItemListProfile(
+                        ItemList(
                           text: 'Log out',
                           iconImageLocation: IconPath.lock,
                           onTap: () => authUserStore.logout(),
