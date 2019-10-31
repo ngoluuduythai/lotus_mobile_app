@@ -2,18 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
-import 'package:main/routes/profile/sub_routes/documentsids/documentsids.route.dart';
-import 'package:main/routes/profile/sub_routes/feedback/feedback.route.dart'
-    as prefix0;
-import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
-import 'package:main/routes/profile/sub_routes/gethelp/gethelp.route.dart';
-import 'package:main/routes/profile/sub_routes/notifications/notifications.route.dart';
-import 'package:main/routes/profile/sub_routes/payments/payments.route.dart';
-import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
-import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
+import 'package:main/shared/widgets/itemlist_profile/itemlist_profile.dart';
 import 'package:sailor/sailor.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
-import '../../shared/widgets/add_bank_button/add_bank_button.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 
@@ -71,7 +62,7 @@ class ProfileRoute extends StatelessWidget {
                                 margin: EdgeInsets.only(right: 90),
                                 child: InkWell(
                                   child: Text(
-                                    "View profile",
+                                    'View profile',
                                     style: TextStyle(
                                       color: Colors.amber[700],
                                       fontWeight: FontWeight.w200,
@@ -127,7 +118,7 @@ class ProfileRoute extends StatelessWidget {
                           width: 208,
                           height: 25,
                           child: Text(
-                            "Account Settings",
+                            'Account Settings',
                             style: TextStyle(
                               color: Color(0xff0b0b0b),
                               fontWeight: FontWeight.w700,
@@ -150,29 +141,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Personal Information",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () => Routes.sailor
-                                .navigate(RouteNames.personal_information),
-                          ),
+                        ItemListProfile(
+                          text: 'Personal Information',
+                          iconImageLocation: 'assets/images/5H.png',
+                          onTap: () => Routes.sailor
+                              .navigate(RouteNames.personal_information),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -186,29 +160,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Payments",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.payments),
-                          ),
+                        ItemListProfile(
+                          text: 'Payments',
+                          iconImageLocation: 'assets/images/8B.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.payments),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -222,29 +179,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Notifications",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () => Routes.sailor
-                                .navigate(RouteNames.notifications),
-                          ),
+                        ItemListProfile(
+                          text: 'Notifications',
+                          iconImageLocation: 'assets/images/Shape.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.notifications),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -258,29 +198,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Friends",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.friends),
-                          ),
+                        ItemListProfile(
+                          text: 'Friends',
+                          iconImageLocation: 'assets/images/5F.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.friends),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -294,29 +217,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Documents / Ids",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.documentsids),
-                          ),
+                        ItemListProfile(
+                          text: 'Documents / Ids',
+                          iconImageLocation: 'assets/images/6H.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.documentsids),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -330,29 +236,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Get Help",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.gethelp),
-                          ),
+                        ItemListProfile(
+                          text: 'Get Help',
+                          iconImageLocation: 'assets/images/1B.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.gethelp),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -366,29 +255,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Terms of Service",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () => Routes.sailor
-                                .navigate(RouteNames.termofservice),
-                          ),
+                        ItemListProfile(
+                          text: 'Terms of Service',
+                          iconImageLocation: 'assets/images/7B.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.termofservice),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -402,29 +274,12 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Give us feedback",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.feedback),
-                          ),
+                        ItemListProfile(
+                          text: 'Give us feedback',
+                          iconImageLocation: 'assets/images/4H.png',
+                          onTap: () =>
+                              Routes.sailor.navigate(RouteNames.feedback),
+                          color: Color(0xff0b0b0b),
                         ),
                         SizedBox(
                           height: 20,
@@ -438,28 +293,11 @@ class ProfileRoute extends StatelessWidget {
                         SizedBox(
                           height: 22,
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 23.8, right: 20),
-                          height: 21,
-                          child: InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "Log out",
-                                  style: TextStyle(
-                                    color: Color(0xff0b0b0b),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
-                                //Tab(icon: Image.asset("assets/images/personalInformationIcon.JPG",)),
-                              ],
-                            ),
-                            onTap: () => authUserStore.logout(),
-                          ),
+                        ItemListProfile(
+                          text: 'Log out',
+                          iconImageLocation: 'assets/images/3F.png',
+                          onTap: () => authUserStore.logout(),
+                          color: Color(0xffdf8f3d),
                         ),
                         SizedBox(
                           height: 20,

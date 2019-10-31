@@ -6,10 +6,6 @@ import 'package:main/shared/models/auth_user.model.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
-import '../../shared/widgets/facebook_button/facebook_button.dart';
-import '../../shared/widgets/linkedin_button/linkedin_button.dart';
-import '../../shared/widgets/google_button/google_button.dart';
-import '../../shared/widgets/instagram_button/instagram_button.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
@@ -155,7 +151,12 @@ Widget _bottomRectable(BuildContext context) {
             // Facebook Login Button
             iconImageLocation: 'assets/images/facebookIcon.png',
             buttonText: 'Login with Facebook',
-            buttonTextColor: const Color(0xff3b5998),
+            buttonTextColor: const Color(0xff0077b5),
+            width: 344,
+            height: 45,
+            left: 57,
+            right: 54,
+            fontSize: 16,
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
               if (loggedIn) {
@@ -170,6 +171,12 @@ Widget _bottomRectable(BuildContext context) {
             // Instagram Login Button
             iconImageLocation: 'assets/images/instagramIcon.png',
             buttonText: 'Login with Instagram',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 344,
+            height: 45,
+            left: 57,
+            right: 51,
+            fontSize: 16,
             onPressed: () async {
               // final loggedIn = await authUserStore.loginInstagram();
               // if(loggedIn){
@@ -186,6 +193,11 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: 'assets/images/linkedinIcon.png',
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xff0077b5),
+            width: 344,
+            height: 45,
+            left: 59,
+            right: 65,
+            fontSize: 16,
             onPressed: () async {
               // final loggedIn = await authUserStore.loginInstagram();
               // if(loggedIn){
@@ -201,6 +213,12 @@ Widget _bottomRectable(BuildContext context) {
             // Linkedin Login Button
             iconImageLocation: 'assets/images/googleIcon.png',
             buttonText: 'Login with Google',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 344,
+            height: 45,
+            left: 57,
+            right: 74,
+            fontSize: 16,
             onPressed: () async {
               final loggedIn = await authUserStore.loginGoogle();
               if (loggedIn) {

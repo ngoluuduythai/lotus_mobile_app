@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
+import 'package:main/shared/widgets/login_button/login_button.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
-import '../../shared/widgets/facebook_button/facebook_button_tablet.dart';
-import '../../shared/widgets/linkedin_button/linkedin_button_tablet.dart';
-import '../../shared/widgets/google_button/google_button_tablet.dart';
-import '../../shared/widgets/instagram_button/instagram_button_tablet.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
@@ -114,7 +111,7 @@ Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double topH = size.height * 3 / 5;
   double h = size.height - topH;
-
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
   return PositionedDirectional(
     top: topH,
     start: 0,
@@ -128,36 +125,83 @@ Widget _bottomRectable(BuildContext context) {
           SizedBox(
             height: 30,
           ),
-          FacebookButtonTablet(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(
+            // Facebook Login Button
+            iconImageLocation: 'assets/images/facebookIcon.png',
+            buttonText: 'Login with Facebook',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 450,
+            height: 55,
+            left: 90,
+            right: 83,
+            fontSize: 20,
+            onPressed: () async {
+              final loggedIn = await authUserStore.loginFacebook();
+              if (loggedIn) {
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
           SizedBox(
             height: 10,
           ),
-          InstagramButtonTablet(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(
+            // Instagram Login Button
+            iconImageLocation: 'assets/images/instagramIcon.png',
+            buttonText: 'Login with Instagram',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 450,
+            height: 55,
+            left: 90,
+            right: 80,
+            fontSize: 20,
+            onPressed: () async {
+              // final loggedIn = await authUserStore.loginInstagram();
+              // if(loggedIn){
+              //   Routes.sailor(RouteNames.profile);
+              // }
             },
           ),
           SizedBox(
             height: 10,
           ),
           //Login with linkedin
-          LinkedinButtonTablet(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(
+            // Linkedin Login Button
+            iconImageLocation: 'assets/images/linkedinIcon.png',
+            buttonText: 'Login with LinkedIn',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 450,
+            height: 55,
+            left: 90,
+            right: 96,
+            fontSize: 20,
+            onPressed: () async {
+              // final loggedIn = await authUserStore.loginInstagram();
+              // if(loggedIn){
+              //   Routes.sailor(RouteNames.profile);
+              // }
             },
           ),
-
           SizedBox(
             height: 10,
           ),
           //Continue without registration
-          GoogleButtonTablet(
-            afterLogin: () {
-              Routes.sailor(RouteNames.profile);
+          LoginButton(
+            // Linkedin Login Button
+            iconImageLocation: 'assets/images/googleIcon.png',
+            buttonText: 'Login with Google',
+            buttonTextColor: const Color(0xff0077b5),
+            width: 450,
+            height: 55,
+            left: 90,
+            right: 107,
+            fontSize: 20,
+            onPressed: () async {
+              final loggedIn = await authUserStore.loginGoogle();
+              if (loggedIn) {
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
         ],
