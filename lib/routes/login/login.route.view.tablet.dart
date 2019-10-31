@@ -129,7 +129,7 @@ Widget _bottomRectable(BuildContext context) {
             // Facebook Login Button
             iconImageLocation: 'assets/images/facebookIcon.png',
             buttonText: 'Login with Facebook',
-            buttonTextColor: const Color(0xff0077b5),
+            buttonTextColor: const Color(0xFF3B5998),
             width: 450,
             height: 55,
             left: 90,
@@ -149,7 +149,7 @@ Widget _bottomRectable(BuildContext context) {
             // Instagram Login Button
             iconImageLocation: 'assets/images/instagramIcon.png',
             buttonText: 'Login with Instagram',
-            buttonTextColor: const Color(0xff0077b5),
+            buttonTextColor: const Color(0xFF323332),
             width: 450,
             height: 55,
             left: 90,
@@ -170,7 +170,7 @@ Widget _bottomRectable(BuildContext context) {
             // Linkedin Login Button
             iconImageLocation: 'assets/images/linkedinIcon.png',
             buttonText: 'Login with LinkedIn',
-            buttonTextColor: const Color(0xff0077b5),
+            buttonTextColor: const Color(0xFF0077B5),
             width: 450,
             height: 55,
             left: 90,
@@ -191,7 +191,7 @@ Widget _bottomRectable(BuildContext context) {
             // Linkedin Login Button
             iconImageLocation: 'assets/images/googleIcon.png',
             buttonText: 'Login with Google',
-            buttonTextColor: const Color(0xff0077b5),
+            buttonTextColor: const Color(0xFF4C4C4C),
             width: 450,
             height: 55,
             left: 90,
