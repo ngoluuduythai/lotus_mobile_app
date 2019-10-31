@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../routes.dart';
+
 class ItemList extends StatelessWidget {
   ItemList({
     @required this.text,
@@ -37,16 +38,16 @@ class ItemList extends StatelessWidget {
               ),
             ),
             Container(
-              height: 21,
-              width: 21,
-              child: Tab(
-                icon: Image.asset(
-                iconImageLocation,
-            ))),
+                height: 21,
+                width: 21,
+                child: Tab(
+                    icon: Image.asset(
+                  iconImageLocation,
+                ))),
           ],
         ),
         onTap: () {
-          if(route != null) {
+          if (route != null) {
             Routes.sailor.navigate(route);
           } else {
             onTap();

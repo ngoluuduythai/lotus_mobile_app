@@ -6,6 +6,7 @@ import '../../services/google.service.dart';
 import '../../services/graphql.service.dart';
 import '../../services/plaid.service.dart';
 import '../../models/auth_user.model.dart';
+import '../../../routes.dart';
 
 part 'auth_user.store.g.dart';
 
@@ -49,6 +50,9 @@ abstract class _AuthUserStore with Store {
 
   @action
   Future<AuthUser> logout() async {
+    await Routes.sailor.navigate(
+      RouteNames.login,
+    );
     authUser = null;
     graphqlService.authToken = null;
     await googleService.googleSignIn.signOut();
@@ -56,8 +60,8 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future addBankAccount(BuildContext context) async {
-    await plaidService.addBank(context);
+  Future connectInstitution(BuildContext context) async {
+    await plaidService.connectInstitution(context);
     return true;
   }
 }

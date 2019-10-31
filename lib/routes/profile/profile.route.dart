@@ -16,11 +16,11 @@ class ProfileRoute extends StatelessWidget {
   greyDivider() {
     return Container(
       child: Divider(
-      color: Colors.grey,
-      height: 1,
-      indent: 25,
-      endIndent: 25,
-    ),
+        color: Colors.grey,
+        height: 1,
+        indent: 25,
+        endIndent: 25,
+      ),
     );
   }
 
@@ -102,7 +102,8 @@ class ProfileRoute extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.only(top: 20,left: 5, right: 120, bottom: 15),
+                          margin: EdgeInsets.only(
+                              top: 20, left: 5, right: 120, bottom: 15),
                           width: 208,
                           height: 25,
                           child: Text(
@@ -118,10 +119,9 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         greyDivider(),
                         ItemList(
-                          text: 'Personal Information',
-                          iconImageLocation: IconPath.document,
-                          route: RouteNames.personal_information
-                        ),
+                            text: 'Personal Information',
+                            iconImageLocation: IconPath.document,
+                            route: RouteNames.personal_information),
                         greyDivider(),
                         ItemList(
                           text: 'Payments',
@@ -130,40 +130,34 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         greyDivider(),
                         ItemList(
-                          text: 'Notifications',
-                          iconImageLocation: IconPath.bell,
-                          route: RouteNames.notifications
-                        ),
+                            text: 'Notifications',
+                            iconImageLocation: IconPath.bell,
+                            route: RouteNames.notifications),
                         greyDivider(),
                         ItemList(
-                          text: 'Friends',
-                          iconImageLocation: IconPath.people,
-                          route: RouteNames.friends
-                        ),
+                            text: 'Friends',
+                            iconImageLocation: IconPath.people,
+                            route: RouteNames.friends),
                         greyDivider(),
                         ItemList(
-                          text: 'Documents / Ids',
-                          iconImageLocation: IconPath.folder,
-                          route: RouteNames.documentsids
-                        ),
+                            text: 'Documents / Ids',
+                            iconImageLocation: IconPath.folder,
+                            route: RouteNames.documentsids),
                         greyDivider(),
                         ItemList(
-                          text: 'Get Help',
-                          iconImageLocation: IconPath.question,
-                          route: RouteNames.gethelp
-                        ),
+                            text: 'Get Help',
+                            iconImageLocation: IconPath.question,
+                            route: RouteNames.gethelp),
                         greyDivider(),
                         ItemList(
-                          text: 'Terms of Service',
-                          iconImageLocation: IconPath.info,
-                          route: RouteNames.termofservice
-                        ),
+                            text: 'Terms of Service',
+                            iconImageLocation: IconPath.info,
+                            route: RouteNames.termofservice),
                         greyDivider(),
                         ItemList(
-                          text: 'Give us feedback',
-                          iconImageLocation: IconPath.message,
-                          route: RouteNames.feedback
-                        ),
+                            text: 'Give us feedback',
+                            iconImageLocation: IconPath.message,
+                            route: RouteNames.feedback),
                         greyDivider(),
                         ItemList(
                           text: 'Log out',

@@ -20,7 +20,7 @@ class PlaidService {
       products: 'auth,income',
       selectAccount: 'false');
 
-  Future getBankToken(BuildContext context) async {
+  Future getInstitutionToken(BuildContext context) async {
     Completer c = Completer();
     final FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(configuration);
     flutterPlaidApi.launch(context, (Result result) {
@@ -43,8 +43,8 @@ class PlaidService {
     return result.data;
   }
 
-  Future addBank(BuildContext context) async {
-    final Result data = await getBankToken(context);
+  Future connectInstitution(BuildContext context) async {
+    final Result data = await getInstitutionToken(context);
     final token = data.token;
     print('token $token');
     return sendToken(token);

@@ -6,7 +6,7 @@ class PersonalInformationRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          backgroundColor: Color.fromRGBO(245, 246, 250, 1),
+      backgroundColor: Color.fromRGBO(245, 246, 250, 1),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -14,7 +14,7 @@ class PersonalInformationRoute extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 100),
             child: IconButton(
-              icon:Icon(Icons.arrow_back),
+              icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Routes.sailor.navigate(
                   RouteNames.profile,

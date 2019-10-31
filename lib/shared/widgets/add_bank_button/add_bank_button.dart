@@ -11,7 +11,7 @@ class AddBankButtonButton extends StatelessWidget {
       color: Colors.white,
       child: Text('Add New Bank Account'),
       onPressed: () async {
-        await authUserStore.addBankAccount(context);
+        await authUserStore.connectInstitution(context);
       },
     );
   }
