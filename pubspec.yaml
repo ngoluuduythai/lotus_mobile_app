@@ -58,6 +58,7 @@ flutter:
     - assets/animations/
     - assets/fonts/
     - assets/images/
+    - assets/icons/
     - assets/lang/en.json
     - assets/lang/es.json
     - assets/lang/ru.json

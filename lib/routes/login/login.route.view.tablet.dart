@@ -9,6 +9,7 @@ import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
+import '../../shared/constants/icon_paths.dart';
 
 part 'login.route.view.tablet.g.dart';
 
@@ -127,7 +128,7 @@ Widget _bottomRectable(BuildContext context) {
           ),
           LoginButton(
             // Facebook Login Button
-            iconImageLocation: 'assets/images/facebookIcon.png',
+            iconImageLocation: IconPath.facebook,
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xFF3B5998),
             width: 450,
@@ -147,7 +148,7 @@ Widget _bottomRectable(BuildContext context) {
           ),
           LoginButton(
             // Instagram Login Button
-            iconImageLocation: 'assets/images/instagramIcon.png',
+            iconImageLocation: IconPath.instagram,
             buttonText: 'Login with Instagram',
             buttonTextColor: const Color(0xFF323332),
             width: 450,
@@ -168,7 +169,7 @@ Widget _bottomRectable(BuildContext context) {
           //Login with linkedin
           LoginButton(
             // Linkedin Login Button
-            iconImageLocation: 'assets/images/linkedinIcon.png',
+            iconImageLocation: IconPath.linkedin,
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xFF0077B5),
             width: 450,
@@ -189,7 +190,7 @@ Widget _bottomRectable(BuildContext context) {
           //Continue without registration
           LoginButton(
             // Linkedin Login Button
-            iconImageLocation: 'assets/images/googleIcon.png',
+            iconImageLocation: IconPath.google,
             buttonText: 'Login with Google',
             buttonTextColor: const Color(0xFF4C4C4C),
             width: 450,

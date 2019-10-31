@@ -7,6 +7,7 @@ import 'package:sailor/sailor.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
+import '../../shared/constants/icon_paths.dart';
 
 class ProfileRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -143,7 +144,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Personal Information',
-                          iconImageLocation: 'assets/images/5H.png',
+                          iconImageLocation: IconPath.document,
                           onTap: () => Routes.sailor
                               .navigate(RouteNames.personal_information),
                           color: Color(0xff0b0b0b),
@@ -162,7 +163,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Payments',
-                          iconImageLocation: 'assets/images/8B.png',
+                          iconImageLocation: IconPath.money,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.payments),
                           color: Color(0xff0b0b0b),
@@ -181,7 +182,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Notifications',
-                          iconImageLocation: 'assets/images/Shape.png',
+                          iconImageLocation: IconPath.bell,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.notifications),
                           color: Color(0xff0b0b0b),
@@ -200,7 +201,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Friends',
-                          iconImageLocation: 'assets/images/5F.png',
+                          iconImageLocation: IconPath.people,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.friends),
                           color: Color(0xff0b0b0b),
@@ -219,7 +220,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Documents / Ids',
-                          iconImageLocation: 'assets/images/6H.png',
+                          iconImageLocation: IconPath.folder,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.documentsids),
                           color: Color(0xff0b0b0b),
@@ -238,7 +239,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Get Help',
-                          iconImageLocation: 'assets/images/1B.png',
+                          iconImageLocation: IconPath.question,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.gethelp),
                           color: Color(0xff0b0b0b),
@@ -257,7 +258,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Terms of Service',
-                          iconImageLocation: 'assets/images/7B.png',
+                          iconImageLocation: IconPath.info,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.termofservice),
                           color: Color(0xff0b0b0b),
@@ -276,7 +277,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Give us feedback',
-                          iconImageLocation: 'assets/images/4H.png',
+                          iconImageLocation: IconPath.message,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.feedback),
                           color: Color(0xff0b0b0b),
@@ -295,7 +296,7 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         ItemListProfile(
                           text: 'Log out',
-                          iconImageLocation: 'assets/images/3F.png',
+                          iconImageLocation: IconPath.lock,
                           onTap: () => authUserStore.logout(),
                           color: Color(0xffdf8f3d),
                         ),
