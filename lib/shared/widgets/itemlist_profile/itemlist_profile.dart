@@ -5,7 +5,7 @@ class ItemListProfile extends StatelessWidget {
     @required this.text,
     @required this.iconImageLocation,
     @required this.onTap,
-    @required this.color,
+    this.color = const Color(0xff0b0b0b),
   });
 
   final String text;
@@ -16,7 +16,7 @@ class ItemListProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 23.8, right: 20),
+      margin: EdgeInsets.only(top: 20, left: 23.8, right: 20, bottom: 20),
       height: 21,
       child: InkWell(
         child: Row(
@@ -34,7 +34,7 @@ class ItemListProfile extends StatelessWidget {
             ),
             Tab(
                 icon: Image.asset(
-              iconImageLocation,
+                iconImageLocation,
             )),
           ],
         ),

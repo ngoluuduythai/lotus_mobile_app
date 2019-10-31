@@ -12,6 +12,16 @@ import '../../shared/constants/icon_paths.dart';
 class ProfileRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   static final sailor = Sailor();
+
+  greyDivider() {
+    return Divider(
+      color: Colors.grey,
+      height: 1,
+      indent: 25,
+      endIndent: 25,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
@@ -60,34 +70,16 @@ class ProfileRoute extends StatelessWidget {
                                 height: 4,
                               ),
                               Container(
-                                margin: EdgeInsets.only(right: 90),
+                                margin: EdgeInsets.only(right: 40),
                                 child: InkWell(
                                   child: Text(
                                     'View profile',
                                     style: TextStyle(
-                                      color: Colors.amber[700],
+                                      color: Color.fromRGBO(223, 148, 61, 1),
                                       fontWeight: FontWeight.w200,
                                       fontFamily: 'AirbnbCerealApp',
                                       fontStyle: FontStyle.normal,
                                       fontSize: 17.0,
-                                      shadows: [
-                                        Shadow(
-                                            // bottomLeft
-                                            offset: Offset(-0.01, -0.01),
-                                            color: Colors.black),
-                                        Shadow(
-                                            // bottomRight
-                                            offset: Offset(0.01, -0.01),
-                                            color: Colors.black),
-                                        Shadow(
-                                            // topRight
-                                            offset: Offset(0.01, 0.01),
-                                            color: Colors.black),
-                                        Shadow(
-                                            // topLeft
-                                            offset: Offset(-0.01, 0.01),
-                                            color: Colors.black),
-                                      ],
                                     ),
                                   ),
                                   //onTap: (),
@@ -99,23 +91,16 @@ class ProfileRoute extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 28,
-                  ),
                   Container(
-                    width: 372,
-                    height: 644,
+                    margin: EdgeInsets.only(top: 31),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
                     // color: Colors.white,
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height: 20,
-                        ),
                         Container(
-                          margin: EdgeInsets.only(left: 5, right: 120),
+                          margin: EdgeInsets.only(top: 20,left: 5, right: 120, bottom: 15),
                           width: 208,
                           height: 25,
                           child: Text(
@@ -129,179 +114,68 @@ class ProfileRoute extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Divider(
-                          thickness: 3,
-                          color: Colors.amber[600],
-                          height: 1,
-                          indent: 25,
-                          endIndent: 307,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Personal Information',
                           iconImageLocation: IconPath.document,
                           onTap: () => Routes.sailor
                               .navigate(RouteNames.personal_information),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Payments',
                           iconImageLocation: IconPath.money,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.payments),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Notifications',
                           iconImageLocation: IconPath.bell,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.notifications),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Friends',
                           iconImageLocation: IconPath.people,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.friends),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Documents / Ids',
                           iconImageLocation: IconPath.folder,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.documentsids),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Get Help',
                           iconImageLocation: IconPath.question,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.gethelp),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Terms of Service',
                           iconImageLocation: IconPath.info,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.termofservice),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Give us feedback',
                           iconImageLocation: IconPath.message,
                           onTap: () =>
                               Routes.sailor.navigate(RouteNames.feedback),
-                          color: Color(0xff0b0b0b),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          height: 1,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 22,
-                        ),
+                        greyDivider(),
                         ItemListProfile(
                           text: 'Log out',
                           iconImageLocation: IconPath.lock,
                           onTap: () => authUserStore.logout(),
                           color: Color(0xffdf8f3d),
-                        ),
-                        SizedBox(
-                          height: 20,
                         ),
                       ],
                     ),

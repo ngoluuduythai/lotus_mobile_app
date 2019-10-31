@@ -13,4 +13,3 @@ Future<void> main() async {
   await setupLocator();
   runApp(MyApp());
 }
-
