@@ -19,4 +19,6 @@ class IconPath {
   static const stay = 'assets/icons/stay.png';
 
   static const backArrow = 'assets/icons/path@2x.png';
+
+  static const cross = 'assets/icons/3B.png';
 }
