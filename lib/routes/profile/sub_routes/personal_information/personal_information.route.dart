@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main/routes/profile/itemedit_list/itemedit_list.dart';
-import 'package:main/shared/constants/icon_paths.dart';
+import './item_edit_list/item_edit_list.dart';
+import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
