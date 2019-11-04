@@ -60,10 +60,28 @@ class _$AuthUserSerializer implements StructuredSerializer<AuthUser> {
         ..add(serializers.serialize(object.location,
             specifiedType: const FullType(String)));
     }
-    if (object.created != null) {
+    if (object.pictureUrl != null) {
       result
-        ..add('created')
-        ..add(serializers.serialize(object.created,
+        ..add('pictureUrl')
+        ..add(serializers.serialize(object.pictureUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.nickName != null) {
+      result
+        ..add('nickName')
+        ..add(serializers.serialize(object.nickName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.birthday != null) {
+      result
+        ..add('birthday')
+        ..add(serializers.serialize(object.birthday,
+            specifiedType: const FullType(String)));
+    }
+    if (object.createdAt != null) {
+      result
+        ..add('createdAt')
+        ..add(serializers.serialize(object.createdAt,
             specifiedType: const FullType(DateTime)));
     }
     if (object.list != null) {
@@ -115,8 +133,20 @@ class _$AuthUserSerializer implements StructuredSerializer<AuthUser> {
           result.location = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'created':
-          result.created = serializers.deserialize(value,
+        case 'pictureUrl':
+          result.pictureUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'nickName':
+          result.nickName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'birthday':
+          result.birthday = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
         case 'list':
@@ -148,7 +178,13 @@ class _$AuthUser extends AuthUser {
   @override
   final String location;
   @override
-  final DateTime created;
+  final String pictureUrl;
+  @override
+  final String nickName;
+  @override
+  final String birthday;
+  @override
+  final DateTime createdAt;
   @override
   final BuiltList<int> list;
 
@@ -163,7 +199,10 @@ class _$AuthUser extends AuthUser {
       this.email,
       this.token,
       this.location,
-      this.created,
+      this.pictureUrl,
+      this.nickName,
+      this.birthday,
+      this.createdAt,
       this.list})
       : super._();
 
@@ -185,7 +224,10 @@ class _$AuthUser extends AuthUser {
         email == other.email &&
         token == other.token &&
         location == other.location &&
-        created == other.created &&
+        pictureUrl == other.pictureUrl &&
+        nickName == other.nickName &&
+        birthday == other.birthday &&
+        createdAt == other.createdAt &&
         list == other.list;
   }
 
@@ -198,14 +240,20 @@ class _$AuthUser extends AuthUser {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, userKey.hashCode),
-                                    firstName.hashCode),
-                                lastName.hashCode),
-                            phone.hashCode),
-                        email.hashCode),
-                    token.hashCode),
-                location.hashCode),
-            created.hashCode),
+                                $jc(
+                                    $jc(
+                                        $jc(
+                                            $jc($jc(0, userKey.hashCode),
+                                                firstName.hashCode),
+                                            lastName.hashCode),
+                                        phone.hashCode),
+                                    email.hashCode),
+                                token.hashCode),
+                            location.hashCode),
+                        pictureUrl.hashCode),
+                    nickName.hashCode),
+                birthday.hashCode),
+            createdAt.hashCode),
         list.hashCode));
   }
 
@@ -219,7 +267,10 @@ class _$AuthUser extends AuthUser {
           ..add('email', email)
           ..add('token', token)
           ..add('location', location)
-          ..add('created', created)
+          ..add('pictureUrl', pictureUrl)
+          ..add('nickName', nickName)
+          ..add('birthday', birthday)
+          ..add('createdAt', createdAt)
           ..add('list', list))
         .toString();
   }
@@ -256,9 +307,21 @@ class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
   String get location => _$this._location;
   set location(String location) => _$this._location = location;
 
-  DateTime _created;
-  DateTime get created => _$this._created;
-  set created(DateTime created) => _$this._created = created;
+  String _pictureUrl;
+  String get pictureUrl => _$this._pictureUrl;
+  set pictureUrl(String pictureUrl) => _$this._pictureUrl = pictureUrl;
+
+  String _nickName;
+  String get nickName => _$this._nickName;
+  set nickName(String nickName) => _$this._nickName = nickName;
+
+  String _birthday;
+  String get birthday => _$this._birthday;
+  set birthday(String birthday) => _$this._birthday = birthday;
+
+  DateTime _createdAt;
+  DateTime get createdAt => _$this._createdAt;
+  set createdAt(DateTime createdAt) => _$this._createdAt = createdAt;
 
   ListBuilder<int> _list;
   ListBuilder<int> get list => _$this._list ??= new ListBuilder<int>();
@@ -275,7 +338,10 @@ class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
       _email = _$v.email;
       _token = _$v.token;
       _location = _$v.location;
-      _created = _$v.created;
+      _pictureUrl = _$v.pictureUrl;
+      _nickName = _$v.nickName;
+      _birthday = _$v.birthday;
+      _createdAt = _$v.createdAt;
       _list = _$v.list?.toBuilder();
       _$v = null;
     }
@@ -308,7 +374,10 @@ class AuthUserBuilder implements Builder<AuthUser, AuthUserBuilder> {
               email: email,
               token: token,
               location: location,
-              created: created,
+              pictureUrl: pictureUrl,
+              nickName: nickName,
+              birthday: birthday,
+              createdAt: createdAt,
               list: _list?.build());
     } catch (_) {
       String _$failedField;

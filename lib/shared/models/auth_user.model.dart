@@ -49,7 +49,16 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
   String get location;
 
   @nullable
-  DateTime get created;
+  String get pictureUrl;
+
+  @nullable
+  String get nickName;
+
+  @nullable
+  String get birthday;
+
+  @nullable
+  DateTime get createdAt;
 
   @nullable
   BuiltList<int> get list;

@@ -26,6 +26,7 @@ class ProfileRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(authUserStore.authUser);
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: ListView(
@@ -51,7 +52,7 @@ class ProfileRoute extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://picsum.photos/250?image=9') //eventually going to use facebook url
+                                      '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
                                   )),
                         ),
                         Container(

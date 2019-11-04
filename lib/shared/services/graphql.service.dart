@@ -53,4 +53,23 @@ class GraphqlService {
       document: document,
     ));
   }
+
+  socialLogin(String token, String service) async {
+    final dynamic result = await query('''
+        query{
+          socialLogin(
+            token: "$token",
+            platform: $service
+          ){
+            email
+            firstName
+            lastName
+            token
+            gender
+            pictureUrl
+          }
+        }
+    ''');
+    return result.data['socialLogin'];
+  }
 }

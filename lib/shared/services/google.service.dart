@@ -7,22 +7,6 @@ class GoogleService {
   final GoogleSignIn googleSignIn =
       GoogleSignIn(scopes: <String>['profile', 'email']);
 
-  Future<dynamic> sendIdToken(String token) async {
-    final dynamic result = await graphqlService.query('''
-        query{
-          socialLogin(
-            token: "$token",
-            platform: GOOGLE
-          ){
-            email
-            firstName
-            lastName
-            token
-          }
-        }
-        ''');
-    return result.data['socialLogin'];
-  }
 
   Future<String> getGoogleIdToken() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -39,6 +23,6 @@ class GoogleService {
       throw 'Error #2: did not receive google token';
     }
 
-    return sendIdToken(token);
+    return graphqlService.socialLogin(token, 'GOOGLE');
   }
 }

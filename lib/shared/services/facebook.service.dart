@@ -5,23 +5,6 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class FacebookService {
   final graphqlService = locator<GraphqlService>();
 
-  dynamic sendAccessToken(String accessToken) async {
-    final dynamic result = await graphqlService.query('''
-        query{
-          socialLogin(
-            token: "$accessToken",
-            platform: FACEBOOK
-          ){
-            email
-            firstName
-            lastName
-            token
-          }
-        }
-        ''');
-    return result.data['socialLogin'];
-  }
-
   Future<String> getFacebookAccessToken() async {
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
@@ -49,6 +32,6 @@ class FacebookService {
     if (token == null) {
       return null;
     }
-    return sendAccessToken(token);
+    return graphqlService.socialLogin(token, 'FACEBOOK');
   }
 }
