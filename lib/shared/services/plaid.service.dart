@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants/env.dart';
 import 'package:main/locator.dart';
 import './graphql.service.dart';
+// import '../../pac/plaid.dart';
 
 class PlaidService {
   final graphqlService = locator<GraphqlService>();
@@ -18,7 +19,7 @@ class PlaidService {
       secret: ENV.plaidSecret,
       webhook: ENV.plaidWebhookUrl,
       products: 'auth,income',
-      selectAccount: 'true');
+      selectAccount: 'false');
 
   Future getInstitutionToken(BuildContext context) async {
     Completer c = Completer();
@@ -29,12 +30,19 @@ class PlaidService {
     return c.future;
   }
 
-  Future sendToken(String token, String accountId) async {
+  Future sendToken(Result plaidResult) async {
     final result = await graphqlService.mutate('''
         mutation{
           connectFinancialInstitution(
-            token: "$token",
-            accountId: "$accountId"
+            input: {
+              token: "${plaidResult.token}"
+              institutionId: "${plaidResult.institutionId}"
+              institutionName: "${plaidResult.institutionName}"
+              accountId: "${plaidResult.accountId}"
+              accountName: "${plaidResult.accountName}"
+              accountType: "${plaidResult.accountType}"
+              accountSubtype: "${plaidResult.accountSubtype}"
+            }
           ){
             message
           }
@@ -44,9 +52,7 @@ class PlaidService {
   }
 
   Future connectInstitution(BuildContext context) async {
-    final Result data = await getInstitutionToken(context);
-    final token = data.token;
-    final accountId = data.accountId;
-    return sendToken(token, accountId);
+    final Result result = await getInstitutionToken(context);
+    return sendToken(result);
   }
 }
