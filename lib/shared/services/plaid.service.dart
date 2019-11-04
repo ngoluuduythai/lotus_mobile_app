@@ -18,7 +18,7 @@ class PlaidService {
       secret: ENV.plaidSecret,
       webhook: ENV.plaidWebhookUrl,
       products: 'auth,income',
-      selectAccount: 'false');
+      selectAccount: 'true');
 
   Future getInstitutionToken(BuildContext context) async {
     Completer c = Completer();
@@ -29,24 +29,24 @@ class PlaidService {
     return c.future;
   }
 
-  Future sendToken(String token) async {
+  Future sendToken(String token, String accountId) async {
     final result = await graphqlService.mutate('''
         mutation{
           connectFinancialInstitution(
             token: "$token",
+            accountId: "$accountId"
           ){
             message
           }
         }
        ''');
-    print(result.data);
     return result.data;
   }
 
   Future connectInstitution(BuildContext context) async {
     final Result data = await getInstitutionToken(context);
     final token = data.token;
-    print('token $token');
-    return sendToken(token);
+    final accountId = data.accountId;
+    return sendToken(token, accountId);
   }
 }
