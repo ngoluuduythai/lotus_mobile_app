@@ -30,11 +30,10 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
   
   @override
   Widget build(BuildContext context) {
-   return BaseWidget(builder: (context, sizingInformation) {
+   return BaseWidget( builder: (context, sizingInformation) {
    return BottomNavigationBase(
-     child:   Scaffold(
-      backgroundColor: Color(0xfff5f6fa),
-      body: ListView(
+      child:
+         ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               children: <Widget>[
@@ -307,9 +306,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                        
               ],
       )
-   ),
-   );
+      );
+  } );
 }
-   );
 } 
-}
