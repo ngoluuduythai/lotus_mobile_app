@@ -3,7 +3,6 @@ import '../../../routes.dart';
 import 'package:sailor/sailor.dart';
 
 class BottomNavbar extends StatelessWidget {
-   
   final Map<int, String> navMap = {
     0: RouteNames.explore,
     1: RouteNames.saved,
@@ -22,19 +21,16 @@ class BottomNavbar extends StatelessWidget {
     return index;
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
-    
     final currentRoute = ModalRoute.of(context).settings.name;
-    int  currentRouteIndex = getRouteIndex(currentRoute);
+    int currentRouteIndex = getRouteIndex(currentRoute);
     print(currentRouteIndex);
-    if(currentRouteIndex==null){
-      currentRouteIndex=4;
+    if (currentRouteIndex == null) {
+      currentRouteIndex = 4;
     }
     return BottomNavigationBar(
-     
+
         // selectedIconTheme: IconThemeData(color: Colors.red),
         // unselectedIconTheme: IconThemeData(color: Colors.red),
         unselectedItemColor: Color(0xffb6c1cf),

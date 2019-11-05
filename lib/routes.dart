@@ -30,8 +30,7 @@ class RouteNames {
   static const payments = '/profile/payments';
   static const personal_information = '/profile/personal_information';
   static const termofservice = '/profile/termofservice';
-  static const viewprofile= '/profile/view_profile';
-
+  static const viewprofile = '/profile/view_profile';
 }
 
 class Routes {
@@ -134,7 +133,7 @@ class Routes {
         return TermofserviceRoute();
       },
     ));
-      sailor.addRoute(SailorRoute(
+    sailor.addRoute(SailorRoute(
       name: RouteNames.viewprofile,
       builder: (context, args, params) {
         return ViewProfileRoute();
