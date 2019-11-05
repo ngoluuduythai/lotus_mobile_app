@@ -13,7 +13,7 @@ class PaymentsRoute extends StatelessWidget {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("Payments"),
+          Text('Payments'),
           Container(
             margin: EdgeInsets.only(top: 100),
             child: IconButton(

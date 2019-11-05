@@ -50,10 +50,11 @@ class ProfileRoute extends StatelessWidget {
                                   color: Color.fromRGBO(255, 186, 115, 1),
                                   width: 2),
                               shape: BoxShape.circle,
-                              image: DecorationImage(
+                            image: DecorationImage(
                                   image: NetworkImage(
                                       '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
-                                  )),
+                                )
+                                  ),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 22, bottom: 2),
@@ -85,7 +86,7 @@ class ProfileRoute extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                  //onTap: (),
+                                  onTap: ()=> Routes.sailor.navigate(RouteNames.viewprofile),
                                 ),
                               ),
                             ],

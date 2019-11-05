@@ -26,6 +26,7 @@ class BottomNavbar extends StatelessWidget {
     final currentRoute = ModalRoute.of(context).settings.name;
     final currentRouteIndex = getRouteIndex(currentRoute);
     return BottomNavigationBar(
+      
         // selectedIconTheme: IconThemeData(color: Colors.red),
         // unselectedIconTheme: IconThemeData(color: Colors.red),
         unselectedItemColor: Color(0xffb6c1cf),
