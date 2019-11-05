@@ -7,7 +7,6 @@ class GoogleService {
   final GoogleSignIn googleSignIn =
       GoogleSignIn(scopes: <String>['profile', 'email']);
 
-
   Future<String> getGoogleIdToken() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
 

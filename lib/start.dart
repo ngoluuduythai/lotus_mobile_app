@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:flutter/services.dart';
+import 'package:main/routes/splash_screen/splash_screen.dart';
 import './routes/login/login.route.dart';
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Lotus',
       navigatorKey: Routes.sailor.navigatorKey,
       onGenerateRoute: Routes.sailor.generator(),
-      home: LoginRoute(),
+      home: SplashScreen(),
     );
   }
 }

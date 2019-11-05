@@ -6,6 +6,7 @@ import 'package:main/routes/profile/sub_routes/notifications/notifications.route
 import 'package:main/routes/profile/sub_routes/payments/payments.route.dart';
 import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
 import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
+import 'package:main/routes/splash_screen/splash_screen.dart';
 import 'package:sailor/sailor.dart';
 import 'routes/explore/explore.route.dart';
 import 'routes/inbox/inbox.route.dart';
@@ -15,6 +16,7 @@ import 'routes/saved/saved.route.dart';
 import 'routes/stay/stay.route.dart';
 
 class RouteNames {
+  static const splash = '/splashScreen';
   static const login = '/login';
   static const explore = '/explore';
   static const saved = '/saved';
@@ -35,6 +37,13 @@ class Routes {
   static final sailor = Sailor();
 
   static void createRoutes() {
+    sailor.addRoute(SailorRoute(
+      name: RouteNames.splash,
+      builder: (context, args, params) {
+        return SplashScreen();
+      },
+    ));
+
     sailor.addRoute(SailorRoute(
       name: RouteNames.login,
       builder: (context, args, params) {
