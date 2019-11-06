@@ -6,13 +6,13 @@ import './graphql.service.dart';
 class UserService {
   final graphqlService = locator<GraphqlService>();
 
-  Future editProfile(AuthUser user) async {
+  Future editProfile(String change) async {
     final result = await graphqlService.mutate('''
       mutation {
         updateProfile(
-          input: "$user"
+          firstname : "'$change'"
         ) {
-          userKey
+          firstname
         }
       }
     ''');

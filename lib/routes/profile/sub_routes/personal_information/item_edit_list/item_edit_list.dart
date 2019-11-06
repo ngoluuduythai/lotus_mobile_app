@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../../shared/services/user.service.dart';
+import '../../../../../shared/models/auth_user.model.dart';
+import '../../../../../locator.dart';
 import '../../../../../routes.dart';
 
 class ItemEditList extends StatelessWidget {
@@ -19,57 +22,53 @@ class ItemEditList extends StatelessWidget {
   final Color color;
   final String route;
   final Color color2;
+  TextField textField;
+  TextEditingController _controller;
+  UserService userService = UserService();
+  AuthUser user = AuthUser();
 
   @override
   Widget build(BuildContext context) {
+    _controller = new TextEditingController(text: text2);
+
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
-      child: InkWell(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: color,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'AirbnbCerealApp',
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18.0,
-                ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: color,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'AirbnbCerealApp',
+                fontStyle: FontStyle.normal,
+                fontSize: 18.0,
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(left: 0, right: 20),
-              child: Text(
-                text2,
-                style: TextStyle(
-                  color: color2,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'AirbnbCerealApp',
-                  fontStyle: FontStyle.normal,
-                  fontSize: 17.0,
-                ),
-              ),
-            ),
-            Container(
-                height: 21,
-                width: 21,
-                child: Tab(
-                    icon: Image.asset(
-                  iconImageLocation,
-                ))),
-          ],
-        ),
-        onTap: () {
-          if (route != null) {
-            Routes.sailor.navigate(route);
-          } else {
-            onTap();
-          }
-        },
+          ),
+          Container(
+              width: 170,
+              height: 20,
+              margin: EdgeInsets.only(left: 10, right: 20),
+              child: TextField(
+                decoration: new InputDecoration.collapsed(hintText: ''),
+                textAlign: TextAlign.center,
+                controller: _controller,
+                onChanged: (text2) {
+                  userService.editProfile(text2);
+                },
+              )),
+          Container(
+              height: 21,
+              width: 21,
+              child: Tab(
+                  icon: Image.asset(
+                iconImageLocation,
+              ))),
+        ],
       ),
     );
   }
