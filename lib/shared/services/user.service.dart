@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:main/locator.dart';
-import 'package:main/shared/models/auth_user.model.dart';
 import './graphql.service.dart';
 
 class UserService {

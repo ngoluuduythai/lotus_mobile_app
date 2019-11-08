@@ -57,8 +57,9 @@ class ItemEditList extends StatelessWidget {
                 decoration: new InputDecoration.collapsed(hintText: ''),
                 textAlign: TextAlign.center,
                 controller: _controller,
-                onChanged: (text2) {
-                  userService.editProfile(text2);
+                onChanged: (text2) async {
+                  var newdata = await userService.editProfile(text2);
+                  print(newdata);
                 },
               )),
           Container(
