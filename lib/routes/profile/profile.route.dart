@@ -85,7 +85,8 @@ class ProfileRoute extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                  //onTap: (),
+                                  onTap: () => Routes.sailor
+                                      .navigate(RouteNames.viewprofile),
                                 ),
                               ),
                             ],

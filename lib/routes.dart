@@ -11,6 +11,7 @@ import 'routes/explore/explore.route.dart';
 import 'routes/inbox/inbox.route.dart';
 import 'routes/login/login.route.dart';
 import 'routes/profile/profile.route.dart';
+import 'routes/profile/sub_routes/view_profile/view_profile.route.dart';
 import 'routes/saved/saved.route.dart';
 import 'routes/stay/stay.route.dart';
 
@@ -29,6 +30,7 @@ class RouteNames {
   static const payments = '/profile/payments';
   static const personal_information = '/profile/personal_information';
   static const termofservice = '/profile/termofservice';
+  static const viewprofile = '/profile/view_profile';
 }
 
 class Routes {
@@ -129,6 +131,12 @@ class Routes {
       name: RouteNames.termofservice,
       builder: (context, args, params) {
         return TermofserviceRoute();
+      },
+    ));
+    sailor.addRoute(SailorRoute(
+      name: RouteNames.viewprofile,
+      builder: (context, args, params) {
+        return ViewProfileRoute();
       },
     ));
   }
