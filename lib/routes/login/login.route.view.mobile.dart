@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:linkedin_auth/linkedin_auth.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
@@ -200,10 +203,27 @@ Widget _bottomRectable(BuildContext context) {
             right: 65,
             fontSize: 16,
             onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                        appBar: AppBar(
+                          leading: CloseButton(),
+                        ),
+                        body: LinkedInLoginView(
+                          clientId: '86vsd8mko888qz',
+                          redirectUrl: 'https://www.linkedin.com',
+                          onError: (String error) {
+                            print(error);
+                          },
+                          onServerResponse: (res) {
+                            var parsed = json.decode(res.body);
+                            print(parsed);
+                            return AccessToken(
+                                parsed["token"], parsed["expiry"]);
+                          },
+                        ))),
+              );
             },
           ),
           SizedBox(
