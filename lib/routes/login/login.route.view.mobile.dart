@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:linkedin_auth/linkedin_auth.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import 'package:main/shared/models/auth_user.model.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -15,6 +13,7 @@ import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
+import 'linkedin_view/linkedin_view.dart';
 
 part 'login.route.view.mobile.g.dart';
 
@@ -203,6 +202,7 @@ Widget _bottomRectable(BuildContext context) {
             right: 65,
             fontSize: 16,
             onPressed: () async {
+              // FIXME refactor: move to another place
               await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -210,17 +210,17 @@ Widget _bottomRectable(BuildContext context) {
                         appBar: AppBar(
                           leading: CloseButton(),
                         ),
-                        body: LinkedInLoginView(
-                          clientId: '86vsd8mko888qz',
+                        body: LinkedInLogin(
+                          clientId: '86vsd8mko888qz', // FIXME hardcoding
                           redirectUrl: 'https://www.linkedin.com',
                           onError: (String error) {
                             print(error);
                           },
-                          onServerResponse: (res) {
-                            var parsed = json.decode(res.body);
-                            print(parsed);
-                            return AccessToken(
-                                parsed["token"], parsed["expiry"]);
+                          onAuthCode: (authCode) async {
+                            final loggedIn = await authUserStore.loginLinkedin(authCode);
+                            if (loggedIn) {
+                              Routes.sailor(RouteNames.profile);
+                            }
                           },
                         ))),
               );

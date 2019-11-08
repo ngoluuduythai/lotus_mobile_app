@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../../locator.dart';
 import '../../services/facebook.service.dart';
@@ -15,6 +16,7 @@ class AuthUserStore = _AuthUserStore with _$AuthUserStore;
 abstract class _AuthUserStore with Store {
   final facebookService = locator<FacebookService>();
   final googleService = locator<GoogleService>();
+  final linkedinService = locator<LinkedinService>();
   final plaidService = locator<PlaidService>();
   final graphqlService = locator<GraphqlService>();
 
@@ -42,6 +44,17 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginGoogle() async {
     final dynamic data = await googleService.login();
+    if (!data) {
+      return false;
+    }
+    authUser = AuthUser.fromJson(data);
+    graphqlService.authToken = 'Bearer ${authUser.token}';
+    return true;
+  }
+
+  @action
+  Future<bool> loginLinkedin(String authCode) async {
+    final dynamic data = await linkedinService.login(authCode);
     if (!data) {
       return false;
     }
