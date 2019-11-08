@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../../../../shared/services/user.service.dart';
+import 'package:flutter/services.dart';
 import '../../../../../shared/models/auth_user.model.dart';
 import '../../../../../locator.dart';
 import '../../../../../routes.dart';
 
-class ItemEditList extends StatelessWidget {
+class ItemEditList extends StatefulWidget {
+  @override
+  ItemEditListState createState() => ItemEditListState();
   ItemEditList({
     @required this.text,
     @required this.text2,
     @required this.iconImageLocation,
+    @required this.controller,
     this.color = const Color(0xff0b0b0b),
     this.color2,
     this.onTap,
@@ -16,21 +19,22 @@ class ItemEditList extends StatelessWidget {
   });
 
   final String text;
-  final String text2;
+  String text2;
   final String iconImageLocation;
   final Function onTap;
   final Color color;
   final String route;
   final Color color2;
   TextField textField;
-  TextEditingController _controller;
-  UserService userService = UserService();
-  AuthUser user = AuthUser();
+  TextEditingController controller;
+  String newText;
+}
 
+class ItemEditListState extends State<ItemEditList> {
   @override
   Widget build(BuildContext context) {
-    _controller = new TextEditingController(text: text2);
-
+    widget.controller.text = widget.text2;
+    widget.newText = widget.controller.text;
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
       child: Row(
@@ -39,9 +43,9 @@ class ItemEditList extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 20, bottom: 20),
             child: Text(
-              text,
+              widget.text,
               style: TextStyle(
-                color: color,
+                color: widget.color,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'AirbnbCerealApp',
                 fontStyle: FontStyle.normal,
@@ -54,12 +58,20 @@ class ItemEditList extends StatelessWidget {
               height: 20,
               margin: EdgeInsets.only(left: 10, right: 20),
               child: TextField(
-                decoration: new InputDecoration.collapsed(hintText: ''),
+                decoration: new InputDecoration.collapsed(
+                  hintText: widget.controller.text,
+                ),
                 textAlign: TextAlign.center,
-                controller: _controller,
-                onChanged: (text2) async {
-                  var newdata = await userService.editProfile(text2);
-                  print(newdata);
+                controller: widget.controller,
+                onChanged: (String e) {
+                  setState(() {
+                    print(e);
+                    widget.controller.text = e;
+                    print(widget.controller.text);
+                  });
+                },
+                onSubmitted: (input) {
+                  widget.controller.text = input;
                 },
               )),
           Container(
@@ -67,10 +79,16 @@ class ItemEditList extends StatelessWidget {
               width: 21,
               child: Tab(
                   icon: Image.asset(
-                iconImageLocation,
+                widget.iconImageLocation,
               ))),
         ],
       ),
     );
+  }
+
+  void add(TextEditingController text, String text1) {
+    text.text = text1;
+    widget.text2 = text.text;
+    widget.controller.text = text.text;
   }
 }

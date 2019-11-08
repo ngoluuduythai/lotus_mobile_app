@@ -4,10 +4,17 @@ import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
+import '../../../../shared/services/user.service.dart';
 
 class PersonalInformationRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   static GlobalKey<FormState> _formEditKey = GlobalKey<FormState>();
+  UserService userService = UserService();
+  TextEditingController controllerFirstname = new TextEditingController();
+  TextEditingController controllerLastname = new TextEditingController();
+  TextEditingController controllerGender = new TextEditingController();
+  TextEditingController controllerEmail = new TextEditingController();
+  TextEditingController controllerPhone = new TextEditingController();
 
   greyDivider() {
     return Container(
@@ -71,6 +78,11 @@ class PersonalInformationRoute extends StatelessWidget {
                           ),
                           textAlign: TextAlign.right,
                         ),
+                        onTap: () async {
+                          var newdata = await userService
+                              .editProfile(controllerFirstname.toString());
+                          print(newdata);
+                        },
                       ),
                     ],
                   ),
@@ -85,6 +97,7 @@ class PersonalInformationRoute extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       ItemEditList(
+                        controller: controllerFirstname,
                         iconImageLocation: IconPath.cross,
                         text: "First Name:",
                         text2: authUserStore.authUser.firstName,
@@ -95,6 +108,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
+                        controller: controllerLastname,
                         iconImageLocation: IconPath.cross,
                         text: "Last name:",
                         text2: authUserStore.authUser.lastName,
@@ -105,6 +119,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
+                        controller: controllerGender,
                         iconImageLocation: IconPath.cross,
                         text: "Gender:",
                         text2: "Gender",
@@ -115,6 +130,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
+                        controller: controllerEmail,
                         iconImageLocation: IconPath.cross,
                         text: "Email:",
                         text2: authUserStore.authUser.email,
@@ -125,6 +141,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
+                        controller: controllerPhone,
                         iconImageLocation: IconPath.cross,
                         text: "Phone:",
                         text2: authUserStore.authUser.phone,
