@@ -8,7 +8,7 @@ class BottomNavbar extends StatelessWidget {
     1: RouteNames.saved,
     2: RouteNames.stays,
     3: RouteNames.inbox,
-    4: RouteNames.profile
+    4: RouteNames.profile,
   };
 
   int getRouteIndex(String route) {
@@ -24,8 +24,12 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentRoute = ModalRoute.of(context).settings.name;
-    final currentRouteIndex = getRouteIndex(currentRoute);
+    final baseroute = currentRoute.split('/');
+    var currentRouteIndex = getRouteIndex('/' + baseroute.removeLast());
+    currentRouteIndex ??= getRouteIndex('/' + baseroute.removeLast());
+
     return BottomNavigationBar(
+
         // selectedIconTheme: IconThemeData(color: Colors.red),
         // unselectedIconTheme: IconThemeData(color: Colors.red),
         unselectedItemColor: Color(0xffb6c1cf),

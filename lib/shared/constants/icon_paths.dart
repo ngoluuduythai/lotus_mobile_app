@@ -22,4 +22,8 @@ class IconPath {
   static const backArrow = 'assets/icons/path@2x.png';
 
   static const cross = 'assets/icons/3B.png';
+
+  static const verifiedAccount = 'assets/icons/verifiedAccount.png';
+
+  static const okIcon = 'assets/icons/2B.png';
 }

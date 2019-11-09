@@ -170,7 +170,9 @@ class PaymentsRoute extends StatelessWidget {
                             width: double.infinity,
                             child: RaisedButton(
                               color: Color.fromRGBO(255, 186, 115, 1),
-                              onPressed: () {},
+                              onPressed: () async {
+                                var connected = await authUserStore.connectInstitution(context);
+                              },
                               child: Text('Add New Bank',
                                   style: TextStyle(
                                       fontSize: 14,
