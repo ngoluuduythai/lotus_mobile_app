@@ -15,11 +15,9 @@ class LoginRoute extends StatelessWidget {
     return ScreenTypeLayout(
       mobile: OrientationLayout(
         portrait: LoginRouteMobilePortrait(),
-        landscape: LoginRouteMobileLandscape(),
       ),
       tablet: OrientationLayout(
         portrait: LoginRouteTablet(),
-        landscape: LoginRouteTablet(),
       ),
     );
   }

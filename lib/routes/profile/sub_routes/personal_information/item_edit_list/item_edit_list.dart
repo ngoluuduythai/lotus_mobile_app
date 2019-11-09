@@ -29,7 +29,7 @@ class ItemEditList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _controller = new TextEditingController(text: text2);
+    _controller = TextEditingController(text: text2);
 
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
@@ -54,7 +54,7 @@ class ItemEditList extends StatelessWidget {
               height: 20,
               margin: EdgeInsets.only(left: 10, right: 20),
               child: TextField(
-                decoration: new InputDecoration.collapsed(hintText: ''),
+                decoration: InputDecoration.collapsed(hintText: ''),
                 textAlign: TextAlign.center,
                 controller: _controller,
                 onChanged: (text2) {
