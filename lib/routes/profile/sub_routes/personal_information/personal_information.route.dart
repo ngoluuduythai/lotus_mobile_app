@@ -7,6 +7,8 @@ import './../../../../routes.dart';
 
 class PersonalInformationRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+  static GlobalKey<FormState> _formEditKey = GlobalKey<FormState>();
+
   greyDivider() {
     return Container(
       child: Divider(
@@ -115,7 +117,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ItemEditList(
                         iconImageLocation: IconPath.cross,
                         text: "Email:",
-                        text2: "emailexample@email.com",
+                        text2: authUserStore.authUser.email,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                         onTap: () => (''),
@@ -125,7 +127,7 @@ class PersonalInformationRoute extends StatelessWidget {
                       ItemEditList(
                         iconImageLocation: IconPath.cross,
                         text: "Phone:",
-                        text2: "123456",
+                        text2: authUserStore.authUser.phone,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                         onTap: () => (''),
