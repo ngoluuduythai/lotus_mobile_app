@@ -104,7 +104,6 @@ Widget _imageWoman(BuildContext context) {
   );
 }
 
-
 Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double topH = size.height * 3 / 5;
