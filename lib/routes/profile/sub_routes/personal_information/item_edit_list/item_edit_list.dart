@@ -1,4 +1,3 @@
-import 'dart:core' as prefix0;
 import 'dart:core';
 import 'dart:math';
 
@@ -44,6 +43,7 @@ class ItemEditList extends StatefulWidget {
 class ItemEditListState extends State<ItemEditList> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
       
       switch(widget.text){
       case 'First name:' : widget.valueOfHint=widget.authUserStore.authUser.firstName;
@@ -57,6 +57,10 @@ class ItemEditListState extends State<ItemEditList> {
       case 'Phone:' : widget.valueOfHint=widget.authUserStore.authUser.phone;
       break;
     }
+=======
+    _controller = TextEditingController(text: text2);
+
+>>>>>>> 6317a29f23098958d1295152d738bf792224d7fe
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
       child: Row(
@@ -80,9 +84,13 @@ class ItemEditListState extends State<ItemEditList> {
               height: 20,
               margin: EdgeInsets.only(left: 10, right: 20),
               child: TextField(
+<<<<<<< HEAD
                 decoration: new InputDecoration.collapsed(
                   hintText: widget.valueOfHint,
                 ),
+=======
+                decoration: InputDecoration.collapsed(hintText: ''),
+>>>>>>> 6317a29f23098958d1295152d738bf792224d7fe
                 textAlign: TextAlign.center,
                 onChanged: (String e) {
                   setState(() {

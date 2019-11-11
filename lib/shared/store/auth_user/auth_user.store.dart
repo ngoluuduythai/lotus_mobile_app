@@ -33,8 +33,6 @@ abstract class _AuthUserStore with Store {
       return false;
     }
     authUser = AuthUser.fromJson(data);
-    print('************');
-    print(authUser.pictureUrl);
     graphqlService.authToken = 'Bearer ${authUser.token}';
     return true;
   }
