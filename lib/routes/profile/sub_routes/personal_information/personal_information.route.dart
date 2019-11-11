@@ -5,16 +5,22 @@ import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
 import '../../../../shared/services/user.service.dart';
+import 'user.dart';
 
 class PersonalInformationRoute extends StatelessWidget {
+
+  PersonalInformationRoute({this.user});
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   static GlobalKey<FormState> _formEditKey = GlobalKey<FormState>();
   UserService userService = UserService();
-  TextEditingController controllerFirstname = new TextEditingController();
-  TextEditingController controllerLastname = new TextEditingController();
-  TextEditingController controllerGender = new TextEditingController();
-  TextEditingController controllerEmail = new TextEditingController();
-  TextEditingController controllerPhone = new TextEditingController();
+
+  User user = User();
+
+  String firstname;
+  String lastname;
+  String gender;
+  String email;
+  String phone;
 
   greyDivider() {
     return Container(
@@ -29,6 +35,8 @@ class PersonalInformationRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(245, 246, 250, 1),
@@ -79,9 +87,7 @@ class PersonalInformationRoute extends StatelessWidget {
                           textAlign: TextAlign.right,
                         ),
                         onTap: () async {
-                          var newdata = await userService
-                              .editProfile(controllerFirstname.toString());
-                          print(newdata);
+                         // await userService.editProfile('Sharon2');
                         },
                       ),
                     ],
@@ -97,10 +103,9 @@ class PersonalInformationRoute extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       ItemEditList(
-                        controller: controllerFirstname,
                         iconImageLocation: IconPath.cross,
-                        text: "First Name:",
-                        text2: authUserStore.authUser.firstName,
+                        text: 'First name:',
+                        text2: firstname,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                         onTap: () => (''),
@@ -108,10 +113,9 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
-                        controller: controllerLastname,
                         iconImageLocation: IconPath.cross,
-                        text: "Last name:",
-                        text2: authUserStore.authUser.lastName,
+                        text: 'Last name:',
+                        text2: lastname,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                         onTap: () => (''),
@@ -119,10 +123,9 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
-                        controller: controllerGender,
                         iconImageLocation: IconPath.cross,
-                        text: "Gender:",
-                        text2: "Gender",
+                        text: 'Gender:',
+                        text2: 'Gender',
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                         onTap: () => (''),
@@ -130,9 +133,8 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
-                        controller: controllerEmail,
                         iconImageLocation: IconPath.cross,
-                        text: "Email:",
+                        text: 'Email:',
                         text2: authUserStore.authUser.email,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
@@ -141,9 +143,8 @@ class PersonalInformationRoute extends StatelessWidget {
                       ),
                       greyDivider(),
                       ItemEditList(
-                        controller: controllerPhone,
                         iconImageLocation: IconPath.cross,
-                        text: "Phone:",
+                        text: 'Phone:',
                         text2: authUserStore.authUser.phone,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),

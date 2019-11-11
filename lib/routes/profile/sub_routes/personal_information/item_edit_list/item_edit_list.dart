@@ -1,8 +1,15 @@
+import 'dart:core' as prefix0;
+import 'dart:core';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import '../../../../../shared/models/auth_user.model.dart';
+import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
+import 'package:main/shared/constants/env.dart';
+import 'package:main/shared/models/auth_user.model.dart';
 import '../../../../../locator.dart';
-import '../../../../../routes.dart';
+import '../../../../../shared/store/auth_user/auth_user.store.dart';
+import '../../../../../shared/services/user.service.dart';
+import '../user.dart';
 
 class ItemEditList extends StatefulWidget {
   @override
@@ -11,14 +18,15 @@ class ItemEditList extends StatefulWidget {
     @required this.text,
     @required this.text2,
     @required this.iconImageLocation,
-    @required this.controller,
     this.color = const Color(0xff0b0b0b),
     this.color2,
     this.onTap,
     this.route,
   });
-
-  final String text;
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
+  static AuthUser userEdit = AuthUser();
+  UserService userService = UserService();
+  String text;
   String text2;
   final String iconImageLocation;
   final Function onTap;
@@ -26,15 +34,29 @@ class ItemEditList extends StatefulWidget {
   final String route;
   final Color color2;
   TextField textField;
-  TextEditingController controller;
   String newText;
+  String valueOfHint;
+  static User user = User();
+  static var response;
+
 }
 
 class ItemEditListState extends State<ItemEditList> {
   @override
   Widget build(BuildContext context) {
-    widget.controller.text = widget.text2;
-    widget.newText = widget.controller.text;
+      
+      switch(widget.text){
+      case 'First name:' : widget.valueOfHint=widget.authUserStore.authUser.firstName;
+      break;
+      case 'Last name:' : widget.valueOfHint=widget.authUserStore.authUser.lastName;
+      break;
+      case 'Gender:' : widget.valueOfHint='Gender';
+      break;
+      case 'Email:' : widget.valueOfHint=widget.authUserStore.authUser.email;
+      break;
+      case 'Phone:' : widget.valueOfHint=widget.authUserStore.authUser.phone;
+      break;
+    }
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
       child: Row(
@@ -59,20 +81,59 @@ class ItemEditListState extends State<ItemEditList> {
               margin: EdgeInsets.only(left: 10, right: 20),
               child: TextField(
                 decoration: new InputDecoration.collapsed(
-                  hintText: widget.controller.text,
+                  hintText: widget.valueOfHint,
                 ),
                 textAlign: TextAlign.center,
-                controller: widget.controller,
                 onChanged: (String e) {
                   setState(() {
-                    print(e);
-                    widget.controller.text = e;
-                    print(widget.controller.text);
+                     switch(widget.text){
+      case 'First name:' : ItemEditList.user.firstname=e;
+      break;
+      case 'Last name:' : ItemEditList.user.lastname=e;
+      break;
+      case 'Gender:' : ItemEditList.user.gender=e;
+      break;
+      case 'Email:' : ItemEditList.user.email=e;
+      break;
+      case 'Phone:' : ItemEditList.user.phone=e;
+      break;
+    }
                   });
                 },
-                onSubmitted: (input) {
-                  widget.controller.text = input;
-                },
+                  onSubmitted: (input) {
+                  widget.newText = input;
+      switch(widget.text){
+      case 'First name:' : ItemEditList.user.firstname=widget.newText;
+      break;
+      case 'Last name:' : ItemEditList.user.lastname=widget.newText;
+      break;
+      case 'Gender:' : ItemEditList.user.gender=widget.newText;
+      break;
+      case 'Email:' : ItemEditList.user.email=widget.newText;
+      break;
+      case 'Phone:' : ItemEditList.user.phone=widget.newText;
+      break;
+    }
+      switch(widget.text){
+      case 'First name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));
+      break;
+      case 'Last name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+      break;
+      case 'Gender:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+      break;
+      case 'Email:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+      break;
+      case 'Phone:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+      break;
+    }
+                      var response =widget.userService.editProfile(ItemEditList.user);
+                     
+                      print(ItemEditList.user.firstname);
+                      print(ItemEditList.user.lastname);
+                      print(ItemEditList.user.gender);
+                      print(ItemEditList.user.email);
+                      print(ItemEditList.user.phone);
+                                  },
               )),
           Container(
               height: 21,
@@ -86,9 +147,4 @@ class ItemEditListState extends State<ItemEditList> {
     );
   }
 
-  void add(TextEditingController text, String text1) {
-    text.text = text1;
-    widget.text2 = text.text;
-    widget.controller.text = text.text;
-  }
 }
