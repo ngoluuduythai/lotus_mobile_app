@@ -87,7 +87,8 @@ class PersonalInformationRoute extends StatelessWidget {
                           textAlign: TextAlign.right,
                         ),
                         onTap: () async {
-                         // await userService.editProfile('Sharon2');
+                         final response = await userService.editProfile(authUserStore.authUser);
+                          print(response);
                         },
                       ),
                     ],

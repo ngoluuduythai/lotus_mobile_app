@@ -1,9 +1,5 @@
 import 'dart:core';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
-import 'package:main/shared/constants/env.dart';
 import 'package:main/shared/models/auth_user.model.dart';
 import '../../../../../locator.dart';
 import '../../../../../shared/store/auth_user/auth_user.store.dart';
@@ -87,14 +83,39 @@ class ItemEditListState extends State<ItemEditList> {
                   setState(() {
                      switch(widget.text){
       case 'First name:' : ItemEditList.user.firstname=e;
+      if(ItemEditList.user.firstname==null){
+          widget.authUserStore.authUser.firstName=widget.authUserStore.authUser.firstName;
+      }else{
+        widget.authUserStore.authUser.firstName=ItemEditList.user.firstname;
+      }
       break;
       case 'Last name:' : ItemEditList.user.lastname=e;
+      if(ItemEditList.user.lastname==null){
+          widget.authUserStore.authUser.lastName=widget.authUserStore.authUser.lastName;
+      }else{
+          widget.authUserStore.authUser.lastName=ItemEditList.user.lastname;
+      }
       break;
       case 'Gender:' : ItemEditList.user.gender=e;
+      if(ItemEditList.user.gender==null){
+          widget.authUserStore.authUser.gender=widget.authUserStore.authUser.gender;
+      }else{
+          widget.authUserStore.authUser.gender=ItemEditList.user.gender;
+      }
       break;
       case 'Email:' : ItemEditList.user.email=e;
+      if(ItemEditList.user.email==null){
+          widget.authUserStore.authUser.email= widget.authUserStore.authUser.email;
+      }else{
+            widget.authUserStore.authUser.email=ItemEditList.user.email;
+      }
       break;
       case 'Phone:' : ItemEditList.user.phone=e;
+      if(ItemEditList.user.phone==null){
+        widget.authUserStore.authUser.phone=widget.authUserStore.authUser.phone;
+      }else{
+           widget.authUserStore.authUser.phone=ItemEditList.user.phone;
+      }
       break;
     }
                   });
@@ -102,36 +123,78 @@ class ItemEditListState extends State<ItemEditList> {
                   onSubmitted: (input) {
                   widget.newText = input;
       switch(widget.text){
+
       case 'First name:' : ItemEditList.user.firstname=widget.newText;
+      if(ItemEditList.user.firstname==null){
+         widget.authUserStore.authUser.firstName=widget.authUserStore.authUser.firstName;
+      }else{
+           widget.authUserStore.authUser.firstName=ItemEditList.user.firstname;
+      }
       break;
+      
       case 'Last name:' : ItemEditList.user.lastname=widget.newText;
+       if(ItemEditList.user.lastname==null){
+         widget.authUserStore.authUser.lastName=widget.authUserStore.authUser.lastName;
+      }else{
+           widget.authUserStore.authUser.lastName=ItemEditList.user.lastname;
+      }
       break;
       case 'Gender:' : ItemEditList.user.gender=widget.newText;
+       if(ItemEditList.user.gender==null){
+         widget.authUserStore.authUser.gender=widget.authUserStore.authUser.gender;
+      }else{
+           widget.authUserStore.authUser.gender=ItemEditList.user.gender;
+      }
       break;
       case 'Email:' : ItemEditList.user.email=widget.newText;
+       if(ItemEditList.user.email==null){
+         widget.authUserStore.authUser.email=widget.authUserStore.authUser.email;
+      }else{
+           widget.authUserStore.authUser.email=ItemEditList.user.email;
+      }
       break;
       case 'Phone:' : ItemEditList.user.phone=widget.newText;
+       if(ItemEditList.user.phone==null){
+         widget.authUserStore.authUser.phone=widget.authUserStore.authUser.phone;
+      }else{
+           widget.authUserStore.authUser.phone=ItemEditList.user.phone;
+      }
       break;
     }
-      switch(widget.text){
-      case 'First name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));
-      break;
-      case 'Last name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
-      break;
-      case 'Gender:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
-      break;
-      case 'Email:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
-      break;
-      case 'Phone:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
-      break;
-    }
-                      var response =widget.userService.editProfile(ItemEditList.user);
-                     
-                      print(ItemEditList.user.firstname);
-                      print(ItemEditList.user.lastname);
-                      print(ItemEditList.user.gender);
-                      print(ItemEditList.user.email);
-                      print(ItemEditList.user.phone);
+      //switch(widget.text){
+     // case 'First name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));
+     // break;
+     // case 'Last name:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+     // break;
+     // case 'Gender:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+    //  break;
+    //  case 'Email:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+     // break;
+     // case 'Phone:' : Navigator.push(context, MaterialPageRoute( builder: (context) => PersonalInformationRoute(user: ItemEditList.user,)));;
+    //  break;
+   // }
+                  //    var response =widget.userService.editProfile(ItemEditList.user);
+                  //    print(response);
+                   //    if(ItemEditList.user.firstname==null){
+                   //   }else{
+                   //     widget.authUserStore.authUser.firstName=ItemEditList.user.firstname;
+                    //  }
+                   //    if(ItemEditList.user.lastname==null){
+                   //   }else{
+                   //     widget.authUserStore.authUser.lastName=ItemEditList.user.lastname;
+                   //   }
+                   //   if(ItemEditList.user.gender==null){
+                   //   }else{
+                   //    widget.authUserStore.authUser.gender=ItemEditList.user.gender;
+                   //   }
+                  //    if(ItemEditList.user.email==null){
+                  //    }else{
+                   //     widget.authUserStore.authUser.email=ItemEditList.user.email;
+                   //   }
+                    //  if(ItemEditList.user.phone==null){
+                   //   }else{
+                  //      widget.authUserStore.authUser.phone=ItemEditList.user.phone;
+                  //    }
                                   },
               )),
           Container(
