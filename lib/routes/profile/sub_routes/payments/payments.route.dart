@@ -146,7 +146,6 @@ class PaymentsRoute extends StatelessWidget {
                             ),
                           ]),
                           Container(
-<<<<<<< HEAD
                               width: 288,
                               height: 44,
                               margin: EdgeInsets.only(bottom: 21),
@@ -162,74 +161,6 @@ class PaymentsRoute extends StatelessWidget {
                               ))
                         ]),
                       )
-=======
-                            margin: EdgeInsets.only(right: 20),
-                            decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width: 2,
-                                      color: Color.fromRGBO(243, 244, 248, 1)),
-                                  left: BorderSide(
-                                      width: 2,
-                                      color: Color.fromRGBO(243, 244, 248, 1)),
-                                  right: BorderSide(
-                                      width: 2,
-                                      color: Color.fromRGBO(243, 244, 248, 1))),
-                            ),
-                            padding: EdgeInsets.only(
-                                top: 10, bottom: 10, right: 30, left: 40),
-                            width: double.infinity,
-                            child: RaisedButton(
-                              color: Color.fromRGBO(255, 186, 115, 1),
-                              onPressed: () async {
-                                var connected = await authUserStore
-                                    .connectInstitution(context);
-                              },
-                              child: Text('Add New Bank',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'AirbnbCerealApp')),
-                            ),
-                          )
-                        ],
-                      )),
-                ],
-              ),
-              Container(
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Text(
-                            'Max. Monthly Spend',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0,
-                                fontFamily: 'AirbnbCerealApp'),
-                          )),
-                      Container(
-                          child: OutlineButton(
-                        child: Text(
-                          'Payment History',
-                          style:
-                              TextStyle(color: Color.fromRGBO(223, 143, 61, 1)),
-                        ),
-                        onPressed: () {
-                          print('ASD');
-                        }, //callback when button is clicked
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        highlightedBorderColor: Colors.white,
-                        borderSide: BorderSide(
-                          color: Colors.white, //Color of the border
-                          style: BorderStyle.solid, //Style of the border
-                          width: 0.8, //width of the border
-                        ),
-                      ))
->>>>>>> 0a76d690e23b2dab92037d5cd97091b71cdaf0d7
                     ],
                   ),
                 ])),
