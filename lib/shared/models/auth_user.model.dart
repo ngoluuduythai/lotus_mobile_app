@@ -1,27 +1,32 @@
-import 'dart:convert';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import './serializers.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_user.model.g.dart';
 
-abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
-  factory AuthUser([void Function(AuthUserBuilder) updates]) = _$AuthUser;
-  AuthUser._();
+@JsonSerializable(nullable: false)
+class AuthUser {
+  AuthUser({
+    this.userKey,
+    this.email,
+    this.phone,
+    this.token,
+    this.pictureUrl,
+    this.firstName,
+    this.lastName,
+    this.nickName,
+    this.gender,
+    this.monthlyRentalBudget,
+  });
 
-  static Serializer<AuthUser> get serializer => _$authUserSerializer;
-
-  @nullable
-  int get userKey;
-
-  @nullable
-  @BuiltValueField(wireName: 'firstName')
-  String get firstName;
-
-  @nullable
-  @BuiltValueField(wireName: 'lastName')
-  String get lastName;
+  final num userKey;
+  String email;
+  String phone;
+  String token;
+  String pictureUrl;
+  String firstName;
+  String lastName;
+  String nickName;
+  String gender;
+  final num monthlyRentalBudget;
 
   String get fullName {
     String fullName = '';
@@ -36,41 +41,7 @@ abstract class AuthUser implements Built<AuthUser, AuthUserBuilder> {
     return fullName;
   }
 
-  @nullable
-  String get phone;
-
-  @nullable
-  String get email;
-
-  @nullable
-  String get token;
-
-  @nullable
-  String get location;
-
-  @nullable
-  String get pictureUrl;
-
-  @nullable
-  String get nickName;
-
-  @nullable
-  String get birthday;
-
-  @nullable
-  DateTime get createdAt;
-
-  @nullable
-  BuiltList<int> get list;
-
-  String toJson() {
-    return json.encode(serializers.serializeWith(AuthUser.serializer, this));
-  }
-
-  static AuthUser fromJson(dynamic json) {
-    return serializers.deserializeWith(
-      AuthUser.serializer,
-      json,
-    );
-  }
+  factory AuthUser.fromJson(Map<String, dynamic> json) =>
+      _$AuthUserFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
 }

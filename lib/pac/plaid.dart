@@ -40,13 +40,20 @@ class _WebViewPage {
     _url = config.plaidBaseUrl +
         '?key=' +
         config.plaidPublicKey +
-        '&clientName='+ config.clientName +
-        '&isWebview=' + config.isWebview +
-        '&product=' + config.products +
-        '&isMobile=' + config.isMobile +
-        '&apiVersion=' + config.apiVersion +
-        '&selectAccount=' + config.selectAccount +
-        '&webhook=' + config.webhook +
+        '&clientName=' +
+        config.clientName +
+        '&isWebview=' +
+        config.isWebview +
+        '&product=' +
+        config.products +
+        '&isMobile=' +
+        config.isMobile +
+        '&apiVersion=' +
+        config.apiVersion +
+        '&selectAccount=' +
+        config.selectAccount +
+        '&webhook=' +
+        config.webhook +
         '&env=' +
         config.plaidEnvironment;
     debugPrint('init plaid: ' + _url);
@@ -75,26 +82,25 @@ class _WebViewPage {
         _closeWebView();
       }
 
-      final dynamic token           = queryParams['public_token'];
-      final dynamic accountId       = queryParams['account_id'];
-      final String accountType      = queryParams['account_type'];
-      final String accountSubtype   = queryParams['account_subtype'];
-      final String accountName      = queryParams['account_name'];
-      final String institutionId    = queryParams['institution_id'];
-      final String institutionName  = queryParams['institution_name'];
+      final dynamic token = queryParams['public_token'];
+      final dynamic accountId = queryParams['account_id'];
+      final String accountType = queryParams['account_type'];
+      final String accountSubtype = queryParams['account_subtype'];
+      final String accountName = queryParams['account_name'];
+      final String institutionId = queryParams['institution_id'];
+      final String institutionName = queryParams['institution_name'];
 
       if (token != null && accountId != null) {
         if (!_stripeToken) {
           this._success(Result(
-            token: token,
-            accountId: accountId,
-            accountName: accountName,
-            accountType: accountType,
-            accountSubtype: accountSubtype,
-            institutionId: institutionId,
-            institutionName: institutionName,
-            response: queryParams
-          ));
+              token: token,
+              accountId: accountId,
+              accountName: accountName,
+              accountType: accountType,
+              accountSubtype: accountSubtype,
+              institutionId: institutionId,
+              institutionName: institutionName,
+              response: queryParams));
         } else {
           await _fetchStripeToken(token, accountId);
         }
@@ -130,10 +136,8 @@ class _WebViewPage {
     final stripeTokenData =
         json.decode(utf8.decode(responseStripeToken.bodyBytes));
     _success(Result(
-      token:
-        stripeTokenData['stripe_bank_account_token'], 
-      response: stripeTokenData)
-      );
+        token: stripeTokenData['stripe_bank_account_token'],
+        response: stripeTokenData));
   }
 
   _closeWebView() {
@@ -159,8 +163,7 @@ class _WebViewPage {
 }
 
 class Configuration {
-  Configuration(
-    {
+  Configuration({
     @required this.plaidPublicKey,
     @required this.plaidBaseUrl,
     @required this.plaidEnvironment,
@@ -169,12 +172,12 @@ class Configuration {
     @required this.plaidClientId,
     @required this.secret,
     @required this.clientName,
-    this.webhook        = 'https://requestb.in',
-    this.products       = 'auth',//e.g. auth or auth,income
-    this.selectAccount  = 'true',//e.g. auth or auth,income
-    this.isMobile       = 'true',
-    this.apiVersion     = 'v2',
-    this.isWebview      = 'true',
+    this.webhook = 'https://requestb.in',
+    this.products = 'auth', //e.g. auth or auth,income
+    this.selectAccount = 'true', //e.g. auth or auth,income
+    this.isMobile = 'true',
+    this.apiVersion = 'v2',
+    this.isWebview = 'true',
   });
   String plaidPublicKey;
   String plaidBaseUrl;
