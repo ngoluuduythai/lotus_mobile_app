@@ -86,6 +86,7 @@ class _LinkedInLoginViewState extends State<LinkedInLogin> {
       }
       if (params.containsKey(_LINKEDIN_CODE)) {
         widget.onAuthCode(params[_LINKEDIN_CODE]);
+        return NavigationDecision.prevent;
       }
       return NavigationDecision.prevent;
     }

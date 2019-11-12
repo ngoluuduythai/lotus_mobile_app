@@ -14,8 +14,6 @@ import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
 import 'linkedin_view/linkedin_view.dart';
 
-import '../../shared/models/auth_user.model.dart';
-
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
 
@@ -189,13 +187,19 @@ Widget _bottomRectable(BuildContext context) {
                         ),
                         body: LinkedInLogin(
                           clientId: '86vsd8mko888qz', // FIXME hardcoding
-                          redirectUrl: 'https://www.linkedin.com',
+                          redirectUrl: 'https://api.dev.lotus-pad.com/graphql',
                           onError: (String error) {
                             print(error);
                           },
                           onAuthCode: (authCode) async {
-                            final loggedIn = await authUserStore.loginLinkedin(authCode);
+                            print('authCode');
+                            print(authCode);
+                            final loggedIn =
+                                await authUserStore.loginLinkedin(authCode);
+                            print('loggedIn');
                             if (loggedIn) {
+                              print('loggedIn if');
+                              Navigator.pop(context);
                               Routes.sailor(RouteNames.profile);
                             }
                           },
