@@ -17,14 +17,35 @@ class LoginRouteMobilePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return BaseWidget(builder: (context, sizingInformation) {
       return Material(
         child: Stack(
+          fit: StackFit.expand,
           children: <Widget>[
-            _bottomRectable(context),
-            _topRectable(context),
-            _imageWoman(context),
+           
+            FractionallySizedBox(
+              alignment: Alignment.topCenter,
+            heightFactor: 0.6,
+            child:
+            _topRectable(context)
+            ),
+              FractionallySizedBox(
+              alignment: Alignment.bottomCenter,
+              heightFactor: 1.206,
+              child:
+            _bottomRectable(context)
+            ),
+            FractionallySizedBox(
+              alignment: Alignment.center,
+              heightFactor: 1.05,
+              child:
+            _imageWoman(context)),
+
+           
+            
           ],
+          
         ),
       );
     });
@@ -91,7 +112,7 @@ Widget _imageWoman(BuildContext context) {
     alignment: Alignment.topCenter,
     margin: const EdgeInsets.only(left: 20, right: 65),
     padding: EdgeInsets.only(
-      top: 210,
+      top: 250,//este
       right: 20.0,
       left: 20.0,
       bottom: 20,
@@ -105,14 +126,13 @@ Widget _imageWoman(BuildContext context) {
 }
 
 Widget _bottomRectable(BuildContext context) {
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
   Size size = MediaQuery.of(context).size;
   double topH = size.height * 3 / 5;
   double h = size.height - topH;
-  final AuthUserStore authUserStore = locator<AuthUserStore>();
-
-  return PositionedDirectional(
-    top: topH,
-    start: 0,
+  return Container(
+    alignment: Alignment.topCenter,
+    margin: EdgeInsets.only(right:0,top: 550),
     child: Container(
       width: size.width,
       height: h,
@@ -120,9 +140,7 @@ Widget _bottomRectable(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20,),
           LoginButton(
             // Facebook Login Button
             iconImageLocation: IconPath.facebook,
@@ -143,26 +161,8 @@ Widget _bottomRectable(BuildContext context) {
           SizedBox(
             height: 10,
           ),
-          LoginButton(
-            // Instagram Login Button
-            iconImageLocation: IconPath.instagram,
-            buttonText: 'Login with Instagram',
-            buttonTextColor: const Color(0xFF323332),
-            width: 344,
-            height: 45,
-            left: 57,
-            right: 51,
-            fontSize: 16,
-            onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
+        
+        
           //Login with linkedin
           LoginButton(
             // Linkedin Login Button
@@ -204,8 +204,8 @@ Widget _bottomRectable(BuildContext context) {
           ),
         ],
       ),
-    ),
-  );
+    )
+    );
 }
 
 Widget _welcome(BuildContext context) {
