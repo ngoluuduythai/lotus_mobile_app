@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:main/shared/services/linkedin.service.dart';
+import 'package:main/shared/services/user.service.dart';
 import './shared/constants/env.dart';
 import 'shared/services/facebook.service.dart';
 import 'shared/services/google.service.dart';
@@ -17,6 +18,7 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton(() => GoogleService());
   locator.registerLazySingleton(() => LinkedinService());
   locator.registerLazySingleton(() => PlaidService());
+  locator.registerLazySingleton(() => UserService());
   //stores
   locator.registerLazySingleton(() => AuthUserStore());
 }

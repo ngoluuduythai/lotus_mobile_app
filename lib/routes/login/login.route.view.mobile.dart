@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
-import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -15,7 +14,7 @@ import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
 import 'linkedin_view/linkedin_view.dart';
 
-part 'login.route.view.mobile.g.dart';
+import '../../shared/models/auth_user.model.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -26,9 +25,9 @@ class LoginRouteMobilePortrait extends StatelessWidget {
       return Material(
         child: Stack(
           children: <Widget>[
-            _BottomRectable(),
-            _TopRectable(),
-            _ImageWoman(),
+            _bottomRectable(context),
+            _topRectable(context),
+            _imageWoman(context),
           ],
         ),
       );
@@ -36,26 +35,6 @@ class LoginRouteMobilePortrait extends StatelessWidget {
   }
 }
 
-class LoginRouteMobileLandscape extends StatelessWidget {
-  final AuthUserStore authUserStore = locator<AuthUserStore>();
-
-  @override
-  Widget build(BuildContext context) {
-    return BaseWidget(builder: (context, sizingInformation) {
-      return Material(
-        child: Stack(
-          children: <Widget>[
-            _TopRectable(),
-            _BottomRectable(),
-            _ImageWoman(),
-          ],
-        ),
-      );
-    });
-  }
-}
-
-@widget
 Widget _topRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double h = size.height * 3 / 5;
@@ -111,7 +90,6 @@ Widget _topRectable(BuildContext context) {
       ));
 }
 
-@widget
 Widget _imageWoman(BuildContext context) {
   return Container(
     alignment: Alignment.topCenter,
@@ -130,7 +108,6 @@ Widget _imageWoman(BuildContext context) {
   );
 }
 
-@widget
 Widget _bottomRectable(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   double topH = size.height * 3 / 5;
@@ -253,7 +230,6 @@ Widget _bottomRectable(BuildContext context) {
   );
 }
 
-@widget
 Widget _welcome(BuildContext context) {
   return PositionedDirectional(
       top: 129,

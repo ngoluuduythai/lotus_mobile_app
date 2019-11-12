@@ -13,7 +13,8 @@ class IconPath {
   static const info = 'assets/icons/7B.png';
   static const bell = 'assets/icons/bell.png';
   static const money = 'assets/icons/8B.png';
-
+  static const dollarCashGreen = 'assets/icons/cashGreen.png';
+  static const dollarCashGrey = 'assets/icons/cashGrey.png';
   static const messages = 'assets/icons/messages.png';
   static const profile = 'assets/icons/profile.png';
   static const stay = 'assets/icons/stay.png';

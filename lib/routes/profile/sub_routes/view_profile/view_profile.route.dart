@@ -101,7 +101,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
               Container(
                 margin: EdgeInsets.only(top: 2),
                 child: Text(
-                  '${authUserStore.authUser.location}',
+                  '',
                   style: TextStyle(
                     color: Color(0xFFB6C1CF),
                     fontWeight: FontWeight.w500,
