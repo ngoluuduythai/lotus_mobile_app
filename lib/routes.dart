@@ -13,13 +13,13 @@ import 'routes/login/login.route.dart';
 import 'routes/profile/profile.route.dart';
 import 'routes/profile/sub_routes/view_profile/view_profile.route.dart';
 import 'routes/saved/saved.route.dart';
-import 'routes/stay/stay.route.dart';
+import 'routes/rentals/rentals.route.dart';
 
 class RouteNames {
   static const login = '/login';
   static const explore = '/explore';
   static const saved = '/saved';
-  static const stays = '/statys';
+  static const rentals = '/rentals';
   static const inbox = '/inbox';
   static const profile = '/profile';
   static const documentsids = '/profile/documentsids';
@@ -66,9 +66,9 @@ class Routes {
     ));
 
     sailor.addRoute(SailorRoute(
-      name: RouteNames.stays,
+      name: RouteNames.rentals,
       builder: (context, args, params) {
-        return StayRoute();
+        return RentalsRoute();
       },
     ));
 

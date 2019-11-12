@@ -99,16 +99,17 @@ class PersonalInformationRoute extends StatelessWidget {
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
-                      // greyDivider(),
-                      // ItemEditList(
-                      //   iconImageLocation: IconPath.cross,
-                      //   text: 'Last name:',
-                      //   text2: lastname,
-                      //   color: Color(0xFF0B0B0B),
-                      //   color2: Color(0xFF484F61),
-                      //   onTap: () => (''),
-                      //   route: RouteNames.profile,
-                      // ),
+                       greyDivider(),
+                   ItemEditList(
+                        onChanged: (val) {
+                          editUser.lastName = val;
+                        },
+                        iconImageLocation: IconPath.cross,
+                        title: 'Last name:',
+                        userValue: authUserStore.authUser.lastName,
+                        color: Color(0xFF0B0B0B),
+                        color2: Color(0xFF484F61),
+                      ),
                       // greyDivider(),
                       // ItemEditList(
                       //   iconImageLocation: IconPath.cross,

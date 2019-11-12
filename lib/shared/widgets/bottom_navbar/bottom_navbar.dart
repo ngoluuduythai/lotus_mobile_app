@@ -6,7 +6,7 @@ class BottomNavbar extends StatelessWidget {
   final Map<int, String> navMap = {
     0: RouteNames.explore,
     1: RouteNames.saved,
-    2: RouteNames.stays,
+    2: RouteNames.rentals,
     3: RouteNames.inbox,
     4: RouteNames.profile,
   };
@@ -46,7 +46,7 @@ class BottomNavbar extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.location_city),
-            title: Text('Stays'),
+            title: Text('Rentals'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
