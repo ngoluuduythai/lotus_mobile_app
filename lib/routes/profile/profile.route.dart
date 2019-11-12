@@ -123,7 +123,7 @@ class ProfileRoute extends StatelessWidget {
                         ItemList(
                             text: 'Personal Information',
                             iconImageLocation: IconPath.document,
-                            route: RouteNames.personal_information),
+                            route: RouteNames.edit_info),
                         greyDivider(),
                         ItemList(
                           text: 'Payments',
