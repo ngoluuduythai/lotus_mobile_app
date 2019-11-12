@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
+import 'package:main/shared/constants/env.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -186,8 +187,8 @@ Widget _bottomRectable(BuildContext context) {
                           leading: CloseButton(),
                         ),
                         body: LinkedInLogin(
-                          clientId: '86vsd8mko888qz', // FIXME hardcoding
-                          redirectUrl: 'https://api.dev.lotus-pad.com/graphql',
+                          clientId: ENV.linkedinAppID, // FIXME hardcoding
+                          redirectUrl: ENV.linkedinRedirectUrl,
                           onError: (String error) {
                             print(error);
                           },

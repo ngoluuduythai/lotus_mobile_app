@@ -13,4 +13,6 @@ class ENV {
   static String plaidClientId = env['PLAID_CLIENT_ID'];
   static String plaidSecret = env['PLAID_SECRET'];
   static String plaidWebhookUrl = env['PLAID_WEBHOOK_URL'];
+  static String linkedinAppID = env['LINKEDIN_APP_ID'];
+  static String linkedinRedirectUrl = env['LINKEDIN_REDIRECT_URL'];
 }
