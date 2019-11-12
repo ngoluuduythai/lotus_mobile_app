@@ -4,23 +4,12 @@ import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
-import '../../../../shared/services/user.service.dart';
-import 'user.dart';
+import '../../../../shared/models/auth_user.model.dart';
 
 class PersonalInformationRoute extends StatelessWidget {
-
-  PersonalInformationRoute({this.user});
+  PersonalInformationRoute();
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-  static GlobalKey<FormState> _formEditKey = GlobalKey<FormState>();
-  UserService userService = UserService();
-
-  User user = User();
-
-  String firstname;
-  String lastname;
-  String gender;
-  String email;
-  String phone;
+  AuthUser editUser = AuthUser();
 
   greyDivider() {
     return Container(
@@ -35,8 +24,6 @@ class PersonalInformationRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(245, 246, 250, 1),
@@ -87,8 +74,7 @@ class PersonalInformationRoute extends StatelessWidget {
                           textAlign: TextAlign.right,
                         ),
                         onTap: () async {
-                         final response = await userService.editProfile(authUserStore.authUser);
-                          print(response);
+                          await authUserStore.saveUserApi(editUser);
                         },
                       ),
                     ],
@@ -104,55 +90,56 @@ class PersonalInformationRoute extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       ItemEditList(
+                        onChanged: (val) {
+                          editUser.firstName = val;
+                        },
                         iconImageLocation: IconPath.cross,
-                        text: 'First name:',
-                        text2: firstname,
+                        title: 'First name:',
+                        userValue: authUserStore.authUser.firstName,
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
-                        onTap: () => (''),
-                        route: RouteNames.profile,
                       ),
-                      greyDivider(),
-                      ItemEditList(
-                        iconImageLocation: IconPath.cross,
-                        text: 'Last name:',
-                        text2: lastname,
-                        color: Color(0xFF0B0B0B),
-                        color2: Color(0xFF484F61),
-                        onTap: () => (''),
-                        route: RouteNames.profile,
-                      ),
-                      greyDivider(),
-                      ItemEditList(
-                        iconImageLocation: IconPath.cross,
-                        text: 'Gender:',
-                        text2: 'Gender',
-                        color: Color(0xFF0B0B0B),
-                        color2: Color(0xFF484F61),
-                        onTap: () => (''),
-                        route: RouteNames.profile,
-                      ),
-                      greyDivider(),
-                      ItemEditList(
-                        iconImageLocation: IconPath.cross,
-                        text: 'Email:',
-                        text2: authUserStore.authUser.email,
-                        color: Color(0xFF0B0B0B),
-                        color2: Color(0xFF484F61),
-                        onTap: () => (''),
-                        route: RouteNames.profile,
-                      ),
-                      greyDivider(),
-                      ItemEditList(
-                        iconImageLocation: IconPath.cross,
-                        text: 'Phone:',
-                        text2: authUserStore.authUser.phone,
-                        color: Color(0xFF0B0B0B),
-                        color2: Color(0xFF484F61),
-                        onTap: () => (''),
-                        route: RouteNames.profile,
-                      ),
-                      greyDivider(),
+                      // greyDivider(),
+                      // ItemEditList(
+                      //   iconImageLocation: IconPath.cross,
+                      //   text: 'Last name:',
+                      //   text2: lastname,
+                      //   color: Color(0xFF0B0B0B),
+                      //   color2: Color(0xFF484F61),
+                      //   onTap: () => (''),
+                      //   route: RouteNames.profile,
+                      // ),
+                      // greyDivider(),
+                      // ItemEditList(
+                      //   iconImageLocation: IconPath.cross,
+                      //   text: 'Gender:',
+                      //   text2: 'Gender',
+                      //   color: Color(0xFF0B0B0B),
+                      //   color2: Color(0xFF484F61),
+                      //   onTap: () => (''),
+                      //   route: RouteNames.profile,
+                      // ),
+                      // greyDivider(),
+                      // ItemEditList(
+                      //   iconImageLocation: IconPath.cross,
+                      //   text: 'Email:',
+                      //   text2: authUserStore.authUser.email,
+                      //   color: Color(0xFF0B0B0B),
+                      //   color2: Color(0xFF484F61),
+                      //   onTap: () => (''),
+                      //   route: RouteNames.profile,
+                      // ),
+                      // greyDivider(),
+                      // ItemEditList(
+                      //   iconImageLocation: IconPath.cross,
+                      //   text: 'Phone:',
+                      //   text2: authUserStore.authUser.phone,
+                      //   color: Color(0xFF0B0B0B),
+                      //   color2: Color(0xFF484F61),
+                      //   onTap: () => (''),
+                      //   route: RouteNames.profile,
+                      // ),
+                      // greyDivider(),
                     ],
                   ),
                 ),

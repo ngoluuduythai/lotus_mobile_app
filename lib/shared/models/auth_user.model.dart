@@ -18,14 +18,14 @@ class AuthUser {
   });
 
   final num userKey;
-   String email;
-   String phone;
-   String token;
-   String pictureUrl;
-   String firstName;
-   String lastName;
-   String nickName;
-   String gender;
+  String email;
+  String phone;
+  String token;
+  String pictureUrl;
+  String firstName;
+  String lastName;
+  String nickName;
+  String gender;
   final num monthlyRentalBudget;
 
   String get fullName {

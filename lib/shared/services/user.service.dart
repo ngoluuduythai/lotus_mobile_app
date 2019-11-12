@@ -1,38 +1,33 @@
 import 'dart:async';
 import 'package:main/locator.dart';
 import 'package:main/shared/models/auth_user.model.dart';
-import '../../routes/profile/sub_routes/personal_information/user.dart';
 import './graphql.service.dart';
 
 class UserService {
   final graphqlService = locator<GraphqlService>();
 
-
-
   Future editProfile(AuthUser user) async {
-      String firstname = user.firstName;
-      String lastname = user.lastName;
-      String gender = user.gender;
-      String email = user.email;
-      String phone = user.phone;
+    final userJson = user.toJson();
 
-    final result = await graphqlService.mutate('''
-      mutation {
+    var mutation = '''
+    mutation {
         updateProfile(
-          firstname : "'$firstname'",
-          lastname : "'$lastname'",
-          gender : "'$gender'",
-          email :  "'$email'",
-          phone :  "'$phone'",
-        ) {
-          firstname,
-          lastname,
-          gender,
-          email,
-          phone
-        }
+    ''';
+    userJson.forEach((String key, value) {
+      if(value != null) {
+        mutation = mutation+'\n$key:"$value",';
       }
-    ''');
+    });
+    mutation = mutation.substring(0, mutation.length - 1);
+    mutation += '''
+    ){
+        firstName,
+        lastName,
+        email
+      }
+    }
+    ''';
+    final result = await graphqlService.mutate(mutation);
     return result.data;
   }
 }
