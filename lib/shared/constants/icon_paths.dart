@@ -20,6 +20,7 @@ class IconPath {
   static const stay = 'assets/icons/stay.png';
   static const checkSwitch = 'assets/icons/group4.png';
   static const noCheckSwitch = 'assets/icons/group3.png';
+  static const block = 'assets/icons/block.png';
   static const backArrow = 'assets/icons/path@2x.png';
 
   static const cross = 'assets/icons/3B.png';

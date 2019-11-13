@@ -312,6 +312,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.21+1"
+  linkedin_auth:
+    dependency: "direct main"
+    description:
+      name: linkedin_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   logging:
     dependency: transitive
     description:
@@ -534,6 +541,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   uuid_enhanced:
     dependency: transitive
     description:

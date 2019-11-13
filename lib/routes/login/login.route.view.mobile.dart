@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
+import 'package:main/shared/constants/env.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -10,7 +13,7 @@ import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
-import '../../shared/models/auth_user.model.dart';
+import 'linkedin_view/linkedin_view.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -175,10 +178,35 @@ Widget _bottomRectable(BuildContext context) {
             right: 65,
             fontSize: 16,
             onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
+              // FIXME refactor: move to another place
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                        appBar: AppBar(
+                          leading: CloseButton(),
+                        ),
+                        body: LinkedInLogin(
+                          clientId: ENV.linkedinAppID, // FIXME hardcoding
+                          redirectUrl: ENV.linkedinRedirectUrl,
+                          onError: (String error) {
+                            print(error);
+                          },
+                          onAuthCode: (authCode) async {
+                            print('authCode');
+                            print(authCode);
+                            final loggedIn =
+                                await authUserStore.loginLinkedin(authCode);
+                            print('loggedIn');
+                            print(loggedIn);
+                            if (loggedIn) {
+                              print('loggedIn if');
+                              Navigator.pop(context);
+                              Routes.sailor(RouteNames.profile);
+                            }
+                          },
+                        ))),
+              );
             },
           ),
           SizedBox(

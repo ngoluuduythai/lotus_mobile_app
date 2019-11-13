@@ -46,6 +46,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$loginGoogleAsyncAction.run(() => super.loginGoogle());
   }
 
+  final _$loginLinkedinAsyncAction = AsyncAction('loginLinkedin');
+
+  @override
+  Future<bool> loginLinkedin(String authCode) {
+    return _$loginLinkedinAsyncAction.run(() => super.loginLinkedin(authCode));
+  }
+
   final _$logoutAsyncAction = AsyncAction('logout');
 
   @override

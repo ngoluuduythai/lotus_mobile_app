@@ -48,7 +48,6 @@ class GraphqlService {
   }
 
   Future<QueryResult> mutate(String document) {
-    print(document);
     return client.mutate(MutationOptions(
       document: document,
     ));
@@ -70,6 +69,7 @@ class GraphqlService {
           }
         }
     ''');
+
     return result.data['socialLogin'];
   }
 }
