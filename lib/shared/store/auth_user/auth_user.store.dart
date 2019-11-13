@@ -57,7 +57,7 @@ abstract class _AuthUserStore with Store {
     final dynamic data = await linkedinService.login(authCode);
     print('data');
     print(data);
-    if (!data) {
+    if ( data == null) {
       return false;
     }
     authUser = AuthUser.fromJson(data);

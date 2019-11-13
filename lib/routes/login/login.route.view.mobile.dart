@@ -198,6 +198,7 @@ Widget _bottomRectable(BuildContext context) {
                             final loggedIn =
                                 await authUserStore.loginLinkedin(authCode);
                             print('loggedIn');
+                            print(loggedIn);
                             if (loggedIn) {
                               print('loggedIn if');
                               Navigator.pop(context);

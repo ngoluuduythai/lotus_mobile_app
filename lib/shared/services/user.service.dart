@@ -28,6 +28,7 @@ class UserService {
     }
     ''';
     final result = await graphqlService.mutate(mutation);
+    print(result.errors);
     return result.data;
   }
 }

@@ -69,6 +69,7 @@ class GraphqlService {
           }
         }
     ''');
+
     return result.data['socialLogin'];
   }
 }
