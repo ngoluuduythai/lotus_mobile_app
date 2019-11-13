@@ -17,6 +17,7 @@ class ItemEditList extends StatefulWidget {
   final Color color;
   final Color color2;
   String userValue;
+  bool enable = true;
 
   @override
   _ItemEditListState createState() => _ItemEditListState();
@@ -29,8 +30,10 @@ class _ItemEditListState extends State<ItemEditList> {
     super.initState();
     _textEditingController.text = widget.userValue;
   }
+
   @override
   Widget build(BuildContext context) {
+    widget.enable = isEmail(widget.title);
     return Container(
       margin: EdgeInsets.only(left: 23.8, right: 20),
       child: Row(
@@ -51,9 +54,10 @@ class _ItemEditListState extends State<ItemEditList> {
           ),
           Container(
               width: 170,
-              height: 20,
-              margin: EdgeInsets.only(left: 10, right: 20),
+              height: 40,
+              margin: EdgeInsets.only(left: 10, right: 20, top: 0),
               child: TextField(
+                enabled: widget.enable,
                 controller: _textEditingController,
                 onChanged: (val) {
                   widget.onChanged(val);
@@ -64,16 +68,26 @@ class _ItemEditListState extends State<ItemEditList> {
                   });
                 },
                 // textAlign: TextAlign.center
+                decoration: InputDecoration(border: InputBorder.none),
               )),
           Container(
               height: 21,
               width: 21,
               child: Tab(
                   icon: Image.asset(
-                  widget.iconImageLocation,
+                widget.iconImageLocation,
               ))),
         ],
       ),
     );
+  }
+
+  bool isEmail(String text) {
+    print(text);
+    if (text == 'Email:') {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

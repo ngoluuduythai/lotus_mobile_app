@@ -26,4 +26,7 @@ class IconPath {
   static const verifiedAccount = 'assets/icons/verifiedAccount.png';
 
   static const okIcon = 'assets/icons/2B.png';
+  static const keyIcon = 'assets/icons/key.png';
+  static const locationIcon = 'assets/icons/5l.png';
+  static const cameraIcon = 'assets/icons/2G.png';
 }

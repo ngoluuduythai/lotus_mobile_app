@@ -14,8 +14,8 @@ class UserService {
         updateProfile(
     ''';
     userJson.forEach((String key, value) {
-      if(value != null) {
-        mutation = mutation+'\n$key:"$value",';
+      if (value != null) {
+        mutation = mutation + '\n$key:"$value",';
       }
     });
     mutation = mutation.substring(0, mutation.length - 1);

@@ -4,7 +4,7 @@ import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
 import 'package:main/routes/profile/sub_routes/gethelp/gethelp.route.dart';
 import 'package:main/routes/profile/sub_routes/notifications/notifications.route.dart';
 import 'package:main/routes/profile/sub_routes/payments/payments.route.dart';
-import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
+import 'package:main/routes/profile/sub_routes/edit_info/edit_info.route.dart';
 import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
 import 'package:sailor/sailor.dart';
 import 'routes/explore/explore.route.dart';
@@ -13,13 +13,13 @@ import 'routes/login/login.route.dart';
 import 'routes/profile/profile.route.dart';
 import 'routes/profile/sub_routes/view_profile/view_profile.route.dart';
 import 'routes/saved/saved.route.dart';
-import 'routes/stay/stay.route.dart';
+import 'routes/rentals/rentals.route.dart';
 
 class RouteNames {
   static const login = '/login';
   static const explore = '/explore';
   static const saved = '/saved';
-  static const stays = '/statys';
+  static const rentals = '/rentals';
   static const inbox = '/inbox';
   static const profile = '/profile';
   static const documentsids = '/profile/documentsids';
@@ -28,7 +28,7 @@ class RouteNames {
   static const gethelp = '/profile/gethelp';
   static const notifications = '/profile/notifications';
   static const payments = '/profile/payments';
-  static const personal_information = '/profile/personal_information';
+  static const edit_info = '/profile/edit_info';
   static const termofservice = '/profile/termofservice';
   static const viewprofile = '/profile/view_profile';
 }
@@ -66,9 +66,9 @@ class Routes {
     ));
 
     sailor.addRoute(SailorRoute(
-      name: RouteNames.stays,
+      name: RouteNames.rentals,
       builder: (context, args, params) {
-        return StayRoute();
+        return RentalsRoute();
       },
     ));
 
@@ -121,9 +121,9 @@ class Routes {
     ));
 
     sailor.addRoute(SailorRoute(
-      name: RouteNames.personal_information,
+      name: RouteNames.edit_info,
       builder: (context, args, params) {
-        return PersonalInformationRoute();
+        return EditInfoRoute();
       },
     ));
 

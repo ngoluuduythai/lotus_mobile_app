@@ -82,8 +82,8 @@ abstract class _AuthUserStore with Store {
     return true;
   }
 
-  saveUserApi(AuthUser user){
-    if(user != null) {
+  saveUserApi(AuthUser user) {
+    if (user != null) {
       return userService.editProfile(user);
     } else {
       return userService.editProfile(authUser);
