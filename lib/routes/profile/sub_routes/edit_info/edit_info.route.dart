@@ -79,49 +79,51 @@ class EditInfoRoute extends StatelessWidget {
                       ),
                     ],
                   ),
-
                 ),
-
-
                 Stack(
-                children:<Widget>[    
-                Container(
-                margin: EdgeInsets.only(top: 0, left: 0),
-                width: 109.9,
-                height: 109.9,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Color.fromRGBO(255 ,186 ,115 ,0.55), width: 2),
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: NetworkImage(
-                            '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
-                        )),
-                ),
-                GestureDetector(
-                  child:
-                Container(
-                  margin: EdgeInsets.only(top: 75,left: 73) ,
-                  width: 34.9,
-                  height: 34.9,
-                  decoration: BoxDecoration(
-                  border: Border.all(
-                  color: Color.fromRGBO(255 ,186 ,115 ,0.55), width: 2),
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                   ),
-                   child: 
-                   Container(
-                     width: 2,
-                     height: 2,
-                     child: Tab(icon: Image.asset(IconPath.cameraIcon,width: 21.4,height: 15.5,),),
-                   )
-                   ,
-                ),
-                onTap: ()=> print('upload image'),
-                ),
-                ],
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 0, left: 0),
+                      width: 109.9,
+                      height: 109.9,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color.fromRGBO(255, 186, 115, 0.55),
+                              width: 2),
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: NetworkImage(
+                                  '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
+                              )),
+                    ),
+                    GestureDetector(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 75, left: 73),
+                        width: 34.9,
+                        height: 34.9,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color.fromRGBO(255, 186, 115, 0.55),
+                              width: 2),
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Container(
+                          width: 2,
+                          height: 2,
+                          child: Tab(
+                            icon: Image.asset(
+                              IconPath.cameraIcon,
+                              width: 21.4,
+                              height: 15.5,
+                            ),
+                          ),
+                        ),
+                      ),
+                      onTap: () => print('upload image'),
+                    ),
+                  ],
                 ),
                 Container(
                   width: 372,
@@ -132,7 +134,7 @@ class EditInfoRoute extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: <Widget>[
-                         ItemEditList(
+                      ItemEditList(
                         onChanged: (val) {
                           editUser.nickName = val;
                         },
@@ -142,21 +144,22 @@ class EditInfoRoute extends StatelessWidget {
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
-                        greyDivider(),
-                       ItemEditList(
+                      greyDivider(),
+                      ItemEditList(
                         onChanged: (val) {
                           //editUser.about = val;
                         },
                         iconImageLocation: IconPath.cross,
                         title: 'About me:',
-                        userValue: 'Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. ',
+                        userValue:
+                            'Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. ',
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
                       greyDivider(),
                       ItemEditList(
                         onChanged: (val) {
-                         editUser.firstName = val;
+                          editUser.firstName = val;
                         },
                         iconImageLocation: IconPath.cross,
                         title: 'First name:',
@@ -164,8 +167,8 @@ class EditInfoRoute extends StatelessWidget {
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
-                       greyDivider(),
-                   ItemEditList(
+                      greyDivider(),
+                      ItemEditList(
                         onChanged: (val) {
                           editUser.lastName = val;
                         },
@@ -176,7 +179,7 @@ class EditInfoRoute extends StatelessWidget {
                         color2: Color(0xFF484F61),
                       ),
                       greyDivider(),
-                     ItemEditList(
+                      ItemEditList(
                         onChanged: (val) {
                           editUser.gender = val;
                         },
@@ -186,8 +189,8 @@ class EditInfoRoute extends StatelessWidget {
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
-                       greyDivider(),
-                       ItemEditList(
+                      greyDivider(),
+                      ItemEditList(
                         onChanged: (val) {
                           editUser.email = val;
                         },
@@ -197,8 +200,8 @@ class EditInfoRoute extends StatelessWidget {
                         color: Color(0xFF0B0B0B),
                         color2: Color(0xFF484F61),
                       ),
-                       greyDivider(),
-                       ItemEditList(
+                      greyDivider(),
+                      ItemEditList(
                         onChanged: (val) {
                           editUser.phone = val;
                         },
@@ -209,9 +212,9 @@ class EditInfoRoute extends StatelessWidget {
                         color2: Color(0xFF484F61),
                       ),
                       greyDivider(),
-                        ItemEditList(
+                      ItemEditList(
                         onChanged: (val) {
-                         // editUser.location = val;
+                          // editUser.location = val;
                         },
                         iconImageLocation: IconPath.cross,
                         title: 'Location:',
