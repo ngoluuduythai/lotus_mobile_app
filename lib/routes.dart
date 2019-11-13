@@ -2,9 +2,9 @@ import 'package:main/routes/profile/sub_routes/documentsids/documentsids.route.d
 import 'package:main/routes/profile/sub_routes/feedback/feedback.route.dart';
 import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
 import 'package:main/routes/profile/sub_routes/gethelp/gethelp.route.dart';
-import 'package:main/routes/profile/sub_routes/notifications/notifications.route.dart';
 import 'package:main/routes/profile/sub_routes/payments/payments.route.dart';
 import 'package:main/routes/profile/sub_routes/personal_information/personal_information.route.dart';
+import 'package:main/routes/profile/sub_routes/settings/settings.route.dart';
 import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
 import 'package:sailor/sailor.dart';
 import 'routes/explore/explore.route.dart';
@@ -26,7 +26,7 @@ class RouteNames {
   static const feedback = '/profile/feedback';
   static const friends = '/profile/friends';
   static const gethelp = '/profile/gethelp';
-  static const notifications = '/profile/notifications';
+  static const settings = '/profile/settings';
   static const payments = '/profile/payments';
   static const personal_information = '/profile/personal_information';
   static const termofservice = '/profile/termofservice';
@@ -107,9 +107,9 @@ class Routes {
     ));
 
     sailor.addRoute(SailorRoute(
-      name: RouteNames.notifications,
+      name: RouteNames.settings,
       builder: (context, args, params) {
-        return NotificationsRoute();
+        return SettingsRoute();
       },
     ));
 

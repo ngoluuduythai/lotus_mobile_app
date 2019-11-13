@@ -132,9 +132,9 @@ class ProfileRoute extends StatelessWidget {
                         ),
                         greyDivider(),
                         ItemList(
-                            text: 'Notifications',
+                            text: 'Settings',
                             iconImageLocation: IconPath.bell,
-                            route: RouteNames.notifications),
+                            route: RouteNames.settings),
                         greyDivider(),
                         ItemList(
                             text: 'Friends',

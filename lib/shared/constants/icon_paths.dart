@@ -18,6 +18,8 @@ class IconPath {
   static const messages = 'assets/icons/messages.png';
   static const profile = 'assets/icons/profile.png';
   static const stay = 'assets/icons/stay.png';
+  static const checkSwitch = 'assets/icons/group4.png';
+  static const noCheckSwitch = 'assets/icons/group3.png';
   static const block = 'assets/icons/block.png';
   static const backArrow = 'assets/icons/path@2x.png';
 
