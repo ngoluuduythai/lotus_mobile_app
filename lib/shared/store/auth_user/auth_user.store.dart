@@ -53,10 +53,8 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future<bool> loginLinkedin(String authCode) async {
-    final dynamic data = await linkedinService.login(authCode);
-    print('data');
-    print(data);
+  Future<bool> loginLinkedin(BuildContext context) async {
+    final dynamic data = await linkedinService.login(context);
     if ( data == null) {
       return false;
     }
