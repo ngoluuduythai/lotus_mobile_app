@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main/locator.dart';
+import 'package:main/routes/rentals/item_rental.dart';
 import '../../shared/constants/icon_paths.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -8,6 +9,15 @@ import '../../shared/constants/images.dart';
 
 class RentalsRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+
+  orangeDivider(double thickness, double indent, double endIndent) {
+    return Divider(
+      thickness: thickness,
+      indent: indent,
+      endIndent: endIndent,
+      color: Color(0xFFFFBA73),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +46,7 @@ class RentalsRoute extends StatelessWidget {
                     fontSize: 21.0,
                   )),
             ),
-            Container(
-              child: Divider(
-                thickness: 3,
-                indent: 32,
-                endIndent: 290,
-                color: Color(0xFFFFBA73),
-              ),
-            ),
+            orangeDivider(3, 32, 290),
             Container(
               margin: EdgeInsets.only(top: 10, left: 32),
               child: Text("Applications",
@@ -55,14 +58,7 @@ class RentalsRoute extends StatelessWidget {
                     fontSize: 16.0,
                   )),
             ),
-            Container(
-              child: Divider(
-                thickness: 3,
-                indent: 32,
-                endIndent: 343,
-                color: Color(0xFFFFBA73),
-              ),
-            ),
+            orangeDivider(3, 32, 343),
             Container(
               margin: EdgeInsets.only(top: 20, left: 30, right: 20),
               height: 144,
@@ -105,84 +101,67 @@ class RentalsRoute extends StatelessWidget {
                     fontSize: 16.0,
                   )),
             ),
+            orangeDivider(3, 32, 343),
             Container(
-              child: Divider(
-                thickness: 3,
-                indent: 32,
-                endIndent: 343,
-                color: Color(0xFFFFBA73),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 30, right: 10, top: 10),
+              margin: EdgeInsets.only(top: 5),
               width: 283.2,
               height: 177,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Container(
-                      width: 283.2,
-                      height: 177,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: ExactAssetImage(Images.room01),
-                          alignment: Alignment.topCenter,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      child: Container(
-                        height: 177,
-                        width: 283.2,
-                        margin: EdgeInsets.only(top: 120),
-                        child: Column(children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 10, bottom: 32),
-                                child: Text("Los Angeles •",
-                                    style: TextStyle(
-                                      color: Color(0xff0b0b0b),
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 14.2,
-                                    )),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 2, bottom: 32),
-                                child: Text("Move in May 22/19 - Mvo 30/19",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 11.51,
-                                    )),
-                              ),
-                            ],
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: Tab(
-                                      icon: Image.asset(IconPath.locationIcon),
-                                    ),
-                                  )
-                                ],
-                              )),
-                        ]),
-                      )),
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    width: 283.2,
-                    height: 177,
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
-                        borderRadius: BorderRadius.circular(20)),
+                  ItemRental(
+                    imageRoute: Images.room01,
+                    textLocation: 'New York •',
+                    textDirection: 'Williamsburg, Brooklyn, NY',
+                    iconRoute: IconPath.locationIcon,
+                    textPrice: '\$' '100',
+                    textDateArrived: 'Move in Aug 22',
+                  ),
+                  ItemRental(
+                    imageRoute: Images.room01,
+                    textLocation: 'New York •',
+                    textDirection: 'Williamsburg, Brooklyn, NY',
+                    iconRoute: IconPath.locationIcon,
+                    textPrice: '\$' '100',
+                    textDateArrived: 'Move in Aug 22',
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 35, left: 31),
+              child: Text("Past Rentals",
+                  style: TextStyle(
+                    color: Color(0xff0b0b0b),
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'AirbnbCerealApp',
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16.0,
+                  )),
+            ),
+            orangeDivider(3, 32, 343),
+            Container(
+              margin: EdgeInsets.only(top: 5, bottom: 20),
+              width: 283.2,
+              height: 177,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  ItemRental(
+                    imageRoute: Images.room02,
+                    textLocation: 'Los Angeles •',
+                    textDirection: 'Williamsburg, Brooklyn, NY',
+                    iconRoute: IconPath.locationIcon,
+                    textPrice: '\$' '100',
+                    textDateArrived: 'Move in May 22/19-Move out 30/19',
+                  ),
+                  ItemRental(
+                    imageRoute: Images.room01,
+                    textLocation: 'New York •',
+                    textDirection: 'Williamsburg, Brooklyn, NY',
+                    iconRoute: IconPath.locationIcon,
+                    textPrice: '\$' '100',
+                    textDateArrived: 'Move in Aug 22',
                   ),
                 ],
               ),
