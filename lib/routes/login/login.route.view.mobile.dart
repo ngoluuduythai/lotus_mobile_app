@@ -100,9 +100,10 @@ Widget _topRectable(BuildContext context) {
 Widget _imageWoman(BuildContext context) {
   SizeConfig().init(context);
   return Container(
+    margin: EdgeInsets.only(top:SizeConfig.safeBlockVertical*30 ),
     alignment: Alignment.topCenter,
     child: Container(
-      height: SizeConfig.safeBlockVertical * 100,
+      height: SizeConfig.safeBlockVertical * 40,
       width: SizeConfig.safeBlockHorizontal * 19,
       child: Image.asset(Images.loginGirl),
     ),
