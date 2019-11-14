@@ -6,10 +6,10 @@ import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_bas
 import '../../../../routes.dart';
 
 class SettingsRoute extends StatelessWidget {
-  bool switchOn = false;
+  bool switchOn = true;
 
   void _onSwitchChanged(bool value) {
-    switchOn = false;
+    switchOn = !switchOn;
   }
 
   @override
