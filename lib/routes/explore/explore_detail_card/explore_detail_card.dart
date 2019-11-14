@@ -3,7 +3,7 @@ import 'package:main/shared/models/explore-card-model.dart';
 
 class ExploreDetailCardRoute extends StatelessWidget {
   ExploreDetailCardRoute({@required this.cardDetailArray});
-  final List<ExploreCardModel> cardDetailArray;
+  final List<ExploreCardDetailModel> cardDetailArray;
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +53,16 @@ class ExploreDetailCardRoute extends StatelessWidget {
                             Row(
                               children: <Widget>[
                                 Container(
-                                  child: Text('\$${cardDetailArray[index].price}/ Month. ',
+                                  child: Text(
+                                      '\$${cardDetailArray[index].price}/ Month. ',
                                       style: TextStyle(
                                           fontSize: 13,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'AirbnbCerealApp')),
                                 ),
                                 Container(
-                                  child: Text('• ${cardDetailArray[index].roms} Roms -  ${cardDetailArray[index].direction}',
+                                  child: Text(
+                                      '• ${cardDetailArray[index].roms} ${cardDetailArray[index].roms == 1 ? 'Room' : 'Rooms'} -  ${cardDetailArray[index].direction}',
                                       style: TextStyle(
                                           fontSize: 13,
                                           color:

@@ -6,15 +6,32 @@ import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
 import 'explore_detail_card/explore_detail_card.dart';
+import 'explore_simple_card/explore_simple_card.dart';
 
 class ExploreRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-  final List<ExploreCardModel> cardDetailArray = []..add(ExploreCardModel(
-      'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg',
-      'New York',
-      '3400',
-      '2',
-      '554 Sqtf'));
+  final List<ExploreCardDetailModel> cardDetailArray = [
+    ExploreCardDetailModel(
+        'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg',
+        'New York',
+        3400,
+        2,
+        '554 Sqtf'),
+    ExploreCardDetailModel(
+        'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg',
+        'Washington DC',
+        3500,
+        1,
+        '554 Sqtf')
+  ];
+  final List<ExploreCardSimpleModel> cardCityArray = [
+    ExploreCardSimpleModel(
+        'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg',
+        'New York'),
+    ExploreCardSimpleModel(
+        'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg',
+        'Washington DC')
+  ];
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
@@ -108,87 +125,10 @@ class ExploreRoute extends StatelessWidget {
                                   height: 4.0,
                                   width: 50,
                                   color: Color.fromRGBO(255, 186, 115, 1)),
-                              _cityCarousel()
+                              ExploreSimpleCardRoute(
+                                  cardSimpleArray: cardCityArray)
                             ]),
                       )))));
     });
-  }
-
-  Widget _cityCarousel() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
-      height: 144,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          SizedBox(
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(29.2)),
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg'),
-                          fit: BoxFit.cover)),
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  width: 200,
-                  height: 200,
-                  child: Container(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text('New York',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'AirbnbCerealApp',
-                                  fontSize: 29,
-                                  letterSpacing: -0.87)))))),
-          SizedBox(
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(29.2)),
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg'),
-                          fit: BoxFit.cover)),
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  width: 200,
-                  height: 200,
-                  child: Container(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text('New York',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'AirbnbCerealApp',
-                                  fontSize: 29,
-                                  letterSpacing: -0.87)))))),
-          SizedBox(
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(29.2)),
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_474,q_75,w_640/v1/clients/newyorkstate/5232359e_e163_475c_abe3_0f20af112a8c_ae020bfc-a771-4564-87b7-479fbe55735d.jpg'),
-                          fit: BoxFit.cover)),
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  width: 200,
-                  height: 200,
-                  child: Container(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text('New York',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'AirbnbCerealApp',
-                                  fontSize: 29,
-                                  letterSpacing: -0.87)))))),
-        ],
-      ),
-    );
   }
 }
