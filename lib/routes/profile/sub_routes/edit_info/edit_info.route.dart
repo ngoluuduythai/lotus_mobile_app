@@ -49,18 +49,21 @@ class EditInfoRoute extends StatelessWidget {
                         },
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 220),
-                        child: Text(
-                          'Edit Info',
-                          style: TextStyle(
-                            color: Color(0xff0b0b0b),
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'AirbnbCerealApp',
-                            fontStyle: FontStyle.normal,
-                            fontSize: 21.0,
-                          ),
-                        ),
-                      ),
+                          margin: EdgeInsets.only(right: 220),
+                          child: GestureDetector(
+                            child: Text(
+                              'Edit Info',
+                              style: TextStyle(
+                                color: Color(0xff0b0b0b),
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'AirbnbCerealApp',
+                                fontStyle: FontStyle.normal,
+                                fontSize: 21.0,
+                              ),
+                            ),
+                            onTap: () =>
+                                Routes.sailor.navigate(RouteNames.profile),
+                          )),
                       InkWell(
                         child: Text(
                           'Save',
