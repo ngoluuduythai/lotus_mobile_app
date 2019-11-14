@@ -1,14 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
-import 'package:main/shared/constants/env.dart';
+import 'package:main/shared/store/auth_user/auth_user.store.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
-import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
@@ -160,35 +157,10 @@ Widget _bottomRectable(BuildContext context) {
             fontSize: SizeConfig.safeBlockHorizontal * 4,
 
             onPressed: () async {
-              // FIXME refactor: move to another place
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                        appBar: AppBar(
-                          leading: CloseButton(),
-                        ),
-                        body: LinkedInLogin(
-                          clientId: ENV.linkedinAppID, // FIXME hardcoding
-                          redirectUrl: ENV.linkedinRedirectUrl,
-                          onError: (String error) {
-                            print(error);
-                          },
-                          onAuthCode: (authCode) async {
-                            print('authCode');
-                            print(authCode);
-                            final loggedIn =
-                                await authUserStore.loginLinkedin(authCode);
-                            print('loggedIn');
-                            print(loggedIn);
-                            if (loggedIn) {
-                              print('loggedIn if');
-                              Navigator.pop(context);
-                              Routes.sailor(RouteNames.profile);
-                            }
-                          },
-                        ))),
-              );
+              final loggedIn = await authUserStore.loginLinkedin(context);
+              if (loggedIn) {
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
           SizedBox(
