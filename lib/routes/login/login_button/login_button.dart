@@ -24,9 +24,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-     
-      Container(
+    return Container(
       width: width,
       height: height,
       alignment: Alignment.center,
@@ -46,7 +44,6 @@ class LoginButton extends StatelessWidget {
                 Tab(
                     icon: Image.asset(iconImageLocation,
                         height: 21, width: 21, alignment: Alignment.center)),
-               
                 Text(buttonText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -55,12 +52,9 @@ class LoginButton extends StatelessWidget {
                         fontFamily: 'AirbnbCerealApp',
                         fontStyle: FontStyle.normal,
                         fontSize: fontSize)),
-            
-              
               ]),
         ),
       ),
     );
-
   }
 }
