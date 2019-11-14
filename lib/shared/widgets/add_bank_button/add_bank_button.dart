@@ -8,7 +8,7 @@ class AddBankButtonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      color: Colors.white,
+      color: Color.fromRGBO(255, 186, 115, 1),
       child: Text('Add New Bank Account'),
       onPressed: () async {
         await authUserStore.connectInstitution(context);

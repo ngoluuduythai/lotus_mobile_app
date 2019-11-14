@@ -151,7 +151,7 @@ class PaymentsRoute extends StatelessWidget {
                               margin: EdgeInsets.only(bottom: 21),
                               child: RaisedButton(
                                 color: Color.fromRGBO(255, 186, 115, 1),
-                                onPressed: () {},
+                                onPressed: () {print(authUserStore.authUser.firstName);},
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5)),
                                 child: Text('Add New Bank',
