@@ -42,7 +42,7 @@ Widget _topRectable(BuildContext context) {
   return Container(
       color: Colors.white,
       width: SizeConfig.safeBlockHorizontal * 100,
-      height: SizeConfig.safeBlockVertical * 65,
+      height: SizeConfig.safeBlockVertical * 62 ,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,6 +51,7 @@ Widget _topRectable(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                 margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal*5,top: SizeConfig.blockSizeVertical*5),
                 child: Image.asset(
                   Images.logo,
                   width: 73,
@@ -58,6 +59,7 @@ Widget _topRectable(BuildContext context) {
                 ),
               ),
               Container(
+                margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal*5  ,top: SizeConfig.blockSizeVertical),
                 child: Text(
                   'Welcome to Lotus',
                   style: TextStyle(
@@ -69,6 +71,7 @@ Widget _topRectable(BuildContext context) {
                 ),
               ),
               Container(
+                margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal*6,top: SizeConfig.blockSizeVertical),
                   child: Text(
                       'Find the perfect space.\nSame price. No Commitment.',
                       style: TextStyle(
@@ -81,7 +84,10 @@ Widget _topRectable(BuildContext context) {
             ],
           ),
           Container(
-            child: Image.asset(Images.loginRoomBackground),
+            margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal*8),
+            
+            width: SizeConfig.safeBlockHorizontal*87,
+            child: Image.asset(Images.loginRoomBackground,width: SizeConfig.safeBlockHorizontal*70),
           ),
         ],
       ));
@@ -94,7 +100,7 @@ Widget _imageWoman(BuildContext context) {
   
     child: Container(
       height: SizeConfig.safeBlockVertical  *100,
-      width: SizeConfig.safeBlockHorizontal * 20,
+      width: SizeConfig.safeBlockHorizontal * 19,
       child: Image.asset(Images.loginGirl),
     ),
   );
@@ -114,17 +120,21 @@ Widget _bottomRectable(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(
-            height: SizeConfig.safeBlockVertical*20,
+            height: SizeConfig.safeBlockVertical*18,
           ),
+
+     
+       
+       
           LoginButton(
             // Facebook Login Button
             iconImageLocation: IconPath.facebook,
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xFF3B5998),
-            width: SizeConfig.safeBlockHorizontal*90,
+            width: SizeConfig.safeBlockHorizontal*93,
             height: SizeConfig.safeBlockVertical*7,
-            left: SizeConfig.safeBlockHorizontal*15,
-            right: SizeConfig.safeBlockHorizontal*15,
+            left: SizeConfig.safeBlockHorizontal*20,
+            right: SizeConfig.safeBlockHorizontal*16,
             fontSize: SizeConfig.safeBlockHorizontal*4,
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
@@ -133,10 +143,9 @@ Widget _bottomRectable(BuildContext context) {
               }
             },
           ),
-        
-        
+      
           SizedBox(
-            height: SizeConfig.safeBlockVertical,
+            height: SizeConfig.safeBlockVertical*2  ,
           ),
           //Login with linkedin
           LoginButton(
@@ -144,10 +153,10 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.linkedin,
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xFF0077B5),
-             width: SizeConfig.safeBlockHorizontal*90,
+             width: SizeConfig.safeBlockHorizontal*93,
              height: SizeConfig.safeBlockVertical*7,
-            left: SizeConfig.safeBlockHorizontal*15,
-            right: SizeConfig.safeBlockHorizontal*15,
+            left: SizeConfig.safeBlockHorizontal*20,
+            right: SizeConfig.safeBlockHorizontal*19,
             fontSize: SizeConfig.safeBlockHorizontal*4,
             
             
@@ -184,7 +193,7 @@ Widget _bottomRectable(BuildContext context) {
             },
           ),
           SizedBox(
-            height: SizeConfig.safeBlockVertical,
+            height: SizeConfig.safeBlockVertical*2  ,
           ),
           //Continue without registration
           LoginButton(
@@ -192,10 +201,10 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.google,
             buttonText: 'Login with Google',
             buttonTextColor: const Color(0xFF4C4C4C),
-            width: SizeConfig.safeBlockHorizontal*90,
+            width: SizeConfig.safeBlockHorizontal*93,
             height: SizeConfig.safeBlockVertical*7,
-            left: SizeConfig.safeBlockHorizontal*15,
-            right: SizeConfig.safeBlockHorizontal*15,
+            left: SizeConfig.safeBlockHorizontal*20,
+            right: SizeConfig.safeBlockHorizontal*21,
             fontSize: SizeConfig.safeBlockHorizontal*4,
             
             onPressed: () async {
