@@ -51,7 +51,7 @@ class LoginButton extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         fontFamily: 'AirbnbCerealApp',
                         fontStyle: FontStyle.normal,
-                        fontSize: fontSize))
+                        fontSize: fontSize)),
               ]),
         ),
       ),
