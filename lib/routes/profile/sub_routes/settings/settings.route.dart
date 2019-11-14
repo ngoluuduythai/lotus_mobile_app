@@ -21,8 +21,7 @@ class SettingsRoute extends StatelessWidget {
               home: Scaffold(
                   body: SingleChildScrollView(
                       child: Container(
-              height: size.height,
-
+        height: size.height,
         decoration: BoxDecoration(color: Color.fromRGBO(182, 193, 207, 0.21)),
         child: Column(
           children: <Widget>[
@@ -197,16 +196,16 @@ class SettingsRoute extends StatelessWidget {
                       ),
                       _divider(),
                       Container(
-                        margin:EdgeInsets.only(top:15,bottom: 15),
+                          margin: EdgeInsets.only(top: 15, bottom: 15),
                           child: Text(
-                        'Visibility',
-                        style: TextStyle(
-                            fontFamily: 'AirbnbCerealApp',
-                            fontSize: 18,
-                            letterSpacing: -0.54,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(72, 79, 97, 1)),
-                      )),
+                            'Visibility',
+                            style: TextStyle(
+                                fontFamily: 'AirbnbCerealApp',
+                                fontSize: 18,
+                                letterSpacing: -0.54,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(72, 79, 97, 1)),
+                          )),
                       _divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

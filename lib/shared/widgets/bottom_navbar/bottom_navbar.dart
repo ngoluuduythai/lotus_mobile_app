@@ -25,7 +25,7 @@ class BottomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentRoute = ModalRoute.of(context).settings.name;
     final baseroute = currentRoute.split('/');
-    var currentRouteIndex = getRouteIndex('/'+ baseroute.removeLast());
+    var currentRouteIndex = getRouteIndex('/' + baseroute.removeLast());
     currentRouteIndex ??= getRouteIndex('/' + baseroute.removeLast());
     return BottomNavigationBar(
 
