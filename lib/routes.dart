@@ -1,3 +1,4 @@
+import 'package:main/routes/explore/sub_routes/map/explore_map.route.dart';
 import 'package:main/routes/profile/sub_routes/documentsids/documentsids.route.dart';
 import 'package:main/routes/profile/sub_routes/feedback/feedback.route.dart';
 import 'package:main/routes/profile/sub_routes/friends/friends.route.dart';
@@ -18,6 +19,7 @@ import 'routes/rentals/rentals.route.dart';
 class RouteNames {
   static const login = '/login';
   static const explore = '/explore';
+  static const explore_map = '/explore/map';
   static const saved = '/saved';
   static const rentals = '/rentals';
   static const inbox = '/inbox';
@@ -137,6 +139,12 @@ class Routes {
       name: RouteNames.viewprofile,
       builder: (context, args, params) {
         return ViewProfileRoute();
+      },
+    ));
+    sailor.addRoute(SailorRoute(
+      name: RouteNames.explore_map,
+      builder: (context, args, params) {
+        return ExploreMapRoute();
       },
     ));
   }

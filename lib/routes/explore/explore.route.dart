@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/constants/images.dart';
+import 'package:main/shared/widgets/map_button/map_button.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
@@ -66,6 +67,9 @@ class ExploreRoute extends StatelessWidget {
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'AirbnbCerealApp'))),
+                              Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: MapButton()),
                               Container(
                                   margin: EdgeInsets.only(top: 20),
                                   child: Text('Recommended Apartments',
