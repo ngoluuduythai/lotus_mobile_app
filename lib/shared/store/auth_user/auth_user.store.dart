@@ -55,7 +55,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginLinkedin(BuildContext context) async {
     final dynamic data = await linkedinService.login(context);
-    if ( data == null) {
+    if (data == null) {
       return false;
     }
     authUser = AuthUser.fromJson(data);
