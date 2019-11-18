@@ -30,6 +30,22 @@ class PlaidService {
     return c.future;
   }
 
+  Future getInstitutions() async {
+    final result = await graphqlService.query('''
+        query{
+  whoami{
+    userKey
+    financialInstitutions{
+      name
+      financialInstitutionKey
+    }
+    monthlyRentalBudget
+  }
+}
+       ''');
+    return result.data;
+  }
+
   Future sendToken(Result plaidResult) async {
     final result = await graphqlService.mutate('''
         mutation{

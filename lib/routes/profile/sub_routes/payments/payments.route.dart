@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:main/shared/constants/icon_paths.dart';
+import 'package:main/shared/services/plaid.service.dart';
+import 'package:main/shared/widgets/add_bank_button/add_bank_button.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../routes.dart';
@@ -12,6 +14,8 @@ class PaymentsRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final plaidService = locator<PlaidService>();
+  
     final Size size = MediaQuery.of(context).size;
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
@@ -151,13 +155,10 @@ class PaymentsRoute extends StatelessWidget {
                               margin: EdgeInsets.only(bottom: 21),
                               child: RaisedButton(
                                 color: Color.fromRGBO(255, 186, 115, 1),
-                                onPressed: () {print(authUserStore.authUser.firstName);},
+                                onPressed: () {},
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5)),
-                                child: Text('Add New Bank',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'AirbnbCerealApp')),
+                                child: AddBankButtonButton(),
                               ))
                         ]),
                       )

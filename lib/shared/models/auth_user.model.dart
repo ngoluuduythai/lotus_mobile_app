@@ -27,21 +27,20 @@ class AuthUser {
   String nickName;
   String gender;
   final num monthlyRentalBudget;
-
-  String get fullName {
-    String fullName = '';
-
-    if (firstName != null) {
-      fullName += '$firstName ';
+    String get fullName {
+      String fullName = '';
+  
+      if (firstName != null) {
+        fullName += '$firstName ';
+      }
+  
+      if (lastName != null) {
+        fullName += '$lastName';
+      }
+      return fullName;
     }
-
-    if (lastName != null) {
-      fullName += '$lastName';
-    }
-    return fullName;
+  
+    factory AuthUser.fromJson(Map<String, dynamic> json) =>
+        _$AuthUserFromJson(json);
+    Map<String, dynamic> toJson() => _$AuthUserToJson(this);
   }
-
-  factory AuthUser.fromJson(Map<String, dynamic> json) =>
-      _$AuthUserFromJson(json);
-  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
-}

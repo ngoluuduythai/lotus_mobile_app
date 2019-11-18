@@ -33,6 +33,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginFacebook() async {
     final data = await facebookService.login();
+    print(data);
     if (data == null) {
       return false;
     }
