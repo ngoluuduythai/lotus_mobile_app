@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/constants/images.dart';
-<<<<<<< HEAD
 import 'package:main/shared/widgets/map_button/map_button.dart';
-=======
 import 'package:main/shared/models/explore-card-model.dart';
->>>>>>> bb49ff4d9d02dee278d98de20ff8f7a1b5aa7fca
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
