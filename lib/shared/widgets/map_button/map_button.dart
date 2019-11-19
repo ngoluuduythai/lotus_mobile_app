@@ -7,7 +7,9 @@ class MapButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       color: Colors.white,
-      child: Text('gmaps'),
+      child: Image.asset(
+        'assets/icons/shape.png'
+      ),
       onPressed: () => Routes.sailor.
         navigate(RouteNames.explore_map),
     );

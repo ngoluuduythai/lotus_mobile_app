@@ -67,6 +67,9 @@ class ExploreRoute extends StatelessWidget {
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'AirbnbCerealApp'))),
+                              // FIXME: this button its only for show the
+                              // functionality of the google map,
+                              // it should be removed later
                               Container(
                                   margin: EdgeInsets.only(top: 10),
                                   child: MapButton()),

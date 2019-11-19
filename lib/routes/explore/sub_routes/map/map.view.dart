@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GoogleMapsView extends StatefulWidget {
+  final Set<Marker> markers;
+  final LatLng center;
 
-  GoogleMapsView({
-    this.center,
-    this.markers
-  });
-  
-  LatLng center = const LatLng(45.521563, -122.677433);
-  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
-  
+  const GoogleMapsView(this.markers, this.center);
 
   @override
   _GoogleMapsView createState() => _GoogleMapsView();
@@ -18,8 +13,6 @@ class GoogleMapsView extends StatefulWidget {
 
 class _GoogleMapsView extends State<GoogleMapsView> {
   GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(45.521563, -122.677433);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -38,13 +31,11 @@ class _GoogleMapsView extends State<GoogleMapsView> {
             child: GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: _center,
+                target: widget.center,
                 zoom: 11.0,
               ),
-              // TODO(iskakaushik): Remove this when collection literals makes it to stable.
-              // https://github.com/flutter/flutter/issues/28312
               // ignore: prefer_collection_literals
-              // markers: Set<Marker>.of(widget.markers.values),
+              markers: widget.markers,
             ),
           ),
         ),

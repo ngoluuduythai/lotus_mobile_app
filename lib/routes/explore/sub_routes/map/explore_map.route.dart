@@ -15,9 +15,39 @@ class ExploreMapRoute extends StatefulWidget {
 
 class _ExploreMapRouteState extends State<ExploreMapRoute> {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+  BitmapDescriptor _markerIcon;
+  final LatLng _kMapCenter = LatLng(40.71344790771858, -74.00276251919672);
+
+  Set<Marker> _createMarker() {
+    // ignore: prefer_collection_literals
+    return <Marker>[
+      Marker(
+        markerId: MarkerId('marker_1'),
+        position: _kMapCenter,
+        icon: _markerIcon,
+      ),
+    ].toSet();
+  }
+
+  Future<void> _createMarkerImageFromAsset(BuildContext context) async {
+    if (_markerIcon == null) {
+      final ImageConfiguration imageConfiguration =
+          createLocalImageConfiguration(context);
+      BitmapDescriptor.fromAssetImage(
+              imageConfiguration, 'assets/icons/shape@3x.png')
+          .then(_updateBitmap);
+    }
+  }
+
+  void _updateBitmap(BitmapDescriptor bitmap) {
+    setState(() {
+      _markerIcon = bitmap;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    _createMarkerImageFromAsset(context);
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: ListView(
@@ -59,9 +89,7 @@ class _ExploreMapRouteState extends State<ExploreMapRoute> {
               ],
             ),
           ),
-          GoogleMapsView(
-            // center: LatLng(45.521563, -122.677433),
-          )
+          GoogleMapsView(_createMarker(), _kMapCenter)
         ],
       ));
     });
