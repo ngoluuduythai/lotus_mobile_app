@@ -1,19 +1,17 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
-import 'package:main/shared/constants/env.dart';
+import 'package:main/shared/store/auth_user/auth_user.store.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
-import '../../shared/store/auth_user/auth_user.store.dart';
 import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
 import 'linkedin_view/linkedin_view.dart';
+import '../../utils/sizeConfig.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -35,13 +33,11 @@ class LoginRouteMobilePortrait extends StatelessWidget {
 }
 
 Widget _topRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  double h = size.height * 3 / 5;
+  SizeConfig().init(context);
   return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 40, right: 44, top: 35),
-      width: size.width,
-      height: h,
+      width: SizeConfig.safeBlockHorizontal * 100,
+      height: SizeConfig.safeBlockVertical * 62,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +46,9 @@ Widget _topRectable(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(bottom: 17),
+                margin: EdgeInsets.only(
+                    left: SizeConfig.safeBlockHorizontal * 5,
+                    top: SizeConfig.blockSizeVertical * 5),
                 child: Image.asset(
                   Images.logo,
                   width: 73,
@@ -58,7 +56,9 @@ Widget _topRectable(BuildContext context) {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(bottom: 5),
+                margin: EdgeInsets.only(
+                    left: SizeConfig.safeBlockHorizontal * 5,
+                    top: SizeConfig.blockSizeVertical),
                 child: Text(
                   'Welcome to Lotus',
                   style: TextStyle(
@@ -70,6 +70,9 @@ Widget _topRectable(BuildContext context) {
                 ),
               ),
               Container(
+                  margin: EdgeInsets.only(
+                      left: SizeConfig.safeBlockHorizontal * 6,
+                      top: SizeConfig.blockSizeVertical),
                   child: Text(
                       'Find the perfect space.\nSame price. No Commitment.',
                       style: TextStyle(
@@ -82,60 +85,54 @@ Widget _topRectable(BuildContext context) {
             ],
           ),
           Container(
-            alignment: Alignment(0, 0),
-            child: Image.asset(Images.loginRoomBackground),
+            margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 8),
+            width: SizeConfig.safeBlockHorizontal * 87,
+            child: Image.asset(Images.loginRoomBackground,
+                width: SizeConfig.safeBlockHorizontal * 70),
           ),
         ],
       ));
 }
 
 Widget _imageWoman(BuildContext context) {
+  SizeConfig().init(context);
   return Container(
+    margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 30),
     alignment: Alignment.topCenter,
-    margin: const EdgeInsets.only(left: 20, right: 65),
-    padding: EdgeInsets.only(
-      top: 210,
-      right: 20.0,
-      left: 20.0,
-      bottom: 20,
-    ),
     child: Container(
-      height: 230.0,
-      width: MediaQuery.of(context).size.width,
+      height: SizeConfig.safeBlockVertical * 40,
+      width: SizeConfig.safeBlockHorizontal * 19,
       child: Image.asset(Images.loginGirl),
     ),
   );
 }
 
 Widget _bottomRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  double topH = size.height * 3 / 5;
-  double h = size.height - topH;
+  SizeConfig().init(context);
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-
   return PositionedDirectional(
-    top: topH,
     start: 0,
     child: Container(
-      width: size.width,
-      height: h,
+      width: SizeConfig.safeBlockHorizontal * 100,
+      height: SizeConfig.safeBlockVertical * 150,
       color: AppColor.primary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(
-            height: 20,
+            height: SizeConfig.safeBlockVertical * 18,
           ),
+
           LoginButton(
             // Facebook Login Button
             iconImageLocation: IconPath.facebook,
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xFF3B5998),
-            width: 344,
-            height: 45,
-            left: 57,
-            right: 54,
-            fontSize: 16,
+            width: SizeConfig.safeBlockHorizontal * 93,
+            height: SizeConfig.safeBlockVertical * 7,
+            left: SizeConfig.safeBlockHorizontal * 20,
+            right: SizeConfig.safeBlockHorizontal * 16,
+            fontSize: SizeConfig.safeBlockHorizontal * 4,
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
               if (loggedIn) {
@@ -143,28 +140,9 @@ Widget _bottomRectable(BuildContext context) {
               }
             },
           ),
+
           SizedBox(
-            height: 10,
-          ),
-          LoginButton(
-            // Instagram Login Button
-            iconImageLocation: IconPath.instagram,
-            buttonText: 'Login with Instagram',
-            buttonTextColor: const Color(0xFF323332),
-            width: 344,
-            height: 45,
-            left: 57,
-            right: 51,
-            fontSize: 16,
-            onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
-            },
-          ),
-          SizedBox(
-            height: 10,
+            height: SizeConfig.safeBlockVertical * 2,
           ),
           //Login with linkedin
           LoginButton(
@@ -172,45 +150,21 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.linkedin,
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xFF0077B5),
-            width: 344,
-            height: 45,
-            left: 59,
-            right: 65,
-            fontSize: 16,
+            width: SizeConfig.safeBlockHorizontal * 93,
+            height: SizeConfig.safeBlockVertical * 7,
+            left: SizeConfig.safeBlockHorizontal * 20,
+            right: SizeConfig.safeBlockHorizontal * 19,
+            fontSize: SizeConfig.safeBlockHorizontal * 4,
+
             onPressed: () async {
-              // FIXME refactor: move to another place
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                        appBar: AppBar(
-                          leading: CloseButton(),
-                        ),
-                        body: LinkedInLogin(
-                          clientId: ENV.linkedinAppID, // FIXME hardcoding
-                          redirectUrl: ENV.linkedinRedirectUrl,
-                          onError: (String error) {
-                            print(error);
-                          },
-                          onAuthCode: (authCode) async {
-                            print('authCode');
-                            print(authCode);
-                            final loggedIn =
-                                await authUserStore.loginLinkedin(authCode);
-                            print('loggedIn');
-                            print(loggedIn);
-                            if (loggedIn) {
-                              print('loggedIn if');
-                              Navigator.pop(context);
-                              Routes.sailor(RouteNames.profile);
-                            }
-                          },
-                        ))),
-              );
+              final loggedIn = await authUserStore.loginLinkedin(context);
+              if (loggedIn) {
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
           SizedBox(
-            height: 10,
+            height: SizeConfig.safeBlockVertical * 2,
           ),
           //Continue without registration
           LoginButton(
@@ -218,11 +172,12 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.google,
             buttonText: 'Login with Google',
             buttonTextColor: const Color(0xFF4C4C4C),
-            width: 344,
-            height: 45,
-            left: 57,
-            right: 74,
-            fontSize: 16,
+            width: SizeConfig.safeBlockHorizontal * 93,
+            height: SizeConfig.safeBlockVertical * 7,
+            left: SizeConfig.safeBlockHorizontal * 20,
+            right: SizeConfig.safeBlockHorizontal * 21,
+            fontSize: SizeConfig.safeBlockHorizontal * 4,
+
             onPressed: () async {
               final loggedIn = await authUserStore.loginGoogle();
               if (loggedIn) {

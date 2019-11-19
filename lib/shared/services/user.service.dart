@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:main/locator.dart';
 import 'package:main/shared/models/auth_user.model.dart';
 import './graphql.service.dart';
@@ -30,5 +31,9 @@ class UserService {
     final result = await graphqlService.mutate(mutation);
     print(result.errors);
     return result.data;
+  }
+
+  Future uploadFile(File file) async {
+    print(file);
   }
 }

@@ -73,10 +73,17 @@ class _ItemEditListState extends State<ItemEditList> {
           Container(
               height: 21,
               width: 21,
-              child: Tab(
-                  icon: Image.asset(
-                widget.iconImageLocation,
-              ))),
+              child: GestureDetector(
+                child: Tab(
+                    icon: Image.asset(
+                  widget.iconImageLocation,
+                )),
+                onTap: () => {
+                  setState(() {
+                    if (isEmail(widget.title)) _textEditingController.text = '';
+                  })
+                },
+              )),
         ],
       ),
     );

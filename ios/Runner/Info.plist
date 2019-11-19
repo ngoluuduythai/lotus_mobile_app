@@ -10,6 +10,14 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To upload documents and files necessary for approval</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take photos of property in current condition</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Send voice messages to other users</string>
+
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
