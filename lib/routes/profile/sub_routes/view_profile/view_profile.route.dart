@@ -186,7 +186,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                                       {_verificationScreen(context)},
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5)),
-                                  child: Text('Verify Employer',
+                                  child: Text('Apply',
                                       style: TextStyle(
                                           color: Color(0xFF733A00),
                                           fontWeight: FontWeight.w700,
