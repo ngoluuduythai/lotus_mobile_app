@@ -3,7 +3,7 @@ import '../../../shared/constants/icon_paths.dart';
 import './../../../routes.dart';
 
 class SubProfileBase extends StatelessWidget {
-  SubProfileBase({ @required this.name, @required this.child , this.save});
+  SubProfileBase({@required this.name, @required this.child, this.save});
   String name;
   Widget child;
   Widget save;
@@ -34,7 +34,7 @@ class SubProfileBase extends StatelessWidget {
                         },
                       ),
                       Container(
-                          margin: EdgeInsets.only( ),
+                          margin: EdgeInsets.only(),
                           child: GestureDetector(
                             child: Text(
                               name,
@@ -49,10 +49,10 @@ class SubProfileBase extends StatelessWidget {
                             onTap: () =>
                                 Routes.sailor.navigate(RouteNames.profile),
                           )),
-                          Container(  
-                            margin: EdgeInsets.only(left: 210),
-                            child: save,
-                          )
+                      Container(
+                        margin: EdgeInsets.only(left: 210),
+                        child: save,
+                      )
                     ],
                   ),
                 ),
