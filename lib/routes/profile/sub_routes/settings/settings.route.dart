@@ -3,19 +3,32 @@ import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import 'package:main/shared/constants/icon_paths.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
-
+import '../settings/item_setting_list/item_setting_list.dart';
 import '../../../../routes.dart';
 
-class SettingsRoute extends StatelessWidget {
-  bool switchOn = false;
+class SettingsRoute extends StatefulWidget {
+  @override
+  _SettingsRoute createState() => _SettingsRoute();
+}
 
-  void _onSwitchChanged(bool value) {
-    switchOn = false;
-  }
+class _SettingsRoute extends State<SettingsRoute> {
+  bool _email = true;
+  bool _pushNot = true;
+  bool _textMsg = false;
+  bool _roommateVisib = true;
+
+  void _onChangedEmail(bool value) => setState(() => _email = value);
+  void _onChangedPushNot(bool value) => setState(() => _pushNot = value);
+  void _onChangedTextMsg(bool value) => setState(() => _textMsg = value);
+  void _onChangedRoommateVisib(bool value) =>
+      setState(() => _roommateVisib = value);
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final Color _activeColor = Color.fromRGBO(255, 186, 115, 1);
+    final Color _textColor = Color.fromRGBO(72, 79, 97, 1);
+
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: SubProfileBase(name: 'Settings',child: _notifications(context),)
@@ -28,11 +41,14 @@ class SettingsRoute extends StatelessWidget {
   }
   Widget _notifications(BuildContext context){
     final Size size = MediaQuery.of(context).size;
+    final Color _activeColor = Color.fromRGBO(255, 186, 115, 1);
+    final Color _textColor = Color.fromRGBO(72, 79, 97, 1);
     return Container(
                 width: size.width,
                 margin:
-                    EdgeInsets.only(left: 21, right: 21, top: 30, bottom: 30),
-                padding: EdgeInsets.only(top: 34, left: 21, right: 21),
+                    EdgeInsets.only(left: 21, right: 21, top: 30, bottom: 40),
+                padding:
+                    EdgeInsets.only(top: 34, left: 21, right: 21, bottom: 40),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(21))),
@@ -41,126 +57,50 @@ class SettingsRoute extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
+                          margin: EdgeInsets.only(bottom: 20),
                           child: Text(
-                        'Notifications',
-                        style: TextStyle(
-                            fontFamily: 'AirbnbCerealApp',
-                            fontSize: 18,
-                            letterSpacing: -0.54,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(72, 79, 97, 1)),
-                      )),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.only(top: 30),
-                              child: Text('Email',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              margin: EdgeInsets.only(top: 30),
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                            'Notifications',
+                            style: TextStyle(
+                                fontFamily: 'AirbnbCerealApp',
+                                fontSize: 18,
+                                letterSpacing: -0.54,
+                                fontWeight: FontWeight.bold,
+                                color: _textColor),
+                          )),
+                      ItemSettingList(
+                        text: 'Email',
+                        value: _email,
+                        color: _textColor,
+                        activeColor: _activeColor,
+                        onChanged: _onChangedEmail,
                       ),
                       _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Push Notifications',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                      ItemSettingList(
+                        text: 'Push Notifications',
+                        value: _pushNot,
+                        color: _textColor,
+                        activeColor: _activeColor,
+                        onChanged: _onChangedPushNot,
                       ),
                       Row(
                         children: <Widget>[
                           Container(
-                              margin: EdgeInsets.only(bottom: 15),
+                              margin: EdgeInsets.only(bottom: 10),
                               child: Text('To your mobile or tablet device',
                                   style: TextStyle(
                                       fontFamily: 'AirbnbCerealApp',
                                       fontSize: 13,
                                       letterSpacing: -0.39,
-                                      color: Color.fromRGBO(72, 79, 97, 1))))
+                                      color: _textColor)))
                         ],
                       ),
                       _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Text Messages',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                      ItemSettingList(
+                        text: 'Text Messages',
+                        value: _textMsg,
+                        color: _textColor,
+                        activeColor: _activeColor,
+                        onChanged: _onChangedTextMsg,
                       ),
                       _divider(),
                       Container(
@@ -172,40 +112,15 @@ class SettingsRoute extends StatelessWidget {
                                 fontSize: 18,
                                 letterSpacing: -0.54,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(72, 79, 97, 1)),
+                                color: _textColor),
                           )),
                       _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Roommate Visibility',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                      ItemSettingList(
+                        text: 'Roommate Visibility',
+                        value: _roommateVisib,
+                        color: _textColor,
+                        activeColor: _activeColor,
+                        onChanged: _onChangedRoommateVisib,
                       ),
                       _divider(),
                     ]));
