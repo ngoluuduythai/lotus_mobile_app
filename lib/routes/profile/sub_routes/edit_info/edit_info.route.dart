@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import './item_edit_list/item_edit_list.dart';
 import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
@@ -24,69 +25,20 @@ class EditInfoRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color.fromRGBO(245, 246, 250, 1),
-        body: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(left: 0, right: 20, top: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Image.asset(
-                          IconPath.backArrow,
-                          width: 14,
-                          height: 17,
-                        ),
-                        onPressed: () {
-                          Routes.sailor.navigate(
-                            RouteNames.profile,
-                          );
-                        },
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(right: 220),
-                          child: GestureDetector(
-                            child: Text(
-                              'Edit Info',
-                              style: TextStyle(
-                                color: Color(0xff0b0b0b),
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'AirbnbCerealApp',
-                                fontStyle: FontStyle.normal,
-                                fontSize: 21.0,
-                              ),
-                            ),
-                            onTap: () =>
-                                Routes.sailor.navigate(RouteNames.profile),
-                          )),
-                      InkWell(
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                            color: Color(0xff0b0b0b),
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'AirbnbCerealApp',
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16,
-                          ),
-                          textAlign: TextAlign.right,
-                        ),
-                        onTap: () async {
-                          await authUserStore.saveUserApi(editUser);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Stack(
+    return 
+   SubProfileBase(name: 'Edit Info',child: _editInfo(context),save: _save(context),);
+  }
+  
+  Widget _imgProfileandSave(){
+     return 
+  Stack(
+         children:<Widget>[
+     Container(  
+                  margin: EdgeInsets.only(right: 0,left: 130),
+                  child:  Stack(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(top: 0, left: 0),
+                      margin: EdgeInsets.only(top: 0, left: 20),
                       width: 109.9,
                       height: 109.9,
                       decoration: BoxDecoration(
@@ -102,7 +54,7 @@ class EditInfoRoute extends StatelessWidget {
                     ),
                     GestureDetector(
                       child: Container(
-                        margin: EdgeInsets.only(top: 75, left: 73),
+                        margin: EdgeInsets.only(top: 75, left: 90),
                         width: 34.9,
                         height: 34.9,
                         decoration: BoxDecoration(
@@ -127,11 +79,40 @@ class EditInfoRoute extends StatelessWidget {
                       onTap: () => print('upload image'),
                     ),
                   ],
-                ),
-                Container(
+                ),),  
+                     
+                      ],
+       );
+  }
+
+  Widget _save(BuildContext context){
+    return
+    InkWell(
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                            color: Color(0xff0b0b0b),
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'AirbnbCerealApp',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                          ),
+                        ),
+                        onTap: () async {
+                          await authUserStore.saveUserApi(editUser);
+                        },
+                      );
+  }
+
+  Widget _editInfo(BuildContext context){
+
+    return Stack(
+      children: <Widget>[
+          _imgProfileandSave(),
+           Container(
                   width: 372,
                   height: 580,
-                  margin: EdgeInsets.only(top: 31, bottom: 31),
+                  margin: EdgeInsets.only(left: 20,top: 130, bottom: 31),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
@@ -238,12 +219,8 @@ class EditInfoRoute extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+                )
+      ],
+      );
   }
 }

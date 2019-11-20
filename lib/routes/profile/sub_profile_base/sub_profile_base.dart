@@ -3,9 +3,10 @@ import '../../../shared/constants/icon_paths.dart';
 import './../../../routes.dart';
 
 class SubProfileBase extends StatelessWidget {
-  SubProfileBase({ @required this.name, @required this.child});
+  SubProfileBase({ @required this.name, @required this.child , this.save});
   String name;
   Widget child;
+  Widget save;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,8 @@ class SubProfileBase extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(left: 0, right: 20, top: 40),
+                  margin: EdgeInsets.only(left: 5, right: 20, top: 30),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       IconButton(
                         icon: Image.asset(
@@ -34,7 +34,7 @@ class SubProfileBase extends StatelessWidget {
                         },
                       ),
                       Container(
-                          margin: EdgeInsets.only(right: 220),
+                          margin: EdgeInsets.only( ),
                           child: GestureDetector(
                             child: Text(
                               name,
@@ -49,6 +49,10 @@ class SubProfileBase extends StatelessWidget {
                             onTap: () =>
                                 Routes.sailor.navigate(RouteNames.profile),
                           )),
+                          Container(  
+                            margin: EdgeInsets.only(left: 210),
+                            child: save,
+                          )
                     ],
                   ),
                 ),

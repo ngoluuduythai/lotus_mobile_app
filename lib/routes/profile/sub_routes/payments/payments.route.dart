@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import 'package:main/shared/constants/icon_paths.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -15,44 +16,12 @@ class PaymentsRoute extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
-          child: SingleChildScrollView(
-              child: Column(children: <Widget>[
-        Container(
-            margin: EdgeInsets.only(top: 43, left: 19),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: Image.asset(
-                      IconPath.backArrow,
-                      width: 14,
-                      height: 17,
-                    ),
-                    onPressed: () {
-                      Routes.sailor.navigate(
-                        RouteNames.profile,
-                      );
-                    },
-                  ),
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(right: 120),
-                          child: Text(
-                            'Payments',
-                            style: TextStyle(
-                              color: Color(0xff0b0b0b),
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 21.0,
-                            ),
-                          ),
-                        ),
-                      ])
-                ])),
-        Container(
+          child: SubProfileBase(name: 'Payments',child: _payments(context),));
+    });
+  }
+  Widget _payments(BuildContext context){
+    final Size size = MediaQuery.of(context).size;
+    return  Container(
             margin: EdgeInsets.only(left: 21, right: 21, top: 50, bottom: 30),
             width: size.width,
             decoration: BoxDecoration(
@@ -323,8 +292,6 @@ class PaymentsRoute extends StatelessWidget {
                       ),
                     ))
               ],
-            ))
-      ])));
-    });
+            ));
   }
 }
