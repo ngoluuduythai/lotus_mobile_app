@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:main/routes/profile/profile.route.dart';
+import '../../../../shared/constants/images.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import '../../../../locator.dart';
 import '../../../../shared/constants/icon_paths.dart';
@@ -14,6 +16,9 @@ class ViewProfileRoute extends StatefulWidget {
 
 class _ViewProfileRouteState extends State<ViewProfileRoute> {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+  TextEditingController _emailUser = TextEditingController();
+  TextEditingController _incomeUser = TextEditingController();
+  final _keyForm = GlobalKey<FormState>();
 
   greyDivider() {
     return Container(
@@ -24,6 +29,179 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
         endIndent: 22,
       ),
     );
+  }
+
+  Future _verificationScreen(BuildContext context) {
+    _emailUser = null;
+    _incomeUser = null;
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Scaffold(
+              body: ListView(children: <Widget>[
+            Container(
+                width: 413,
+                height: 780,
+                decoration: BoxDecoration(color: Color(0xfff5f6fa)),
+                child: Container(
+                  margin:
+                      EdgeInsets.only(top: 40, left: 32, right: 32, bottom: 50),
+                  width: 372,
+                  height: 425,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(left: 0, top: 15, right: 270),
+                          child: GestureDetector(
+                            child: Tab(
+                              icon: Image.asset(
+                                IconPath.crossBlack,
+                                width: 24,
+                                height: 24,
+                              ),
+                            ),
+                            onTap: () => {
+                              Routes.sailor.navigate(RouteNames.viewprofile)
+                            },
+                          )),
+                      Container(
+                          margin: EdgeInsets.only(),
+                          child: Center(
+                            child: Image.asset(
+                              Images.vsImage,
+                              width: 251,
+                              height: 190,
+                              alignment: Alignment.topCenter,
+                            ),
+                          )),
+                      Container(
+                          margin: EdgeInsets.only(top: 25),
+                          child: Center(
+                            child: Text('Employeer Verification',
+                                style: TextStyle(
+                                  color: Color(0xFF0B0B0B),
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'AirbnbCerealApp',
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 22.0,
+                                )),
+                          )),
+                      Container(
+                          margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                          child: Center(
+                            child: Text(
+                              'We will send your employee email a link so you can verify your employment, we will not contact you employer. We use the expected income in order to determine your max monthly payment',
+                              style: TextStyle(
+                                color: Color(0xFF484F61),
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'AirbnbCerealApp',
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )),
+                      Form(
+                        key: _keyForm,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(right: 220, top: 20),
+                              child: Text('Your Email:',
+                                  style: TextStyle(
+                                    color: Color(0xFF0B0B0B),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'AirbnbCerealApp',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 16.0,
+                                  )),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 21, right: 22),
+                              child: TextFormField(
+                                  controller: _emailUser,
+                                  initialValue: 'myemail@gmail.com',
+                                  style: TextStyle(
+                                    color: Color(0xFF484F61),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'AirbnbCerealApp',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 21.0,
+                                  ),
+                                  decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                        color: Color(0xFFF2F3F8),
+                                      )),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFF2F3F8)),
+                                      ))),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 81, top: 20),
+                              child: Text('Expected Income for the year',
+                                  style: TextStyle(
+                                    color: Color(0xFF0B0B0B),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'AirbnbCerealApp',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 16.0,
+                                  )),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 21, right: 23),
+                              child: TextFormField(
+                                controller: _incomeUser,
+                                initialValue: '\$ 40.000,00',
+                                style: TextStyle(
+                                  color: Color(0xFF484F61),
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'AirbnbCerealApp',
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 21.0,
+                                ),
+                                decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Color(0xFFF2F3F8),
+                                    )),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xFFF2F3F8)),
+                                    )),
+                              ),
+                            ),
+                            Container(
+                                width: 310,
+                                height: 44,
+                                margin: EdgeInsets.only(top: 20),
+                                child: FlatButton(
+                                  color: Color(0xFFFFBA73),
+                                  onPressed: () =>
+                                      {_verificationScreen(context)},
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: Text('Verify Employer',
+                                      style: TextStyle(
+                                          color: Color(0xFF733A00),
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'AirbnbCerealApp',
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16)),
+                                )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ))
+          ]));
+        });
   }
 
   @override
@@ -148,30 +326,23 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                 greyDivider(),
                 Container(
                   margin: EdgeInsets.only(),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(left: 20),
-                        child: Tab(
-                            icon: Image.asset(
-                          IconPath.verifiedAccount,
-                          width: 21,
-                          height: 21,
-                        )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        child: Text('Employer Verified',
+                  child: Container(
+                      width: 330,
+                      height: 44,
+                      margin: EdgeInsets.only(),
+                      child: FlatButton(
+                        color: Color(0xFFFFBA73),
+                        onPressed: () => {_verificationScreen(context)},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Text('Verify Employer',
                             style: TextStyle(
-                              color: Color(0xFF0B0B0B),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 16.0,
-                            )),
-                      ),
-                    ],
-                  ),
+                                color: Color(0xFF733A00),
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'AirbnbCerealApp',
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16)),
+                      )),
                 ),
                 greyDivider(),
                 Container(

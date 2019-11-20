@@ -3,7 +3,7 @@ import '../../../shared/constants/icon_paths.dart';
 import './../../../routes.dart';
 
 class SubProfileBase extends StatelessWidget {
-  SubProfileBase({ @required this.name, @required this.child});
+  SubProfileBase({@required this.name, @required this.child});
   String name;
   Widget child;
 
