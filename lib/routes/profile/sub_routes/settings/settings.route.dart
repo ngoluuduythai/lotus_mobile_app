@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:main/routes/profile/sub_routes/settings/settingsDivider.dart';
+import 'package:main/shared/constants/colors.dart';
 import 'package:main/shared/constants/icon_paths.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
@@ -21,8 +23,8 @@ class SettingsRoute extends StatelessWidget {
               home: Scaffold(
                   body: SingleChildScrollView(
                       child: Container(
-        height: size.height,
-        decoration: BoxDecoration(color: Color.fromRGBO(182, 193, 207, 0.21)),
+        height: size.height - 40,
+        decoration: BoxDecoration(color: AppColor.backgroundGrey),
         child: Column(
           children: <Widget>[
             Container(
@@ -50,7 +52,7 @@ class SettingsRoute extends StatelessWidget {
                               child: Text(
                                 'Settings',
                                 style: TextStyle(
-                                  color: Color(0xff0b0b0b),
+                                  color: AppColor.black,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'AirbnbCerealApp',
                                   fontStyle: FontStyle.normal,
@@ -62,6 +64,7 @@ class SettingsRoute extends StatelessWidget {
                     ])),
             Container(
                 width: size.width,
+                height: size.height - 195,
                 margin:
                     EdgeInsets.only(left: 21, right: 21, top: 30, bottom: 30),
                 padding: EdgeInsets.only(top: 34, left: 21, right: 21),
@@ -72,182 +75,48 @@ class SettingsRoute extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                          child: Text(
-                        'Notifications',
-                        style: TextStyle(
-                            fontFamily: 'AirbnbCerealApp',
-                            fontSize: 18,
-                            letterSpacing: -0.54,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(72, 79, 97, 1)),
-                      )),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.only(top: 30),
-                              child: Text('Email',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              margin: EdgeInsets.only(top: 30),
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                      DividerSettings(
+                        title: 'Notifications',
+                        subTitle: null,
+                        notHaveSubTitle: false,
                       ),
-                      _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Push Notifications',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
+                      DividerSettings(
+                          title: 'Email',
+                          subTitle: null,
+                          notHaveSubTitle: true),
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
+                      DividerSettings(
+                          title: 'Push Notifications',
+                          subTitle: 'To your mobile or tablet device',
+                          notHaveSubTitle: true),
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
+                      DividerSettings(
+                          title: 'Text Messages',
+                          subTitle: null,
+                          notHaveSubTitle: true),
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
+                      DividerSettings(
+                        title: 'Visibility',
+                        subTitle: null,
+                        notHaveSubTitle: false,
                       ),
-                      Row(
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.only(bottom: 15),
-                              child: Text('To your mobile or tablet device',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 13,
-                                      letterSpacing: -0.39,
-                                      color: Color.fromRGBO(72, 79, 97, 1))))
-                        ],
-                      ),
-                      _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Text Messages',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
-                      ),
-                      _divider(),
-                      Container(
-                          margin: EdgeInsets.only(top: 15, bottom: 15),
-                          child: Text(
-                            'Visibility',
-                            style: TextStyle(
-                                fontFamily: 'AirbnbCerealApp',
-                                fontSize: 18,
-                                letterSpacing: -0.54,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(72, 79, 97, 1)),
-                          )),
-                      _divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                              child: Text('Roommate Visibility',
-                                  style: TextStyle(
-                                      fontFamily: 'AirbnbCerealApp',
-                                      fontSize: 18,
-                                      letterSpacing: -0.54,
-                                      color: Color.fromRGBO(72, 79, 97, 1)))),
-                          Container(
-                              child: Switch(
-                                  onChanged: _onSwitchChanged,
-                                  value: switchOn,
-                                  activeTrackColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeColor: Color.fromRGBO(
-                                    255,
-                                    186,
-                                    115,
-                                    1,
-                                  ),
-                                  activeThumbImage:
-                                      AssetImage(IconPath.checkSwitch),
-                                  inactiveThumbImage:
-                                      AssetImage(IconPath.noCheckSwitch)))
-                        ],
-                      ),
-                      _divider(),
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
+                      DividerSettings(
+                          title: 'Roommate Visibility',
+                          subTitle: null,
+                          notHaveSubTitle: true),
+                      DividerSettings(
+                          title: null, subTitle: null, notHaveSubTitle: false),
                     ]))
           ],
         ),
       )))));
     });
-  }
-
-  Widget _divider() {
-    return Divider(thickness: 3, color: Color.fromRGBO(182, 193, 207, 0.21));
   }
 }
