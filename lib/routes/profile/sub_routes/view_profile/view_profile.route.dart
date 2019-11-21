@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:main/routes/profile/profile.route.dart';
 import '../../../../shared/constants/images.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
@@ -16,9 +17,15 @@ class ViewProfileRoute extends StatefulWidget {
 
 class _ViewProfileRouteState extends State<ViewProfileRoute> {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-  TextEditingController _emailUser = TextEditingController();
-  TextEditingController _incomeUser = TextEditingController();
   final _keyForm = GlobalKey<FormState>();
+  String employerEmail;
+  int income;
+
+  var controllerIncome = MoneyMaskedTextController(
+      decimalSeparator: '.',
+      thousandSeparator: ',',
+      initialValue: 40000,
+      precision: 2);
 
   greyDivider() {
     return Container(
@@ -32,8 +39,6 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
   }
 
   Future _verificationScreen(BuildContext context) {
-    _emailUser = null;
-    _incomeUser = null;
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -123,7 +128,18 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                             Container(
                               margin: EdgeInsets.only(left: 21, right: 22),
                               child: TextFormField(
-                                  controller: _emailUser,
+                                  onChanged: (val) => {
+                                        setState(() {
+                                          employerEmail = val;
+                                          print(employerEmail);
+                                        }),
+                                      },
+                                  onFieldSubmitted: (val) => {
+                                        setState(() {
+                                          employerEmail = val;
+                                          print(employerEmail);
+                                        }),
+                                      },
                                   initialValue: 'myemail@gmail.com',
                                   style: TextStyle(
                                     color: Color(0xFF484F61),
@@ -153,37 +169,70 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                                     fontSize: 16.0,
                                   )),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 21, right: 23),
-                              child: TextFormField(
-                                controller: _incomeUser,
-                                initialValue: '\$ 40.000,00',
-                                style: TextStyle(
-                                  color: Color(0xFF484F61),
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'AirbnbCerealApp',
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 21.0,
+                            Row(children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 22),
+                                child: Text(
+                                  '\$',
+                                  style: TextStyle(
+                                    color: Color(0xFF484F61),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'AirbnbCerealApp',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 21.0,
+                                  ),
                                 ),
-                                decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Color(0xFFF2F3F8),
-                                    )),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFFF2F3F8)),
-                                    )),
                               ),
-                            ),
+                              Container(
+                                width: 290,
+                                margin: EdgeInsets.only(),
+                                child: TextFormField(
+                                  controller: controllerIncome,
+                                  keyboardType: TextInputType.number,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      print(controllerIncome.numberValue);
+                                      income = int.parse(val);
+                                      print(income);
+                                    });
+                                  },
+                                  onFieldSubmitted: (val) => {
+                                    setState(() {
+                                      income = int.parse(val);
+                                      print(income);
+                                    }),
+                                  },
+                                  style: TextStyle(
+                                    color: Color(0xFF484F61),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'AirbnbCerealApp',
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 21.0,
+                                  ),
+                                  decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                        color: Color(0xFFF2F3F8),
+                                      )),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFF2F3F8)),
+                                      )),
+                                ),
+                              ),
+                            ]),
                             Container(
                                 width: 310,
                                 height: 44,
                                 margin: EdgeInsets.only(top: 20),
                                 child: FlatButton(
                                   color: Color(0xFFFFBA73),
-                                  onPressed: () =>
-                                      {_verificationScreen(context)},
+                                  onPressed: () => {
+                                    print(employerEmail),
+                                    print(income),
+                                    authUserStore.verifyEmployerApi(
+                                        employerEmail, income)
+                                  },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text('Apply',
@@ -332,7 +381,9 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                       margin: EdgeInsets.only(),
                       child: FlatButton(
                         color: Color(0xFFFFBA73),
-                        onPressed: () => {_verificationScreen(context)},
+                        onPressed: () => {
+                          _verificationScreen(context),
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
                         child: Text('Verify Employer',

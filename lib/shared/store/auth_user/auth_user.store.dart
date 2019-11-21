@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:main/shared/services/employer.service.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../services/user.service.dart';
@@ -21,6 +22,7 @@ abstract class _AuthUserStore with Store {
   final plaidService = locator<PlaidService>();
   final graphqlService = locator<GraphqlService>();
   final userService = locator<UserService>();
+  final employerService = locator<EmployerService>();
 
   @observable
   AuthUser authUser;
@@ -85,6 +87,14 @@ abstract class _AuthUserStore with Store {
       return userService.editProfile(user);
     } else {
       return userService.editProfile(authUser);
+    }
+  }
+
+  verifyEmployerApi(String employerEmail, int income) {
+    if (employerEmail == null || income == null) {
+      return false;
+    } else {
+      return employerService.verifyEmployer(employerEmail, income);
     }
   }
 }
