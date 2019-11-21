@@ -87,4 +87,11 @@ abstract class _AuthUserStore with Store {
       return userService.editProfile(authUser);
     }
   }
+
+  @action
+  Future<bool> saveUserApiAlternatte(AuthUser user) async {
+    final data = await userService.editProfileAlternate(user);
+    authUser = AuthUser.fromJson(data);
+    return true;
+  }
 }

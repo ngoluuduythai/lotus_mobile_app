@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:main/routes/profile/sub_routes/settings/item_setting_list/item_setting_list.dart';
 import 'package:main/shared/constants/icon_paths.dart';
+import 'package:main/shared/models/auth_user.model.dart';
+import 'package:main/shared/store/auth_user/auth_user.store.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 
+import '../../../../locator.dart';
 import '../../../../routes.dart';
 
-class SettingsRoute extends StatefulWidget {
-  @override
-  _SettingsRoute createState() => _SettingsRoute();
-}
+class SettingsRoute extends StatelessWidget {
+  final AuthUserStore authUserStore = locator<AuthUserStore>();
+  final AuthUser editSettingUser = AuthUser();
 
-class _SettingsRoute extends State<SettingsRoute> {
-  bool _email = true;
-  bool _pushNot = true;
-  bool _textMsg = false;
-  bool _roommateVisib = true;
-
-  void _onChangedEmail(bool value) => setState(() => _email = value);
-  void _onChangedPushNot(bool value) => setState(() => _pushNot = value);
-  void _onChangedTextMsg(bool value) => setState(() => _textMsg = value);
-  void _onChangedRoommateVisib(bool value) =>
-      setState(() => _roommateVisib = value);
+  Future _onChanged(AuthUser newValue) async  { 
+    await authUserStore.saveUserApiAlternatte(newValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,18 +98,24 @@ class _SettingsRoute extends State<SettingsRoute> {
                           )),
                       ItemSettingList(
                         text: 'Email',
-                        value: _email,
+                        value: authUserStore.authUser.notifyByEmail,
                         color: _textColor,
                         activeColor: _activeColor,
-                        onChanged: _onChangedEmail,
+                        onChanged: (value) async {
+                          editSettingUser.notifyByEmail = value;
+                          await _onChanged(editSettingUser);
+                        },
                       ),
                       _divider(),
                       ItemSettingList(
                         text: 'Push Notifications',
-                        value: _pushNot,
+                        value: authUserStore.authUser.notifyInApp,
                         color: _textColor,
                         activeColor: _activeColor,
-                        onChanged: _onChangedPushNot,
+                        onChanged: (bool value) async {
+                          editSettingUser.notifyInApp = value;
+                          await _onChanged(editSettingUser);
+                        },
                       ),
                       Row(
                         children: <Widget>[
@@ -132,10 +132,13 @@ class _SettingsRoute extends State<SettingsRoute> {
                       _divider(),
                       ItemSettingList(
                         text: 'Text Messages',
-                        value: _textMsg,
+                        value: authUserStore.authUser.notifyByText,
                         color: _textColor,
                         activeColor: _activeColor,
-                        onChanged: _onChangedTextMsg,
+                        onChanged: (value) async {
+                          editSettingUser.notifyByText = value;
+                          await _onChanged(editSettingUser);
+                        },
                       ),
                       _divider(),
                       Container(
@@ -152,10 +155,13 @@ class _SettingsRoute extends State<SettingsRoute> {
                       _divider(),
                       ItemSettingList(
                         text: 'Roommate Visibility',
-                        value: _roommateVisib,
+                        value: authUserStore.authUser.showInRoommateSearch,
                         color: _textColor,
                         activeColor: _activeColor,
-                        onChanged: _onChangedRoommateVisib,
+                        onChanged: (value) async {
+                          editSettingUser.showInRoommateSearch = value;
+                          await _onChanged(editSettingUser);
+                        },
                       ),
                       _divider(),
                     ]))

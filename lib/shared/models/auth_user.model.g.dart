@@ -18,6 +18,10 @@ AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
     nickName: json['nickName'] as String,
     gender: json['gender'] as String,
     monthlyRentalBudget: json['monthlyRentalBudget'] as num,
+    notifyByEmail: json['notifyByEmail'] as bool,
+    notifyByText: json['notifyByText'] as bool,
+    notifyInApp: json['notifyInApp'] as bool,
+    showInRoommateSearch: json['showInRoommateSearch'] as bool,
   );
 }
 
@@ -32,4 +36,8 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'nickName': instance.nickName,
       'gender': instance.gender,
       'monthlyRentalBudget': instance.monthlyRentalBudget,
+      'notifyByEmail': instance.notifyByEmail,
+      'notifyByText': instance.notifyByText,
+      'notifyInApp': instance.notifyInApp,
+      'showInRoommateSearch': instance.showInRoommateSearch,
     };

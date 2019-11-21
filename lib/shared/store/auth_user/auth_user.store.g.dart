@@ -67,4 +67,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$connectInstitutionAsyncAction
         .run(() => super.connectInstitution(context));
   }
+
+  final _$saveUserApiAlternatteAsyncAction =
+      AsyncAction('saveUserApiAlternatte');
+
+  @override
+  Future<bool> saveUserApiAlternatte(AuthUser user) {
+    return _$saveUserApiAlternatteAsyncAction
+        .run(() => super.saveUserApiAlternatte(user));
+  }
 }
