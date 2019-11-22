@@ -31,13 +31,16 @@ class DocumentsidsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SubProfileBase(
-      name: 'Documents / ids', 
-      child: RaisedButton(child: Text("load pic"), onPressed: () async {
-        print("getting image");
-        var image = await getImage();
-        print("image!!");
-        print(image);
-      },),
+      name: 'Documents / ids',
+      child: RaisedButton(
+        child: Text("load pic"),
+        onPressed: () async {
+          print("getting image");
+          var image = await getImage();
+          print("image!!");
+          print(image);
+        },
+      ),
     );
   }
 }
