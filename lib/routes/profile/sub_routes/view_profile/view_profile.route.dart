@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:main/routes/profile/profile.route.dart';
-import '../../../../shared/constants/images.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import '../../../../locator.dart';
 import '../../../../shared/constants/icon_paths.dart';
 import './../../../../routes.dart';
 import '../../../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../shared/widgets/base_widget/base_widget.dart';
-import '../../../../shared/widgets/bottom_navbar/bottom_navbar.dart';
+import '../view_profile/verification_screen/verification_screen.dart';
+import '../view_profile/item_tyler_provider.dart';
+import '../view_profile/item_view_profile.dart';
 
 class ViewProfileRoute extends StatefulWidget {
   @override
@@ -17,15 +16,6 @@ class ViewProfileRoute extends StatefulWidget {
 
 class _ViewProfileRouteState extends State<ViewProfileRoute> {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-  final _keyForm = GlobalKey<FormState>();
-  String employerEmail;
-  int income;
-
-  var controllerIncome = MoneyMaskedTextController(
-      decimalSeparator: '.',
-      thousandSeparator: ',',
-      initialValue: 40000,
-      precision: 2);
 
   greyDivider() {
     return Container(
@@ -36,221 +26,6 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
         endIndent: 22,
       ),
     );
-  }
-
-  Future _verificationScreen(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Scaffold(
-              body: ListView(children: <Widget>[
-            Container(
-                width: 413,
-                height: 780,
-                decoration: BoxDecoration(color: Color(0xfff5f6fa)),
-                child: Container(
-                  margin:
-                      EdgeInsets.only(top: 40, left: 32, right: 32, bottom: 50),
-                  width: 372,
-                  height: 425,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFFFFF),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                          margin: EdgeInsets.only(left: 0, top: 15, right: 270),
-                          child: GestureDetector(
-                            child: Tab(
-                              icon: Image.asset(
-                                IconPath.crossBlack,
-                                width: 24,
-                                height: 24,
-                              ),
-                            ),
-                            onTap: () => {
-                              Routes.sailor.navigate(RouteNames.viewprofile)
-                            },
-                          )),
-                      Container(
-                          margin: EdgeInsets.only(),
-                          child: Center(
-                            child: Image.asset(
-                              Images.vsImage,
-                              width: 251,
-                              height: 190,
-                              alignment: Alignment.topCenter,
-                            ),
-                          )),
-                      Container(
-                          margin: EdgeInsets.only(top: 25),
-                          child: Center(
-                            child: Text('Employeer Verification',
-                                style: TextStyle(
-                                  color: Color(0xFF0B0B0B),
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'AirbnbCerealApp',
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 22.0,
-                                )),
-                          )),
-                      Container(
-                          margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-                          child: Center(
-                            child: Text(
-                              'We will send your employee email a link so you can verify your employment, we will not contact you employer. We use the expected income in order to determine your max monthly payment',
-                              style: TextStyle(
-                                color: Color(0xFF484F61),
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'AirbnbCerealApp',
-                                fontStyle: FontStyle.normal,
-                                fontSize: 14.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          )),
-                      Form(
-                        key: _keyForm,
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(right: 220, top: 20),
-                              child: Text('Your Email:',
-                                  style: TextStyle(
-                                    color: Color(0xFF0B0B0B),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 16.0,
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 21, right: 22),
-                              child: TextFormField(
-                                  onChanged: (val) => {
-                                        setState(() {
-                                          employerEmail = val;
-                                          print(employerEmail);
-                                        }),
-                                      },
-                                  onFieldSubmitted: (val) => {
-                                        setState(() {
-                                          employerEmail = val;
-                                          print(employerEmail);
-                                        }),
-                                      },
-                                  initialValue: 'myemail@gmail.com',
-                                  style: TextStyle(
-                                    color: Color(0xFF484F61),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 21.0,
-                                  ),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                        color: Color(0xFFF2F3F8),
-                                      )),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Color(0xFFF2F3F8)),
-                                      ))),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 81, top: 20),
-                              child: Text('Expected Income for the year',
-                                  style: TextStyle(
-                                    color: Color(0xFF0B0B0B),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 16.0,
-                                  )),
-                            ),
-                            Row(children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 22),
-                                child: Text(
-                                  '\$',
-                                  style: TextStyle(
-                                    color: Color(0xFF484F61),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 21.0,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 290,
-                                margin: EdgeInsets.only(),
-                                child: TextFormField(
-                                  controller: controllerIncome,
-                                  keyboardType: TextInputType.number,
-                                  onChanged: (val) {
-                                    setState(() {
-                                      print(controllerIncome.numberValue);
-                                      income = int.parse(val);
-                                      print(income);
-                                    });
-                                  },
-                                  onFieldSubmitted: (val) => {
-                                    setState(() {
-                                      income = int.parse(val);
-                                      print(income);
-                                    }),
-                                  },
-                                  style: TextStyle(
-                                    color: Color(0xFF484F61),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'AirbnbCerealApp',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 21.0,
-                                  ),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                        color: Color(0xFFF2F3F8),
-                                      )),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Color(0xFFF2F3F8)),
-                                      )),
-                                ),
-                              ),
-                            ]),
-                            Container(
-                                width: 310,
-                                height: 44,
-                                margin: EdgeInsets.only(top: 20),
-                                child: FlatButton(
-                                  color: Color(0xFFFFBA73),
-                                  onPressed: () => {
-                                    print(employerEmail),
-                                    print(income),
-                                    authUserStore.verifyEmployerApi(
-                                        employerEmail, income)
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  child: Text('Apply',
-                                      style: TextStyle(
-                                          color: Color(0xFF733A00),
-                                          fontWeight: FontWeight.w700,
-                                          fontFamily: 'AirbnbCerealApp',
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16)),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ))
-          ]));
-        });
   }
 
   @override
@@ -382,7 +157,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                       child: FlatButton(
                         color: Color(0xFFFFBA73),
                         onPressed: () => {
-                          _verificationScreen(context),
+                          VerificationScreen().screen(context),
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
@@ -399,42 +174,21 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                 Container(
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 188),
-                        child: Text('Lives in Brooklyn,NY',
-                            style: TextStyle(
-                              color: Color(0xFFB6C1CF),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 15,
-                            )),
+                      ItemsViewProfile(
+                        title: 'Lives in Brooklyn,NY',
+                        right: 188,
+                        top: 0,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 233, top: 10),
-                        child: Text('Speak English',
-                            style: TextStyle(
-                              color: Color(0xFFB6C1CF),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 15,
-                            )),
+                      ItemsViewProfile(
+                        title: 'Speak English',
+                        right: 233,
+                        top: 10,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(
-                          right: 143,
-                          top: 10,
-                        ),
-                        child: Text('Works at Graphic Designer',
-                            style: TextStyle(
-                              color: Color(0xFFB6C1CF),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 15,
-                            )),
-                      )
+                      ItemsViewProfile(
+                        title: 'Works at Graphic Designer',
+                        right: 143,
+                        top: 10,
+                      ),
                     ],
                   ),
                 ),
@@ -452,45 +206,21 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(left: 23, top: 3),
-                        child: Tab(
-                            icon: Image.asset(
-                          IconPath.okIcon,
-                          width: 14,
-                          height: 14,
-                        )),
+                      ItemTylerProvider(
+                        iconImageLocation: IconPath.okIcon,
+                        title: 'Goverment ID',
+                        leftIcon: 23,
+                        topIcon: 3,
+                        leftTitle: 10,
+                        topTitle: 3,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10, top: 3),
-                        child: Text('Goverment ID',
-                            style: TextStyle(
-                              color: Color(0xFF0B0B0B),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                            )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 60, top: 3),
-                        child: Tab(
-                            icon: Image.asset(
-                          IconPath.okIcon,
-                          width: 14,
-                          height: 14,
-                        )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 8, top: 3),
-                        child: Text('Selfie',
-                            style: TextStyle(
-                              color: Color(0xFF0B0B0B),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                            )),
+                      ItemTylerProvider(
+                        iconImageLocation: IconPath.okIcon,
+                        title: 'Selfie',
+                        leftIcon: 59,
+                        topIcon: 3,
+                        leftTitle: 10,
+                        topTitle: 3,
                       ),
                     ],
                   ),
@@ -498,45 +228,21 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(left: 23, top: 3),
-                        child: Tab(
-                            icon: Image.asset(
-                          IconPath.okIcon,
-                          width: 14,
-                          height: 14,
-                        )),
+                      ItemTylerProvider(
+                        iconImageLocation: IconPath.okIcon,
+                        title: 'Email Adress',
+                        leftIcon: 22,
+                        topIcon: 3,
+                        leftTitle: 10,
+                        topTitle: 3,
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10, top: 3),
-                        child: Text('Email Address',
-                            style: TextStyle(
-                              color: Color(0xFF0B0B0B),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                            )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 60, top: 3),
-                        child: Tab(
-                            icon: Image.asset(
-                          IconPath.okIcon,
-                          width: 14,
-                          height: 14,
-                        )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 8, top: 3),
-                        child: Text('Phone Number',
-                            style: TextStyle(
-                              color: Color(0xFF0B0B0B),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                            )),
+                      ItemTylerProvider(
+                        iconImageLocation: IconPath.okIcon,
+                        title: 'Phone Number',
+                        leftIcon: 69,
+                        topIcon: 3,
+                        leftTitle: 10,
+                        topTitle: 3,
                       ),
                     ],
                   ),
