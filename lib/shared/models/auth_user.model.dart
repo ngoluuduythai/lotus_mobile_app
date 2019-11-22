@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
+import './financial_institution.model.dart';
 part 'auth_user.model.g.dart';
 
 @JsonSerializable(nullable: false)
@@ -30,11 +30,12 @@ class AuthUser {
   String lastName;
   String nickName;
   String gender;
-  final num monthlyRentalBudget;
   bool notifyByEmail;
   bool notifyByText;
   bool notifyInApp;
   bool showInRoommateSearch;
+  num monthlyRentalBudget;
+  List<FinancialInstitution> financialInstitutions;
 
   String get fullName {
     String fullName = '';

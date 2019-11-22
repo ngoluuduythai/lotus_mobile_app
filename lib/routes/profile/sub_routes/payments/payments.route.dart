@@ -23,6 +23,63 @@ class PaymentsRoute extends StatelessWidget {
     });
   }
 
+  List<Widget> _bank(BuildContext context) {
+    var authUser = authUserStore.authUser;
+    var financialInstitutions = authUser.financialInstitutions;
+
+    var cashIcon = IconPath.dollarCashGrey;
+    String bankAccountText = 'Your Account';
+    if(financialInstitutions.length > 0) {
+      cashIcon = IconPath.dollarCashGreen;
+      bankAccountText = financialInstitutions[0].name;
+    }
+    return [
+      Container(
+          margin: EdgeInsets.only(left: 21, right: 21, top: 21, bottom: 34),
+          height: 39,
+          width: 55,
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: Color.fromRGBO(182, 193, 207, 0.21), width: 2),
+              color: Color.fromRGBO(182, 193, 207, 0.21),
+              borderRadius: BorderRadius.circular(5)),
+          child: Row(
+            children: <Widget>[
+              IconButton(
+                icon: Image.asset(
+                  cashIcon,
+                  width: 25,
+                  height: 16,
+                ),
+                onPressed: () {},
+              ),
+            ],
+          )),
+      Container(
+        margin: EdgeInsets.only(top: 20, left: 21, bottom: 43),
+        child: Text(bankAccountText,
+            style: TextStyle(
+              color: Color.fromRGBO(182, 193, 207, 100),
+              fontSize: 18,
+              letterSpacing: 0,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'AirbnbCerealApp',
+            )),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 20, bottom: 43),
+        child: IconButton(
+          icon: Image.asset(
+            IconPath.block,
+            width: 25,
+            height: 16,
+          ),
+          onPressed: () {},
+        ),
+      ),
+    ];
+  }
+
   Widget _payments(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
@@ -69,61 +126,17 @@ class PaymentsRoute extends StatelessWidget {
                             color: Color.fromRGBO(243, 244, 248, 100),
                             width: 2)),
                     child: Column(children: <Widget>[
-                      Row(children: <Widget>[
-                        Container(
-                            margin: EdgeInsets.only(
-                                left: 21, right: 21, top: 21, bottom: 34),
-                            height: 39,
-                            width: 55,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color.fromRGBO(182, 193, 207, 0.21),
-                                    width: 2),
-                                color: Color.fromRGBO(182, 193, 207, 0.21),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Row(
-                              children: <Widget>[
-                                IconButton(
-                                  icon: Image.asset(
-                                    IconPath.dollarCashGrey,
-                                    width: 25,
-                                    height: 16,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ],
-                            )),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: 20, left: 21, right: 30, bottom: 43),
-                          child: Text('Your Account',
-                              style: TextStyle(
-                                color: Color.fromRGBO(182, 193, 207, 100),
-                                fontSize: 18,
-                                letterSpacing: 0,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'AirbnbCerealApp',
-                              )),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 20, bottom: 43),
-                          child: IconButton(
-                            icon: Image.asset(
-                              IconPath.block,
-                              width: 25,
-                              height: 16,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
-                      ]),
+                      Row(children: _bank(context)),
                       Container(
                           width: 288,
                           height: 44,
                           margin: EdgeInsets.only(bottom: 21),
                           child: RaisedButton(
                             color: Color.fromRGBO(255, 186, 115, 1),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await authUserStore
+                                  .connectFinancialInstitution(context);
+                            },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text('Add New Bank',
@@ -244,18 +257,6 @@ class PaymentsRoute extends StatelessWidget {
                 ],
               ),
             ])),
-            Container(
-              color: Colors.white,
-              width: size.width,
-              padding: EdgeInsets.only(left: 20, right: 30, bottom: 20),
-              child: Text(
-                  'Keep track of your expenses and access your payment history.',
-                  style: TextStyle(
-                      color: Color.fromRGBO(61, 71, 92, 44),
-                      fontSize: 16,
-                      fontFamily: 'AirbnbCerealApp',
-                      letterSpacing: -0.48)),
-            ),
             Container(
                 width: size.width,
                 decoration: BoxDecoration(

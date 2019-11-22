@@ -22,7 +22,9 @@ AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
     notifyByText: json['notifyByText'] as bool,
     notifyInApp: json['notifyInApp'] as bool,
     showInRoommateSearch: json['showInRoommateSearch'] as bool,
-  );
+  )..financialInstitutions = (json['financialInstitutions'] as List)
+      .map((e) => FinancialInstitution.fromJson(e as Map<String, dynamic>))
+      .toList();
 }
 
 Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
@@ -35,9 +37,10 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'lastName': instance.lastName,
       'nickName': instance.nickName,
       'gender': instance.gender,
-      'monthlyRentalBudget': instance.monthlyRentalBudget,
       'notifyByEmail': instance.notifyByEmail,
       'notifyByText': instance.notifyByText,
       'notifyInApp': instance.notifyInApp,
       'showInRoommateSearch': instance.showInRoommateSearch,
+      'monthlyRentalBudget': instance.monthlyRentalBudget,
+      'financialInstitutions': instance.financialInstitutions,
     };

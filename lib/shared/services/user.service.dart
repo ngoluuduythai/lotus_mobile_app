@@ -97,6 +97,8 @@ class UserService {
     );
 
     final result = await graphqlService.mutateOptions(_options);
+    print('result.data');
+    print(result.data['updateProfile']);
     return result.data['updateProfile'];
   }
 

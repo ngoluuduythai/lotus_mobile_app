@@ -60,12 +60,13 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
-  final _$connectInstitutionAsyncAction = AsyncAction('connectInstitution');
+  final _$connectFinancialInstitutionAsyncAction =
+      AsyncAction('connectFinancialInstitution');
 
   @override
-  Future connectInstitution(BuildContext context) {
-    return _$connectInstitutionAsyncAction
-        .run(() => super.connectInstitution(context));
+  Future connectFinancialInstitution(BuildContext context) {
+    return _$connectFinancialInstitutionAsyncAction
+        .run(() => super.connectFinancialInstitution(context));
   }
 
   final _$saveUserApiAlternatteAsyncAction =

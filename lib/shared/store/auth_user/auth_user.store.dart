@@ -6,7 +6,7 @@ import '../../../locator.dart';
 import '../../services/facebook.service.dart';
 import '../../services/google.service.dart';
 import '../../services/graphql.service.dart';
-import '../../services/plaid.service.dart';
+import '../../services/financial.service.dart';
 import '../../models/auth_user.model.dart';
 import '../../../routes.dart';
 
@@ -18,7 +18,7 @@ abstract class _AuthUserStore with Store {
   final facebookService = locator<FacebookService>();
   final googleService = locator<GoogleService>();
   final linkedinService = locator<LinkedinService>();
-  final plaidService = locator<PlaidService>();
+  final financialService = locator<FinancialService>();
   final graphqlService = locator<GraphqlService>();
   final userService = locator<UserService>();
 
@@ -75,8 +75,8 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future connectInstitution(BuildContext context) async {
-    await plaidService.connectInstitution(context);
+  Future connectFinancialInstitution(BuildContext context) async {
+    await financialService.connectFinancialInstitution(context);
     return true;
   }
 
@@ -91,6 +91,8 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> saveUserApiAlternatte(AuthUser user) async {
     final data = await userService.editProfileAlternate(user);
+    print('data');
+    print(data);
     authUser = AuthUser.fromJson(data);
     return true;
   }

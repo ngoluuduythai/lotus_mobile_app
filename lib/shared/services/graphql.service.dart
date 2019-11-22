@@ -74,6 +74,10 @@ class GraphqlService {
             notifyByText
             notifyInApp
             showInRoommateSearch
+            financialInstitutions {
+              financialInstitutionKey
+              name
+            }
           }
         }
     ''');
