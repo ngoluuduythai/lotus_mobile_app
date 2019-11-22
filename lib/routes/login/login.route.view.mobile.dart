@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/store/auth_user/auth_user.store.dart';
+import 'package:main/shared/widgets/spinner/spinner.dart';
 
 import '../../routes.dart';
 import '../../locator.dart';
@@ -25,6 +26,7 @@ class LoginRouteMobilePortrait extends StatelessWidget {
             _bottomRectable(context),
             _topRectable(context),
             _imageWoman(context),
+          CircularIndicator(isLoading: true),
           ],
         ),
       );
@@ -64,7 +66,7 @@ Widget _topRectable(BuildContext context) {
                   style: TextStyle(
                       color: Color(0xff0b0b0b),
                       fontWeight: FontWeight.w700,
-                      fontFamily: "AirbnbCerealApp",
+                      fontFamily: 'AirbnbCerealApp',
                       fontStyle: FontStyle.normal,
                       fontSize: 30.0),
                 ),
@@ -78,7 +80,7 @@ Widget _topRectable(BuildContext context) {
                       style: TextStyle(
                         color: Color(0xff0b0b0b).withOpacity(.64),
                         fontWeight: FontWeight.w500,
-                        fontFamily: "AirbnbCerealApp",
+                        fontFamily: 'AirbnbCerealApp',
                         fontStyle: FontStyle.normal,
                         fontSize: 18.0,
                       ))),
@@ -110,6 +112,7 @@ Widget _imageWoman(BuildContext context) {
 Widget _bottomRectable(BuildContext context) {
   SizeConfig().init(context);
   final AuthUserStore authUserStore = locator<AuthUserStore>();
+  bool isLoading = false;
   return PositionedDirectional(
     start: 0,
     child: Container(
@@ -134,13 +137,15 @@ Widget _bottomRectable(BuildContext context) {
             right: SizeConfig.safeBlockHorizontal * 16,
             fontSize: SizeConfig.safeBlockHorizontal * 4,
             onPressed: () async {
-              final loggedIn = await authUserStore.loginFacebook();
+              isLoading = true;
+              final loggedIn = await authUserStore
+                  .loginFacebook()
+                  .whenComplete(() => {isLoading = false});
               if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
             },
           ),
-
           SizedBox(
             height: SizeConfig.safeBlockVertical * 2,
           ),
