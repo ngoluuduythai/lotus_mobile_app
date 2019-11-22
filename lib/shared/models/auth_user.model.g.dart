@@ -18,7 +18,9 @@ AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
     nickName: json['nickName'] as String,
     gender: json['gender'] as String,
     monthlyRentalBudget: json['monthlyRentalBudget'] as num,
-  );
+  )..financialInstitutions = (json['financialInstitutions'] as List)
+      .map((e) => FinancialInstitution.fromJson(e as Map<String, dynamic>))
+      .toList();
 }
 
 Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
@@ -32,4 +34,5 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'nickName': instance.nickName,
       'gender': instance.gender,
       'monthlyRentalBudget': instance.monthlyRentalBudget,
+      'financialInstitutions': instance.financialInstitutions,
     };

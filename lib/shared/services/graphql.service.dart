@@ -66,6 +66,10 @@ class GraphqlService {
             token
             gender
             pictureUrl
+            financialInstitutions {
+              financialInstitutionKey
+              name
+            }
           }
         }
     ''');

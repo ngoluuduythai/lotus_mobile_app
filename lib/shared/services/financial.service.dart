@@ -6,7 +6,7 @@ import 'package:main/locator.dart';
 import './graphql.service.dart';
 // import '../../pac/plaid.dart';
 
-class PlaidService {
+class FinancialService {
   final graphqlService = locator<GraphqlService>();
   Configuration configuration = Configuration(
       plaidPublicKey: ENV.plaidPublicKey,
@@ -44,14 +44,14 @@ class PlaidService {
               accountSubtype: "${plaidResult.accountSubtype}"
             }
           ){
-            message
+            success
           }
         }
        ''');
     return result.data;
   }
 
-  Future connectInstitution(BuildContext context) async {
+  Future connectFinancialInstitution(BuildContext context) async {
     final Result result = await getInstitutionToken(context);
     return sendToken(result);
   }
