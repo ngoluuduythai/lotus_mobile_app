@@ -15,6 +15,10 @@ class AuthUser {
     this.nickName,
     this.gender,
     this.monthlyRentalBudget,
+    this.notifyByEmail,
+    this.notifyByText,
+    this.notifyInApp,
+    this.showInRoommateSearch,
   });
 
   final num userKey;
@@ -26,6 +30,10 @@ class AuthUser {
   String lastName;
   String nickName;
   String gender;
+  bool notifyByEmail;
+  bool notifyByText;
+  bool notifyInApp;
+  bool showInRoommateSearch;
   num monthlyRentalBudget;
   List<FinancialInstitution> financialInstitutions;
 

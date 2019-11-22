@@ -53,8 +53,12 @@ class GraphqlService {
     ));
   }
 
+  Future<QueryResult> mutateOptions(MutationOptions options) {
+    return client.mutate(options);
+  }
+
   socialLogin(String token, String service) async {
-    final dynamic result = await query('''
+    final QueryResult result = await query('''
         query{
           socialLogin(
             token: "$token",
@@ -66,6 +70,10 @@ class GraphqlService {
             token
             gender
             pictureUrl
+            notifyByEmail
+            notifyByText
+            notifyInApp
+            showInRoommateSearch
             financialInstitutions {
               financialInstitutionKey
               name
@@ -73,7 +81,6 @@ class GraphqlService {
           }
         }
     ''');
-
     return result.data['socialLogin'];
   }
 }
