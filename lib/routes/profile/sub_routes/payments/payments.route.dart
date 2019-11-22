@@ -6,6 +6,7 @@ import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../routes.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
+import '../../../../utils/sizeConfig.dart';
 import 'package:main/locator.dart';
 
 class PaymentsRoute extends StatelessWidget {
@@ -14,6 +15,7 @@ class PaymentsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: SubProfileBase(
@@ -26,18 +28,22 @@ class PaymentsRoute extends StatelessWidget {
   List<Widget> _bank(BuildContext context) {
     var authUser = authUserStore.authUser;
     var financialInstitutions = authUser.financialInstitutions;
-
     var cashIcon = IconPath.dollarCashGrey;
+    print(financialInstitutions);
     String bankAccountText = 'Your Account';
-    if(financialInstitutions.length > 0) {
+    if (financialInstitutions.length > 0) {
       cashIcon = IconPath.dollarCashGreen;
       bankAccountText = financialInstitutions[0].name;
     }
     return [
       Container(
-          margin: EdgeInsets.only(left: 21, right: 21, top: 21, bottom: 34),
+          margin: EdgeInsets.only(
+              left: SizeConfig.safeBlockHorizontal * 3.8,
+              right: SizeConfig.safeBlockHorizontal * 11,
+              top: 21,
+              bottom: 34),
           height: 39,
-          width: 55,
+          width: SizeConfig.safeBlockHorizontal * 14,
           decoration: BoxDecoration(
               border: Border.all(
                   color: Color.fromRGBO(182, 193, 207, 0.21), width: 2),
@@ -45,18 +51,23 @@ class PaymentsRoute extends StatelessWidget {
               borderRadius: BorderRadius.circular(5)),
           child: Row(
             children: <Widget>[
-              IconButton(
-                icon: Image.asset(
-                  cashIcon,
-                  width: 25,
-                  height: 16,
+              Container(
+                margin:
+                    EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 0.7),
+                child: IconButton(
+                  icon: Image.asset(
+                    cashIcon,
+                    width: 25,
+                    height: 16,
+                  ),
+                  onPressed: () {},
                 ),
-                onPressed: () {},
               ),
             ],
           )),
       Container(
-        margin: EdgeInsets.only(top: 20, left: 21, bottom: 43),
+        margin: EdgeInsets.only(
+            top: 20, right: SizeConfig.safeBlockHorizontal * 7.8, bottom: 43),
         child: Text(bankAccountText,
             style: TextStyle(
               color: Color.fromRGBO(182, 193, 207, 100),
@@ -82,6 +93,7 @@ class PaymentsRoute extends StatelessWidget {
 
   Widget _payments(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return Container(
         margin: EdgeInsets.only(left: 21, right: 21, top: 50, bottom: 30),
         width: size.width,
@@ -120,7 +132,10 @@ class PaymentsRoute extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(
-                        top: 21, left: 20.7, right: 20.7, bottom: 35),
+                        top: 21,
+                        left: SizeConfig.safeBlockHorizontal * 4.5,
+                        right: SizeConfig.safeBlockHorizontal * 3,
+                        bottom: 35),
                     decoration: BoxDecoration(
                         border: Border.all(
                             color: Color.fromRGBO(243, 244, 248, 100),
@@ -128,14 +143,18 @@ class PaymentsRoute extends StatelessWidget {
                     child: Column(children: <Widget>[
                       Row(children: _bank(context)),
                       Container(
-                          width: 288,
-                          height: 44,
-                          margin: EdgeInsets.only(bottom: 21),
+                          width: SizeConfig.safeBlockHorizontal * 71,
+                          height: SizeConfig.safeBlockVertical * 6.5,
+                          margin: EdgeInsets.only(
+                              bottom: 21,
+                              left: SizeConfig.safeBlockHorizontal * 3.5,
+                              right: SizeConfig.safeBlockHorizontal * 3.5),
                           child: RaisedButton(
                             color: Color.fromRGBO(255, 186, 115, 1),
                             onPressed: () async {
-                              await authUserStore
+                              var result = await authUserStore
                                   .connectFinancialInstitution(context);
+                              print(result);
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
@@ -149,6 +168,15 @@ class PaymentsRoute extends StatelessWidget {
                 ],
               ),
             ])),
+            Container(
+              margin: EdgeInsets.only(bottom: 0),
+              child: Divider(
+                indent: 18,
+                endIndent: 29,
+                thickness: 1.3,
+                color: Color(0xFFEFF2F4),
+              ),
+            ),
             Container(
                 color: Colors.white,
                 child: Row(

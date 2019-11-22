@@ -17,7 +17,6 @@ class SettingsRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: SubProfileBase(
