@@ -36,70 +36,40 @@ class UserService {
 
   Future editProfileAlternate(AuthUser user) async {
     const String document = r'''
-      mutation UpdateProfile(
-          $firstName: String,
-          $lastName: String,
-          $phone: String,
-          $nickName: String,
-          $gender: GENDER_ENUM,
-          $notifyByEmail: Boolean,
-          $notifyByText: Boolean,
-          $notifyInApp: Boolean,
-          $showInRoommateSearch: Boolean
-      ) {
-        updateProfile(
-          firstName: $firstName,
-          lastName: $lastName,
-          phone: $phone,
-          nickName: $nickName,
-          gender: $gender,
-          notifyByEmail: $notifyByEmail,
-          notifyByText: $notifyByText,
-          notifyInApp: $notifyInApp,
-          showInRoommateSearch: $showInRoommateSearch
-              ){
-            email
-            firstName
-            lastName
-            nickName
-            token
-            gender
-            pictureUrl
-            notifyByEmail
-            notifyByText
+      mutation updateUser(
+        $input: UpdateUserInput
+      ){
+        updateUser(input: $input){
+          user{
             notifyInApp
+            notifyByText
+            notifyByEmail
             showInRoommateSearch
+          }
+        }
       }
-    }
     ''';
 
-    var _variables = <String, dynamic>{
-      'firstName': user.firstName,
-      'lastName': user.lastName,
-      'phone': user.phone,
-      'nickName': user.nickName,
-      'gender': user.gender,
-      'notifyByEmail': user.notifyByEmail,
-      'notifyByText': user.notifyByText,
-      'notifyInApp': user.notifyInApp,
-      'showInRoommateSearch': user.showInRoommateSearch
-    };
+    var userJson = user.toJson();
 
     // clean null variables
-    _variables.keys
-        .where((k) => _variables[k] == null)
+    userJson.keys
+        .where((k) => userJson[k] == null)
         .toList()
-        .forEach(_variables.remove);
+        .forEach(userJson.remove);
 
+    print(userJson);
     final MutationOptions _options = MutationOptions(
       document: document,
-      variables: _variables,
+      variables: {'input': userJson},
     );
 
     final result = await graphqlService.mutateOptions(_options);
-    print('result.data');
-    print(result.data['updateProfile']);
-    return result.data['updateProfile'];
+    if (result.errors != null) {
+      print('error');
+      print(result.errors);
+    }
+    return result.data['updateUser']['user'];
   }
 
   Future uploadFile(File file) async {

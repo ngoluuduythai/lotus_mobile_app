@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import './financial_institution.model.dart';
+import "package:merge_map/merge_map.dart";
 part 'auth_user.model.g.dart';
 
 @JsonSerializable(nullable: false)
@@ -48,6 +49,15 @@ class AuthUser {
       fullName += '$lastName';
     }
     return fullName;
+  }
+
+  update(Map<String, dynamic> json) {
+    final originalJson = toJson();
+    final Map merged = mergeMap([originalJson, json]);
+    final Map finalMerged = new Map<String, dynamic>.from(merged);
+    print('***********');
+    print(finalMerged);
+    return AuthUser.fromJson(finalMerged);
   }
 
   factory AuthUser.fromJson(Map<String, dynamic> json) =>

@@ -29,7 +29,7 @@ class PaymentsRoute extends StatelessWidget {
 
     var cashIcon = IconPath.dollarCashGrey;
     String bankAccountText = 'Your Account';
-    if(financialInstitutions.length > 0) {
+    if (financialInstitutions.length > 0) {
       cashIcon = IconPath.dollarCashGreen;
       bankAccountText = financialInstitutions[0].name;
     }
