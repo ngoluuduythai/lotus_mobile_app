@@ -80,7 +80,7 @@ abstract class _AuthUserStore with Store {
     return true;
   }
 
-getInstitutionName() async {
+getFinancialInstitutions() async {
   var a = await financialService.getInstitution();
   return a;
 }
