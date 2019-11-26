@@ -30,6 +30,21 @@ class FinancialService {
     return c.future;
   }
 
+  getInstitution() async {
+    final result = await graphqlService.query('''query{
+        whoami{
+          userKey
+          financialInstitutions{
+            name
+            financialInstitutionKey
+          }
+          monthlyRentalBudget
+        }
+      }''');
+    print(result);
+    return result.data;
+  }
+
   Future sendToken(Result plaidResult) async {
     final result = await graphqlService.mutate('''
         mutation{

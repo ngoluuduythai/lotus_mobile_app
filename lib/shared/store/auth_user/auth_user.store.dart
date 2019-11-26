@@ -80,6 +80,11 @@ abstract class _AuthUserStore with Store {
     return true;
   }
 
+getInstitutionName() async {
+  var a = await financialService.getInstitution();
+  return a;
+}
+
   saveUserApi(AuthUser user) {
     if (user != null) {
       return userService.editProfile(user);

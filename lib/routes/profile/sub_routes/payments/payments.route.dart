@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import 'package:main/shared/constants/icon_paths.dart';
+import 'package:main/shared/services/financial.service.dart';
+import 'package:main/shared/services/graphql.service.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../routes.dart';
@@ -162,8 +166,11 @@ class PaymentsRoute extends StatelessWidget {
                             child: RaisedButton(
                               color: Color.fromRGBO(255, 186, 115, 1),
                               onPressed: () async {
-                                await authUserStore
-                                    .connectFinancialInstitution(context);
+                                // var a = await authUserStore
+                                //     .connectFinancialInstitution(context);
+                                //     print(a);
+                                var a = await authUserStore.getInstitutionName();
+                                print(a);
                               },
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5)),
