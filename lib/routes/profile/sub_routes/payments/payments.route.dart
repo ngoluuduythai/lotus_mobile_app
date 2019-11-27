@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +5,6 @@ import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import 'package:main/shared/constants/icon_paths.dart';
 import 'package:main/shared/widgets/base_widget/base_widget.dart';
 import 'package:main/shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
-import 'package:main/utils/screenUtil.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import 'package:main/locator.dart';
 
@@ -39,7 +36,7 @@ class PaymentsRoute extends StatelessWidget {
         children: <Widget>[
           Container(
               margin: EdgeInsets.only(
-                  bottom: ScreenUtil.instance.setWidth(34)),
+                  bottom: ScreenUtil().setWidth(34)),
               height: 40,
               width: 55,
               decoration: BoxDecoration(
@@ -52,8 +49,8 @@ class PaymentsRoute extends StatelessWidget {
                   IconButton(
                     icon: Image.asset(
                       cashIcon,
-                      width: ScreenUtil.instance.setWidth(25),
-                      height: ScreenUtil.instance.setHeight(16),
+                      width: ScreenUtil().setWidth(25),
+                      height: ScreenUtil().setHeight(16),
                     ),
                     onPressed: () {},
                   ),
@@ -61,7 +58,7 @@ class PaymentsRoute extends StatelessWidget {
               )),
           Container(
             margin: EdgeInsets.only(
-                bottom: ScreenUtil.instance.setWidth(43.0)),
+                bottom: ScreenUtil().setWidth(43.0)),
             child: Text(bankAccountText,
                 style: TextStyle(
                   color: Color.fromRGBO(182, 193, 207, 100),
@@ -85,16 +82,15 @@ class PaymentsRoute extends StatelessWidget {
   }
 
   Widget _payments(BuildContext context) {
-    ScreenUtil.instance = ScreenUtilOvr().overrideInstance(context);
     final Size size = MediaQuery.of(context).size;
     return Container(
         padding:
-            EdgeInsets.symmetric(horizontal: ScreenUtil.instance.setWidth(20)),
+            EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
         margin: EdgeInsets.only(
-            top: ScreenUtil.instance.setWidth(30.0),
-            bottom: ScreenUtil.instance.setWidth(30.0),
-            left: ScreenUtil.instance.setWidth(21),
-            right: ScreenUtil.instance.setWidth(21)),
+            top: ScreenUtil().setWidth(30.0),
+            bottom: ScreenUtil().setWidth(30.0),
+            left: ScreenUtil().setWidth(21),
+            right: ScreenUtil().setWidth(21)),
         width: size.width,
         decoration: BoxDecoration(
             color: Colors.white,
@@ -105,9 +101,9 @@ class PaymentsRoute extends StatelessWidget {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                  top: ScreenUtil.instance.setWidth(16),
-                  left: ScreenUtil.instance.setWidth(20),
-                  right: ScreenUtil.instance.setWidth(21)),
+                  top: ScreenUtil().setWidth(16),
+                  left: ScreenUtil().setWidth(20),
+                  right: ScreenUtil().setWidth(21)),
               child: Column(children: <Widget>[
                 Text(
                   'Payment Method',
@@ -121,9 +117,9 @@ class PaymentsRoute extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.only(
-                  top: ScreenUtil.instance.setWidth(16),
-                  left: ScreenUtil.instance.setWidth(20),
-                  right: ScreenUtil.instance.setWidth(21)),
+                  top: ScreenUtil().setWidth(16),
+                  left: ScreenUtil().setWidth(20),
+                  right: ScreenUtil().setWidth(21)),
               child: Text(
                   'Connect your bank account to pay rent and to substitute proof of income and employment documents.',
                   style: TextStyle(
@@ -134,9 +130,9 @@ class PaymentsRoute extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  padding:EdgeInsets.symmetric(vertical: ScreenUtil.instance.setWidth(20)),
+                  padding:EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(20)),
                   margin: EdgeInsets.only(
-                      bottom: ScreenUtil.instance.setWidth(35)),
+                      bottom: ScreenUtil().setWidth(35)),
                   decoration: BoxDecoration(
                       border: Border.all(
                           color: Color.fromRGBO(243, 244, 248, 100), width: 2)),
@@ -144,9 +140,9 @@ class PaymentsRoute extends StatelessWidget {
                       children: <Widget>[
                         _bank(context),
                         Container(
-                            width: ScreenUtil.instance.setWidth(600),
+                            width: ScreenUtil().setWidth(600),
                             padding: EdgeInsets.symmetric(
-                                horizontal: ScreenUtil.instance.setWidth(21)),
+                                horizontal: ScreenUtil().setWidth(21)),
                             child: RaisedButton(
                               color: Color.fromRGBO(255, 186, 115, 1),
                               onPressed: () async {
@@ -197,8 +193,8 @@ class PaymentsRoute extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(
-                  top: ScreenUtil.instance.setWidth(21),
-                  bottom: ScreenUtil.instance.setWidth(35)),
+                  top: ScreenUtil().setWidth(21),
+                  bottom: ScreenUtil().setWidth(35)),
               decoration: BoxDecoration(
                   border: Border.all(
                       color: Color.fromRGBO(243, 244, 248, 100), width: 2)),
@@ -207,8 +203,8 @@ class PaymentsRoute extends StatelessWidget {
                   children: <Widget>[
                     Container(
                         margin: EdgeInsets.only(
-                            top: ScreenUtil.instance.setWidth(21),
-                            bottom: ScreenUtil.instance.setWidth(14)),
+                            top: ScreenUtil().setWidth(21),
+                            bottom: ScreenUtil().setWidth(14)),
                         height: 40,
                         width: 55,
                         decoration: BoxDecoration(
@@ -222,8 +218,8 @@ class PaymentsRoute extends StatelessWidget {
                             IconButton(
                               icon: Image.asset(
                                 IconPath.dollarCashGreen,
-                                width: ScreenUtil.instance.setWidth(25),
-                                height: ScreenUtil.instance.setHeight(16),
+                                width: ScreenUtil().setWidth(25),
+                                height: ScreenUtil().setHeight(16),
                               ),
                               onPressed: () {},
                             ),

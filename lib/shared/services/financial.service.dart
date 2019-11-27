@@ -31,18 +31,18 @@ class FinancialService {
   }
 
   getInstitution() async {
-    final result = await graphqlService.query('''query{
-        whoami{
-          userKey
-          financialInstitutions{
-            name
-            financialInstitutionKey
-          }
-          monthlyRentalBudget
+    final result = await graphqlService.query('''
+    query{
+      whoami{
+        financialInstitutions{
+          name
+          financialInstitutionKey
         }
-      }''');
-    print(result);
-    return result.data;
+        monthlyRentalBudget
+      }
+    }
+    ''');
+    return result.data['whoami'];
   }
 
   Future sendToken(Result plaidResult) async {
