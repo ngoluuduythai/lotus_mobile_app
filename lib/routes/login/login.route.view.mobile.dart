@@ -144,6 +144,27 @@ Widget _bottomRectable(BuildContext context) {
           SizedBox(
             height: ScreenUtil().setHeight(25),
           ),
+          //Login with instagram
+          LoginButton(
+            // Instagram Login Button
+            iconImageLocation: IconPath.instagram,
+            buttonText: 'Login with Instagram',
+            buttonTextColor: const Color(0xFF323332),
+             width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
+            onPressed: () async {
+              // final loggedIn = await authUserStore.loginInstagram();
+              // if(loggedIn){
+              //   Routes.sailor(RouteNames.profile);
+              // }
+            },
+          ),
+          SizedBox(
+            height: ScreenUtil().setHeight(25),
+          ),
           //Login with linkedin
           LoginButton(
             // Linkedin Login Button
@@ -186,7 +207,7 @@ Widget _bottomRectable(BuildContext context) {
             },
           ),
           SizedBox(
-            height: ScreenUtil().setHeight(110.0),
+            height: ScreenUtil().setHeight(40.0),
           ),
         ],
       ),
