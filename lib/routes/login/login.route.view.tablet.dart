@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
+import 'package:main/shared/constants/colors.dart';
 import './login_button/login_button.dart';
 
 import '../../routes.dart';
@@ -19,8 +21,8 @@ class LoginRouteTablet extends StatelessWidget {
       return Material(
         child: Stack(
           children: <Widget>[
-            _topRectable(context),
             _bottomRectable(context),
+            _topRectable(context),
             _imageWoman(context),
           ],
         ),
@@ -30,13 +32,10 @@ class LoginRouteTablet extends StatelessWidget {
 }
 
 Widget _topRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  double h = size.height * 3 / 5;
   return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 40, right: 44, top: 40),
-      width: size.width,
-      height: h,
+      width: ScreenUtil().scaleWidth * 750,
+      height: ScreenUtil().scaleHeight * 770,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +44,9 @@ Widget _topRectable(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(bottom: 17),
+                margin: EdgeInsets.only(
+                    left: ScreenUtil().setWidth(60),
+                    top: ScreenUtil().scaleHeight * 100),
                 child: Image.asset(
                   Images.logo,
                   width: 73,
@@ -53,7 +54,9 @@ Widget _topRectable(BuildContext context) {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(bottom: 5),
+                margin: EdgeInsets.only(
+                    left: ScreenUtil().setWidth(59),
+                    top: ScreenUtil().scaleHeight * 15),
                 child: Text(
                   'Welcome to Lotus',
                   style: TextStyle(
@@ -61,10 +64,13 @@ Widget _topRectable(BuildContext context) {
                       fontWeight: FontWeight.w700,
                       fontFamily: "AirbnbCerealApp",
                       fontStyle: FontStyle.normal,
-                      fontSize: 30.0),
+                      fontSize: ScreenUtil().scaleHeight * 50),
                 ),
               ),
               Container(
+                  margin: EdgeInsets.only(
+                      left: ScreenUtil().setWidth(60),
+                      top: ScreenUtil().scaleHeight * 15),
                   child: Text(
                       'Find the perfect space.\nSame price. No Commitment.',
                       style: TextStyle(
@@ -72,64 +78,63 @@ Widget _topRectable(BuildContext context) {
                         fontWeight: FontWeight.w500,
                         fontFamily: "AirbnbCerealApp",
                         fontStyle: FontStyle.normal,
-                        fontSize: 18.0,
+                        fontSize: ScreenUtil().scaleHeight * 30,
                       ))),
             ],
           ),
           Container(
-            alignment: Alignment(0, 0),
-            child: Image.asset(Images.loginRoomBackground),
-          ),
+              margin: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(30),
+                  top: ScreenUtil().scaleHeight * 40),
+              height: ScreenUtil().scaleHeight * 370,
+              child: Image.asset(
+                Images.loginRoomBackground,
+                // fit: BoxFit.contain,
+                width: ScreenUtil().scaleWidth * 700,
+                height: ScreenUtil().scaleHeight * 350,
+              )),
         ],
       ));
 }
 
 Widget _imageWoman(BuildContext context) {
+  // SizeConfig().init(context);
   return Container(
+    margin: EdgeInsets.only(
+        top: ScreenUtil().scaleHeight * 390,
+        right: ScreenUtil().scaleWidth * 50),
     alignment: Alignment.topCenter,
-    margin: const EdgeInsets.only(left: 20, right: 65),
-    padding: new EdgeInsets.only(
-      top: 250,
-      right: 20.0,
-      left: 20.0,
-      bottom: 20,
-    ),
-    child: new Container(
-      height: 400,
-      width: MediaQuery.of(context).size.width,
-      child: new Image.asset(Images.loginGirl),
+    child: Container(
+      height: ScreenUtil().scaleHeight * 450,
+      // width: SizeConfig.safeBlockHorizontal * 19,
+      width: ScreenUtil().scaleHeight * 250,
+      child: Image.asset(Images.loginGirl),
     ),
   );
 }
 
 Widget _bottomRectable(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  double topH = size.height * 3 / 5;
-  double h = size.height - topH;
+  // SizeConfig().init(context);
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   return PositionedDirectional(
-    top: topH,
     start: 0,
     child: Container(
-      width: size.width,
-      height: h,
-      color: Color(0xffffba73),
+      width: ScreenUtil().scaleWidth * 750,
+      height: ScreenUtil().scaleHeight * 1334,
+      color: AppColor.primary,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
           LoginButton(
             // Facebook Login Button
             iconImageLocation: IconPath.facebook,
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xFF3B5998),
-            width: 450,
-            height: 55,
-            left: 90,
-            right: 83,
-            fontSize: 20,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
               if (loggedIn) {
@@ -137,28 +142,9 @@ Widget _bottomRectable(BuildContext context) {
               }
             },
           ),
+
           SizedBox(
-            height: 10,
-          ),
-          LoginButton(
-            // Instagram Login Button
-            iconImageLocation: IconPath.instagram,
-            buttonText: 'Login with Instagram',
-            buttonTextColor: const Color(0xFF323332),
-            width: 450,
-            height: 55,
-            left: 90,
-            right: 80,
-            fontSize: 20,
-            onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
-            },
-          ),
-          SizedBox(
-            height: 10,
+            height: ScreenUtil().setHeight(25),
           ),
           //Login with linkedin
           LoginButton(
@@ -166,20 +152,21 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.linkedin,
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xFF0077B5),
-            width: 450,
-            height: 55,
-            left: 90,
-            right: 96,
-            fontSize: 20,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
+
             onPressed: () async {
-              // final loggedIn = await authUserStore.loginInstagram();
-              // if(loggedIn){
-              //   Routes.sailor(RouteNames.profile);
-              // }
+              final loggedIn = await authUserStore.loginLinkedin(context);
+              if (loggedIn) {
+                Routes.sailor(RouteNames.profile);
+              }
             },
           ),
           SizedBox(
-            height: 10,
+            height: ScreenUtil().setHeight(25),
           ),
           //Continue without registration
           LoginButton(
@@ -187,17 +174,21 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.google,
             buttonText: 'Login with Google',
             buttonTextColor: const Color(0xFF4C4C4C),
-            width: 450,
-            height: 55,
-            left: 90,
-            right: 107,
-            fontSize: 20,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
+
             onPressed: () async {
               final loggedIn = await authUserStore.loginGoogle();
               if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
             },
+          ),
+          SizedBox(
+            height: ScreenUtil().setHeight(110.0),
           ),
         ],
       ),

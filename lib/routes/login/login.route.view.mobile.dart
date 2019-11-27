@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/store/auth_user/auth_user.store.dart';
@@ -10,8 +11,6 @@ import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
-import 'linkedin_view/linkedin_view.dart';
-import '../../utils/sizeConfig.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -33,11 +32,10 @@ class LoginRouteMobilePortrait extends StatelessWidget {
 }
 
 Widget _topRectable(BuildContext context) {
-  SizeConfig().init(context);
   return Container(
       color: Colors.white,
-      width: SizeConfig.safeBlockHorizontal * 100,
-      height: SizeConfig.safeBlockVertical * 62,
+      width: ScreenUtil().scaleWidth * 750,
+      height: ScreenUtil().scaleHeight * 770,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +45,8 @@ Widget _topRectable(BuildContext context) {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
-                    left: SizeConfig.safeBlockHorizontal * 5,
-                    top: SizeConfig.blockSizeVertical * 5),
+                    left: ScreenUtil().setWidth(60),
+                    top: ScreenUtil().scaleHeight * 100),
                 child: Image.asset(
                   Images.logo,
                   width: 73,
@@ -57,8 +55,8 @@ Widget _topRectable(BuildContext context) {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    left: SizeConfig.safeBlockHorizontal * 5,
-                    top: SizeConfig.blockSizeVertical),
+                    left: ScreenUtil().setWidth(59),
+                    top: ScreenUtil().scaleHeight * 15),
                 child: Text(
                   'Welcome to Lotus',
                   style: TextStyle(
@@ -66,13 +64,13 @@ Widget _topRectable(BuildContext context) {
                       fontWeight: FontWeight.w700,
                       fontFamily: "AirbnbCerealApp",
                       fontStyle: FontStyle.normal,
-                      fontSize: 30.0),
+                      fontSize: ScreenUtil().scaleHeight * 50),
                 ),
               ),
               Container(
                   margin: EdgeInsets.only(
-                      left: SizeConfig.safeBlockHorizontal * 6,
-                      top: SizeConfig.blockSizeVertical),
+                      left: ScreenUtil().setWidth(60),
+                      top: ScreenUtil().scaleHeight * 15),
                   child: Text(
                       'Find the perfect space.\nSame price. No Commitment.',
                       style: TextStyle(
@@ -80,59 +78,61 @@ Widget _topRectable(BuildContext context) {
                         fontWeight: FontWeight.w500,
                         fontFamily: "AirbnbCerealApp",
                         fontStyle: FontStyle.normal,
-                        fontSize: 18.0,
+                        fontSize: ScreenUtil().scaleHeight * 30,
                       ))),
             ],
           ),
           Container(
-            margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 8),
-            width: SizeConfig.safeBlockHorizontal * 87,
-            child: Image.asset(Images.loginRoomBackground,
-                width: SizeConfig.safeBlockHorizontal * 70),
-          ),
+              margin: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(30),
+                  top: ScreenUtil().scaleHeight * 40),
+              height: ScreenUtil().scaleHeight * 330,
+              child: Image.asset(
+                Images.loginRoomBackground,
+                // fit: BoxFit.contain,
+                width: ScreenUtil().scaleWidth * 700,
+                height: ScreenUtil().scaleHeight * 350,
+              )),
         ],
       ));
 }
 
 Widget _imageWoman(BuildContext context) {
-  SizeConfig().init(context);
   return Container(
-    margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 30),
+    margin: EdgeInsets.only(
+        top: ScreenUtil().scaleHeight * 450,
+        right: ScreenUtil().scaleWidth * 70),
     alignment: Alignment.topCenter,
     child: Container(
-      height: SizeConfig.safeBlockVertical * 40,
-      width: SizeConfig.safeBlockHorizontal * 19,
+      height: ScreenUtil().scaleHeight * 370,
+      // width: SizeConfig.safeBlockHorizontal * 19,
+      width: ScreenUtil().scaleHeight * 250,
       child: Image.asset(Images.loginGirl),
     ),
   );
 }
 
 Widget _bottomRectable(BuildContext context) {
-  SizeConfig().init(context);
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   return PositionedDirectional(
     start: 0,
     child: Container(
-      width: SizeConfig.safeBlockHorizontal * 100,
-      height: SizeConfig.safeBlockVertical * 150,
+      width: ScreenUtil().scaleWidth * 750,
+      height: ScreenUtil().scaleHeight * 1334,
       color: AppColor.primary,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          SizedBox(
-            height: SizeConfig.safeBlockVertical * 18,
-          ),
-
           LoginButton(
             // Facebook Login Button
             iconImageLocation: IconPath.facebook,
             buttonText: 'Login with Facebook',
             buttonTextColor: const Color(0xFF3B5998),
-            width: SizeConfig.safeBlockHorizontal * 93,
-            height: SizeConfig.safeBlockVertical * 7,
-            left: SizeConfig.safeBlockHorizontal * 20,
-            right: SizeConfig.safeBlockHorizontal * 16,
-            fontSize: SizeConfig.safeBlockHorizontal * 4,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
             onPressed: () async {
               final loggedIn = await authUserStore.loginFacebook();
               if (loggedIn) {
@@ -142,7 +142,7 @@ Widget _bottomRectable(BuildContext context) {
           ),
 
           SizedBox(
-            height: SizeConfig.safeBlockVertical * 2,
+            height: ScreenUtil().setHeight(25),
           ),
           //Login with linkedin
           LoginButton(
@@ -150,11 +150,11 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.linkedin,
             buttonText: 'Login with LinkedIn',
             buttonTextColor: const Color(0xFF0077B5),
-            width: SizeConfig.safeBlockHorizontal * 93,
-            height: SizeConfig.safeBlockVertical * 7,
-            left: SizeConfig.safeBlockHorizontal * 20,
-            right: SizeConfig.safeBlockHorizontal * 19,
-            fontSize: SizeConfig.safeBlockHorizontal * 4,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
 
             onPressed: () async {
               final loggedIn = await authUserStore.loginLinkedin(context);
@@ -164,7 +164,7 @@ Widget _bottomRectable(BuildContext context) {
             },
           ),
           SizedBox(
-            height: SizeConfig.safeBlockVertical * 2,
+            height: ScreenUtil().setHeight(25),
           ),
           //Continue without registration
           LoginButton(
@@ -172,11 +172,11 @@ Widget _bottomRectable(BuildContext context) {
             iconImageLocation: IconPath.google,
             buttonText: 'Login with Google',
             buttonTextColor: const Color(0xFF4C4C4C),
-            width: SizeConfig.safeBlockHorizontal * 93,
-            height: SizeConfig.safeBlockVertical * 7,
-            left: SizeConfig.safeBlockHorizontal * 20,
-            right: SizeConfig.safeBlockHorizontal * 21,
-            fontSize: SizeConfig.safeBlockHorizontal * 4,
+            width: ScreenUtil().setWidth(640),
+            height: ScreenUtil().setHeight(90),
+            left: ScreenUtil().setWidth(130),
+            right: 0,
+            fontSize: ScreenUtil().setWidth(29),
 
             onPressed: () async {
               final loggedIn = await authUserStore.loginGoogle();
@@ -184,6 +184,9 @@ Widget _bottomRectable(BuildContext context) {
                 Routes.sailor(RouteNames.profile);
               }
             },
+          ),
+          SizedBox(
+            height: ScreenUtil().setHeight(110.0),
           ),
         ],
       ),

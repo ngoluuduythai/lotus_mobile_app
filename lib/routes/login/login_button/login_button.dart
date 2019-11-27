@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginButton extends StatelessWidget {
   LoginButton({
@@ -39,11 +40,12 @@ class LoginButton extends StatelessWidget {
           alignment: Alignment.center,
           margin: EdgeInsets.only(left: left, right: right),
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Tab(
                     icon: Image.asset(iconImageLocation,
                         height: 21, width: 21, alignment: Alignment.center)),
+                SizedBox(width: ScreenUtil().setWidth(30),),
                 Text(buttonText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
