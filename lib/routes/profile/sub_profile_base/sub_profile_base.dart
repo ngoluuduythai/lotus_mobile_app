@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../shared/constants/icon_paths.dart';
 import './../../../routes.dart';
 
@@ -24,8 +25,8 @@ class SubProfileBase extends StatelessWidget {
                       IconButton(
                         icon: Image.asset(
                           IconPath.backArrow,
-                          width: 14,
-                          height: 17,
+                          width: ScreenUtil().setWidth(38),
+                          height: ScreenUtil().setWidth(34),
                         ),
                         onPressed: () {
                           Routes.sailor.navigate(
@@ -43,14 +44,14 @@ class SubProfileBase extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'AirbnbCerealApp',
                                 fontStyle: FontStyle.normal,
-                                fontSize: 21.0,
+                                fontSize: ScreenUtil().setSp(42.0),
                               ),
                             ),
                             onTap: () =>
                                 Routes.sailor.navigate(RouteNames.profile),
                           )),
                       Container(
-                        margin: EdgeInsets.only(left: 210),
+                        margin: EdgeInsets.only(left: ScreenUtil().setWidth(210)),
                         child: save,
                       )
                     ],

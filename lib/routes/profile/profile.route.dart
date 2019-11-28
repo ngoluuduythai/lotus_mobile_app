@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../routes.dart';
 import 'package:main/locator.dart';
 import './item_list/item_list.dart';
@@ -34,17 +35,20 @@ class ProfileRoute extends StatelessWidget {
               shrinkWrap: true,
               children: <Widget>[
             Container(
-              padding:
-                  EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 30),
+              padding: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(20),
+                  right: ScreenUtil().setWidth(20),
+                  top: ScreenUtil().setWidth(30),
+                  bottom: ScreenUtil().setWidth(30)),
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(top: ScreenUtil().setWidth(20)),
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: 66,
-                          height: 66,
+                          width: ScreenUtil().setWidth(150),
+                          height: ScreenUtil().setHeight(150),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: Color.fromRGBO(255, 186, 115, 1),
@@ -67,7 +71,7 @@ class ProfileRoute extends StatelessWidget {
                                             fontWeight: FontWeight.w700,
                                             fontFamily: 'AirbnbCerealApp',
                                             fontStyle: FontStyle.normal,
-                                            fontSize: 21.0,
+                                            fontSize: ScreenUtil().setSp(42.0),
                                           ))),
                               SizedBox(
                                 height: 4,
@@ -82,7 +86,7 @@ class ProfileRoute extends StatelessWidget {
                                       fontWeight: FontWeight.w200,
                                       fontFamily: 'AirbnbCerealApp',
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 17.0,
+                                      fontSize: ScreenUtil().setSp(34.0),
                                     ),
                                   ),
                                   onTap: () => Routes.sailor
@@ -105,7 +109,7 @@ class ProfileRoute extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(
-                              top: 20, left: 5, right: 120, bottom: 15),
+                              top: ScreenUtil().setWidth(20), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(120), bottom: ScreenUtil().setWidth(15)),
                           width: 208,
                           height: 25,
                           child: Text(
@@ -115,7 +119,7 @@ class ProfileRoute extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                               fontFamily: 'AirbnbCerealApp',
                               fontStyle: FontStyle.normal,
-                              fontSize: 21.0,
+                              fontSize: ScreenUtil().setSp(42.0),
                             ),
                           ),
                         ),

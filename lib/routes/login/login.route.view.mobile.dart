@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/store/auth_user/auth_user.store.dart';
@@ -51,8 +52,8 @@ Widget _topRectable(BuildContext context) {
                     top: SizeConfig.blockSizeVertical * 5),
                 child: Image.asset(
                   Images.logo,
-                  width: 73,
-                  height: 45,
+                  width: ScreenUtil().setWidth(146),
+                  height: ScreenUtil().setHeight(90),
                 ),
               ),
               Container(
@@ -64,9 +65,9 @@ Widget _topRectable(BuildContext context) {
                   style: TextStyle(
                       color: Color(0xff0b0b0b),
                       fontWeight: FontWeight.w700,
-                      fontFamily: "AirbnbCerealApp",
+                      fontFamily: 'AirbnbCerealApp',
                       fontStyle: FontStyle.normal,
-                      fontSize: 30.0),
+                      fontSize: ScreenUtil().setSp(60.0)),
                 ),
               ),
               Container(
@@ -78,15 +79,15 @@ Widget _topRectable(BuildContext context) {
                       style: TextStyle(
                         color: Color(0xff0b0b0b).withOpacity(.64),
                         fontWeight: FontWeight.w500,
-                        fontFamily: "AirbnbCerealApp",
+                        fontFamily: 'AirbnbCerealApp',
                         fontStyle: FontStyle.normal,
-                        fontSize: 18.0,
+                        fontSize: ScreenUtil().setSp(36.0),
                       ))),
             ],
           ),
           Container(
             margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 8),
-            width: SizeConfig.safeBlockHorizontal * 87,
+            width: ScreenUtil().setWidth(SizeConfig.safeBlockHorizontal * 87),
             child: Image.asset(Images.loginRoomBackground,
                 width: SizeConfig.safeBlockHorizontal * 70),
           ),
@@ -100,8 +101,8 @@ Widget _imageWoman(BuildContext context) {
     margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 30),
     alignment: Alignment.topCenter,
     child: Container(
-      height: SizeConfig.safeBlockVertical * 40,
-      width: SizeConfig.safeBlockHorizontal * 19,
+      height: ScreenUtil().setHeight(SizeConfig.safeBlockVertical * 80),
+      width: ScreenUtil().setWidth(SizeConfig.safeBlockHorizontal * 38),
       child: Image.asset(Images.loginGirl),
     ),
   );

@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemEditList extends StatefulWidget {
   ItemEditList({
@@ -35,12 +36,12 @@ class _ItemEditListState extends State<ItemEditList> {
   Widget build(BuildContext context) {
     widget.enable = isEmail(widget.title);
     return Container(
-      margin: EdgeInsets.only(left: 23.8, right: 20),
+      margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(23.8)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 20, bottom: 20),
+            padding: EdgeInsets.symmetric(vertical: 20),
             child: Text(
               widget.title,
               style: TextStyle(
@@ -48,14 +49,16 @@ class _ItemEditListState extends State<ItemEditList> {
                 fontWeight: FontWeight.w700,
                 fontFamily: 'AirbnbCerealApp',
                 fontStyle: FontStyle.normal,
-                fontSize: 18.0,
+                fontSize: ScreenUtil().setSp(36.0),
               ),
             ),
           ),
           Container(
-              width: 170,
-              height: 40,
-              margin: EdgeInsets.only(left: 10, right: 20, top: 0),
+              width: ScreenUtil().setWidth(340),
+              height: ScreenUtil().setHeight(100),
+              margin: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(10),
+                  right: ScreenUtil().setWidth(20)),
               child: TextField(
                 enabled: widget.enable,
                 controller: _textEditingController,

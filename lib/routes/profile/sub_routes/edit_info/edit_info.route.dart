@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import './item_edit_list/item_edit_list.dart';
 import '../../../../shared/constants/icon_paths.dart';
@@ -17,8 +18,8 @@ class EditInfoRoute extends StatelessWidget {
       child: Divider(
         color: Colors.grey,
         height: 1,
-        indent: 25,
-        endIndent: 25,
+        indent: ScreenUtil().setWidth(25),
+        endIndent: ScreenUtil().setWidth(25),
       ),
     );
   }
@@ -36,13 +37,11 @@ class EditInfoRoute extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(right: 0, left: 130),
           child: Stack(
             children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 0, left: 20),
-                width: 109.9,
-                height: 109.9,
+              Center(child:Container(
+                width: ScreenUtil().setWidth(109.9),
+                height: ScreenUtil().setHeight(109.9),
                 decoration: BoxDecoration(
                     border: Border.all(
                         color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
@@ -52,12 +51,12 @@ class EditInfoRoute extends StatelessWidget {
                         image: NetworkImage(
                             '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
                         )),
-              ),
+              )),
               GestureDetector(
                 child: Container(
                   margin: EdgeInsets.only(top: 75, left: 90),
-                  width: 34.9,
-                  height: 34.9,
+                  width: ScreenUtil().setWidth(34.9),
+                  height: ScreenUtil().setHeight(34.9),
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
@@ -94,7 +93,7 @@ class EditInfoRoute extends StatelessWidget {
           fontWeight: FontWeight.w500,
           fontFamily: 'AirbnbCerealApp',
           fontStyle: FontStyle.normal,
-          fontSize: 16,
+          fontSize: ScreenUtil().setSp(42),
         ),
       ),
       onTap: () async {
@@ -108,9 +107,11 @@ class EditInfoRoute extends StatelessWidget {
       children: <Widget>[
         _imgProfileandSave(),
         Container(
-          width: 372,
-          height: 580,
-          margin: EdgeInsets.only(left: 20, top: 130, bottom: 31),
+          margin: EdgeInsets.only(
+              left: ScreenUtil().setWidth(30),
+              top: ScreenUtil().setWidth(130),
+              right:ScreenUtil().setWidth(30),
+              bottom: ScreenUtil().setWidth(30)),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(10)),
           child: Column(
@@ -133,7 +134,7 @@ class EditInfoRoute extends StatelessWidget {
                 iconImageLocation: IconPath.cross,
                 title: 'About me:',
                 userValue:
-                    'Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. ',
+                    'Vestibulum rutrum',
                 color: Color(0xFF0B0B0B),
                 color2: Color(0xFF484F61),
               ),
