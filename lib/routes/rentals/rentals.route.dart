@@ -37,7 +37,7 @@ class RentalsRoute extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 20, left: 32),
-              child: Text("Rentals",
+              child: Text('Rentals',
                   style: TextStyle(
                     color: Color(0xff0b0b0b),
                     fontWeight: FontWeight.w700,
@@ -49,7 +49,7 @@ class RentalsRoute extends StatelessWidget {
             orangeDivider(3, 32, 290),
             Container(
               margin: EdgeInsets.only(top: 10, left: 32),
-              child: Text("Applications",
+              child: Text('Applications',
                   style: TextStyle(
                     color: Color(0xff0b0b0b),
                     fontWeight: FontWeight.w700,
@@ -78,7 +78,7 @@ class RentalsRoute extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 13),
-                    child: Text("You have no pending applications",
+                    child: Text('You have no pending applications',
                         style: TextStyle(
                           color: Color(0xff0b0b0b),
                           fontWeight: FontWeight.w200,
@@ -92,7 +92,7 @@ class RentalsRoute extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 35, left: 31),
-              child: Text("Current Place",
+              child: Text('Current Place',
                   style: TextStyle(
                     color: Color(0xff0b0b0b),
                     fontWeight: FontWeight.w700,
@@ -130,7 +130,7 @@ class RentalsRoute extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 35, left: 31),
-              child: Text("Past Rentals",
+              child: Text('Past Rentals',
                   style: TextStyle(
                     color: Color(0xff0b0b0b),
                     fontWeight: FontWeight.w700,

@@ -16,7 +16,7 @@ class LoginRoute extends StatelessWidget {
     ScreenUtil.instance = ScreenUtil(
       width: 750,
       height: 1334,
-      allowFontScaling: false,
+      allowFontScaling: true,
     )..init(context);
 
 

@@ -29,15 +29,15 @@ class LinkedInLogin extends StatefulWidget {
       @required this.onError,
       this.onAuthCode,
       this.scopes});
-
   _LinkedInLoginViewState createState() => _LinkedInLoginViewState();
+
 }
 
 class _LinkedInLoginViewState extends State<LinkedInLogin> {
-  static const _LINKEDIN_CODE = "code";
-  static const _LINKEDIN_STATE = "state";
-  static const _LINKEDIN_ERROR = "error";
-  static const _LINKEDIN_ERROR_DESC = "error_description";
+  static const _LINKEDIN_CODE = 'code';
+  static const _LINKEDIN_STATE = 'state';
+  static const _LINKEDIN_ERROR = 'error';
+  static const _LINKEDIN_ERROR_DESC = 'error_description';
   LinkedInRequest _request;
 
   @override
@@ -81,7 +81,7 @@ class _LinkedInLoginViewState extends State<LinkedInLogin> {
       }
       if (params.containsKey(_LINKEDIN_STATE) &&
           !_request.verifyState(params[_LINKEDIN_STATE])) {
-        widget.onError("State match failed, possible CSRF issue");
+        widget.onError('State match failed, possible CSRF issue');
         return NavigationDecision.prevent;
       }
       if (params.containsKey(_LINKEDIN_CODE)) {
@@ -97,6 +97,6 @@ class _LinkedInLoginViewState extends State<LinkedInLogin> {
     if (params.containsKey(_LINKEDIN_ERROR)) {
       return params[_LINKEDIN_ERROR_DESC];
     }
-    return "";
+    return '';
   }
 }
