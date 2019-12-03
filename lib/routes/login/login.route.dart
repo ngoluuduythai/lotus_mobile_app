@@ -19,7 +19,6 @@ class LoginRoute extends StatelessWidget {
       allowFontScaling: true,
     )..init(context);
 
-
     return ScreenTypeLayout(
       mobile: OrientationLayout(
         portrait: LoginRouteMobilePortrait(),

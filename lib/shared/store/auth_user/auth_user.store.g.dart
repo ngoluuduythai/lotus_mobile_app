@@ -56,7 +56,7 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   final _$logoutAsyncAction = AsyncAction('logout');
 
   @override
-  Future<AuthUser> logout() {
+  Future<void> logout() {
     return _$logoutAsyncAction.run(() => super.logout());
   }
 
@@ -64,7 +64,7 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
       AsyncAction('connectFinancialInstitution');
 
   @override
-  Future connectFinancialInstitution(BuildContext context) {
+  Future<AuthUser> connectFinancialInstitution(BuildContext context) {
     return _$connectFinancialInstitutionAsyncAction
         .run(() => super.connectFinancialInstitution(context));
   }
@@ -73,7 +73,7 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
       AsyncAction('disconnectFinancialInstitution');
 
   @override
-  Future disconnectFinancialInstitution(int financialInstitutionKey) {
+  Future<AuthUser> disconnectFinancialInstitution(int financialInstitutionKey) {
     return _$disconnectFinancialInstitutionAsyncAction.run(
         () => super.disconnectFinancialInstitution(financialInstitutionKey));
   }
@@ -82,7 +82,7 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
       AsyncAction('getFinancialInstitutions');
 
   @override
-  Future getFinancialInstitutions() {
+  Future<AuthUser> getFinancialInstitutions() {
     return _$getFinancialInstitutionsAsyncAction
         .run(() => super.getFinancialInstitutions());
   }

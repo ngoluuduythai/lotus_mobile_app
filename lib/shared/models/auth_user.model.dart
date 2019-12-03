@@ -48,11 +48,12 @@ class AuthUser {
   ];
 
   bool get connectedFinancialInstiutiton {
-    if(financialInstitutions == null) {
+    if (financialInstitutions == null) {
       return false;
     }
     return financialInstitutions.isEmpty ? false : true;
   }
+
   String get fullName {
     String fullName = '';
 
@@ -76,20 +77,19 @@ class AuthUser {
   // factory AuthUser.fromJson(Map<String, dynamic> json) =>
   //     _$AuthUserFromJson(json);
   factory AuthUser.fromJson(Map json) {
-    json['financialInstitutions'] = (json['financialInstitutions'] as List)
-          ?.map((e) {
-            if(e is FinancialInstitution) {
-              return Map<String, dynamic>.from(e.toJson());
-            } else if ( e == null) {
-              return null;
-            } else {
-              return Map<String, dynamic>.from(e);
-            }
-          })
-          ?.toList();
-    return _$AuthUserFromJson(json);  
+    json['financialInstitutions'] =
+        (json['financialInstitutions'] as List)?.map((e) {
+      if (e is FinancialInstitution) {
+        return Map<String, dynamic>.from(e.toJson());
+      } else if (e == null) {
+        return null;
+      } else {
+        return Map<String, dynamic>.from(e);
+      }
+    })?.toList();
+    return _$AuthUserFromJson(json);
   }
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     var json = _$AuthUserToJson(this);
     // json['financialInstitutions'] = this.financialInstitutions.map((e)=>e.toJson());
     return json;

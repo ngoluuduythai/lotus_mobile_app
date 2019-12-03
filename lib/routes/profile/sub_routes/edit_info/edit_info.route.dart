@@ -39,7 +39,8 @@ class EditInfoRoute extends StatelessWidget {
         Container(
           child: Stack(
             children: <Widget>[
-              Center(child:Container(
+              Center(
+                  child: Container(
                 width: ScreenUtil().setWidth(109.9),
                 height: ScreenUtil().setHeight(109.9),
                 decoration: BoxDecoration(
@@ -110,7 +111,7 @@ class EditInfoRoute extends StatelessWidget {
           margin: EdgeInsets.only(
               left: ScreenUtil().setWidth(30),
               top: ScreenUtil().setWidth(130),
-              right:ScreenUtil().setWidth(30),
+              right: ScreenUtil().setWidth(30),
               bottom: ScreenUtil().setWidth(30)),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(10)),
@@ -133,8 +134,7 @@ class EditInfoRoute extends StatelessWidget {
                 },
                 iconImageLocation: IconPath.cross,
                 title: 'About me:',
-                userValue:
-                    'Vestibulum rutrum',
+                userValue: 'Vestibulum rutrum',
                 color: Color(0xFF0B0B0B),
                 color2: Color(0xFF484F61),
               ),

@@ -30,7 +30,6 @@ class LinkedInLogin extends StatefulWidget {
       this.onAuthCode,
       this.scopes});
   _LinkedInLoginViewState createState() => _LinkedInLoginViewState();
-
 }
 
 class _LinkedInLoginViewState extends State<LinkedInLogin> {

@@ -13,6 +13,11 @@ class PaymentsRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   @override
   Widget build(BuildContext context) {
+    print("testing");
+    authUserStore.getFinancialInstitutions().then((data) {
+      print('data');
+      print(authUserStore.authUser.monthlyRentalBudget);
+    });
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: SubProfileBase(
@@ -23,10 +28,9 @@ class PaymentsRoute extends StatelessWidget {
   }
 
   Widget _bank(BuildContext context) {
-    authUserStore.getFinancialInstitutions();
     return Observer(builder: (_) {
-      final authUser = authUserStore.authUser;
-      final financialInstitutions = authUser.financialInstitutions;
+      final financialInstitutions =
+          authUserStore.authUser.financialInstitutions;
 
       Color color = Color.fromRGBO(182, 193, 207, 100);
       var cashIcon = IconPath.dollarCashGrey;
@@ -38,7 +42,7 @@ class PaymentsRoute extends StatelessWidget {
         bankAccountText = financialInstitutions[0].name;
         buttonText = 'Disconnect Bank Account';
         color = Color(0xFF101827);
-        blockIcon= IconPath.okIcon;
+        blockIcon = IconPath.okIcon;
       }
 
       return Row(
@@ -47,7 +51,8 @@ class PaymentsRoute extends StatelessWidget {
           children: <Widget>[
             Container(
                 margin: EdgeInsets.only(
-                    bottom: ScreenUtil().setWidth(34),left:ScreenUtil().setWidth(25) ),
+                    bottom: ScreenUtil().setWidth(34),
+                    left: ScreenUtil().setWidth(25)),
                 height: 45,
                 width: 69,
                 decoration: BoxDecoration(
@@ -58,22 +63,23 @@ class PaymentsRoute extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: ScreenUtil().setWidth(19.4)),
-                      child:
-                    IconButton(
-                      icon: Image.asset(
-                        cashIcon,
-                        width: ScreenUtil().setWidth(120),
-                        height: ScreenUtil().setHeight(120),
+                      padding:
+                          EdgeInsets.only(left: ScreenUtil().setWidth(19.4)),
+                      child: IconButton(
+                        icon: Image.asset(
+                          cashIcon,
+                          width: ScreenUtil().setWidth(120),
+                          height: ScreenUtil().setHeight(120),
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
-                    ),
                     ),
                   ],
                 )),
             Container(
               margin: EdgeInsets.only(
-                  bottom: ScreenUtil().setWidth(43.0),left:ScreenUtil().setWidth(28) ),
+                  bottom: ScreenUtil().setWidth(43.0),
+                  left: ScreenUtil().setWidth(28)),
               child: Text(bankAccountText,
                   style: TextStyle(
                     color: color,
@@ -83,7 +89,9 @@ class PaymentsRoute extends StatelessWidget {
                   )),
             ),
             Container(
-              margin: EdgeInsets.only( bottom: ScreenUtil().setWidth(40),left: ScreenUtil().setWidth(89) ),
+              margin: EdgeInsets.only(
+                  bottom: ScreenUtil().setWidth(40),
+                  left: ScreenUtil().setWidth(89)),
               child: IconButton(
                 icon: Image.asset(
                   blockIcon,
@@ -94,18 +102,13 @@ class PaymentsRoute extends StatelessWidget {
               ),
             ),
           ]);
-      });
+    });
   }
 
   Widget _payments(BuildContext context) {
-    bool isConnected = authUserStore.authUser.connectedFinancialInstiutiton;
-    print('is connected?');
-    print(isConnected);
-    print(authUserStore.authUser.financialInstitutions);
     final Size size = MediaQuery.of(context).size;
     return Container(
-        padding:
-            EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
+        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
         margin: EdgeInsets.only(
             top: ScreenUtil().setWidth(30.0),
             bottom: ScreenUtil().setWidth(30.0),
@@ -135,184 +138,206 @@ class PaymentsRoute extends StatelessWidget {
                 )
               ]),
             ),
-            
-            Observer(builder: (_){
-              final authUser = authUserStore.authUser;
-              return 
-              Container(
-              padding: EdgeInsets.only(top: ScreenUtil().setWidth(23), left: ScreenUtil().setWidth(20)),
-              child: Text(authUserStore.authUser.connectedFinancialInstiutiton ? '' :
-                'Connect your bank account to pay rent and to substitute proof of income and employment documents.',
-                 style:TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -0.48,
-                      color: Color(0xFF3D475C),
-                      fontFamily: 'AirbnbCerealApp'),
-              ),
-              );        
-            },),
-
+            Observer(
+              builder: (_) {
+                return Container(
+                  padding: EdgeInsets.only(
+                      top: ScreenUtil().setWidth(23),
+                      left: ScreenUtil().setWidth(20)),
+                  child: Text(
+                    authUserStore.authUser.connectedFinancialInstiutiton
+                        ? ''
+                        : 'Connect your bank account to pay rent and to substitute proof of income and employment documents.',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.48,
+                        color: Color(0xFF3D475C),
+                        fontFamily: 'AirbnbCerealApp'),
+                  ),
+                );
+              },
+            ),
             Column(
               children: <Widget>[
                 Container(
-                  padding:EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(45),),
+                  padding: EdgeInsets.symmetric(
+                    vertical: ScreenUtil().setWidth(45),
+                  ),
                   margin: EdgeInsets.only(
-                      bottom: ScreenUtil().setWidth(30), left: ScreenUtil().setWidth(15),right:ScreenUtil().setWidth(15),top: ScreenUtil().setWidth(50)),
+                      bottom: ScreenUtil().setWidth(30),
+                      left: ScreenUtil().setWidth(15),
+                      right: ScreenUtil().setWidth(15),
+                      top: ScreenUtil().setWidth(50)),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Color.fromRGBO(243, 244, 248, 100), width: 2),
-                          borderRadius:  BorderRadius.circular(10),
-                          ),
-
-                  child: 
-                      Column(
-                      children: <Widget>[
-                        _bank(context),
-                        Observer(builder: (_) {
-                          final authUser = authUserStore.authUser;
-
-                          return Container(
-                            margin: EdgeInsets.only(top:  ScreenUtil().setWidth(20)),
-                            width: ScreenUtil().setWidth(600.5),
-                            height: ScreenUtil().setHeight(74),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: ScreenUtil().setWidth(18)),
-                            child: FlatButton(
-                              color: Color(0xFFFFBA73),
-                              onPressed: () async {
-                                if(authUserStore.authUser.connectedFinancialInstiutiton){
-                                  
-                                  await authUserStore.disconnectFinancialInstitution(authUser.financialInstitutions[0].financialInstitutionKey);
-                        
-                                } else {
-                                 
-                                  await authUserStore.connectFinancialInstitution(context);
-                                }
-                              },
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: Text(authUserStore.authUser.connectedFinancialInstiutiton ? 'Disconnect Account' : 'Add New Bank',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xFF7C4207),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'AirbnbCerealApp')),
-                            ));
-                        })
-                      ]),
+                    border: Border.all(
+                        color: Color.fromRGBO(243, 244, 248, 100), width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(children: <Widget>[
+                    _bank(context),
+                    Observer(builder: (_) {
+                      return Container(
+                          margin:
+                              EdgeInsets.only(top: ScreenUtil().setWidth(20)),
+                          width: ScreenUtil().setWidth(600.5),
+                          height: ScreenUtil().setHeight(74),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: ScreenUtil().setWidth(18)),
+                          child: FlatButton(
+                            color: Color(0xFFFFBA73),
+                            onPressed: () async {
+                              if (authUserStore
+                                  .authUser.connectedFinancialInstiutiton) {
+                                await authUserStore
+                                    .disconnectFinancialInstitution(
+                                        authUserStore
+                                            .authUser
+                                            .financialInstitutions[0]
+                                            .financialInstitutionKey);
+                              } else {
+                                await authUserStore
+                                    .connectFinancialInstitution(context);
+                              }
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Text(
+                                authUserStore
+                                        .authUser.connectedFinancialInstiutiton
+                                    ? 'Disconnect Account'
+                                    : 'Add New Bank',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF7C4207),
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'AirbnbCerealApp')),
+                          ));
+                    })
+                  ]),
                 )
               ],
             ),
-
-            Divider(color: Color(0xFFF3F4F8),thickness: 1,indent: 11,endIndent: 11,),
-
-            Container(
-              margin: EdgeInsets.only(top:ScreenUtil().setWidth(17)),
-              child:
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(left : ScreenUtil().setWidth(22)),
-                    child: Text(
-                  'Max. Monthly Spend',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'AirbnbCerealApp'),
-                )),
-                Container(
-                  margin: EdgeInsets.only(left : ScreenUtil().setWidth(117.35)),
-                    child: OutlineButton(
-                  child: Text(
-                    'Payment History',
-                    style: TextStyle(color: Color(0xFFDF8F3D),
-                    fontSize: 14,
-                    ),
-                  ),
-                  onPressed: () {
-                    print('ASD');
-                  }, 
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  highlightedBorderColor: Colors.white,
-                  borderSide: BorderSide(
-                    color: Colors.white, 
-                    style: BorderStyle.solid, 
-                    width: 0.8,
-                  ),
-                ))
-              ],
+            Divider(
+              color: Color(0xFFF3F4F8),
+              thickness: 1,
+              indent: 11,
+              endIndent: 11,
             ),
+            Container(
+              margin: EdgeInsets.only(top: ScreenUtil().setWidth(17)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(left: ScreenUtil().setWidth(22)),
+                      child: Text(
+                        'Max. Monthly Spend',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'AirbnbCerealApp'),
+                      )),
+                  Container(
+                      margin:
+                          EdgeInsets.only(left: ScreenUtil().setWidth(117.35)),
+                      child: OutlineButton(
+                        child: Text(
+                          'Payment History',
+                          style: TextStyle(
+                            color: Color(0xFFDF8F3D),
+                            fontSize: 14,
+                          ),
+                        ),
+                        onPressed: () {
+                          print('ASD');
+                        },
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        highlightedBorderColor: Colors.white,
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                          style: BorderStyle.solid,
+                          width: 0.8,
+                        ),
+                      ))
+                ],
+              ),
             ),
             Container(
               height: ScreenUtil().setWidth(150),
               margin: EdgeInsets.only(
-                      bottom: ScreenUtil().setWidth(30), left: ScreenUtil().setWidth(15),right:ScreenUtil().setWidth(20) ),
+                  bottom: ScreenUtil().setWidth(30),
+                  left: ScreenUtil().setWidth(15),
+                  right: ScreenUtil().setWidth(20)),
               decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Color.fromRGBO(243, 244, 248, 100), width: 2),
-                          borderRadius:  BorderRadius.circular(10),
-                          ),   
-                      
+                border: Border.all(
+                    color: Color.fromRGBO(243, 244, 248, 100), width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                     Container(
-                margin: EdgeInsets.only(
-                    bottom: ScreenUtil().setWidth(0),right:ScreenUtil().setWidth(0),left:ScreenUtil().setWidth(19)),
-                height: 45,
-                width: 69,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Color.fromRGBO(182, 193, 207, 0.21), width: 0.5),
-                    color: Color(0xFFF6F7F9),
-                    borderRadius: BorderRadius.circular(5)),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: ScreenUtil().setWidth(19.4)),
-                      child:
-                    IconButton(
-                      icon: Image.asset(
-                        IconPath.dollarCashGreen,
-                        width: ScreenUtil().setWidth(120),
-                        height: ScreenUtil().setHeight(120),
-                      ),
-                      onPressed: () {},
-                    ),
-                    ),
-                  ],
-                )),
                     Container(
                         margin: EdgeInsets.only(
-                  right:ScreenUtil().setWidth(10) ),
-                      child: 
-                      authUserStore.authUser.monthlyRentalBudget != null ?
-                      Text('\$''${authUserStore.authUser.monthlyRentalBudget}',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'AirbnbCerealApp',
-                          ))
-                          : Text(
-                            '\$0',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'AirbnbCerealApp',
-                          )
-                          )
-                    ),
+                            bottom: ScreenUtil().setWidth(0),
+                            right: ScreenUtil().setWidth(0),
+                            left: ScreenUtil().setWidth(19)),
+                        height: 45,
+                        width: 69,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(182, 193, 207, 0.21),
+                                width: 0.5),
+                            color: Color(0xFFF6F7F9),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: ScreenUtil().setWidth(19.4)),
+                              child: IconButton(
+                                icon: Image.asset(
+                                  IconPath.dollarCashGreen,
+                                  width: ScreenUtil().setWidth(120),
+                                  height: ScreenUtil().setHeight(120),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ],
+                        )),
                     Container(
-                        margin: EdgeInsets.only(left: ScreenUtil().setWidth(0) ),
+                        margin:
+                            EdgeInsets.only(right: ScreenUtil().setWidth(10)),
+                        child: Observer(
+                          builder: (_) {
+                            return authUserStore.authUser.monthlyRentalBudget !=
+                                    null
+                                ? Text(
+                                    '\$'
+                                    '${authUserStore.authUser.monthlyRentalBudget}',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                      letterSpacing: 0,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'AirbnbCerealApp',
+                                    ))
+                                : Text('\$0',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                      letterSpacing: 0,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'AirbnbCerealApp',
+                                    ));
+                          },
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(left: ScreenUtil().setWidth(0)),
                         height: 39,
-                        width:ScreenUtil().setWidth(210) ,
+                        width: ScreenUtil().setWidth(210),
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: Color.fromRGBO(182, 193, 207, 0.21),
@@ -322,31 +347,28 @@ class PaymentsRoute extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(left: ScreenUtil().setWidth(45)),
+                              margin: EdgeInsets.only(
+                                  left: ScreenUtil().setWidth(45)),
                               child: Text('USD',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'AirbnbCerealApp',
-                          )),
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'AirbnbCerealApp',
+                                  )),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: ScreenUtil().setWidth(0)),
+                              margin: EdgeInsets.only(
+                                  left: ScreenUtil().setWidth(0)),
                               child: PopupMenuButton<String>(
-                                onSelected: (String result){
-                                },
-                                icon: Icon(Icons.arrow_drop_down),
-                                itemBuilder:  (BuildContext context)=> <PopupMenuEntry<String>>[
-                                  const PopupMenuItem<String>(
-                                    value: 'USD',
-                                    child: Text('USD')
-                                  )
-                                ]
-
-                                
-                              ),
+                                  onSelected: (String result) {},
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  itemBuilder: (BuildContext context) =>
+                                      <PopupMenuEntry<String>>[
+                                        const PopupMenuItem<String>(
+                                            value: 'USD', child: Text('USD'))
+                                      ]),
                             ),
                           ],
                         ))
@@ -355,22 +377,23 @@ class PaymentsRoute extends StatelessWidget {
             Container(
               height: ScreenUtil().setWidth(100),
               margin: EdgeInsets.only(
-                      bottom: ScreenUtil().setWidth(30), left: ScreenUtil().setWidth(21),right:ScreenUtil().setWidth(20) ),
-              child:
-            Text(
-              'Keep track of your expenses and access your payment history.'
-            ,
-                          style: TextStyle(
-                              color: Color(0xFF3D475C),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'AirbnbCerealApp',
-                              letterSpacing: -0.48)),
+                  bottom: ScreenUtil().setWidth(30),
+                  left: ScreenUtil().setWidth(21),
+                  right: ScreenUtil().setWidth(20)),
+              child: Text(
+                  'Keep track of your expenses and access your payment history.',
+                  style: TextStyle(
+                      color: Color(0xFF3D475C),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'AirbnbCerealApp',
+                      letterSpacing: -0.48)),
             ),
             Container(
-              
                 margin: EdgeInsets.only(
-                      bottom: ScreenUtil().setWidth(30), left: ScreenUtil().setWidth(15),right:ScreenUtil().setWidth(20) ),
+                    bottom: ScreenUtil().setWidth(30),
+                    left: ScreenUtil().setWidth(15),
+                    right: ScreenUtil().setWidth(20)),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
