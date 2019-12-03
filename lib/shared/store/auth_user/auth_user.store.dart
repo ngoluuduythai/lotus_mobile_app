@@ -29,7 +29,7 @@ abstract class _AuthUserStore with Store {
   bool get loggedIn {
     return (authUser != null) ? true : false;
   }
-
+  
   @action
   Future<bool> loginFacebook() async {
     final data = await facebookService.login();
@@ -76,16 +76,31 @@ abstract class _AuthUserStore with Store {
 
   @action
   Future connectFinancialInstitution(BuildContext context) async {
-    await financialService.connectFinancialInstitution(context);
+    var result = await financialService.connectFinancialInstitution(context);
+    authUser = authUser.update(result);
+    print('* Auth User after connecting *');
+    print(authUser);
+    // authUser = authUser;
     return true;
   }
 
-getFinancialInstitutions() async {
-  var a = await financialService.getInstitution();
-  return a;
-}
+  @action
+  Future disconnectFinancialInstitution(int financialInstitutionKey) async {
+    var result = await financialService.disconnectFinancialInstitution(financialInstitutionKey);
+    authUser.financialInstitutions = null;
+    authUser = authUser;
+    return true;
+  }
 
-  saveUserApi(AuthUser user) {
+  @action
+  Future getFinancialInstitutions() async {
+    var result = await financialService.getInstitution();
+    authUser = authUser.update(result);
+    return authUser;
+  }
+
+  @action
+  Future saveUserApi(AuthUser user) {
     if (user != null) {
       return userService.editProfile(user);
     } else {
@@ -96,7 +111,10 @@ getFinancialInstitutions() async {
   @action
   Future<bool> saveUserApiAlternatte(AuthUser user) async {
     final data = await userService.editProfileAlternate(user);
-    authUser = authUser.update(data);
+    print(data);
+    if(data != null) {
+      authUser = authUser.update(data);
+    }
     return true;
   }
 }

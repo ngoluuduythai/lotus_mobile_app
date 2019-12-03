@@ -6,7 +6,7 @@ part of 'auth_user.model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
+AuthUser _$AuthUserFromJson(Map json) {
   return AuthUser(
     userKey: json['userKey'] as num,
     email: json['email'] as String,
@@ -22,9 +22,11 @@ AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
     notifyByText: json['notifyByText'] as bool,
     notifyInApp: json['notifyInApp'] as bool,
     showInRoommateSearch: json['showInRoommateSearch'] as bool,
-  )..financialInstitutions = (json['financialInstitutions'] as List)
-      .map((e) => FinancialInstitution.fromJson(e as Map<String, dynamic>))
-      .toList();
+    financialInstitutions: (json['financialInstitutions'] as List)
+        .map((e) =>
+            FinancialInstitution.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList(),
+  );
 }
 
 Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{

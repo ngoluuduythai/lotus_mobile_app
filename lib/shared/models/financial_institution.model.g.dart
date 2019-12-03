@@ -6,7 +6,7 @@ part of 'financial_institution.model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FinancialInstitution _$FinancialInstitutionFromJson(Map<String, dynamic> json) {
+FinancialInstitution _$FinancialInstitutionFromJson(Map json) {
   return FinancialInstitution(
     financialInstitutionKey: json['financialInstitutionKey'] as int,
     name: json['name'] as String,

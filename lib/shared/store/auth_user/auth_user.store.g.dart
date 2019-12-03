@@ -69,6 +69,24 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
         .run(() => super.connectFinancialInstitution(context));
   }
 
+  final _$disconnectFinancialInstitutionAsyncAction =
+      AsyncAction('disconnectFinancialInstitution');
+
+  @override
+  Future disconnectFinancialInstitution(int financialInstitutionKey) {
+    return _$disconnectFinancialInstitutionAsyncAction.run(
+        () => super.disconnectFinancialInstitution(financialInstitutionKey));
+  }
+
+  final _$getFinancialInstitutionsAsyncAction =
+      AsyncAction('getFinancialInstitutions');
+
+  @override
+  Future getFinancialInstitutions() {
+    return _$getFinancialInstitutionsAsyncAction
+        .run(() => super.getFinancialInstitutions());
+  }
+
   final _$saveUserApiAlternatteAsyncAction =
       AsyncAction('saveUserApiAlternatte');
 
@@ -76,5 +94,18 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   Future<bool> saveUserApiAlternatte(AuthUser user) {
     return _$saveUserApiAlternatteAsyncAction
         .run(() => super.saveUserApiAlternatte(user));
+  }
+
+  final _$_AuthUserStoreActionController =
+      ActionController(name: '_AuthUserStore');
+
+  @override
+  Future saveUserApi(AuthUser user) {
+    final _$actionInfo = _$_AuthUserStoreActionController.startAction();
+    try {
+      return super.saveUserApi(user);
+    } finally {
+      _$_AuthUserStoreActionController.endAction(_$actionInfo);
+    }
   }
 }

@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'financial_institution.model.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: false, anyMap: true)
 class FinancialInstitution {
   FinancialInstitution({this.financialInstitutionKey, this.name});
 

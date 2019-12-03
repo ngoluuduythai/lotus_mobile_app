@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
 import 'package:main/shared/constants/icon_paths.dart';
@@ -22,63 +23,70 @@ class PaymentsRoute extends StatelessWidget {
   }
 
   Widget _bank(BuildContext context) {
-    final authUser = authUserStore.authUser;
-    final financialInstitutions = authUser.financialInstitutions;
-    var cashIcon = IconPath.dollarCashGrey;
-    String bankAccountText = 'Your Account';
-    if (financialInstitutions.isNotEmpty) {
-      cashIcon = IconPath.dollarCashGreen;
-      bankAccountText = financialInstitutions[0].name;
-    }
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Container(
-              margin: EdgeInsets.only(
-                  bottom: ScreenUtil().setWidth(34)),
-              height: 40,
-              width: 55,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color.fromRGBO(182, 193, 207, 0.21), width: 2),
-                  color: Color.fromRGBO(182, 193, 207, 0.21),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Row(
-                children: <Widget>[
-                  IconButton(
-                    icon: Image.asset(
-                      cashIcon,
-                      width: ScreenUtil().setWidth(25),
-                      height: ScreenUtil().setHeight(16),
+    authUserStore.getFinancialInstitutions();
+    return Observer(builder: (_) {
+      final authUser = authUserStore.authUser;
+      final financialInstitutions = authUser.financialInstitutions;
+
+      var cashIcon = IconPath.dollarCashGrey;
+      String bankAccountText = 'Your Account';
+      String buttonText = 'Add new Bank';
+      if (authUserStore.authUser.connectedFinancialInstiutiton) {
+        cashIcon = IconPath.dollarCashGreen;
+        bankAccountText = financialInstitutions[0].name;
+        buttonText = 'Disconnect Bank Account';
+      }
+
+      return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.only(
+                    bottom: ScreenUtil().setWidth(34)),
+                height: 40,
+                width: 55,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromRGBO(182, 193, 207, 0.21), width: 2),
+                    color: Color.fromRGBO(182, 193, 207, 0.21),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Image.asset(
+                        cashIcon,
+                        width: ScreenUtil().setWidth(25),
+                        height: ScreenUtil().setHeight(16),
+                      ),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
-                  ),
-                ],
-              )),
-          Container(
-            margin: EdgeInsets.only(
-                bottom: ScreenUtil().setWidth(43.0)),
-            child: Text(bankAccountText,
-                style: TextStyle(
-                  color: Color.fromRGBO(182, 193, 207, 100),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'AirbnbCerealApp',
+                  ],
                 )),
-          ),
-          Container(
-            margin: EdgeInsets.only( bottom: 43),
-            child: IconButton(
-              icon: Image.asset(
-                IconPath.block,
-                width: 25,
-                height: 16,
-              ),
-              onPressed: () {},
+            Container(
+              margin: EdgeInsets.only(
+                  bottom: ScreenUtil().setWidth(43.0)),
+              child: Text(bankAccountText,
+                  style: TextStyle(
+                    color: Color.fromRGBO(182, 193, 207, 100),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'AirbnbCerealApp',
+                  )),
             ),
-          ),
-        ]);
+            Container(
+              margin: EdgeInsets.only( bottom: 43),
+              child: IconButton(
+                icon: Image.asset(
+                  IconPath.block,
+                  width: 25,
+                  height: 16,
+                ),
+                onPressed: () {},
+              ),
+            ),
+          ]);
+      });
   }
 
   Widget _payments(BuildContext context) {
@@ -115,18 +123,22 @@ class PaymentsRoute extends StatelessWidget {
                 )
               ]),
             ),
-            Container(
+            Observer(builder: (_){
+              final authUser = authUserStore.authUser;
+              return Container(
               padding: EdgeInsets.only(
                   top: ScreenUtil().setWidth(16),
                   left: ScreenUtil().setWidth(20),
                   right: ScreenUtil().setWidth(21)),
-              child: Text(
-                  'Connect your bank account to pay rent and to substitute proof of income and employment documents.',
+              child: Text(authUserStore.authUser.connectedFinancialInstiutiton ? 
+                  '': 
+                  'Please Connect',
                   style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'AirbnbCerealApp',
                       letterSpacing: -0.48)),
-            ),
+            );
+            },),
             Column(
               children: <Widget>[
                 Container(
@@ -139,23 +151,31 @@ class PaymentsRoute extends StatelessWidget {
                   child: Column(
                       children: <Widget>[
                         _bank(context),
-                        Container(
+                        Observer(builder: (_) {
+                          final authUser = authUserStore.authUser;
+                    
+                          return Container(
                             width: ScreenUtil().setWidth(600),
                             padding: EdgeInsets.symmetric(
                                 horizontal: ScreenUtil().setWidth(21)),
                             child: RaisedButton(
                               color: Color.fromRGBO(255, 186, 115, 1),
                               onPressed: () async {
-                                var a = await authUserStore.getFinancialInstitutions();
-                                print(a);
+                                if(authUserStore.authUser.connectedFinancialInstiutiton){
+                                  await authUserStore.disconnectFinancialInstitution(authUser.financialInstitutions[0].financialInstitutionKey);
+                        
+                                } else {
+                                  await authUserStore.connectFinancialInstitution(context);
+                                }
                               },
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5)),
-                              child: Text('Add New Bank',
+                              child: Text(authUserStore.authUser.connectedFinancialInstiutiton ? 'Disconnect Bank' : 'Connect Bank',
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontFamily: 'AirbnbCerealApp')),
-                            ))
+                            ));
+                        })
                       ]),
                 )
               ],

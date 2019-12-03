@@ -3,7 +3,7 @@ import './financial_institution.model.dart';
 import "package:merge_map/merge_map.dart";
 part 'auth_user.model.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: false, anyMap: true)
 class AuthUser {
   AuthUser({
     this.userKey,
@@ -20,6 +20,7 @@ class AuthUser {
     this.notifyByText,
     this.notifyInApp,
     this.showInRoommateSearch,
+    this.financialInstitutions,
   });
 
   final num userKey;
@@ -38,6 +39,20 @@ class AuthUser {
   num monthlyRentalBudget;
   List<FinancialInstitution> financialInstitutions;
 
+  static List<String> updateableFields = [
+    'phone',
+    'firstName',
+    'notifyByEmail',
+    'notifyByText',
+    'notifyInApp'
+  ];
+
+  bool get connectedFinancialInstiutiton {
+    if(financialInstitutions == null) {
+      return false;
+    }
+    return financialInstitutions.isEmpty ? false : true;
+  }
   String get fullName {
     String fullName = '';
 
@@ -55,12 +70,28 @@ class AuthUser {
     final originalJson = toJson();
     final Map merged = mergeMap([originalJson, json]);
     final Map finalMerged = new Map<String, dynamic>.from(merged);
-    print('***********');
-    print(finalMerged);
     return AuthUser.fromJson(finalMerged);
   }
 
-  factory AuthUser.fromJson(Map<String, dynamic> json) =>
-      _$AuthUserFromJson(json);
-  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
+  // factory AuthUser.fromJson(Map<String, dynamic> json) =>
+  //     _$AuthUserFromJson(json);
+  factory AuthUser.fromJson(Map json) {
+    json['financialInstitutions'] = (json['financialInstitutions'] as List)
+          ?.map((e) {
+            if(e is FinancialInstitution) {
+              return Map<String, dynamic>.from(e.toJson());
+            } else if ( e == null) {
+              return null;
+            } else {
+              return Map<String, dynamic>.from(e);
+            }
+          })
+          ?.toList();
+    return _$AuthUserFromJson(json);  
+  }
+  Map<String, dynamic> toJson(){
+    var json = _$AuthUserToJson(this);
+    // json['financialInstitutions'] = this.financialInstitutions.map((e)=>e.toJson());
+    return json;
+  }
 }

@@ -35,6 +35,8 @@ class UserService {
   }
 
   Future editProfileAlternate(AuthUser user) async {
+    print("testing");
+    print(user.toJson());
     const String document = r'''
       mutation updateUser(
         $input: UpdateUserInput
@@ -54,22 +56,30 @@ class UserService {
 
     // clean null variables
     userJson.keys
-        .where((k) => userJson[k] == null)
+        .where((k) {
+          return userJson[k] == null || !AuthUser.updateableFields.contains(k);
+        })
         .toList()
         .forEach(userJson.remove);
 
+    print('Returnned *****');
     print(userJson);
-    final MutationOptions _options = MutationOptions(
-      document: document,
-      variables: {'input': userJson},
-    );
+    if(userJson.isEmpty) {
+      print('Not updating user information is empty');
+      return null;
+    } else {
+      final MutationOptions _options = MutationOptions(
+        document: document,
+        variables: {'input': userJson},
+      );
 
-    final result = await graphqlService.mutateOptions(_options);
-    if (result.errors != null) {
-      print('error');
-      print(result.errors);
+      final result = await graphqlService.mutateOptions(_options);
+      if (result.errors != null) {
+        print('error');
+        print(result.errors);
+      }
+      return result.data['updateUser']['user'];
     }
-    return result.data['updateUser']['user'];
   }
 
   Future uploadFile(File file) async {
