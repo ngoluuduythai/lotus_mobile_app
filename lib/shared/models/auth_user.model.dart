@@ -15,6 +15,7 @@ class AuthUser {
     this.lastName,
     this.nickName,
     this.gender,
+    this.profileDescription,
     this.monthlyRentalBudget,
     this.notifyByEmail,
     this.notifyByText,
@@ -32,6 +33,7 @@ class AuthUser {
   String lastName;
   String nickName;
   String gender;
+  String profileDescription;
   bool notifyByEmail;
   bool notifyByText;
   bool notifyInApp;
@@ -40,6 +42,10 @@ class AuthUser {
   List<FinancialInstitution> financialInstitutions;
 
   static List<String> updateableFields = [
+    'profileDescription',
+    'lastName',
+    'nickName',
+    'gender',
     'phone',
     'firstName',
     'notifyByEmail',

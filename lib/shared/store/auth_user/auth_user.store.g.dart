@@ -87,25 +87,10 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
         .run(() => super.getFinancialInstitutions());
   }
 
-  final _$saveUserApiAlternatteAsyncAction =
-      AsyncAction('saveUserApiAlternatte');
+  final _$updateUserAsyncAction = AsyncAction('updateUser');
 
   @override
-  Future<bool> saveUserApiAlternatte(AuthUser user) {
-    return _$saveUserApiAlternatteAsyncAction
-        .run(() => super.saveUserApiAlternatte(user));
-  }
-
-  final _$_AuthUserStoreActionController =
-      ActionController(name: '_AuthUserStore');
-
-  @override
-  Future saveUserApi(AuthUser user) {
-    final _$actionInfo = _$_AuthUserStoreActionController.startAction();
-    try {
-      return super.saveUserApi(user);
-    } finally {
-      _$_AuthUserStoreActionController.endAction(_$actionInfo);
-    }
+  Future<bool> updateUser(AuthUser user) {
+    return _$updateUserAsyncAction.run(() => super.updateUser(user));
   }
 }

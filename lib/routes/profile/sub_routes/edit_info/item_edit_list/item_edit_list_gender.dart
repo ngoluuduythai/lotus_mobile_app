@@ -22,8 +22,8 @@ class ItemEditListGender extends StatefulWidget {
   bool enable = true;
   double fontSize;
   List<String> gender = <String>[
-    'Male',
-    'Female',
+    'MALE',
+    'FEMALE',
   ];
 
   @override
@@ -82,6 +82,7 @@ class _ItemEditListGenderState extends State<ItemEditListGender> {
                         ))
                     .toList(),
                 onChanged: (selectedGender) {
+                  widget.onChanged(selectedGender);
                   setState(() {
                     _textEditingController.text = selectedGender;
                   });

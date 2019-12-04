@@ -8,41 +8,21 @@ import './graphql.service.dart';
 class UserService {
   final graphqlService = locator<GraphqlService>();
 
-  Future editProfile(AuthUser user) async {
-    final userJson = user.toJson();
-
-    var mutation = '''
-    mutation {
-        updateProfile(
-    ''';
-    userJson.forEach((String key, value) {
-      if (value != null) {
-        mutation = mutation + '\n$key:"$value",';
-      }
-    });
-    mutation = mutation.substring(0, mutation.length - 1);
-    mutation += '''
-    ){
-        firstName,
-        lastName,
-        email
-      }
-    }
-    ''';
-    final result = await graphqlService.mutate(mutation);
-    print(result.errors);
-    return result.data;
-  }
-
-  Future editProfileAlternate(AuthUser user) async {
+  Future updateUser(AuthUser user) async {
     print("testing");
-    print(user.toJson());
     const String document = r'''
       mutation updateUser(
         $input: UpdateUserInput
       ){
         updateUser(input: $input){
           user{
+            firstName
+            pictureUrl
+            nickName
+            gender
+            profileDescription
+            lastName
+            phone
             notifyInApp
             notifyByText
             notifyByEmail
@@ -53,7 +33,7 @@ class UserService {
     ''';
 
     var userJson = user.toJson();
-
+    print(userJson);
     // clean null variables
     userJson.keys
         .where((k) {
