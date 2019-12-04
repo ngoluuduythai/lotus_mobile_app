@@ -74,7 +74,7 @@ class AuthUser {
   }
 
   String get profilePictureUrl {
-    if (pictureUrl.isEmpty) {
+    if (pictureUrl == null || pictureUrl.isEmpty) {
       pictureUrl =
           'https://graph.facebook.com/103708797720366/picture?type=normal';
       return pictureUrl;
