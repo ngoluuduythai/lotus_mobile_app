@@ -17,9 +17,7 @@ class GraphqlService {
     link = authLink.concat(httpLink);
     client = GraphQLClient(
       link: link,
-      cache: NormalizedInMemoryCache(
-        dataIdFromObject: typenameDataIdFromObject,
-      ),
+      cache: InMemoryCache()
     );
 
     notifierClient = ValueNotifier(client);

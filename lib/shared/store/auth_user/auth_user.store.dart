@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../services/user.service.dart';
@@ -76,7 +77,10 @@ abstract class _AuthUserStore with Store {
   @action
   Future<AuthUser> connectFinancialInstitution(BuildContext context) async {
     final result = await financialService.connectFinancialInstitution(context);
-    authUser = authUser.update(result);
+    final financialInstitution = FinancialInstitution.fromJson(result['financialInstitution']);
+    print(financialInstitution.toJson());
+    authUser.financialInstitutions = [financialInstitution];
+    authUser = authUser;
     return authUser;
   }
 
@@ -109,7 +113,6 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> saveUserApiAlternatte(AuthUser user) async {
     final data = await userService.editProfileAlternate(user);
-    print(data);
     if (data != null) {
       authUser = authUser.update(data);
     }

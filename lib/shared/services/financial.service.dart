@@ -44,7 +44,6 @@ class FinancialService {
       }
     }
     ''');
-    print(result.data['whoami']['monthlyRentalBudget']);
     return result.data['whoami'];
   }
 
@@ -80,7 +79,7 @@ class FinancialService {
     );
 
     final result = await graphqlService.mutateOptions(_options);
-    return result.data;
+    return result.data['connectFinancialInstitution'];
   }
 
   Future connectFinancialInstitution(BuildContext context) async {
@@ -89,8 +88,6 @@ class FinancialService {
   }
 
   Future disconnectFinancialInstitution(int financialInstiutionKey) async {
-    print('****** testinasdfasd');
-    print(financialInstiutionKey);
     final document = r'''
       mutation removeFinancialInstitution($input: RemoveFinancialInstitutionInput) {
         removeFinancialInstitution(
@@ -107,8 +104,6 @@ class FinancialService {
     );
 
     final result = await graphqlService.mutateOptions(_options);
-    print("** data");
-    print(result.errors);
     return result.data;
   }
 }
