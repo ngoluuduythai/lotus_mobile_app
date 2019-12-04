@@ -109,7 +109,10 @@ class ProfileRoute extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(
-                              top: ScreenUtil().setWidth(20), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(120), bottom: ScreenUtil().setWidth(15)),
+                              top: ScreenUtil().setWidth(20),
+                              left: ScreenUtil().setWidth(5),
+                              right: ScreenUtil().setWidth(120),
+                              bottom: ScreenUtil().setWidth(15)),
                           width: 208,
                           height: 25,
                           child: Text(

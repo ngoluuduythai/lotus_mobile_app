@@ -64,7 +64,7 @@ class UserService {
 
     print('Returnned *****');
     print(userJson);
-    if(userJson.isEmpty) {
+    if (userJson.isEmpty) {
       print('Not updating user information is empty');
       return null;
     } else {

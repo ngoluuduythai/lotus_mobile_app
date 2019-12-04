@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../services/user.service.dart';
@@ -29,7 +30,7 @@ abstract class _AuthUserStore with Store {
   bool get loggedIn {
     return (authUser != null) ? true : false;
   }
-  
+
   @action
   Future<bool> loginFacebook() async {
     final data = await facebookService.login();
@@ -64,37 +65,38 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future<AuthUser> logout() async {
+  Future<void> logout() async {
     await Routes.sailor.navigate(
       RouteNames.login,
     );
     authUser = null;
     graphqlService.authToken = null;
     await googleService.googleSignIn.signOut();
-    return null;
   }
 
   @action
-  Future connectFinancialInstitution(BuildContext context) async {
-    var result = await financialService.connectFinancialInstitution(context);
-    authUser = authUser.update(result);
-    print('* Auth User after connecting *');
-    print(authUser);
-    // authUser = authUser;
-    return true;
+  Future<AuthUser> connectFinancialInstitution(BuildContext context) async {
+    final result = await financialService.connectFinancialInstitution(context);
+    final financialInstitution = FinancialInstitution.fromJson(result['financialInstitution']);
+    print(financialInstitution.toJson());
+    authUser.financialInstitutions = [financialInstitution];
+    authUser = authUser;
+    return authUser;
   }
 
   @action
-  Future disconnectFinancialInstitution(int financialInstitutionKey) async {
-    var result = await financialService.disconnectFinancialInstitution(financialInstitutionKey);
+  Future<AuthUser> disconnectFinancialInstitution(
+      int financialInstitutionKey) async {
+    final result = await financialService
+        .disconnectFinancialInstitution(financialInstitutionKey);
     authUser.financialInstitutions = null;
     authUser = authUser;
-    return true;
+    return authUser;
   }
 
   @action
-  Future getFinancialInstitutions() async {
-    var result = await financialService.getInstitution();
+  Future<AuthUser> getFinancialInstitutions() async {
+    final result = await financialService.getInstitution();
     authUser = authUser.update(result);
     return authUser;
   }
@@ -111,8 +113,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> saveUserApiAlternatte(AuthUser user) async {
     final data = await userService.editProfileAlternate(user);
-    print(data);
-    if(data != null) {
+    if (data != null) {
       authUser = authUser.update(data);
     }
     return true;

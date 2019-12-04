@@ -17,7 +17,7 @@ class GraphqlService {
     link = authLink.concat(httpLink);
     client = GraphQLClient(
       link: link,
-      cache: InMemoryCache(),
+      cache: InMemoryCache()
     );
 
     notifierClient = ValueNotifier(client);
@@ -42,9 +42,8 @@ class GraphqlService {
   }
 
   Future query(String document) {
-    return client.query(QueryOptions(
-      document: document,
-    ));
+    return client.query(
+        QueryOptions(document: document, fetchPolicy: FetchPolicy.networkOnly));
   }
 
   Future<QueryResult> mutate(String document) {

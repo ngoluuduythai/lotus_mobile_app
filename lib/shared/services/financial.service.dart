@@ -48,8 +48,7 @@ class FinancialService {
   }
 
   Future sendToken(Result plaidResult) async {
-    final document =
-       r'''
+    final document = r'''
         mutation connectFinancialInstitution($input: ConnentFinancialInstitutionInput) {
           connectFinancialInstitution(
             input: $input
@@ -65,31 +64,31 @@ class FinancialService {
 
     final MutationOptions _options = MutationOptions(
       document: document,
-      variables: {'input': {
-        'accountId': plaidResult.accountId,
-        'token': plaidResult.token,
-        'institutionId': plaidResult.institutionId,
-        'institutionName': plaidResult.institutionName,
-        'accountId': plaidResult.accountId,
-        'accountName': plaidResult.accountName,
-        'accountType': plaidResult.accountType,
-        'accountSubtype': plaidResult.accountSubtype,
-      }},
+      variables: {
+        'input': {
+          'accountId': plaidResult.accountId,
+          'token': plaidResult.token,
+          'institutionId': plaidResult.institutionId,
+          'institutionName': plaidResult.institutionName,
+          'accountId': plaidResult.accountId,
+          'accountName': plaidResult.accountName,
+          'accountType': plaidResult.accountType,
+          'accountSubtype': plaidResult.accountSubtype,
+        }
+      },
     );
-   
+
     final result = await graphqlService.mutateOptions(_options);
-    return result.data;
+    return result.data['connectFinancialInstitution'];
   }
 
   Future connectFinancialInstitution(BuildContext context) async {
     final Result result = await getInstitutionToken(context);
     return sendToken(result);
   }
+
   Future disconnectFinancialInstitution(int financialInstiutionKey) async {
-    print('****** testinasdfasd');
-    print(financialInstiutionKey);
-    final document =
-      r'''
+    final document = r'''
       mutation removeFinancialInstitution($input: RemoveFinancialInstitutionInput) {
         removeFinancialInstitution(
           input: $input
@@ -99,12 +98,12 @@ class FinancialService {
 
     final MutationOptions _options = MutationOptions(
       document: document,
-      variables: {'input': {'financialInstitutionKey': financialInstiutionKey}},
+      variables: {
+        'input': {'financialInstitutionKey': financialInstiutionKey}
+      },
     );
 
     final result = await graphqlService.mutateOptions(_options);
-    print("** data");
-    print(result.errors);
     return result.data;
   }
 }
