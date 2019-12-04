@@ -51,8 +51,9 @@ class SubProfileBase extends StatelessWidget {
                                 Routes.sailor.navigate(RouteNames.profile),
                           )),
                       Container(
-                        margin:
-                            EdgeInsets.only(left: ScreenUtil().setWidth(210)),
+                        margin: EdgeInsets.only(
+                            left: ScreenUtil()
+                                .setWidth(ScreenUtil().setWidth(610))),
                         child: save,
                       )
                     ],
