@@ -40,8 +40,8 @@ class EditInfoRoute extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Center(child:Container(
-                width: ScreenUtil().setWidth(109.9),
-                height: ScreenUtil().setHeight(109.9),
+                width: ScreenUtil().setWidth(180),
+                height: ScreenUtil().setHeight(165),
                 decoration: BoxDecoration(
                     border: Border.all(
                         color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
@@ -55,8 +55,8 @@ class EditInfoRoute extends StatelessWidget {
               GestureDetector(
                 child: Container(
                   margin: EdgeInsets.only(top: 75, left: 90),
-                  width: ScreenUtil().setWidth(34.9),
-                  height: ScreenUtil().setHeight(34.9),
+                  width: ScreenUtil().setWidth(120),
+                  height: ScreenUtil().setHeight(80),
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
@@ -109,7 +109,7 @@ class EditInfoRoute extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(
               left: ScreenUtil().setWidth(30),
-              top: ScreenUtil().setWidth(130),
+              top: ScreenUtil().setWidth(220),
               right:ScreenUtil().setWidth(30),
               bottom: ScreenUtil().setWidth(30)),
           decoration: BoxDecoration(
