@@ -56,15 +56,19 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                 Container(
                   margin: EdgeInsets.only(left: 290, top: 25),
                   child: InkWell(
-                    child: Text('Edit',
-                        style: TextStyle(
-                          color: Color(0xff0b0b0b),
-                          fontWeight: FontWeight.w700,
-                          fontFamily: 'AirbnbCerealApp',
-                          fontStyle: FontStyle.normal,
-                          fontSize: 16.0,
-                        )),
-                  ),
+                      child: Text('Edit',
+                          style: TextStyle(
+                            color: Color(0xff0b0b0b),
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'AirbnbCerealApp',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16.0,
+                          )),
+                      onTap: () {
+                        Routes.sailor.navigate(
+                          RouteNames.edit_info,
+                        );
+                      }),
                 ),
               ],
             ),
@@ -82,7 +86,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                     image: DecorationImage(
                         fit: BoxFit.contain,
                         image: NetworkImage(
-                            '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
+                            '${authUserStore.authUser.profilePictureUrl}') //eventually going to use facebook url
                         )),
               ),
               Container(

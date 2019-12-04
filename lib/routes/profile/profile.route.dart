@@ -56,7 +56,7 @@ class ProfileRoute extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
+                                      '${authUserStore.authUser.profilePictureUrl}') //eventually going to use facebook url
                                   )),
                         ),
                         Container(
@@ -126,11 +126,6 @@ class ProfileRoute extends StatelessWidget {
                             ),
                           ),
                         ),
-                        greyDivider(),
-                        ItemList(
-                            text: 'Personal Information',
-                            iconImageLocation: IconPath.document,
-                            route: RouteNames.edit_info),
                         greyDivider(),
                         ItemList(
                           text: 'Payments',

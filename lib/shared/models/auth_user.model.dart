@@ -73,6 +73,19 @@ class AuthUser {
     return fullName;
   }
 
+  String get profilePictureUrl {
+    if (pictureUrl.isEmpty) {
+      pictureUrl =
+          'https://graph.facebook.com/103708797720366/picture?type=normal';
+      return pictureUrl;
+    }
+    return pictureUrl;
+  }
+
+  void set setProfilePictureUrl(String url) {
+    pictureUrl = url;
+  }
+
   update(Map<String, dynamic> json) {
     final originalJson = toJson();
     final Map merged = mergeMap([originalJson, json]);
