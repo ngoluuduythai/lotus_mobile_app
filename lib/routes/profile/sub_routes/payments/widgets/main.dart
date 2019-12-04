@@ -10,10 +10,10 @@ class MainPaymentWidget extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
   @override
   Widget build(BuildContext context) {
-    return  _payments(context);
+    return _payments(context);
   }
 
-   Widget _bank(BuildContext context) {
+  Widget _bank(BuildContext context) {
     return Observer(builder: (_) {
       final financialInstitutions =
           authUserStore.authUser.financialInstitutions;
@@ -233,9 +233,7 @@ class MainPaymentWidget extends StatelessWidget {
                             fontSize: 14,
                           ),
                         ),
-                        onPressed: () {
-                          
-                        },
+                        onPressed: () {},
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         highlightedBorderColor: Colors.white,

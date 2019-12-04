@@ -77,7 +77,8 @@ abstract class _AuthUserStore with Store {
   @action
   Future<AuthUser> connectFinancialInstitution(BuildContext context) async {
     final result = await financialService.connectFinancialInstitution(context);
-    final financialInstitution = FinancialInstitution.fromJson(result['financialInstitution']);
+    final financialInstitution =
+        FinancialInstitution.fromJson(result['financialInstitution']);
     print(financialInstitution.toJson());
     authUser.financialInstitutions = [financialInstitution];
     authUser = authUser;
@@ -101,18 +102,10 @@ abstract class _AuthUserStore with Store {
     return authUser;
   }
 
-  @action
-  Future saveUserApi(AuthUser user) {
-    if (user != null) {
-      return userService.editProfile(user);
-    } else {
-      return userService.editProfile(authUser);
-    }
-  }
 
   @action
-  Future<bool> saveUserApiAlternatte(AuthUser user) async {
-    final data = await userService.editProfileAlternate(user);
+  Future<bool> updateUser(AuthUser user) async {
+    final data = await userService.updateUser(user);
     if (data != null) {
       authUser = authUser.update(data);
     }

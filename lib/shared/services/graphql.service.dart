@@ -15,10 +15,7 @@ class GraphqlService {
     );
 
     link = authLink.concat(httpLink);
-    client = GraphQLClient(
-      link: link,
-      cache: InMemoryCache()
-    );
+    client = GraphQLClient(link: link, cache: InMemoryCache());
 
     notifierClient = ValueNotifier(client);
   }
@@ -63,6 +60,9 @@ class GraphqlService {
             token: "$token",
             platform: $service
           ){
+            nickName
+            profileDescription
+            phone
             email
             firstName
             lastName

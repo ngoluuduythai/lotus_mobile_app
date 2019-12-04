@@ -13,7 +13,7 @@ class SettingsRoute extends StatelessWidget {
   final AuthUser editSettingUser = AuthUser();
 
   Future _onChanged(AuthUser newValue) async {
-    await authUserStore.saveUserApiAlternatte(newValue);
+    await authUserStore.updateUser(newValue);
   }
 
   @override

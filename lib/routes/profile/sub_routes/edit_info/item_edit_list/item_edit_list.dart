@@ -1,6 +1,7 @@
 import 'dart:core';
 import 'dart:core' as prefix0;
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemEditList extends StatefulWidget {
@@ -8,6 +9,7 @@ class ItemEditList extends StatefulWidget {
     @required this.title,
     @required this.iconImageLocation,
     @required this.onChanged,
+    @required this.onSubmited,
     @required this.userValue,
     this.color = const Color(0xff0b0b0b),
     this.color2,
@@ -15,6 +17,7 @@ class ItemEditList extends StatefulWidget {
   });
 
   Function onChanged;
+  Function onSubmited;
   String title;
   final String iconImageLocation;
   final Color color;
@@ -81,9 +84,7 @@ class _ItemEditListState extends State<ItemEditList> {
                   widget.onChanged(val);
                 },
                 onSubmitted: (val) {
-                  setState(() {
-                    _textEditingController.text = val;
-                  });
+                  widget.onSubmited(val);
                 },
                 // textAlign: TextAlign.center
                 decoration: InputDecoration(border: InputBorder.none),

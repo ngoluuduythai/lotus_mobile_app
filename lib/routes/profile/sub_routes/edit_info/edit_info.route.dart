@@ -9,11 +9,11 @@ import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
 import '../../../../shared/models/auth_user.model.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class EditInfoRoute extends StatelessWidget {
-  EditInfoRoute();
   final AuthUserStore authUserStore = locator<AuthUserStore>();
-  AuthUser editUser = AuthUser();
+  static AuthUser editUser = AuthUser();
 
   greyDivider() {
     return Container(
@@ -82,7 +82,9 @@ class EditInfoRoute extends StatelessWidget {
                     ),
                   ),
                 ),
-                onTap: () => print('upload image'),
+                onTap: () {
+                  print('upload photo');
+                },
               ),
             ],
           ),
@@ -93,20 +95,19 @@ class EditInfoRoute extends StatelessWidget {
 
   Widget _save(BuildContext context) {
     return InkWell(
-      child: Text(
-        'Save',
-        style: TextStyle(
-          color: Color(0xff0b0b0b),
-          fontWeight: FontWeight.w500,
-          fontFamily: 'AirbnbCerealApp',
-          fontStyle: FontStyle.normal,
-          fontSize: ScreenUtil().setSp(42),
+        child: Text(
+          'Save',
+          style: TextStyle(
+            color: Color(0xff0b0b0b),
+            fontWeight: FontWeight.w500,
+            fontFamily: 'AirbnbCerealApp',
+            fontStyle: FontStyle.normal,
+            fontSize: ScreenUtil().setSp(42),
+          ),
         ),
-      ),
-      onTap: () async {
-        await authUserStore.saveUserApi(editUser);
-      },
-    );
+        onTap: () async {
+          await authUserStore.updateUser(editUser);
+        });
   }
 
   Widget _editInfo(BuildContext context) {
@@ -132,6 +133,9 @@ class EditInfoRoute extends StatelessWidget {
                   onChanged: (val) {
                     editUser.nickName = val;
                   },
+                  onSubmited: (val) {
+                    editUser.nickName = val;
+                  },
                   iconImageLocation: IconPath.cross,
                   title: 'Nickname:',
                   userValue: authUserStore.authUser.nickName,
@@ -141,17 +145,20 @@ class EditInfoRoute extends StatelessWidget {
                 greyDivider(),
                 ItemEditListAboutMe(
                   onChanged: (val) {
-                    //editUser.about = val;
+                    editUser.profileDescription = val;
                   },
                   iconImageLocation: IconPath.cross,
                   title: 'About me:',
-                  userValue: 'Vestibulum rutrum',
+                  userValue: authUserStore.authUser.profileDescription,
                   color: Color(0xFF0B0B0B),
                   color2: Color(0xFF484F61),
                 ),
                 greyDivider(),
                 ItemEditList(
                   onChanged: (val) {
+                    editUser.firstName = val;
+                  },
+                  onSubmited: (val) {
                     editUser.firstName = val;
                   },
                   iconImageLocation: IconPath.cross,
@@ -164,6 +171,10 @@ class EditInfoRoute extends StatelessWidget {
                 ItemEditList(
                   onChanged: (val) {
                     editUser.lastName = val;
+                  },
+                  onSubmited: (val) {
+                    editUser.lastName = val;
+                   
                   },
                   iconImageLocation: IconPath.cross,
                   title: 'Last name:',
@@ -178,13 +189,16 @@ class EditInfoRoute extends StatelessWidget {
                   },
                   iconImageLocation: IconPath.cross,
                   title: 'Gender:',
-                  userValue: 'Male',
+                  userValue: authUserStore.authUser.gender,
                   color: Color(0xFF0B0B0B),
                   color2: Color(0xFF484F61),
                 ),
                 greyDivider(),
                 ItemEditList(
                   onChanged: (val) {
+                    editUser.email = val;
+                  },
+                  onSubmited: (val) {
                     editUser.email = val;
                   },
                   iconImageLocation: IconPath.cross,
@@ -196,6 +210,9 @@ class EditInfoRoute extends StatelessWidget {
                 greyDivider(),
                 ItemEditList(
                   onChanged: (val) {
+                    editUser.phone = val;
+                  },
+                  onSubmited: (val) {
                     editUser.phone = val;
                   },
                   iconImageLocation: IconPath.cross,
