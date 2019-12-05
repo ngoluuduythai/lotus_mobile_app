@@ -38,21 +38,21 @@ class ProfileRoute extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: ScreenUtil().setWidth(20),
                   right: ScreenUtil().setWidth(20),
-                  top: ScreenUtil().setWidth(30),
-                  bottom: ScreenUtil().setWidth(30)),
+                  top: ScreenUtil().setHeight(30),
+                  bottom: ScreenUtil().setHeight(30)),
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: ScreenUtil().setWidth(20)),
+                    margin: EdgeInsets.only(top: ScreenUtil().setHeight(20)),
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: ScreenUtil().setWidth(150),
-                          height: ScreenUtil().setHeight(150),
+                          width: ScreenUtil().setWidth(190),
+                          height: ScreenUtil().setHeight(175),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color.fromRGBO(255, 186, 115, 1),
-                                  width: 2),
+                                  color: Color.fromRGBO(255, 186, 115, 0.55),
+                                  width: ScreenUtil().setWidth(4.5)),
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: NetworkImage(
@@ -60,7 +60,9 @@ class ProfileRoute extends StatelessWidget {
                                   )),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 22, bottom: 2),
+                          margin: EdgeInsets.only(
+                              left: ScreenUtil().setWidth(40),
+                              bottom: ScreenUtil().setHeight(2)),
                           child: Column(
                             children: <Widget>[
                               Observer(
@@ -74,16 +76,17 @@ class ProfileRoute extends StatelessWidget {
                                             fontSize: ScreenUtil().setSp(42.0),
                                           ))),
                               SizedBox(
-                                height: 4,
+                                height: ScreenUtil().setWidth(8),
                               ),
                               Container(
-                                margin: EdgeInsets.only(right: 40),
+                                margin: EdgeInsets.only(
+                                    right: ScreenUtil().setWidth(183)),
                                 child: InkWell(
                                   child: Text(
                                     'View profile',
                                     style: TextStyle(
-                                      color: Color.fromRGBO(223, 148, 61, 1),
-                                      fontWeight: FontWeight.w200,
+                                      color: Color(0xFFDF8F3D),
+                                      fontWeight: FontWeight.w400,
                                       fontFamily: 'AirbnbCerealApp',
                                       fontStyle: FontStyle.normal,
                                       fontSize: ScreenUtil().setSp(34.0),
@@ -100,21 +103,21 @@ class ProfileRoute extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 31),
+                    margin: EdgeInsets.only(top: ScreenUtil().setHeight(45)),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(20)),
                     // color: Colors.white,
                     child: Column(
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(
-                              top: ScreenUtil().setWidth(20),
+                              top: ScreenUtil().setHeight(20),
                               left: ScreenUtil().setWidth(5),
                               right: ScreenUtil().setWidth(120),
-                              bottom: ScreenUtil().setWidth(15)),
-                          width: 208,
-                          height: 25,
+                              bottom: ScreenUtil().setHeight(15)),
+                          width: ScreenUtil().setWidth(510),
+                          height: ScreenUtil().setHeight(50),
                           child: Text(
                             'Account Settings',
                             style: TextStyle(
@@ -126,7 +129,12 @@ class ProfileRoute extends StatelessWidget {
                             ),
                           ),
                         ),
-                        greyDivider(),
+                        Divider(
+                          thickness: ScreenUtil().setHeight(6),
+                          indent: ScreenUtil().setWidth(40),
+                          endIndent: ScreenUtil().setWidth(590),
+                          color: Color(0xFFFFBA73),
+                        ),
                         ItemList(
                           text: 'Payments',
                           iconImageLocation: IconPath.money,
@@ -135,7 +143,7 @@ class ProfileRoute extends StatelessWidget {
                         greyDivider(),
                         ItemList(
                             text: 'Settings',
-                            iconImageLocation: IconPath.bell,
+                            iconImageLocation: IconPath.settings,
                             route: RouteNames.settings),
                         greyDivider(),
                         ItemList(

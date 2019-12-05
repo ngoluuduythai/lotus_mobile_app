@@ -21,7 +21,9 @@ class SubProfileBase extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(
-                        left: 0, right: ScreenUtil().setWidth(120), top: 30),
+                        left: 0,
+                        right: ScreenUtil().setWidth(50),
+                        top: ScreenUtil().setHeight(30)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
@@ -29,7 +31,7 @@ class SubProfileBase extends StatelessWidget {
                           icon: Image.asset(
                             IconPath.backArrow,
                             width: ScreenUtil().setWidth(38),
-                            height: ScreenUtil().setWidth(34),
+                            height: ScreenUtil().setHeight(32),
                           ),
                           onPressed: () {
                             Routes.sailor.navigate(
@@ -54,12 +56,13 @@ class SubProfileBase extends StatelessWidget {
                                   Routes.sailor.navigate(RouteNames.profile),
                             )),
                         Expanded(
-                            child: Container(
-                          margin: EdgeInsets.only(
-                              left: ScreenUtil()
-                                  .setWidth(ScreenUtil().setWidth(510))),
-                          child: save,
-                        )),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                left: ScreenUtil()
+                                    .setWidth(ScreenUtil().setWidth(670))),
+                            child: save,
+                          ),
+                        )
                       ],
                     ),
                   ),

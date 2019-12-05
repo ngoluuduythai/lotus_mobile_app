@@ -37,7 +37,7 @@ class _ItemEditListAboutMeState extends State<ItemEditListAboutMe> {
     return Container(
       height: ScreenUtil().setHeight(153.9),
       margin: EdgeInsets.only(
-          right: ScreenUtil().setWidth(60), top: ScreenUtil().setWidth(30)),
+          right: ScreenUtil().setWidth(60), top: ScreenUtil().setHeight(25)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -62,7 +62,7 @@ class _ItemEditListAboutMeState extends State<ItemEditListAboutMe> {
               child: TextField(
                 style: TextStyle(
                     color: widget.color2,
-                    fontSize: 16,
+                    fontSize: ScreenUtil().setSp(26.0),
                     fontWeight: FontWeight.w400,
                     fontFamily: 'AirbnbCerealApp'),
                 maxLines: 2,

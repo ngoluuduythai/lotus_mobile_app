@@ -1,6 +1,8 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:main/shared/classes/gender_class.dart';
+import 'package:main/shared/enums/gender_enum.dart';
 
 class ItemEditListGender extends StatefulWidget {
   ItemEditListGender({
@@ -21,10 +23,7 @@ class ItemEditListGender extends StatefulWidget {
   String userValue;
   bool enable = true;
   double fontSize;
-  List<String> gender = <String>[
-    'MALE',
-    'FEMALE',
-  ];
+  List<String> gender = <String>['Male', 'Female', ''];
 
   @override
   _ItemEditListGenderState createState() => _ItemEditListGenderState();
@@ -47,7 +46,7 @@ class _ItemEditListGenderState extends State<ItemEditListGender> {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(left: ScreenUtil().setWidth(19)),
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(32)),
             child: Text(
               widget.title,
               style: TextStyle(
@@ -63,7 +62,7 @@ class _ItemEditListGenderState extends State<ItemEditListGender> {
               width: ScreenUtil().setWidth(388),
               height: ScreenUtil().setHeight(82),
               margin: EdgeInsets.only(
-                  top: ScreenUtil().setWidth(12),
+                  top: ScreenUtil().setHeight(6),
                   left: ScreenUtil().setWidth(0),
                   right: ScreenUtil().setWidth(20)),
               child: DropdownButtonHideUnderline(
@@ -74,7 +73,7 @@ class _ItemEditListGenderState extends State<ItemEditListGender> {
                             value,
                             style: TextStyle(
                                 color: widget.color2,
-                                fontSize: 16,
+                                fontSize: ScreenUtil().setSp(26.0),
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'AirbnbCerealApp'),
                           ),
