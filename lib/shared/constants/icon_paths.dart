@@ -22,7 +22,7 @@ class IconPath {
   static const noCheckSwitch = 'assets/icons/group3.png';
   static const block = 'assets/icons/block.png';
   static const backArrow = 'assets/icons/path@2x.png';
-
+  static const settings = 'assets/icons/settings.png';
   static const cross = 'assets/icons/3B.png';
 
   static const verifiedAccount = 'assets/icons/verifiedAccount.png';

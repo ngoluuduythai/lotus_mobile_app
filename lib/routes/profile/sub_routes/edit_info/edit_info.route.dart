@@ -49,7 +49,8 @@ class EditInfoRoute extends StatelessWidget {
                 height: ScreenUtil().setHeight(175),
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
+                        color: Color.fromRGBO(255, 186, 115, 0.55),
+                        width: ScreenUtil().setWidth(4.5)),
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         fit: BoxFit.contain,
@@ -60,19 +61,20 @@ class EditInfoRoute extends StatelessWidget {
               GestureDetector(
                 child: Container(
                   margin: EdgeInsets.only(
-                      top: ScreenUtil().setWidth(120),
+                      top: ScreenUtil().setHeight(110),
                       left: ScreenUtil().setWidth(390)),
                   width: ScreenUtil().setWidth(100),
                   height: ScreenUtil().setHeight(70),
                   decoration: BoxDecoration(
                     border: Border.all(
-                        color: Color.fromRGBO(255, 186, 115, 0.55), width: 2),
+                        color: Color.fromRGBO(255, 186, 115, 0.55),
+                        width: ScreenUtil().setWidth(4)),
                     shape: BoxShape.circle,
                     color: Colors.white,
                   ),
                   child: Container(
-                    width: 2,
-                    height: 2,
+                    width: ScreenUtil().setWidth(4),
+                    height: ScreenUtil().setHeight(4),
                     child: Tab(
                       icon: Image.asset(
                         IconPath.cameraIcon,
@@ -102,7 +104,7 @@ class EditInfoRoute extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontFamily: 'AirbnbCerealApp',
             fontStyle: FontStyle.normal,
-            fontSize: ScreenUtil().setSp(42),
+            fontSize: ScreenUtil().setSp(32),
           ),
         ),
         onTap: () async {
@@ -117,14 +119,14 @@ class EditInfoRoute extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(
               left: ScreenUtil().setWidth(30),
-              top: ScreenUtil().setWidth(240),
+              top: ScreenUtil().setHeight(230),
               right: ScreenUtil().setWidth(30),
-              bottom: ScreenUtil().setWidth(30)),
+              bottom: ScreenUtil().setHeight(20)),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(25)),
           child: Container(
             margin: EdgeInsets.only(
-              top: ScreenUtil().setWidth(10),
+              top: ScreenUtil().setHeight(5),
               left: ScreenUtil().setWidth(0),
             ),
             child: Column(
@@ -174,7 +176,6 @@ class EditInfoRoute extends StatelessWidget {
                   },
                   onSubmited: (val) {
                     editUser.lastName = val;
-                   
                   },
                   iconImageLocation: IconPath.cross,
                   title: 'Last name:',
@@ -221,7 +222,6 @@ class EditInfoRoute extends StatelessWidget {
                   color: Color(0xFF0B0B0B),
                   color2: Color(0xFF484F61),
                 ),
-                greyDivider(),
               ],
             ),
           ),

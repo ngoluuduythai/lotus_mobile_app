@@ -1,6 +1,1 @@
-enum GENDER_ENUM { 
-  NOT_SET,
-  MALE,
-  FEMALE
-}
-
+enum GENDER_ENUM { NOT_SET, MALE, FEMALE }

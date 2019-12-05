@@ -26,6 +26,7 @@ class ItemEditList extends StatefulWidget {
   bool enable = true;
   double fontSize;
   double left;
+  double right;
 
   @override
   _ItemEditListState createState() => _ItemEditListState();
@@ -42,6 +43,7 @@ class _ItemEditListState extends State<ItemEditList> {
   @override
   Widget build(BuildContext context) {
     widget.left = 0;
+    widget.right = 0;
     widget.enable = isEmail(widget.title);
     widget.fontSize = isNickName(widget.title);
     isPhone(widget.title);
@@ -52,7 +54,7 @@ class _ItemEditListState extends State<ItemEditList> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(35)),
             child: Text(
               widget.title,
               style: TextStyle(
@@ -68,30 +70,43 @@ class _ItemEditListState extends State<ItemEditList> {
               width: ScreenUtil().setWidth(320),
               height: ScreenUtil().setHeight(82),
               margin: EdgeInsets.only(
-                  top: ScreenUtil().setWidth(12),
+                  top: ScreenUtil().setHeight(6),
                   left: ScreenUtil().setWidth(widget.left),
-                  right: ScreenUtil().setWidth(0)),
-              child: TextField(
-                style: TextStyle(
-                    color: widget.color2,
-                    fontSize: widget.fontSize,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'AirbnbCerealApp'),
-                maxLines: 1,
-                enabled: widget.enable,
-                controller: _textEditingController,
-                onChanged: (val) {
-                  widget.onChanged(val);
-                },
-                onSubmitted: (val) {
-                  widget.onSubmited(val);
-                },
-                // textAlign: TextAlign.center
-                decoration: InputDecoration(border: InputBorder.none),
-              )),
+                  right: ScreenUtil().setWidth(widget.right)),
+              child: isEmail(widget.title)
+                  ? TextField(
+                      style: TextStyle(
+                          color: widget.color2,
+                          fontSize: widget.fontSize,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'AirbnbCerealApp'),
+                      maxLines: 1,
+                      enabled: widget.enable,
+                      controller: _textEditingController,
+                      onChanged: (val) {
+                        widget.onChanged(val);
+                      },
+                      onSubmitted: (val) {
+                        widget.onSubmited(val);
+                      },
+                      // textAlign: TextAlign.center
+                      decoration: InputDecoration(border: InputBorder.none),
+                    )
+                  : FittedBox(
+                      child: Text(
+                        widget.userValue,
+                        style: TextStyle(
+                            color: widget.color2,
+                            fontSize: widget.fontSize,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'AirbnbCerealApp'),
+                      ),
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                    )),
           Container(
-              height: 21,
-              width: 21,
+              height: ScreenUtil().setHeight(42),
+              width: ScreenUtil().setWidth(42),
               child: GestureDetector(
                 child: Tab(
                     icon: Image.asset(
@@ -111,7 +126,7 @@ class _ItemEditListState extends State<ItemEditList> {
   bool isEmail(String text) {
     print(text);
     if (text == 'Email:') {
-      widget.left = 78;
+      widget.left = 83;
       return false;
     } else {
       return true;
