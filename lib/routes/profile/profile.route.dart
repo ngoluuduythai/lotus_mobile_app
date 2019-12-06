@@ -47,14 +47,15 @@ class ProfileRoute extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: ScreenUtil().setWidth(190),
-                          height: ScreenUtil().setHeight(175),
+                          width: 80,
+                          height: 80,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: Color.fromRGBO(255, 186, 115, 0.55),
                                   width: ScreenUtil().setWidth(4.5)),
                               shape: BoxShape.circle,
                               image: DecorationImage(
+                                  fit: BoxFit.contain,
                                   image: NetworkImage(
                                       '${authUserStore.authUser.profilePictureUrl}') //eventually going to use facebook url
                                   )),

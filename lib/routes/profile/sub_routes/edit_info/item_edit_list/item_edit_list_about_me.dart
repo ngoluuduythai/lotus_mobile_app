@@ -35,7 +35,7 @@ class _ItemEditListAboutMeState extends State<ItemEditListAboutMe> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(153.9),
+      height: ScreenUtil().setHeight(173),
       margin: EdgeInsets.only(
           right: ScreenUtil().setWidth(60), top: ScreenUtil().setHeight(25)),
       child: Column(
