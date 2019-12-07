@@ -45,8 +45,8 @@ class EditInfoRoute extends StatelessWidget {
             children: <Widget>[
               Center(
                   child: Container(
-                width: ScreenUtil().setWidth(190),
-                height: ScreenUtil().setHeight(175),
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
                     border: Border.all(
                         color: Color.fromRGBO(255, 186, 115, 0.55),

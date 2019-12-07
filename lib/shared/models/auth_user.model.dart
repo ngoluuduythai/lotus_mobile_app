@@ -48,6 +48,7 @@ class AuthUser {
     'gender',
     'phone',
     'firstName',
+    'showInRoommateSearch',
     'notifyByEmail',
     'notifyByText',
     'notifyInApp'
