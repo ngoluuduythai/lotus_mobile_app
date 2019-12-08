@@ -168,26 +168,47 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                     margin: EdgeInsets.only(),
                     child: Row(
                       children: <Widget>[
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 20),
-                        //   child: Tab(
-                        //       icon: Image.asset(
-                        //     IconPath.verifiedAccount,
-                        //     width: 21,
-                        //     height: 21,
-                        //   )),
-                        // ),
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 10),
-                        //   child: Text('Employer Verified',
-                        //       style: TextStyle(
-                        //         color: Color(0xFF0B0B0B),
-                        //         fontWeight: FontWeight.w400,
-                        //         fontFamily: 'AirbnbCerealApp',
-                        //         fontStyle: FontStyle.normal,
-                        //         fontSize: 16.0,
-                        //       )),
-                        // ),
+                        Container(
+                            margin: EdgeInsets.only(left: 20),
+                            child: authUserStore.getCurrentEmployer() == null
+                                ? Row(children: <Widget>[
+                                    Tab(
+                                        icon: Image.asset(
+                                      IconPath.verifiedPending,
+                                      width: 21,
+                                      height: 21,
+                                    )),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 10),
+                                      child: Text('Verification Pending',
+                                          style: TextStyle(
+                                            color: Color(0xFF0B0B0B),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'AirbnbCerealApp',
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16.0,
+                                          )),
+                                    ),
+                                  ])
+                                : Row(children: <Widget>[
+                                    Tab(
+                                        icon: Image.asset(
+                                      IconPath.verifiedAccount,
+                                      width: 21,
+                                      height: 21,
+                                    )),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 10),
+                                      child: Text('Employer Verified',
+                                          style: TextStyle(
+                                            color: Color(0xFF0B0B0B),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'AirbnbCerealApp',
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16.0,
+                                          )),
+                                    ),
+                                  ]))
                       ],
                     ),
                   ),

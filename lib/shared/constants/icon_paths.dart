@@ -26,7 +26,7 @@ class IconPath {
   static const cross = 'assets/icons/3B.png';
 
   static const verifiedAccount = 'assets/icons/verifiedAccount.png';
-
+  static const verifiedPending = 'assets/icons/verifiedPending.png';
   static const okIcon = 'assets/icons/2B.png';
   static const keyIcon = 'assets/icons/key.png';
   static const locationIcon = 'assets/icons/5l.png';

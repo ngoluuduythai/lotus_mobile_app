@@ -87,6 +87,14 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
         .run(() => super.getFinancialInstitutions());
   }
 
+  final _$getCurrentEmployerAsyncAction = AsyncAction('getCurrentEmployer');
+
+  @override
+  Future getCurrentEmployer() {
+    return _$getCurrentEmployerAsyncAction
+        .run(() => super.getCurrentEmployer());
+  }
+
   final _$updateUserAsyncAction = AsyncAction('updateUser');
 
   @override

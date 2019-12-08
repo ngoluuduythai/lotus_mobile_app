@@ -3,6 +3,7 @@ import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../services/user.service.dart';
+import '../../services/employer.service.dart';
 import '../../../locator.dart';
 import '../../services/facebook.service.dart';
 import '../../services/google.service.dart';
@@ -22,6 +23,7 @@ abstract class _AuthUserStore with Store {
   final financialService = locator<FinancialService>();
   final graphqlService = locator<GraphqlService>();
   final userService = locator<UserService>();
+  final employerService = locator<EmployerService>();
 
   @observable
   AuthUser authUser;
@@ -102,6 +104,12 @@ abstract class _AuthUserStore with Store {
     return authUser;
   }
 
+  @action
+  Future getCurrentEmployer() async {
+    final result = await employerService.getCurrentEmployer();
+    print(result);
+    return result;
+  }
 
   @action
   Future<bool> updateUser(AuthUser user) async {
