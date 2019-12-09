@@ -30,6 +30,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
+      authUserStore.getCurrentEmployer();
       return BaseWidget(builder: (context, sizingInformation) {
         return BottomNavigationBase(
             child: ListView(
@@ -164,13 +165,18 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                     ],
                   ),
                   greyDivider(),
+
                   Container(
                     margin: EdgeInsets.only(),
                     child: Row(
                       children: <Widget>[
                         Container(
                             margin: EdgeInsets.only(left: 20),
-                            child: authUserStore.getCurrentEmployer() == null
+                            child: 
+                            
+                                Observer(
+                                builder: (_) {
+                                return authUserStore.authUser.currentEmployer==null
                                 ? Row(children: <Widget>[
                                     Tab(
                                         icon: Image.asset(
@@ -208,7 +214,11 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                                             fontSize: 16.0,
                                           )),
                                     ),
-                                  ]))
+                                  ]
+                                  );
+                                }
+                                  )
+                        )
                       ],
                     ),
                   ),

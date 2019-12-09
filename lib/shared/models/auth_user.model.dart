@@ -45,6 +45,7 @@ class AuthUser {
   UserEmployer currentEmployer;
 
   static List<String> updateableFields = [
+    'currentEmployer',
     'profileDescription',
     'lastName',
     'nickName',

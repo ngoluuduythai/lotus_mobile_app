@@ -90,7 +90,7 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   final _$getCurrentEmployerAsyncAction = AsyncAction('getCurrentEmployer');
 
   @override
-  Future getCurrentEmployer() {
+  Future<AuthUser> getCurrentEmployer() {
     return _$getCurrentEmployerAsyncAction
         .run(() => super.getCurrentEmployer());
   }

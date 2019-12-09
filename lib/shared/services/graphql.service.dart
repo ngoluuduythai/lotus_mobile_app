@@ -77,6 +77,13 @@ class GraphqlService {
               financialInstitutionKey
               name
             }
+            currentEmployer{
+              employerVerifiedAt
+              createdAt
+              employer{
+                name
+              }
+            }
           }
         }
     ''');

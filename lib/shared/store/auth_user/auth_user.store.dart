@@ -105,10 +105,10 @@ abstract class _AuthUserStore with Store {
   }
 
   @action
-  Future getCurrentEmployer() async {
+  Future<AuthUser> getCurrentEmployer() async {
     final result = await employerService.getCurrentEmployer();
-    print(result);
-    return result;
+    authUser = authUser.update(result);
+    return authUser;
   }
 
   @action
