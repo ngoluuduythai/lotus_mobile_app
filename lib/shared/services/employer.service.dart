@@ -19,7 +19,11 @@ class EmployerService {
           createdAt
         }
         currentEmployer{
-        createdAt
+          employerVerifiedAt
+          createdAt
+          employer{
+            name
+          }
         }
       }
     }
