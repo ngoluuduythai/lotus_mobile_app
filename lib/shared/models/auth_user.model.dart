@@ -42,7 +42,7 @@ class AuthUser {
   bool showInRoommateSearch;
   num monthlyRentalBudget;
   List<FinancialInstitution> financialInstitutions;
-  List<UserEmployer> currentEmployer;
+  UserEmployer currentEmployer;
 
   static List<String> updateableFields = [
     'profileDescription',

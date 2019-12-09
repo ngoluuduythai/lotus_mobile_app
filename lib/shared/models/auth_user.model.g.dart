@@ -27,6 +27,8 @@ AuthUser _$AuthUserFromJson(Map json) {
         .map((e) =>
             FinancialInstitution.fromJson(Map<String, dynamic>.from(e as Map)))
         .toList(),
+    currentEmployer: UserEmployer.fromJson(
+        Map<String, dynamic>.from(json['currentEmployer'] as Map)),
   );
 }
 
@@ -47,4 +49,5 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'showInRoommateSearch': instance.showInRoommateSearch,
       'monthlyRentalBudget': instance.monthlyRentalBudget,
       'financialInstitutions': instance.financialInstitutions,
+      'currentEmployer': instance.currentEmployer,
     };
