@@ -13,6 +13,10 @@ For development you must run this command.
 flutter packages pub run build_runner watch --delete-conflicting-outputs
 ```
 
+## FOR WEB to run even in visual studio
+```
+flutter run -d chrome
+```
 ### Formatting code
 
 `flutter format .`

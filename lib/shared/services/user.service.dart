@@ -1,6 +1,4 @@
-import 'dart:async';
-import 'dart:io';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:graphql/client.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/models/auth_user.model.dart';
 import './graphql.service.dart';
@@ -54,15 +52,15 @@ class UserService {
       );
 
       final result = await graphqlService.mutateOptions(_options);
-      if (result.errors != null) {
-        print('error');
-        print(result.errors);
-      }
+      // if (result.errors != null) {
+      //   print('error');
+      //   print(result.errors);
+      // }
       return result.data['updateUser']['user'];
     }
   }
 
-  Future uploadFile(File file) async {
+  Future uploadFile(dynamic file) async {
     print(file);
   }
 }
