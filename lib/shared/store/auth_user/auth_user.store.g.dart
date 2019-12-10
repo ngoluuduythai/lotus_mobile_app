@@ -93,4 +93,11 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   Future<bool> updateUser(AuthUser user) {
     return _$updateUserAsyncAction.run(() => super.updateUser(user));
   }
+
+  final _$uploadFileAsyncAction = AsyncAction('uploadFile');
+
+  @override
+  Future<AuthUser> uploadFile(File file) {
+    return _$uploadFileAsyncAction.run(() => super.uploadFile(file));
+  }
 }

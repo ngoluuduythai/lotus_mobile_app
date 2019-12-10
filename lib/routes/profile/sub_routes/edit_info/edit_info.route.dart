@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_profile_base/sub_profile_base.dart';
@@ -10,6 +12,8 @@ import '../../../../shared/store/auth_user/auth_user.store.dart';
 import './../../../../routes.dart';
 import '../../../../shared/models/auth_user.model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class EditInfoRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -43,21 +47,22 @@ class EditInfoRoute extends StatelessWidget {
           margin: EdgeInsets.only(top: ScreenUtil().setWidth(0)),
           child: Stack(
             children: <Widget>[
-              Center(
-                  child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Color.fromRGBO(255, 186, 115, 0.55),
-                        width: ScreenUtil().setWidth(4.5)),
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: NetworkImage(
-                            '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
-                        )),
-              )),
+              Center(child: Observer(builder: (_) {
+                return Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Color.fromRGBO(255, 186, 115, 0.55),
+                          width: ScreenUtil().setWidth(4.5)),
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.contain,
+                          image: NetworkImage(
+                              '${authUserStore.authUser.pictureUrl}') //eventually going to use facebook url
+                          )),
+                );
+              })),
               GestureDetector(
                 child: Container(
                   margin: EdgeInsets.only(
@@ -84,8 +89,10 @@ class EditInfoRoute extends StatelessWidget {
                     ),
                   ),
                 ),
-                onTap: () {
-                  print('upload photo');
+                onTap: () async {
+                  File selectedImageStorage =
+                      await ImagePicker.pickImage(source: ImageSource.gallery);
+                  await authUserStore.uploadFile(selectedImageStorage);
                 },
               ),
             ],

@@ -63,6 +63,27 @@ class UserService {
   }
 
   Future uploadFile(File file) async {
-    print(file);
+    const String document = r'''
+      mutation uploadFile(
+        $file: Upload!
+      ){
+        uploadFile(file: $file){
+        fileUrl
+        fileName
+        }
+      }
+    ''';
+
+    final MutationOptions _options = MutationOptions(
+      document: document,
+      variables: {'file': file},
+    );
+
+    final result = await graphqlService.mutateOptions(_options);
+    if (result.errors != null) {
+      print('error');
+      print(result.errors);
+    }
+    return result.data['uploadFile']['fileUrl'];
   }
 }

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' as prefix0;
 import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
@@ -102,7 +105,6 @@ abstract class _AuthUserStore with Store {
     return authUser;
   }
 
-
   @action
   Future<bool> updateUser(AuthUser user) async {
     final data = await userService.updateUser(user);
@@ -110,5 +112,13 @@ abstract class _AuthUserStore with Store {
       authUser = authUser.update(data);
     }
     return true;
+  }
+
+  @action
+  Future<AuthUser> uploadFile(File file) async {
+    final data = await userService.uploadFile(file);
+    authUser.pictureUrl=data;
+    authUser.update(data);
+    return authUser;
   }
 }
