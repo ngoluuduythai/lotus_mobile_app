@@ -7,13 +7,13 @@ import 'package:main/routes/profile/sub_routes/edit_info/edit_info.route.dart';
 import 'package:main/routes/profile/sub_routes/settings/settings.route.dart';
 import 'package:main/routes/profile/sub_routes/termofservice/termofservice.route.dart';
 import 'package:sailor/sailor.dart';
-import 'routes/explore/explore.route.dart';
-import 'routes/inbox/inbox.route.dart';
-import 'routes/login/login.route.dart';
-import 'routes/profile/profile.route.dart';
-import 'routes/profile/sub_routes/view_profile/view_profile.route.dart';
-import 'routes/saved/saved.route.dart';
-import 'routes/rentals/rentals.route.dart';
+import './explore/explore.route.dart';
+import './inbox/inbox.route.dart';
+import './login/login.route.dart';
+import './profile/profile.route.dart';
+import './profile/sub_routes/view_profile/view_profile.route.dart';
+import './saved/saved.route.dart';
+import './rentals/rentals.route.dart';
 
 class RouteNames {
   static const login = '/login';

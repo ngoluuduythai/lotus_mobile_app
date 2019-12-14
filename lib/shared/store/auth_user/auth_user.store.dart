@@ -9,7 +9,7 @@ import '../../services/google.service.dart';
 import '../../services/graphql.service.dart';
 import '../../services/financial.service.dart';
 import '../../models/auth_user.model.dart';
-import '../../../routes.dart';
+import '../../../routes/routes.dart';
 
 part 'auth_user.store.g.dart';
 

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:main/routes.dart';
+import '../routes.dart';
 import 'package:main/locator.dart';
 import 'package:main/shared/store/auth_user/auth_user.store.dart';
-
-import '../../routes.dart';
 import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
-import 'linkedin_view/linkedin_view.dart';
 import '../../utils/sizeConfig.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {

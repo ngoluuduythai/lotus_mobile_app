@@ -8,31 +8,19 @@
             "name": "Flutter LOCAL",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/local.dart"
+            "program": "lib/build_local.dart"
         },
         {
             "name": "Flutter DEV",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/dev.dart"
-        },
-        {
-            "name": "Flutter QA",
-            "type": "dart",
-            "request": "launch",
-            "program": "lib/builds/qa.dart"
-        },
-        {
-            "name": "Flutter STAGE",
-            "type": "dart",
-            "request": "launch",
-            "program": "lib/builds/stage.dart"
+            "program": "lib/build_dev.dart"
         },
         {
             "name": "Flutter PROD",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/prod.dart"
+            "program": "lib/build_prod.dart"
         },
     ]
 }

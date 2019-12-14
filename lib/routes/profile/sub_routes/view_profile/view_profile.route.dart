@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import '../../../../locator.dart';
 import '../../../../shared/constants/icon_paths.dart';
-import './../../../../routes.dart';
+import './../../../routes.dart';
 import '../../../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../shared/widgets/base_widget/base_widget.dart';
 

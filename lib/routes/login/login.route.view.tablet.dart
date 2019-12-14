@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:main/routes.dart';
 import 'package:main/locator.dart';
 import './login_button/login_button.dart';
-
-import '../../routes.dart';
+import '../routes.dart';
 import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
