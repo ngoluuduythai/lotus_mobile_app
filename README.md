@@ -41,3 +41,9 @@ Please contact Brian for more information
 ```
 flutter run -t lib/builds/local.dart -d {{Device Name}}
 ```
+
+### Deploying
+```
+flutter build web -t lib/build_dev.dart
+firebase deploy --only hosting:dev
+```
