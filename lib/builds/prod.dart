@@ -7,7 +7,6 @@ import 'package:main/start.dart';
 Future<void> main() async {
   print('*********** PROD ************');
   await DotEnv().load('env/prod.env');
-  Routes.createRoutes();
   await setupLocator();
   runApp(MyApp());
 }
