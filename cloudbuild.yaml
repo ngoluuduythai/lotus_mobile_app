@@ -1,0 +1,6 @@
+# Flutter CD configuration file with Cloud build
+# This is incomplete
+steps:
+    # using flutter builder Docker image we have built previously to compile the repo
+    - name: 'gcr.io/$PROJECT_ID/flutter'
+      args: ['flutter', 'build', 'web', '-t', 'lib/build_dev.dart']
