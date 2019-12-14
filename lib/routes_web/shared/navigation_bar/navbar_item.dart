@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main/routes_web/routes_web.dart';
-import 'package:sailor/sailor.dart';
-
+import '../../../shared/extensions/hover_extension.dart';
 class NavBarItem extends StatelessWidget {
   final String title;
   final String navPath;
@@ -17,6 +16,6 @@ class NavBarItem extends StatelessWidget {
         title,
         style: TextStyle(fontSize: 18),
       )
-    );
+    ).showCursorOnHover;
   }
 }

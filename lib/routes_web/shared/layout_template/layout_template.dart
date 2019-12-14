@@ -3,6 +3,7 @@ import 'package:main/routes_web/shared/centered_view/centered_view.dart';
 import 'package:main/routes_web/shared/navigation_bar/navigation_bar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import '../navigation_drawer/navigation_drawer.dart';
+import '../../../shared/extensions/hover_extension.dart';
 class LayoutTemplate extends StatelessWidget {
   const LayoutTemplate({Key key, this.child}) : super(key: key);
   final Widget child;
