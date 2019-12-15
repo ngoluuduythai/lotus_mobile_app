@@ -1,6 +1,6 @@
 import 'package:graphql/client.dart';
 import 'package:main/locator.dart';
-import 'package:main/shared/models/auth_user.model.dart';
+import '../../shared/models/auth_user.model.dart';
 import './graphql.service.dart';
 import '../enums/social_login_enum.dart';
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:main/locator.dart';
 import './login_button/login_button.dart';
 import '../routes.dart';
 import '../../locator.dart';

@@ -1,5 +1,5 @@
 import 'package:main/locator.dart';
-import 'package:main/shared/enums/social_login_enum.dart';
+import '../../shared/enums/social_login_enum.dart';
 import './user.service.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 

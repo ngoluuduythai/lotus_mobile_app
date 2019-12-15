@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:main/locator.dart';
-import 'package:main/shared/enums/social_login_enum.dart';
+import '../../shared/enums/social_login_enum.dart';
 import './user.service.dart';
 
 void printWrapped(String text) {

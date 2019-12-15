@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
+import '../../../shared/models/financial_institution.model.dart';
 import '../../services/user.service.dart';
 import '../../services/employer.service.dart';
 import '../../../locator.dart';

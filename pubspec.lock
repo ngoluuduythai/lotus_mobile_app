@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+  awesome_loader:
+    dependency: "direct main"
+    description:
+      name: awesome_loader
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -408,6 +415,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.10"
+  overlay_loader:
+    dependency: "direct main"
+    description:
+      name: overlay_loader
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   package_config:
     dependency: transitive
     description:
