@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:main/shared/models/financial_institution.model.dart';
+import 'package:graphql/client.dart';
 import 'package:plaid/plaid.dart';
 import 'package:flutter/material.dart';
 import '../constants/env.dart';
 import 'package:main/locator.dart';
 import './graphql.service.dart';
-// import '../../pac/plaid.dart';
 
 class FinancialService {
   final graphqlService = locator<GraphqlService>();

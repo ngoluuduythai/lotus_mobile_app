@@ -5,34 +5,40 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter LOCAL",
+            "name": "Mobile LOCAL",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/local.dart"
+            "program": "lib/build_local.dart"
         },
         {
-            "name": "Flutter DEV",
+            "name": "Mobile DEV",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/dev.dart"
+            "program": "lib/build_dev.dart"
         },
         {
-            "name": "Flutter QA",
+            "name": "Mobile PROD",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/qa.dart"
+            "program": "lib/build_prod.dart"
         },
         {
-            "name": "Flutter STAGE",
+            "name": "Web LOCAL",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/stage.dart"
+            "program": "lib/web_build_local.dart"
         },
         {
-            "name": "Flutter PROD",
+            "name": "Web DEV",
             "type": "dart",
             "request": "launch",
-            "program": "lib/builds/prod.dart"
+            "program": "lib/web_build_dev.dart"
+        },
+        {
+            "name": "Web PROD",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/web_build_prod.dart"
         },
     ]
 }

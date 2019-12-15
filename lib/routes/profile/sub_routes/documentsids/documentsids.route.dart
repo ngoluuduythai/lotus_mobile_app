@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
-import './../../../../routes.dart';
 import '../../../../shared/models/auth_user.model.dart';
 import '../../sub_profile_base/sub_profile_base.dart';
 import 'package:image_picker/image_picker.dart';

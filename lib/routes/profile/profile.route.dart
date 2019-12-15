@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../routes.dart';
+import '../routes.dart';
 import 'package:main/locator.dart';
 import './item_list/item_list.dart';
 import 'package:sailor/sailor.dart';
