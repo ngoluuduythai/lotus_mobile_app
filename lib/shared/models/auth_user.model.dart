@@ -4,7 +4,7 @@ import './user_employer.model.dart';
 import "package:merge_map/merge_map.dart";
 part 'auth_user.model.g.dart';
 
-@JsonSerializable(nullable: false, anyMap: true)
+@JsonSerializable(nullable: true, anyMap: true)
 class AuthUser {
   AuthUser({
     this.userKey,
@@ -45,7 +45,6 @@ class AuthUser {
   UserEmployer currentEmployer;
 
   static List<String> updateableFields = [
-    'currentEmployer',
     'profileDescription',
     'lastName',
     'nickName',
