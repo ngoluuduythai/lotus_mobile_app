@@ -1,9 +1,10 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:main/locator.dart';
-import './graphql.service.dart';
+import 'package:main/shared/enums/social_login_enum.dart';
+import './user.service.dart';
 
 class GoogleService {
-  final graphqlService = locator<GraphqlService>();
+  final userService = locator<UserService>();
   final GoogleSignIn googleSignIn =
       GoogleSignIn(scopes: <String>['profile', 'email']);
 
@@ -22,6 +23,6 @@ class GoogleService {
       throw 'Error #2: did not receive google token';
     }
 
-    return graphqlService.socialLogin(token, 'GOOGLE');
+    return userService.socialLogin(token, SOCIAL_LOGIN_ENUM.GOOGLE);
   }
 }

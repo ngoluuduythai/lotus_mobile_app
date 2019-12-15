@@ -1,9 +1,10 @@
 import 'package:main/locator.dart';
-import './graphql.service.dart';
+import 'package:main/shared/enums/social_login_enum.dart';
+import './user.service.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class FacebookService {
-  final graphqlService = locator<GraphqlService>();
+  final userService = locator<UserService>();
 
   Future<String> getFacebookAccessToken() async {
     final facebookLogin = FacebookLogin();
@@ -32,6 +33,6 @@ class FacebookService {
     if (token == null) {
       return null;
     }
-    return graphqlService.socialLogin(token, 'FACEBOOK');
+    return userService.socialLogin(token, SOCIAL_LOGIN_ENUM.FACEBOOK);
   }
 }
