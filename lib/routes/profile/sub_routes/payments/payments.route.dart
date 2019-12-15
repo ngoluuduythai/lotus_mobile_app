@@ -19,9 +19,9 @@ class PaymentsRoute extends StatelessWidget {
     return BaseWidget(builder: (context, sizingInformation) {
       return BottomNavigationBase(
           child: SubProfileBase(
-            name: 'Payments',
-            child: MainPaymentWidget(),
-          ));
+        name: 'Payments',
+        child: MainPaymentWidget(),
+      ));
     });
   }
 }

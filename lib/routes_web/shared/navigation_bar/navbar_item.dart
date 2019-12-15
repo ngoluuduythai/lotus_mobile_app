@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main/routes_web/routes_web.dart';
 import '../../../shared/extensions/hover_extension.dart';
+
 class NavBarItem extends StatelessWidget {
   final String title;
   final String navPath;
@@ -9,13 +10,15 @@ class NavBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        RoutesWeb.sailor.navigate(navPath, transitionDuration: Duration(microseconds: 0),);
-      },
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 18),
-      )
-    ).showCursorOnHover;
+        onTap: () {
+          RoutesWeb.sailor.navigate(
+            navPath,
+            transitionDuration: Duration(microseconds: 0),
+          );
+        },
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 18),
+        )).showCursorOnHover;
   }
 }

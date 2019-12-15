@@ -48,12 +48,15 @@ class UserService {
     ''';
 
     final QueryOptions _options = QueryOptions(
-        document: document,
-        variables: {'input': {'token': token, 'platform': platformName}},
-      );
+      document: document,
+      variables: {
+        'input': {'token': token, 'platform': platformName}
+      },
+    );
     final QueryResult result = await graphqlService.queryWithOptions(_options);
     return result.data['socialLogin']['user'];
   }
+
   Future updateUser(AuthUser user) async {
     const String document = r'''
       mutation updateUser(

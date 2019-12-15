@@ -3,13 +3,13 @@ part 'user_employer.model.g.dart';
 
 @JsonSerializable(nullable: false, anyMap: true)
 class UserEmployer {
-  UserEmployer({this.employerVerifiedAt, this.name , this.createAt});
+  UserEmployer({this.employerVerifiedAt, this.name, this.createAt});
 
   String employerVerifiedAt;
   String createAt;
   String name;
 
-  factory UserEmployer.fromJson(Map<String,dynamic> json) =>
-  _$UserEmployerFromJson(json);
-  Map<String,dynamic> toJson() => _$UserEmployerToJson(this);
+  factory UserEmployer.fromJson(Map<String, dynamic> json) =>
+      _$UserEmployerFromJson(json);
+  Map<String, dynamic> toJson() => _$UserEmployerToJson(this);
 }

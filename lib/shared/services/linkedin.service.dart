@@ -24,8 +24,8 @@ class LinkedinService {
                   print(error);
                 },
                 onAuthCode: (authCode) async {
-                  final res =
-                      await userService.socialLogin(authCode, SOCIAL_LOGIN_ENUM.LINKEDIN);
+                  final res = await userService.socialLogin(
+                      authCode, SOCIAL_LOGIN_ENUM.LINKEDIN);
                   Navigator.pop(context, res);
                 },
               ))),

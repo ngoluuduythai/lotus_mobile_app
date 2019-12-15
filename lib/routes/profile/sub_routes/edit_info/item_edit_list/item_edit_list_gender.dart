@@ -25,7 +25,6 @@ class ItemEditListGender extends StatefulWidget {
   double fontSize;
   List<String> gender = <String>['MALE', 'FEMALE', ''];
 
-  
   @override
   _ItemEditListGenderState createState() => _ItemEditListGenderState();
 }
@@ -36,12 +35,10 @@ class _ItemEditListGenderState extends State<ItemEditListGender> {
   void initState() {
     super.initState();
     _textEditingController.text = widget.userValue;
- 
   }
 
   @override
   Widget build(BuildContext context) {
-  
     return Container(
       margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(25)),
       child: Row(

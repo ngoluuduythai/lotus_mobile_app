@@ -3,7 +3,8 @@ import '../../shared/constants/env.dart';
 import 'dart:html' as html;
 
 extension HoverExtensions on Widget {
-  static final appContainer = html.window.document.getElementById('app-container');
+  static final appContainer =
+      html.window.document.getElementById('app-container');
 
   Widget get showCursorOnHover {
     return MouseRegion(

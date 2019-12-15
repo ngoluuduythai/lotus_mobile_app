@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown
     ]);
-    
+
     Routes.createRoutes();
     return MaterialApp(
       title: 'Lotus',
@@ -20,6 +20,5 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Routes.sailor.generator(),
       home: LoginRoute(),
     );
-    
   }
 }
