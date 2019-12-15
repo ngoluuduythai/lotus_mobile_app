@@ -47,7 +47,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginGoogle() async {
     final dynamic data = await googleService.login();
-    if (!data) {
+    if (data == null) {
       return false;
     }
     authUser = AuthUser.fromJson(data);

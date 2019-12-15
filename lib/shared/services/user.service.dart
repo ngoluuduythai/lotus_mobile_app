@@ -8,10 +8,7 @@ class UserService {
   final graphqlService = locator<GraphqlService>();
 
   Future socialLogin(String token, SOCIAL_LOGIN_ENUM platform) async {
-    final platformName = platform.toString().split('.')[1];
-    print('************');
-    print(platformName);
-    print('************');
+    final platformName = platform.toString().split('.')[1];//because enums dont have an easy way to get their name in dart.
     final String document = r'''
       query socialLogin(
         $input: SocialLoginInput
@@ -54,7 +51,18 @@ class UserService {
       },
     );
     final QueryResult result = await graphqlService.queryWithOptions(_options);
-    return result.data['socialLogin']['user'];
+    if(result.hasException) {
+      print(result.exception);
+      throw 'Has exepection';
+    }
+    if(result.data == null) {
+      throw 'data null';
+    } else if(result.data['socialLogin'] == null) {
+      print(result.data['socialLogin']);
+      throw 'No User';
+    } else {
+      return result.data['socialLogin']['user'];
+    }
   }
 
   Future updateUser(AuthUser user) async {
