@@ -5,22 +5,40 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter LOCAL",
+            "name": "Mobile LOCAL",
             "type": "dart",
             "request": "launch",
             "program": "lib/build_local.dart"
         },
         {
-            "name": "Flutter DEV",
+            "name": "Mobile DEV",
             "type": "dart",
             "request": "launch",
             "program": "lib/build_dev.dart"
         },
         {
-            "name": "Flutter PROD",
+            "name": "Mobile PROD",
             "type": "dart",
             "request": "launch",
             "program": "lib/build_prod.dart"
+        },
+        {
+            "name": "Web LOCAL",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/web_build_local.dart"
+        },
+        {
+            "name": "Web DEV",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/web_build_dev.dart"
+        },
+        {
+            "name": "Web PROD",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/web_build_prod.dart"
         },
     ]
 }

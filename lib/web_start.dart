@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './routes/login/login.route.dart';
-import './routes/routes.dart';
+import 'package:main/routes_web/regular/home/home_web.dart';
+import './routes_web/routes_web.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,14 +12,13 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown
     ]);
-    
-    Routes.createRoutes();
+
+    RoutesWeb.createRoutes();
     return MaterialApp(
       title: 'Lotus',
-      navigatorKey: Routes.sailor.navigatorKey,
-      onGenerateRoute: Routes.sailor.generator(),
-      home: LoginRoute(),
+      navigatorKey: RoutesWeb.sailor.navigatorKey,
+      onGenerateRoute: RoutesWeb.sailor.generator(),
+      home: HomeWebRoute(),
     );
-    
   }
 }
