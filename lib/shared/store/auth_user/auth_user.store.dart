@@ -119,4 +119,12 @@ abstract class _AuthUserStore with Store {
     }
     return true;
   }
+
+  verifyEmployerApi(String employerEmail, int income) {
+    if (employerEmail == null || income == null) {
+      return false;
+    } else {
+      return employerService.verifyEmployer(employerEmail, income);
+    }
+  }
 }

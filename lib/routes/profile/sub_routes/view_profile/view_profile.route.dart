@@ -7,6 +7,7 @@ import '../../../../shared/constants/icon_paths.dart';
 import './../../../routes.dart';
 import '../../../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../shared/widgets/base_widget/base_widget.dart';
+import '../view_profile/verification_screen/verification_screen.dart';
 
 class ViewProfileRoute extends StatefulWidget {
   @override
@@ -174,25 +175,31 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                             child: Observer(builder: (_) {
                               return authUserStore.authUser.currentEmployer ==
                                       null
-                                  ? Row(children: <Widget>[
-                                      Tab(
-                                          icon: Image.asset(
-                                        IconPath.verifiedPending,
-                                        width: 21,
-                                        height: 21,
-                                      )),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 10),
-                                        child: Text('Verification Pending',
-                                            style: TextStyle(
-                                              color: Color(0xFF0B0B0B),
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'AirbnbCerealApp',
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 16.0,
-                                            )),
-                                      ),
-                                    ])
+                                  ? Container(
+                                      margin: EdgeInsets.only(),
+                                      child: Container(
+                                          width: 330,
+                                          height: 44,
+                                          margin: EdgeInsets.only(),
+                                          child: FlatButton(
+                                            color: Color(0xFFFFBA73),
+                                            onPressed: () => {
+                                              VerificationScreen()
+                                                  .screen(context),
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            child: Text('Verify Employer',
+                                                style: TextStyle(
+                                                    color: Color(0xFF733A00),
+                                                    fontWeight: FontWeight.w700,
+                                                    fontFamily:
+                                                        'AirbnbCerealApp',
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 16)),
+                                          )),
+                                    )
                                   : Row(children: <Widget>[
                                       Tab(
                                           icon: Image.asset(
