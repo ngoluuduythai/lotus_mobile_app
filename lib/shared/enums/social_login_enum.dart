@@ -1,0 +1,5 @@
+enum SOCIAL_LOGIN_ENUM {
+  FACEBOOK,
+  GOOGLE,
+  LINKEDIN,
+}

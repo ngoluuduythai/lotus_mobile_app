@@ -3,8 +3,8 @@ import 'package:main/responsive/orientation_layout.dart';
 import 'package:main/responsive/screen_type_layouts.dart';
 import '../../locator.dart';
 import '../../shared/store/auth_user/auth_user.store.dart';
-import 'login.route.view.mobile.dart';
-import 'login.route.view.tablet.dart';
+import 'login_mobile.dart';
+import 'login_tablet.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginRoute extends StatelessWidget {

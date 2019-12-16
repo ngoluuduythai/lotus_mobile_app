@@ -1,4 +1,4 @@
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:graphql/client.dart';
 import 'package:flutter/material.dart';
 
 class GraphqlService {
@@ -43,6 +43,10 @@ class GraphqlService {
         QueryOptions(document: document, fetchPolicy: FetchPolicy.networkOnly));
   }
 
+  Future queryWithOptions(QueryOptions queryOptions) {
+    return client.query(queryOptions);
+  }
+
   Future<QueryResult> mutate(String document) {
     return client.mutate(MutationOptions(
       document: document,
@@ -51,35 +55,5 @@ class GraphqlService {
 
   Future<QueryResult> mutateOptions(MutationOptions options) {
     return client.mutate(options);
-  }
-
-  socialLogin(String token, String service) async {
-    final QueryResult result = await query('''
-        query{
-          socialLogin(
-            token: "$token",
-            platform: $service
-          ){
-            nickName
-            profileDescription
-            phone
-            email
-            firstName
-            lastName
-            token
-            gender
-            pictureUrl
-            notifyByEmail
-            notifyByText
-            notifyInApp
-            showInRoommateSearch
-            financialInstitutions {
-              financialInstitutionKey
-              name
-            }
-          }
-        }
-    ''');
-    return result.data['socialLogin'];
   }
 }

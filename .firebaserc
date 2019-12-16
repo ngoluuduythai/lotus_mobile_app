@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "lotus-254818"
+  },
+  "targets": {
+    "lotus-254818": {
+      "hosting": {
+        "dev": [
+          "lotus-254818"
+        ],
+        "prod": [
+          "lotus-prod-59f2b"
+        ]
+      }
+    }
+  }
+}

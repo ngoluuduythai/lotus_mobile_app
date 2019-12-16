@@ -24,9 +24,17 @@ AuthUser _$AuthUserFromJson(Map json) {
     notifyInApp: json['notifyInApp'] as bool,
     showInRoommateSearch: json['showInRoommateSearch'] as bool,
     financialInstitutions: (json['financialInstitutions'] as List)
-        .map((e) =>
-            FinancialInstitution.fromJson(Map<String, dynamic>.from(e as Map)))
-        .toList(),
+        ?.map((e) => e == null
+            ? null
+            : FinancialInstitution.fromJson((e as Map)?.map(
+                (k, e) => MapEntry(k as String, e),
+              )))
+        ?.toList(),
+    currentEmployer: json['currentEmployer'] == null
+        ? null
+        : UserEmployer.fromJson((json['currentEmployer'] as Map)?.map(
+            (k, e) => MapEntry(k as String, e),
+          )),
   );
 }
 
@@ -47,4 +55,5 @@ Map<String, dynamic> _$AuthUserToJson(AuthUser instance) => <String, dynamic>{
       'showInRoommateSearch': instance.showInRoommateSearch,
       'monthlyRentalBudget': instance.monthlyRentalBudget,
       'financialInstitutions': instance.financialInstitutions,
+      'currentEmployer': instance.currentEmployer,
     };

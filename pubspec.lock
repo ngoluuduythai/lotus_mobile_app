@@ -29,6 +29,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+<<<<<<< HEAD
+=======
+  awesome_loader:
+    dependency: "direct main"
+    description:
+      name: awesome_loader
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
+>>>>>>> 01e42538b7ad121403eef895afdcbf85ecd419cc
   boolean_selector:
     dependency: transitive
     description:
@@ -207,6 +217,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   front_end:
     dependency: transitive
     description:
@@ -234,28 +249,35 @@ packages:
       name: google_sign_in
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.7"
-  graphql:
+    version: "4.1.0"
+  google_sign_in_platform_interface:
     dependency: transitive
+    description:
+      name: google_sign_in_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
+  google_sign_in_web:
+    dependency: transitive
+    description:
+      name: google_sign_in_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.2+1"
+  gql:
+    dependency: transitive
+    description:
+      name: gql
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.11.1"
+  graphql:
+    dependency: "direct main"
     description:
       name: graphql
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
-  graphql_flutter:
-    dependency: "direct main"
-    description:
-      name: graphql_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
-  graphql_parser:
-    dependency: transitive
-    description:
-      name: graphql_parser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.4"
+    version: "2.1.1-beta.4"
   graphs:
     dependency: transitive
     description:
@@ -396,6 +418,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.10"
+  overlay_loader:
+    dependency: "direct main"
+    description:
+      name: overlay_loader
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   package_config:
     dependency: transitive
     description:
@@ -417,13 +446,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
-  path_provider:
-    dependency: transitive
-    description:
-      name: path_provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.0"
   pedantic:
     dependency: transitive
     description:
@@ -437,6 +459,16 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+    version: "1.8.0+1"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+=======
+>>>>>>> 01e42538b7ad121403eef895afdcbf85ecd419cc
     version: "2.4.0"
   plaid:
     dependency: "direct main"
@@ -445,13 +477,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  platform:
-    dependency: transitive
-    description:
-      name: platform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.1"
   pool:
     dependency: transitive
     description:
@@ -480,6 +505,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  responsive_builder:
+    dependency: "direct main"
+    description:
+      name: responsive_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   rxdart:
     dependency: transitive
     description:
@@ -647,5 +679,10 @@ packages:
     source: hosted
     version: "2.2.0"
 sdks:
+<<<<<<< HEAD
   dart: ">=2.4.0 <3.0.0"
   flutter: ">=1.9.1 <2.0.0"
+=======
+  dart: ">=2.6.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.4 <2.0.0"
+>>>>>>> 01e42538b7ad121403eef895afdcbf85ecd419cc

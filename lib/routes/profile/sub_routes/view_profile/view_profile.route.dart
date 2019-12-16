@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
 import '../../../../locator.dart';
 import '../../../../shared/constants/icon_paths.dart';
-import './../../../../routes.dart';
+import './../../../routes.dart';
 import '../../../../shared/widgets/bottom_navigation_base/bottom_navigation_base.dart';
 import '../../../../shared/widgets/base_widget/base_widget.dart';
 
@@ -30,6 +30,7 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
+      authUserStore.getCurrentEmployer();
       return BaseWidget(builder: (context, sizingInformation) {
         return BottomNavigationBase(
             child: ListView(
@@ -168,26 +169,50 @@ class _ViewProfileRouteState extends State<ViewProfileRoute> {
                     margin: EdgeInsets.only(),
                     child: Row(
                       children: <Widget>[
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 20),
-                        //   child: Tab(
-                        //       icon: Image.asset(
-                        //     IconPath.verifiedAccount,
-                        //     width: 21,
-                        //     height: 21,
-                        //   )),
-                        // ),
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 10),
-                        //   child: Text('Employer Verified',
-                        //       style: TextStyle(
-                        //         color: Color(0xFF0B0B0B),
-                        //         fontWeight: FontWeight.w400,
-                        //         fontFamily: 'AirbnbCerealApp',
-                        //         fontStyle: FontStyle.normal,
-                        //         fontSize: 16.0,
-                        //       )),
-                        // ),
+                        Container(
+                            margin: EdgeInsets.only(left: 20),
+                            child: Observer(builder: (_) {
+                              return authUserStore.authUser.currentEmployer ==
+                                      null
+                                  ? Row(children: <Widget>[
+                                      Tab(
+                                          icon: Image.asset(
+                                        IconPath.verifiedPending,
+                                        width: 21,
+                                        height: 21,
+                                      )),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 10),
+                                        child: Text('Verification Pending',
+                                            style: TextStyle(
+                                              color: Color(0xFF0B0B0B),
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'AirbnbCerealApp',
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.0,
+                                            )),
+                                      ),
+                                    ])
+                                  : Row(children: <Widget>[
+                                      Tab(
+                                          icon: Image.asset(
+                                        IconPath.verifiedAccount,
+                                        width: 21,
+                                        height: 21,
+                                      )),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 10),
+                                        child: Text('Employer Verified',
+                                            style: TextStyle(
+                                              color: Color(0xFF0B0B0B),
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'AirbnbCerealApp',
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.0,
+                                            )),
+                                      ),
+                                    ]);
+                            }))
                       ],
                     ),
                   ),

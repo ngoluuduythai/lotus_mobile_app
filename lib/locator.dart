@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:main/shared/services/employer.service.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:main/shared/services/user.service.dart';
 import './shared/constants/env.dart';
@@ -19,6 +20,7 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton(() => LinkedinService());
   locator.registerLazySingleton(() => FinancialService());
   locator.registerLazySingleton(() => UserService());
+  locator.registerLazySingleton(() => EmployerService());
   //stores
   locator.registerLazySingleton(() => AuthUserStore());
 }

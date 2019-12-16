@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final env = DotEnv().env;
@@ -15,4 +16,6 @@ class ENV {
   static String plaidWebhookUrl = env['PLAID_WEBHOOK_URL'];
   static String linkedinAppID = env['LINKEDIN_APP_ID'];
   static String linkedinRedirectUrl = env['LINKEDIN_REDIRECT_URL'];
+
+  static bool isWeb = kIsWeb;
 }

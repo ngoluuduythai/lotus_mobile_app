@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"_info":"// This is a generated file; do not edit or check into version control.","dependencyGraph":[{"name":"flutter_facebook_login","dependencies":[]},{"name":"google_sign_in","dependencies":[]},{"name":"image_picker","dependencies":[]},{"name":"path_provider","dependencies":[]},{"name":"webview_flutter","dependencies":[]}]}
+=======
+{"_info":"// This is a generated file; do not edit or check into version control.","dependencyGraph":[{"name":"flutter_facebook_login","dependencies":[]},{"name":"google_sign_in","dependencies":["google_sign_in_web"]},{"name":"google_sign_in_web","dependencies":[]},{"name":"image_picker","dependencies":[]},{"name":"webview_flutter","dependencies":[]}]}
+>>>>>>> 01e42538b7ad121403eef895afdcbf85ecd419cc

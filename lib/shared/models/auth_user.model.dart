@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 import './financial_institution.model.dart';
+import './user_employer.model.dart';
 import "package:merge_map/merge_map.dart";
 part 'auth_user.model.g.dart';
 
-@JsonSerializable(nullable: false, anyMap: true)
+@JsonSerializable(nullable: true, anyMap: true)
 class AuthUser {
   AuthUser({
     this.userKey,
@@ -22,6 +23,7 @@ class AuthUser {
     this.notifyInApp,
     this.showInRoommateSearch,
     this.financialInstitutions,
+    this.currentEmployer,
   });
 
   final num userKey;
@@ -40,6 +42,7 @@ class AuthUser {
   bool showInRoommateSearch;
   num monthlyRentalBudget;
   List<FinancialInstitution> financialInstitutions;
+  UserEmployer currentEmployer;
 
   static List<String> updateableFields = [
     'profileDescription',

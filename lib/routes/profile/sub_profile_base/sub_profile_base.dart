@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../shared/constants/icon_paths.dart';
-import './../../../routes.dart';
+import './../../routes.dart';
 
 class SubProfileBase extends StatelessWidget {
   SubProfileBase({@required this.name, @required this.child, this.save});

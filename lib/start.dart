@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:main/routes.dart';
 import 'package:flutter/services.dart';
 import './routes/login/login.route.dart';
+import './routes/routes.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown
     ]);
 
+    Routes.createRoutes();
     return MaterialApp(
       title: 'Lotus',
       navigatorKey: Routes.sailor.navigatorKey,

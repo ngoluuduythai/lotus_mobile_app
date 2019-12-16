@@ -13,6 +13,10 @@ For development you must run this command.
 flutter packages pub run build_runner watch --delete-conflicting-outputs
 ```
 
+## FOR WEB to run even in visual studio
+```
+flutter run -d chrome
+```
 ### Formatting code
 
 `flutter format .`
@@ -36,4 +40,16 @@ Please contact Brian for more information
 
 ```
 flutter run -t lib/builds/local.dart -d {{Device Name}}
+```
+
+### Deploying to Dev WEBSITE
+```
+flutter build web -t lib/web_build_dev.dart
+firebase deploy --only hosting:dev
+```
+
+### Deploying to Prod WEBSITE
+```
+flutter build web -t lib/web_build_prod.dart
+firebase deploy --only hosting:prod
 ```

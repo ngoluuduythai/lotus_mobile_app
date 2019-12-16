@@ -1,15 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:main/shared/models/financial_institution.model.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
+import '../../../shared/models/financial_institution.model.dart';
 import '../../services/user.service.dart';
+import '../../services/employer.service.dart';
 import '../../../locator.dart';
 import '../../services/facebook.service.dart';
 import '../../services/google.service.dart';
 import '../../services/graphql.service.dart';
 import '../../services/financial.service.dart';
 import '../../models/auth_user.model.dart';
-import '../../../routes.dart';
+import '../../../routes/routes.dart';
 
 part 'auth_user.store.g.dart';
 
@@ -22,6 +23,7 @@ abstract class _AuthUserStore with Store {
   final financialService = locator<FinancialService>();
   final graphqlService = locator<GraphqlService>();
   final userService = locator<UserService>();
+  final employerService = locator<EmployerService>();
 
   @observable
   AuthUser authUser;
@@ -45,7 +47,7 @@ abstract class _AuthUserStore with Store {
   @action
   Future<bool> loginGoogle() async {
     final dynamic data = await googleService.login();
-    if (!data) {
+    if (data == null) {
       return false;
     }
     authUser = AuthUser.fromJson(data);
@@ -102,6 +104,12 @@ abstract class _AuthUserStore with Store {
     return authUser;
   }
 
+  @action
+  Future<AuthUser> getCurrentEmployer() async {
+    final result = await employerService.getCurrentEmployer();
+    authUser = authUser.update(result);
+    return authUser;
+  }
 
   @action
   Future<bool> updateUser(AuthUser user) async {

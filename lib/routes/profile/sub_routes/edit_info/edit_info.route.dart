@@ -7,9 +7,7 @@ import './item_edit_list/item_edit_list_gender.dart';
 import '../../../../shared/constants/icon_paths.dart';
 import '../../../../locator.dart';
 import '../../../../shared/store/auth_user/auth_user.store.dart';
-import './../../../../routes.dart';
 import '../../../../shared/models/auth_user.model.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class EditInfoRoute extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();

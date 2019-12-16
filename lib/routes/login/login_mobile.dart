@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:main/routes.dart';
-import 'package:main/locator.dart';
+import '../routes.dart';
 import 'package:main/shared/store/auth_user/auth_user.store.dart';
-
-import '../../routes.dart';
 import '../../locator.dart';
 import '../../shared/widgets/base_widget/base_widget.dart';
 import '../../shared/constants/images.dart';
 import '../../shared/constants/colors.dart';
 import './login_button/login_button.dart';
 import '../../shared/constants/icon_paths.dart';
-import 'linkedin_view/linkedin_view.dart';
 import '../../utils/sizeConfig.dart';
+import 'package:overlay_loader/overlay_loader.dart';
 
 class LoginRouteMobilePortrait extends StatelessWidget {
   final AuthUserStore authUserStore = locator<AuthUserStore>();
@@ -136,7 +133,15 @@ Widget _bottomRectable(BuildContext context) {
             right: ScreenUtil().setWidth(124),
             fontSize: ScreenUtil().setSp(30),
             onPressed: () async {
-              final loggedIn = await authUserStore.loginFacebook();
+
+              final loggedIn = await overlayLoader(
+                context: context,
+                asyncFunction: () {
+                  return authUserStore.loginFacebook();
+                },
+                opacity: .8
+              );
+
               if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
@@ -159,7 +164,13 @@ Widget _bottomRectable(BuildContext context) {
             fontSize: ScreenUtil().setSp(30),
 
             onPressed: () async {
-              final loggedIn = await authUserStore.loginLinkedin(context);
+              final loggedIn = await overlayLoader(
+                context: context,
+                asyncFunction: () {
+                  return authUserStore.loginLinkedin(context);
+                },
+                opacity: .8
+              );
               if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
@@ -181,7 +192,13 @@ Widget _bottomRectable(BuildContext context) {
             fontSize: ScreenUtil().setSp(30),
 
             onPressed: () async {
-              final loggedIn = await authUserStore.loginGoogle();
+              final loggedIn = await overlayLoader(
+                context: context,
+                asyncFunction: () {
+                  return authUserStore.loginGoogle();
+                },
+                opacity: .8
+              );
               if (loggedIn) {
                 Routes.sailor(RouteNames.profile);
               }
