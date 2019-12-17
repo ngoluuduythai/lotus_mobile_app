@@ -1,8 +1,8 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 
-class ItemTylerProvider extends StatefulWidget {
-  ItemTylerProvider({
+class ItemViewVerified extends StatefulWidget {
+  ItemViewVerified({
     @required this.title,
     @required this.iconImageLocation,
     this.leftIcon,
@@ -25,10 +25,10 @@ class ItemTylerProvider extends StatefulWidget {
   double topTitle;
 
   @override
-  _ItemTylerProvider createState() => _ItemTylerProvider();
+  _ItemViewVerified createState() => _ItemViewVerified();
 }
 
-class _ItemTylerProvider extends State<ItemTylerProvider> {
+class _ItemViewVerified extends State<ItemViewVerified> {
   @override
   Widget build(BuildContext context) {
     return Container(

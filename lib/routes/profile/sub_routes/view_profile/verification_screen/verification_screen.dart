@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_routes/view_profile/verification_screen/item_verification.dart';
 import 'package:main/routes/profile/sub_routes/view_profile/verification_screen/textitem_verification.dart';
 import '../../../../../locator.dart';
@@ -30,14 +31,15 @@ class VerificationScreen {
           return Scaffold(
               body: ListView(children: <Widget>[
             Container(
-                width: 413,
-                height: 780,
+                width: ScreenUtil().setWidth(433),
+                height: ScreenUtil().setHeight(1300),
                 decoration: BoxDecoration(color: Color(0xfff5f6fa)),
                 child: Container(
                   margin:
-                      EdgeInsets.only(top: 40, left: 32, right: 32, bottom: 50),
-                  width: 372,
-                  height: 425,
+                      EdgeInsets.only(top: ScreenUtil().setHeight(80), left: ScreenUtil().setWidth(52), right: ScreenUtil().setWidth(52),
+                       bottom: ScreenUtil().setHeight(80)),
+                  width: ScreenUtil().setWidth(372),
+                  height: ScreenUtil().setHeight(425),
                   decoration: BoxDecoration(
                     color: Color(0xFFFFFFFF),
                     borderRadius: BorderRadius.circular(30),
@@ -45,13 +47,13 @@ class VerificationScreen {
                   child: Column(
                     children: <Widget>[
                       Container(
-                          margin: EdgeInsets.only(left: 0, top: 15, right: 270),
+                          margin: EdgeInsets.only(left: 0, top: ScreenUtil().setHeight(48), right: ScreenUtil().setWidth(520)),
                           child: GestureDetector(
                             child: Tab(
                               icon: Image.asset(
                                 IconPath.crossBlack,
-                                width: 24,
-                                height: 24,
+                                width: ScreenUtil().setWidth(48),
+                                height: ScreenUtil().setHeight(48),
                               ),
                             ),
                             onTap: () => {
@@ -63,13 +65,13 @@ class VerificationScreen {
                           child: Center(
                             child: Image.asset(
                               Images.verificationScreen,
-                              width: 251,
-                              height: 190,
+                              width: ScreenUtil().setWidth(500),
+                              height: ScreenUtil().setHeight(320),
                               alignment: Alignment.topCenter,
                             ),
                           )),
                       Container(
-                          margin: EdgeInsets.only(top: 25),
+                          margin: EdgeInsets.only(top: ScreenUtil().setHeight(45)),
                           child: Center(
                             child: Text('Employeer Verification',
                                 style: TextStyle(
@@ -77,11 +79,11 @@ class VerificationScreen {
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'AirbnbCerealApp',
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 22.0,
+                                  fontSize:  ScreenUtil().setSp(42),
                                 )),
                           )),
                       Container(
-                          margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                          margin: EdgeInsets.only(top: ScreenUtil().setHeight(25), left: ScreenUtil().setWidth(40), right: ScreenUtil().setWidth(40)),
                           child: Center(
                             child: Text(
                               'We will send your employee email a link so you can verify your employment, we will not contact you employer. We use the expected income in order to determine your max monthly payment',
@@ -90,7 +92,7 @@ class VerificationScreen {
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'AirbnbCerealApp',
                                 fontStyle: FontStyle.normal,
-                                fontSize: 14.0,
+                                fontSize: ScreenUtil().setSp(25),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -98,15 +100,15 @@ class VerificationScreen {
                       Column(
                         children: <Widget>[
                           TextItemVerification(
-                            right: 220,
+                            right: ScreenUtil().setWidth(403),
                             left: 0,
-                            top: 20,
+                            top: ScreenUtil().setHeight(30),
                             title: 'Your Email',
-                            size: 16,
+                            size: ScreenUtil().setSp(32),
                           ),
                           ItemVerification(
-                            left: 21,
-                            right: 22,
+                            left: ScreenUtil().setWidth(42),
+                            right: ScreenUtil().setWidth(44),
                             onChanged: (val) {
                               employerEmail = val;
                               print(employerEmail);
@@ -120,15 +122,15 @@ class VerificationScreen {
                             isController: false,
                           ),
                           TextItemVerification(
-                            right: 81,
-                            top: 20,
+                            right: ScreenUtil().setWidth(110),
+                            top: ScreenUtil().setHeight(30),
                             left: 0,
                             title: 'Expected Income for the year',
-                            size: 16,
+                            size: ScreenUtil().setSp(32),
                           ),
                           Row(children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(left: 22),
+                              margin: EdgeInsets.only(left: ScreenUtil().setWidth(42)),
                               child: Text(
                                 '\$',
                                 style: TextStyle(
@@ -136,12 +138,12 @@ class VerificationScreen {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: 'AirbnbCerealApp',
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 21.0,
+                                  fontSize: ScreenUtil().setSp(42),
                                 ),
                               ),
                             ),
                             ItemVerification(
-                              width: 290,
+                              width: ScreenUtil().setWidth(540),
                               left: 0,
                               right: 0,
                               keyboardType: TextInputType.number,
@@ -163,9 +165,9 @@ class VerificationScreen {
                             ),
                           ]),
                           Container(
-                              width: 310,
-                              height: 44,
-                              margin: EdgeInsets.only(top: 20),
+                              width: ScreenUtil().setWidth(550),
+                              height: ScreenUtil().setHeight(68),
+                              margin: EdgeInsets.only(top: ScreenUtil().setHeight(30),left:ScreenUtil().setWidth(10)) ,
                               child: FlatButton(
                                 color: Color(0xFFFFBA73),
                                 onPressed: () => {
@@ -182,7 +184,7 @@ class VerificationScreen {
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'AirbnbCerealApp',
                                         fontStyle: FontStyle.normal,
-                                        fontSize: 16)),
+                                        fontSize: ScreenUtil().setSp(32))),
                               )),
                         ],
                       ),
