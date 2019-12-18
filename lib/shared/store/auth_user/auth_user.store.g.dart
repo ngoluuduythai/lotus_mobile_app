@@ -101,4 +101,17 @@ mixin _$AuthUserStore on _AuthUserStore, Store {
   Future<bool> updateUser(AuthUser user) {
     return _$updateUserAsyncAction.run(() => super.updateUser(user));
   }
+
+  final _$_AuthUserStoreActionController =
+      ActionController(name: '_AuthUserStore');
+
+  @override
+  dynamic verifyEmployerApi(String employerEmail, int income) {
+    final _$actionInfo = _$_AuthUserStoreActionController.startAction();
+    try {
+      return super.verifyEmployerApi(employerEmail, income);
+    } finally {
+      _$_AuthUserStoreActionController.endAction(_$actionInfo);
+    }
+  }
 }

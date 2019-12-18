@@ -54,7 +54,7 @@ class AuthUser {
     'showInRoommateSearch',
     'notifyByEmail',
     'notifyByText',
-    'notifyInApp'
+    'notifyInApp',
   ];
 
   bool get connectedFinancialInstiutiton {
@@ -62,6 +62,13 @@ class AuthUser {
       return false;
     }
     return financialInstitutions.isEmpty ? false : true;
+  }
+
+  bool get currentEmployervalue {
+    if (currentEmployer == null) {
+      return false;
+    }
+    return currentEmployer == null ? false : true;
   }
 
   String get fullName {
@@ -110,8 +117,15 @@ class AuthUser {
         return Map<String, dynamic>.from(e);
       }
     })?.toList();
+
+    if (json['currentEmployer'] is UserEmployer) {
+      json['currentEmployer'] =
+          Map<dynamic, dynamic>.from(json['currentEmployer'].toJson());
+    }
+
     return _$AuthUserFromJson(json);
   }
+
   Map<String, dynamic> toJson() {
     var json = _$AuthUserToJson(this);
     // json['financialInstitutions'] = this.financialInstitutions.map((e)=>e.toJson());

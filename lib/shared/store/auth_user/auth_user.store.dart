@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:main/shared/services/linkedin.service.dart';
 import 'package:mobx/mobx.dart';
 import '../../../shared/models/financial_institution.model.dart';
+import '../../models/user_employer.model.dart';
 import '../../services/user.service.dart';
 import '../../services/employer.service.dart';
 import '../../../locator.dart';
@@ -107,7 +108,18 @@ abstract class _AuthUserStore with Store {
   @action
   Future<AuthUser> getCurrentEmployer() async {
     final result = await employerService.getCurrentEmployer();
-    authUser = authUser.update(result);
+    if (result != null) {
+      if (result['currentEmployer'] != null) {
+        final currentEmployer =
+            UserEmployer.fromJson(result['currentEmployer']);
+        authUser.currentEmployer = currentEmployer;
+        authUser = authUser;
+        authUser = authUser.update(result['currentEmployer']);
+        return authUser;
+      }
+    }
+    authUser.currentEmployer = null;
+    authUser = authUser;
     return authUser;
   }
 
@@ -118,5 +130,14 @@ abstract class _AuthUserStore with Store {
       authUser = authUser.update(data);
     }
     return true;
+  }
+
+  @action
+  verifyEmployerApi(String employerEmail, int income) {
+    if (employerEmail == null || income == null) {
+      return false;
+    } else {
+      return employerService.verifyEmployer(employerEmail, income);
+    }
   }
 }

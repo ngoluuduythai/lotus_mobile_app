@@ -51,8 +51,8 @@ class UserService {
       },
     );
     final QueryResult result = await graphqlService.queryWithOptions(_options);
-    if(result.hasException) {
-      print(result.exception);
+    if(result.hasErrors) {
+      print(result.hasErrors);
       throw 'Has exepection';
     }
     if(result.data == null) {

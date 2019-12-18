@@ -6,4 +6,5 @@ class Images {
   static const loginGirl = 'assets/images/womanCheckPhone.png';
   static const room01 = 'assets/images/room01.png';
   static const room02 = 'assets/images/room02.png';
+  static const verificationScreen = 'assets/images/verificationScreen.png';
 }
