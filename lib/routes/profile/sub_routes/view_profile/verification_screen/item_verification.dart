@@ -8,16 +8,12 @@ class ItemVerification extends StatefulWidget {
     @required this.right,
     @required this.onChanged,
     @required this.onFieldSubmitted,
+    @required this.controller,
     this.initialValue,
     this.width,
     this.keyboardType,
-    this.controllerIncome,
-    this.controllerEmail,
-    this.isController,
   });
-  bool isController;
-  MoneyMaskedTextController controllerIncome;
-  TextEditingController controllerEmail;
+  TextEditingController controller;
   double left;
   double right;
   double width;
@@ -35,12 +31,7 @@ class _ItemVerification extends State<ItemVerification> {
 
   void initState() {
     super.initState();
-    if (widget.isController == true) {
-      _controller = MoneyMaskedTextController();
-      _controller.text = widget.controllerIncome.text;
-    } else {
-      _controller = TextEditingController(text: widget.controllerEmail.text);
-    }
+    _controller = widget.controller;
   }
 
   @override

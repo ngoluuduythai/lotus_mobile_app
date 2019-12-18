@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main/routes/profile/sub_routes/view_profile/verification_screen/item_verification.dart';
@@ -127,9 +126,7 @@ class VerificationScreen {
                               employerEmail = val;
                               print(employerEmail);
                             },
-                            initialValue: 'myemail@gmail.com',
-                            controllerEmail: controllerEmail,
-                            isController: false,
+                            controller: controllerEmail,
                           ),
                           TextItemVerification(
                             right: ScreenUtil().setWidth(110),
@@ -168,9 +165,7 @@ class VerificationScreen {
                                 controllerIncome.text = val;
                                 print(income);
                               },
-                              initialValue: '40000',
-                              controllerIncome: controllerIncome,
-                              isController: true,
+                              controller: controllerIncome,
                             ),
                           ]),
                           Container(
