@@ -9,14 +9,14 @@ part of 'user_employer.model.dart';
 UserEmployer _$UserEmployerFromJson(Map json) {
   return UserEmployer(
     employerVerifiedAt: json['employerVerifiedAt'] as String,
-    name: json['name'] as String,
-    createAt: json['createAt'] as String,
+    employer: json['employer'] as String,
+    createdAt: json['createdAt'] as String,
   );
 }
 
 Map<String, dynamic> _$UserEmployerToJson(UserEmployer instance) =>
     <String, dynamic>{
       'employerVerifiedAt': instance.employerVerifiedAt,
-      'createAt': instance.createAt,
-      'name': instance.name,
+      'createdAt': instance.createdAt,
+      'employer': instance.employer,
     };

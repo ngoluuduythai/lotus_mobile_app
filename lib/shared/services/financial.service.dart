@@ -42,7 +42,9 @@ class FinancialService {
       }
     }
     ''');
-    return result.data['whoami'];
+    if (result.data != null) {
+      return result.data['whoami'];
+    }
   }
 
   Future sendToken(Result plaidResult) async {

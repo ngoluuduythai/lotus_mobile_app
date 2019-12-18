@@ -1,15 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'user_employer.model.g.dart';
 
-@JsonSerializable(nullable: false, anyMap: true)
+@JsonSerializable(nullable: true, anyMap: true)
 class UserEmployer {
-  UserEmployer({this.employerVerifiedAt, this.name, this.createAt});
+  UserEmployer({this.employerVerifiedAt, this.employer, this.createdAt});
 
   String employerVerifiedAt;
-  String createAt;
-  String name;
+  String createdAt;
+  String employer;
 
   factory UserEmployer.fromJson(Map<String, dynamic> json) =>
       _$UserEmployerFromJson(json);
-  Map<String, dynamic> toJson() => _$UserEmployerToJson(this);
+  Map<dynamic, dynamic> toJson() => _$UserEmployerToJson(this);
 }

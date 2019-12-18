@@ -22,7 +22,10 @@ class EmployerService {
       }
     }
     ''');
-    return result.data['whoami'];
+
+    if (result.data != null) {
+      return result.data['whoami'];
+    }
   }
 
   Future verifyEmployer(String employerEmail, int income) async {
@@ -34,12 +37,15 @@ class EmployerService {
         }
     ){
         success
+        userEmployer{
+          employerVerifiedAt
+          createdAt
+        }
       }
     }
     ''';
     final result = await graphqlService.mutate(mutation);
     print(result.errors);
-    print(result.data);
     return result.data;
   }
 }

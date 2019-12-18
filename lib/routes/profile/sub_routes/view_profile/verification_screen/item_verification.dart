@@ -49,7 +49,11 @@ class _ItemVerification extends State<ItemVerification> {
       width: widget.width,
       margin: EdgeInsets.only(left: widget.left, right: widget.right),
       child: TextFormField(
-          onTap: () =>{_controller.value.clear = ''} ,
+          onTap: () => {
+                setState(() {
+                  _controller.text = '';
+                })
+              },
           controller: _controller,
           keyboardType: widget.keyboardType,
           onChanged: (val) {

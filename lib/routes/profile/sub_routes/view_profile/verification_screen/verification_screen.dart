@@ -15,7 +15,8 @@ class VerificationScreen {
     final AuthUserStore authUserStore = locator<AuthUserStore>();
 
     String employerEmail;
-    String income;
+    int income;
+    double parsed;
 
     final controllerIncome = MoneyMaskedTextController(
         decimalSeparator: '.',
@@ -35,9 +36,11 @@ class VerificationScreen {
                 height: ScreenUtil().setHeight(1300),
                 decoration: BoxDecoration(color: Color(0xfff5f6fa)),
                 child: Container(
-                  margin:
-                      EdgeInsets.only(top: ScreenUtil().setHeight(80), left: ScreenUtil().setWidth(52), right: ScreenUtil().setWidth(52),
-                       bottom: ScreenUtil().setHeight(80)),
+                  margin: EdgeInsets.only(
+                      top: ScreenUtil().setHeight(80),
+                      left: ScreenUtil().setWidth(52),
+                      right: ScreenUtil().setWidth(52),
+                      bottom: ScreenUtil().setHeight(80)),
                   width: ScreenUtil().setWidth(372),
                   height: ScreenUtil().setHeight(425),
                   decoration: BoxDecoration(
@@ -47,7 +50,10 @@ class VerificationScreen {
                   child: Column(
                     children: <Widget>[
                       Container(
-                          margin: EdgeInsets.only(left: 0, top: ScreenUtil().setHeight(48), right: ScreenUtil().setWidth(520)),
+                          margin: EdgeInsets.only(
+                              left: 0,
+                              top: ScreenUtil().setHeight(48),
+                              right: ScreenUtil().setWidth(520)),
                           child: GestureDetector(
                             child: Tab(
                               icon: Image.asset(
@@ -71,7 +77,8 @@ class VerificationScreen {
                             ),
                           )),
                       Container(
-                          margin: EdgeInsets.only(top: ScreenUtil().setHeight(45)),
+                          margin:
+                              EdgeInsets.only(top: ScreenUtil().setHeight(45)),
                           child: Center(
                             child: Text('Employeer Verification',
                                 style: TextStyle(
@@ -79,11 +86,14 @@ class VerificationScreen {
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'AirbnbCerealApp',
                                   fontStyle: FontStyle.normal,
-                                  fontSize:  ScreenUtil().setSp(42),
+                                  fontSize: ScreenUtil().setSp(42),
                                 )),
                           )),
                       Container(
-                          margin: EdgeInsets.only(top: ScreenUtil().setHeight(25), left: ScreenUtil().setWidth(40), right: ScreenUtil().setWidth(40)),
+                          margin: EdgeInsets.only(
+                              top: ScreenUtil().setHeight(25),
+                              left: ScreenUtil().setWidth(40),
+                              right: ScreenUtil().setWidth(40)),
                           child: Center(
                             child: Text(
                               'We will send your employee email a link so you can verify your employment, we will not contact you employer. We use the expected income in order to determine your max monthly payment',
@@ -130,7 +140,8 @@ class VerificationScreen {
                           ),
                           Row(children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(left: ScreenUtil().setWidth(42)),
+                              margin: EdgeInsets.only(
+                                  left: ScreenUtil().setWidth(42)),
                               child: Text(
                                 '\$',
                                 style: TextStyle(
@@ -149,14 +160,12 @@ class VerificationScreen {
                               keyboardType: TextInputType.number,
                               onChanged: (val) {
                                 print(val);
-                                income = val;
-                                controllerIncome.value =
-                                    income as TextEditingValue;
+                                controllerIncome.text = val;
                                 print(controllerIncome.value);
                               },
                               onFieldSubmitted: (val) {
                                 print(val);
-                                income = val;
+                                controllerIncome.text = val;
                                 print(income);
                               },
                               initialValue: '40000',
@@ -167,14 +176,16 @@ class VerificationScreen {
                           Container(
                               width: ScreenUtil().setWidth(550),
                               height: ScreenUtil().setHeight(68),
-                              margin: EdgeInsets.only(top: ScreenUtil().setHeight(30),left:ScreenUtil().setWidth(10)) ,
+                              margin: EdgeInsets.only(
+                                  top: ScreenUtil().setHeight(30),
+                                  left: ScreenUtil().setWidth(10)),
                               child: FlatButton(
                                 color: Color(0xFFFFBA73),
                                 onPressed: () => {
-                                  print(employerEmail),
-                                  print(controllerIncome.numberValue),
-                                  authUserStore.verifyEmployerApi(employerEmail,
-                                      (controllerIncome.numberValue).toInt())
+                                  parsed = controllerIncome.numberValue,
+                                  income = parsed.toInt(),
+                                  authUserStore.verifyEmployerApi(
+                                      employerEmail, income)
                                 },
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5)),
