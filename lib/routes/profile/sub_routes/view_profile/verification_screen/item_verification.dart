@@ -9,6 +9,7 @@ class ItemVerification extends StatefulWidget {
     @required this.onChanged,
     @required this.onFieldSubmitted,
     @required this.controller,
+    @required this.validator,
     this.initialValue,
     this.width,
     this.keyboardType,
@@ -20,6 +21,7 @@ class ItemVerification extends StatefulWidget {
   Function onChanged;
   TextInputType keyboardType;
   Function onFieldSubmitted;
+  Function validator;
   String initialValue;
 
   @override
@@ -40,6 +42,7 @@ class _ItemVerification extends State<ItemVerification> {
       width: widget.width,
       margin: EdgeInsets.only(left: widget.left, right: widget.right),
       child: TextFormField(
+          validator: widget.validator,
           onTap: () => {
                 setState(() {
                   _controller.text = '';
