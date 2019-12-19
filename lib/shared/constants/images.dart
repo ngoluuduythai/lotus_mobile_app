@@ -7,4 +7,6 @@ class Images {
   static const room01 = 'assets/images/room01.png';
   static const room02 = 'assets/images/room02.png';
   static const verificationScreen = 'assets/images/verificationScreen.png';
+  static const verificationEmailScreen =
+      'assets/images/verificationEmailScreen.png';
 }
